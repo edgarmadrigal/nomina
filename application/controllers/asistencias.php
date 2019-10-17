@@ -130,32 +130,8 @@ class asistencias extends CI_Controller {
       $TotalRetardos=0;
       $TotalTiempoExtra= new DateTime('00:00:00');
       $TotalEmpleados=0;
-      //$EntradaLunes
-      //$SalidaLunes
-      
-      //$RetardoEmpleado
-      //$FaltaEmpleado
-      //$ExtraEmpleado
-      
-      //$SubtotalEmpleadosDepartamento
-      //$SubtotalBajasDepartamento
-      //$SubtotalRetardoDepartamento
-      //$SubtotalFaltaDepartamento
-      //$SubtotalExtraDepartamento
 
-      //$TotalEmpleadosDepartamento
-      //$TotalBajasDepartamento
-      //$TotalRetardoDepartamento
-      //$TotalFaltaDepartamento
-      //$TotalExtraDepartamento
-    
-      // echo print_r($data[0]['Numero']);
-      /*  
-        foreach ($data as $row) {
-          echo $row['id'];
-        }
-      */
-      //die();
+      ///esto es un nuevo comentario
       ob_start();      
       require (dirname(__DIR__, 1)."/views/ReporteAsistencia.php");
       $html = ob_get_contents();//$this->output->get_output();
