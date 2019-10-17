@@ -1,0 +1,3458 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        table {
+          width:100%!important;
+        }
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: .5px;
+          text-align: left;
+        }
+        table#t01 tr:nth-child(even) {
+          background-color: #eee;
+        }
+        table#t01 tr:nth-child(odd) {
+          background-color: #fff;
+        }
+        table#t01 th {
+          background-color: black;
+          color: white;
+        }
+        html {
+          margin: 0;
+        }
+        body {
+          font-size: 10px;
+          font-family: "Times New Roman", serif;
+          margin: 8mm 8mm 2mm 8mm;
+        }
+        .titulo{
+          font-weight: bold;
+          float:right;
+          text-align: right;
+        }
+        .alinearDerecha{
+          float:right;
+          text-align: right;
+        }
+        .ReporteAsistencia{
+          text-align: center;
+          font-size:15px;
+
+        }
+        .subtotal{
+          border-collapse: separate!important;
+          border: 0px solid white!important;
+          font-weight: bold;
+          float:right;
+          text-align: right;
+        }
+    </style>
+</head>
+<body>
+<table id="t01">
+  <tr style="position: fixed!important;">
+    <th style="position: fixed!important;" COLSPAN=13><span  class="ReporteAsistencia"> Reporte de Asistencia  </span><span style="float:right;margin-right:20px;">Fecha:03/09/2019</span></th>
+  </tr>
+  <tr  style="position: fixed!important;">
+    <th style="position: fixed!important;"> </th>
+    <th style="position: fixed!important;"> </th>
+    <th style="position: fixed!important;"> </th>
+    <th style="position: fixed!important;"> </th>
+    <th style="position: fixed!important;"></th>
+    <th style="position: fixed!important;"> </th>
+    <th style="position: fixed!important;"> </th>
+    <th style="position: fixed!important;"> </th>
+    <th style="position: fixed!important;">Semana:35</th>
+    <th style="position: fixed!important;" COLSPAN=2>Del 27/08/2015 </th>
+    <th style="position: fixed!important;" COLSPAN=2>al 02/09/2015</th>
+  </tr>
+  <tr style="position: fixed!important;">
+    <th style="position: fixed;!important;">NoEmpleado</th>
+    <th style="position: fixed;!important;" COLSPAN=2>Nombre</th>
+    <th style="position: fixed;!important;">Lunes</th>
+    <th style="position: fixed;!important;">Martes</th>
+    <th style="position: fixed;!important;">Miercoles</th>
+    <th style="position: fixed;!important;">Jueves</th>
+    <th style="position: fixed;!important;">Viernes</th>
+    <th style="position: fixed;!important;">Sabado</th>
+    <th style="position: fixed;!important;">Domingo</th>
+    <th style="position: fixed;!important;">Ret</th>
+    <th style="position: fixed;!important;">Falta</th>
+    <th style="position: fixed;!important;">Extra</th>
+  </tr>
+
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+  <tr>
+    <td ><b>6056</b></td>
+    <td COLSPAN=2><b>ADMINISTRATIVO</b></td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td>96358</td>
+    <td COLSPAN=2>GARCIA MARQUEZ CARLOS ALBERTO</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">8:00 16:30</td>
+    <td class="alinearDerecha">1</td>
+    <td class="alinearDerecha">2</td>
+    <td class="alinearDerecha">5</td>
+  </tr>
+  <tr>
+    <td class="subtotal"></td>
+    <td COLSPAN=2 class="subtotal">SubTotal:</td>
+    <td class="subtotal">7</td>
+    <td class="subtotal">Empleado(s)</td>
+    <td class="subtotal">0</td>
+    <td class="subtotal">Baja(s)</td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal"></td>
+    <td class="subtotal">18</td>
+    <td class="subtotal">19</td>
+    <td class="subtotal">21</td>
+  </tr>
+</table>
+
+</body>
+</html>

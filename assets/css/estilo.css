@@ -1,0 +1,50 @@
+.error{
+    font-weight: bold;
+    color: red;
+}
+.invalid-feedback {
+    display: block;
+    margin-top: .25rem;
+    font-size: 15px;
+    color: #f86c6b; 
+}  
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: black!important;
+}
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+tbody{
+    color: black!important;
+}
+.dt-buttons .dt-button {
+    color: black!important;
+}
+
+a:not([href]):not([tabindex]) {    
+    color: black;
+    background-color: #20aee3;
+    width: -webkit-fill-available!important;
+    text-align: center;
+}
+
+
+a:not([href]):not([tabindex]):hover {    
+    background-color: #020202;
+    color: aliceblue;
+    text-align: center;
+    cursor: pointer;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    background-color: lightgray!important;
+}
+input {
+    width: 100%;
+}
+table.dataTable, table.dataTable th, table.dataTable td {
+    box-sizing: content-box;
+    font-size: small;
+    font-family: monospace;
+}
