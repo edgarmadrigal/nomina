@@ -226,6 +226,7 @@
 }
     .table-responsive {
         overflow-x: auto;
+        
     }
 .loadTable {
   border: 16px solid #f3f3f3;
