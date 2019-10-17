@@ -129,7 +129,6 @@ dr[7].ToString()                    UPC
                                             </select>
                                         </div>
                                     </div> 
-
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">No Empleado</label>
