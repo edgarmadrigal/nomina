@@ -200,7 +200,6 @@
                                                         <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Sabado</td>
     
                                                         <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Domingo</td>
-                                                    
                                                     </tr>
                                             </tfoot>
                                         </table>
@@ -214,10 +213,8 @@
         </div>
     </div>
 </div>  
-
 <script src="assets/js/checada.js"></script>
 <style>
-
 @media only screen and (min-width: 1000px) {
     .table-responsive {
         overflow-x: visible;
@@ -226,7 +223,6 @@
 }
     .table-responsive {
         overflow-x: auto;
-        
     }
 .loadTable {
   border: 16px solid #f3f3f3;
