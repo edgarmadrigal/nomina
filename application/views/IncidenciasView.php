@@ -5,7 +5,6 @@
 <script src="assets/js/bootstrap-datepicker.js"></script>
 
 <div class="page-wrapper">   
-
     <div class="container-fluid">           
         <div class="row">
             <div class="col-12">
