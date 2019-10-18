@@ -66,7 +66,6 @@ class Checadas extends CI_Controller {
         $this->load->model('Checada');
         $result = array('data' => array());
 		$result =$this->Checada->consulta($NoSemana,$anio,$departamento,$noempleado);
-
         echo json_encode($result);
     }
 
