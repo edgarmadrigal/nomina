@@ -53,7 +53,7 @@ class Checadas extends CI_Controller {
         $anio=$this->input->post('anio');
         $departamento=$this->input->post('departamento');
         $noempleado=$this->input->post('noempleado');
-        
+       // echo $NoSemana.$anio.$departamento.$noempleado;
        if (empty($NoSemana)){
         $NoSemana=null;
        }if (empty($anio)){
