@@ -35,23 +35,14 @@ class Empleados extends CI_Controller {
         } else {
             $this->load->view('login');
 		}		
-    }
-    
-	public function consultaPerfil()
-	{ 
-		header('Access-Control-Allow-Origin: *');
-		$this->load->model('Perfil');
-		$data = $this->Perfil->consulta_Perfiles();
-        echo json_encode($data);
-
 	}
-
-	function consulta()
+	
+	function actualizar()
     {
+		
 		header('Access-Control-Allow-Origin: *');
-		$this->load->model('Usuario');
-        $id = $this->input->post('id');
-        echo json_encode($this->Usuario->get_usuario($id));
+		$this->load->model('Empleado');
+        echo json_encode($this->Empleado->actualizar());
     }
 
     public function consultaEmpleado(){
@@ -63,42 +54,6 @@ class Empleados extends CI_Controller {
 		echo json_encode($data);
 	}
 
-    function edit()
-    {
-		header('Access-Control-Allow-Origin: *');
-		$this->load->model('Usuario');
-        $id = $this->input->post('id');
-        $data = [
-            'nombre' => $this->input->post('nombre'),
-            'usuario' => $this->input->post('usuario'),
-            'password' => $this->input->post('password'),
-            'idPerfil' => $this->input->post('idPerfil')
-        ];
-        echo $this->Usuario->update_usuario($id, $data);
-    }
-
-    function delete()
-    {
-		header('Access-Control-Allow-Origin: *');
-		$this->load->model('Usuario');
-        $id = $this->input->post('id');
-        echo $this->Usuario->delete_usuario($id);
-    }
-
-    function insert()
-    {
-		header('Access-Control-Allow-Origin: *');
-		$this->load->model('Usuario');
-        $data = [
-            'nombre' => $this->input->post('nombre'),
-            'usuario' => $this->input->post('usuario'),
-            'password' => $this->input->post('password'),
-            'idPerfil' => $this->input->post('idPerfil')
-        ];
-
-        $dt['exito'] = $this->Usuario->insert_usuario($data);
-        echo $dt['exito'];
-    }
 	
 
 }

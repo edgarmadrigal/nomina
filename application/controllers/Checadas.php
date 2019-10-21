@@ -47,7 +47,7 @@ class Checadas extends CI_Controller {
 	}
 
 	function consulta()
-    {       
+    {
 		header('Access-Control-Allow-Origin: *'); 
         $NoSemana=$this->input->post('NoSemana');
         $anio=$this->input->post('anio');

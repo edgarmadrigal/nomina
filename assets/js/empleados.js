@@ -392,6 +392,19 @@ $.extend(jQuery.fn.dataTableExt.oSort, {
             $(this).html(title);
         }
     });
+    
+
+    $(document).on('click', '#actualizar', function (e) {
+        var varURL = Modulo.baseurl + "empleados/actualizar";
+        $.ajax({
+            url:  varURL,
+            type: 'post',
+            dataType: 'json'
+        }).done(function (data) {  
+            alert("Se actualizo con exito");
+        });
+    });
+
     $('#empleados thead th').each( function () {
         var title = $(this).text();
         if(title!="Opciones"){

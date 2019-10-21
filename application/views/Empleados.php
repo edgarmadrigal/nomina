@@ -19,6 +19,14 @@
                                         </button>  
                                     </div> 
                                 </div> 
+                                <div class="row">              
+                                    <div class="col-md-12 text-right">
+                                        <div class="messages"></div>
+                                        <button id="actualizar" class="btn btn-warning" >
+                                            <i class="fa fa-refresh"></i> Actualizar Empleados Microsip</button><!-- fa-spin -->
+                                        </button>  
+                                    </div> 
+                                </div>      
                                 <div class="row" >
                                     <div class="col-12">
                                         <div class="form-group">
