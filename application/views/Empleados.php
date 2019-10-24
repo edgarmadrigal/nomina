@@ -14,9 +14,9 @@
                                 <div class="row" style="display:none;">              
                                     <div class="col-md-12 text-right">
                                         <div class="messages"></div>
-                                        <button id="nuevo" class="btn btn-info" data-toggle="modal" data-target="#myModal_agregar" >
+                                        <button id="nuevo" class="btn btn-info" data-toggle="modal" data-target="#myModal_agregar">
                                             <i class="fa fa-plus-circle"></i> Agregar empleado</button>
-                                        </button>  
+                                       <!-- </button>  -->
                                     </div> 
                                 </div> 
                                 <div class="row">              
