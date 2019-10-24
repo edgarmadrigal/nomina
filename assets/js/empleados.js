@@ -233,20 +233,6 @@
                             return source.ESTATUS;
                                 }
                     },  
-                   /* {
-                        "aTargets": [6],
-                        "aName": "Opciones", 
-                        "mData": function (source, type, val) {
-                            return `<div class="btn-group"> 
-                                    <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" 
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acciones <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                    <li><a type="button" onclick="editar(`+source.id+`)" data-toggle="modal" data-target="#ModificarDia">Editar</a></li>
-                                    <li><a type="button" onclick="eliminar(`+source.id+`)">Eliminar</a></li>
-                                    </ul>
-                                    </div>`;
-                            }
-                        },*/
                     ]
                     ,"oAria": {
                         "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
@@ -305,8 +291,6 @@
                         }
                     } );
                 } );
-                
-        
                 $("#tablaEmpleados").css("display", "block");
                 $(".loadTable").css("display", "none");
                 
@@ -395,6 +379,9 @@ $.extend(jQuery.fn.dataTableExt.oSort, {
     
 
     $(document).on('click', '#actualizar', function (e) {
+            $.blockUI({ message: '<h1><img src="assets/js/busy.gif" /> Procesando...</h1>' });
+        $("#tablaEmp").css("display", "none");
+        $(".loadTable").css("display", "block");  
         var varURL = Modulo.baseurl + "empleados/actualizar";
         $.ajax({
             url:  varURL,
@@ -402,6 +389,9 @@ $.extend(jQuery.fn.dataTableExt.oSort, {
             dataType: 'json'
         }).done(function (data) {  
             alert("Se actualizo con exito");
+            $.unblockUI();
+            $("#tablaEmp").css("display", "block");
+            $(".loadTable").css("display", "none");
         });
     });
 

@@ -88,6 +88,8 @@
 <!-- End Container fluid  -->
 <!-- ============================================================== -->
  
+
+<script src="assets/js/jquery.blockUI.js"></script>
 <script src="assets/js/empleados.js"></script>
 
 <style>
