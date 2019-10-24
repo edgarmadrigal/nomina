@@ -88,8 +88,7 @@
 <!-- End Container fluid  -->
 <!-- ============================================================== -->
  
-    <script src="assets/js/empleados.js"></script>
-
+<script src="assets/js/empleados.js"></script>
 
 <style>
 @media only screen and (min-width: 600px) {
