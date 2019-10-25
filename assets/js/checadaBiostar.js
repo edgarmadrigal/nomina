@@ -41,6 +41,19 @@ ModuloChecada = {
         });
         return estatusValidacion;
     }    
+    , fnActualizarChecadasNomiplus: function (){
+        var varURL = ModuloChecada.baseurl + "checadasBiostar/ActualizarChecadasNomiplus";
+        /**Ajax */
+        $.ajax({
+            url: varURL,
+            type: 'post',
+        }).done(function (data) {            
+            alert("Se actualizo con exito");
+            $.unblockUI();
+            $("#tablaEmp").css("display", "block");
+            $(".loadTable").css("display", "none");
+        });
+    }
     //Obtiene los datos
     , fnObtenerDatos: function (planta,departamento,puesto,noempleado,NoSemana,anio) {
         $("#tablaEmp").css("display", "none");
@@ -520,5 +533,14 @@ var buttonCommon = {
             var anio=$('#anio').val();
             ModuloChecada.fnObtenerDatos(planta,departamento,puesto,noempleado,NoSemana,anio);
         });
+
+
+        $(document).on('click', '#actualizarNomi', function (e) {
+            $.blockUI({ message: '<h1><img src="assets/js/busy.gif" /> Procesando...</h1>' });
+            $("#tablaEmp").css("display", "none");
+            $(".loadTable").css("display", "block");  
+            ModuloChecada.fnActualizarChecadasNomiplus();
+        });
+        
         
     });

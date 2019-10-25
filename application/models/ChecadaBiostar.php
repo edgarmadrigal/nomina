@@ -21,6 +21,11 @@ class ChecadaBiostar extends CI_Model{
         $result = $this->db->query($sp,$params);
         return  $result->result_array();
     }
+    public function ActualizarChecadasNomiplus(){        
+        $sp = "ActualizaChecadasNomiplus";        
+        $result = $this->db->query($sp);
+        return  $result->result_array();
+    }
 
     public function consultaPlanta()
     {

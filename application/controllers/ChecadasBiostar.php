@@ -80,6 +80,18 @@ class ChecadasBiostar extends CI_Controller {
         echo json_encode($result);
     }
 
+    function ActualizarChecadasNomiplus(){
+        
+		header('Access-Control-Allow-Origin: *');
+        $this->load->model('ChecadaBiostar');
+        $result = array('data' => array());
+        $result =$this->ChecadaBiostar->ActualizarChecadasNomiplus();
+        
+        echo json_encode($result);
+    }
+
+
+
     function consultaDepartamento(){
 
         $planta=$this->input->post('planta');

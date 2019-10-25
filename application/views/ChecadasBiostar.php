@@ -228,6 +228,7 @@
     </div>
 </div>  
 
+<script src="assets/js/jquery.blockUI.js"></script>
 <script src="assets/js/checadaBiostar.js"></script>
 <style>
 
