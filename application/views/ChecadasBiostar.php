@@ -47,7 +47,7 @@
                                     </div> 
                                 </div> 
                                 <div class="row">
-                                    <div class="col-5">
+                                    <div class="col-4">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">Puesto</label>
                                             <select class="custom-select col-12" id="puesto">
@@ -55,20 +55,28 @@
                                         </div>
                                     </div> 
 
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">No Empleado</label>
                                             <input id="noempleado" type="text" class="form-control" name="msg" placeholder="escriba NoEmpleado">
                                         </div>
                                     </div>
-                                    <div class="col-3">
-                                    <div class="form-group">
+                                    <div class="col-2">
+                                        <div class="form-group">
                                                     <label style="font-weight: bold!important;"> &nbsp; </label><br> 
                                                     <button id="buscar" class="btn btn-info">
                                                         <i class="fa fa-search"></i> Buscar
                                                     </button>
                                         </div>
                                     </div>
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                                    <label style="font-weight: bold!important;"> &nbsp; </label><br> 
+                                            <button id="actualizarNomi" class="btn btn-warning">
+                                                <i class="fa fa-refresh"></i> Actualizar de Nomiplus</button>
+                                            </button>
+                                        </div>
+                                    </div> 
                                 </div> 
                                 <div class="row">
                                     <div class="col-12" style="text-align: -webkit-center;">
