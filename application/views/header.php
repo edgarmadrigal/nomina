@@ -219,6 +219,14 @@
                                         <span class="hide-menu">Horarios</span>
                                     </a>
                                 </li>
+                                <li style="float: left!important;width: 100%;">  
+                                    <a class="waves-effect waves-dark" href="incidencia" aria-expanded="true">   
+                                        <span class="icon-holder">
+                                            <img class="irc_mi" src="assets/images/incidencia.png" data-atf="0" width="25" height="25" style="">
+                                        </span>
+                                        <span class="hide-menu">incidencias</span>
+                                    </a>
+                                </li>
                                 <li style="float: left;width: 100%;"> 
                                     <a class="waves-effect waves-dark" href="conceptos" aria-expanded="true">        
                                         <div data-icon="ei-navicon" ></div>                       

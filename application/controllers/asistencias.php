@@ -102,9 +102,15 @@ class asistencias extends CI_Controller {
         $puesto=NULL;
        }
       $this->load->model('Asistencia');
-        //$data = array('data' => array());        
-      $data =$this->Asistencia->consulta($NoSemana,$anio,$planta,$departamento,$puesto,$noempleado);
 
+
+      //$data = array('data' => array()); 
+
+      $data =$this->Asistencia->consulta($NoSemana,$anio,$planta,$departamento,$puesto,$noempleado);
+ 
+      //$data=print_r(json_encode($data));
+      /*;
+      die();*/
       $dompdf = new Dompdf(array('isPhpEnabled' => true));      
       $titulo='Reporte de Asistencia';
       $fechaactual = getdate();

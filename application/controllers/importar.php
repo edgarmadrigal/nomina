@@ -12,7 +12,6 @@ class Importar extends CI_Controller {
       
 
   public function index(){
-    
     header('Access-Control-Allow-Origin: *');
 		$data = [];
         if (isset($this->session->userdata['login'])) {
@@ -73,8 +72,8 @@ class Importar extends CI_Controller {
                    $continua = isset($value['G']);
                    $continua2 = isset($value['F']);
                     if($continua){
-                    if($value['G'] =='1:N authentication succeeded (Face)'){  
-                     
+                    if($value['G'] =='1:N authentication succeeded (Face)'){
+                      
                       $a= date("Y-m-d H:i",strtotime($value['A']));
                       $a1= date("Y-m-d H:i",strtotime ( '-1 minute' ,strtotime($value['A'])));
                       $a2= date("Y-m-d H:i",strtotime ( '-2 minute' ,strtotime($value['A'])));
@@ -179,8 +178,5 @@ class Importar extends CI_Controller {
               echo $error['error'];
           }
   }
-
-
-
 }
 ?>

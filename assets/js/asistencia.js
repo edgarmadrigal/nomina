@@ -103,6 +103,20 @@ $(document).ready(function () {
             var varURL = Modulo.baseurl 
             + "asistencias/reporteAsistencia?NoSemana="
             +$("#NoSemana").val()+'&anio='+$("#anio").val()+'&planta='+parseInt($("#planta").val())+'&departamento='+departamento+'&puesto='+puesto+'&noempleado='+noempleado; 
+            
+        /*
+        para debugear
+        $.ajax({
+            url:  varURL,
+            type: 'get',
+            dataType: 'json'
+        }).done(function (data) {
+            alert(data);
+            //perfiles= JSON.parse(JSON.stringify());       
+        });
+            */
+            
+            
             window.open(varURL);
         }
        // window.location.assign(varURL);
