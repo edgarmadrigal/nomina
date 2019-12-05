@@ -16,14 +16,15 @@ class contrato extends CI_Controller {
 	function __construct() {
         parent::__construct();
         $this->load->database();
-        $this->load->model('import_model', 'import');
     }
 
     public function index(){
 
-       $this->load->model('Contrato');
+      
+    } 
+    
+    public function reporteAsistencia(){
       header('Access-Control-Allow-Origin: *');
-      $dompdf = new Dompdf(array('isPhpEnabled' => true));
       
       $idsalario=$this->input->get('idsalario');
       $idrepresentante=$this->input->get('idrepresentante');
@@ -47,22 +48,28 @@ class contrato extends CI_Controller {
         $iddescanso=null;
        }
 
-       $data =$this->Contrato->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);
+       $this->load->model('ContratoRH');
+       $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);
 
-       print_r(json_encode($data));
-       die();
-        /*  
-      $REPRESENTANTE='Lydia Teresa Anaya Venegas';
-      $EDOCIVIL='SOLTERO';
-      $NOMBRE='OSCAR GONZALEZ CASTAÑEDA';
-      $DIRECCION='CIRCUITO EUCALIPTO #65A COL VILLAS DEL BOSQUE TORREON COAH'; 
-      $IMSS='08149240684'; 
-      $RFC='MARE910615180'; 
-      $CURP='MARE910615HCLYD06';    
-      $PUESTO='DESARROLLADOR DE SOFTWARE';  
-      $FECHAANTIGUEDAD='16/10/2017';
-      */
-      
+       
+      $dompdf = new Dompdf(array('isPhpEnabled' => true));
+          
+      $REPRESENTANTE=$data[0]['REPRESENTANTE'];
+      $EDOCIVIL=$data[0]['EDOCIVIL'];
+      $NOMBRE=$data[0]['NOMBRE'];
+      $DIRECCION=$data[0]['DIRECCION'];
+      $IMSS=$data[0]['IMSS'];
+      $RFC=$data[0]['RFC'];
+      $CURP=$data[0]['CURP'];
+      $PUESTO=$data[0]['PUESTO'];
+      $DIRECCIONEMPRESA=$data[0]['DIRECCIONEMPRESA'];
+      $HORARIOCONTRATO=$data[0]['HORARIOCONTRATO'];
+      $SALARIO=$data[0]['SALARIO'];
+      $DESCRIPCIONSALARIO=$data[0]['DESCRIPCIONSALARIO'];
+      $DESCANSO=$data[0]['DESCANSO'];
+      $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
+
+
       $fechaactual = getdate();
       $FECHAHOY=" $fechaactual[mday] / $fechaactual[mon] / $fechaactual[year]";
       
@@ -90,8 +97,8 @@ class contrato extends CI_Controller {
         $x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle
       );      
       // Output the generated PDF to Browser
-      $dompdf->stream("contrato.pdf", array("Attachment"=>false));
-       
-  }
+      $dompdf->stream("contrato.pdf", array("Attachment"=>false));       
+    }
+
 }
 ?>

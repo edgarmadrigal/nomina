@@ -112,7 +112,10 @@
         </p>
         <p>
         QUINTA .- La duración de la jornada de trabajo será de 48 horas, quedando distribuido a manera enunciativa como 
-        sigue: <strong><?php echo $HORARIOCONTRATO; ?></strong>
+        sigue: 
+        </p>
+        <p>
+        <strong><?php echo $HORARIOCONTRATO; ?></strong>
         </p>
         <p>
         Cuando el horario de labores sea continuo "EL TRABAJADOR", tendrá derecho a media hora de descanso para tomar alimentos y le será  computado dicho
@@ -136,7 +139,7 @@
         disciplinaria que contempla el Reglamento Interior de Trabajo, o "LA LEY".
         </p>
         <p>
-        OCTAVA.- "EL TRABAJADOR", percibirá por la prestación de sus servicios como salario diario la cantidad de <strong><?php echo $SALARIO;?></strong> <strong><?php echo $DESCRIPCIONSALARIO;?></strong>los cuales 
+        OCTAVA.- "EL TRABAJADOR", percibirá por la prestación de sus servicios como salario diario la cantidad de <strong><?php echo $SALARIO;?></strong> <strong><?php echo $DESCRIPCIONSALARIO;?></strong> los cuales 
         serán cubiertos en efectivo y en Moneda Nacional del Año corriente. 
         Del salario anterior "LA EMPRESA" hará por cuenta de "EL TRABAJADOR", las deducciones legales correspondientes, particularmente las que se refiere a 
         impuestos sobre la renta, seguro social, cuotas sindicales, etcétera, así como aquellas autorizadas expresamente por el trabajador o determinadas por la 
