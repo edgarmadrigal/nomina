@@ -355,7 +355,7 @@
                     <fieldset id="formulario">
                         <input id="id" type="text" value="0" style="display:none;">
                         <div class="panel panel-default">
-                        <div class="panel-heading">Panel Heading</div>
+                        <div class="panel-heading">.</div>
                             <div class="panel-body">                                
                                 <table>
                                     <td>

@@ -99,7 +99,6 @@ $(document).ready(function () {
                 var noempleado='';
             }
 
-
             var varURL = Modulo.baseurl 
             + "asistencias/reporteAsistencia?NoSemana="
             +$("#NoSemana").val()+'&anio='+$("#anio").val()+'&planta='+parseInt($("#planta").val())+'&departamento='+departamento+'&puesto='+puesto+'&noempleado='+noempleado; 

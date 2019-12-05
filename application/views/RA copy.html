@@ -1,0 +1,86 @@
+<html>
+<head>
+    <script>
+      var n=3.8;
+      var w=2.1;
+      
+      function dibujarTeclado(evento){
+        var colorsito="blue";
+        var movimiento=10;
+        switch(evento.KeyCode){
+            case teclas.UP:
+              dibujarLinea(colorsito,x,y,x,y-movimiento,papel);
+            break;
+            case teclas.DOWN:
+              dibujarLinea(colorsito,x,y,x, y + movimiento,papel);
+            break;
+            case teclas.LEFT:
+              dibujarLinea(colorsito,x,y,x -movimiento,y,papel);
+            break;
+            case teclas.RIGHT:
+              dibujarLinea(colorsito,x,y,x +movimiento,y,papel);
+            break;
+        }
+
+      }
+    </script> 
+    <style type="text/css">
+        table {
+          width:100%!important;
+        }
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: .5px;
+          text-align: left;
+        }
+        table#t01 tr:nth-child(even) {
+          background-color: #eee;
+        }
+        table#t01 tr:nth-child(odd) {
+          background-color: #fff;
+        }
+        table#t01 th {
+          background-color: black;
+          color: white;
+        }
+        html {
+          margin: 0;
+        }
+        body {
+          font-size: 10px;
+          font-family: "Times New Roman", serif;
+          margin: 8mm 8mm 2mm 8mm;
+        }
+        .titulo{
+          font-weight: bold;
+          float:right;
+          text-align: right;
+        }
+        .alinearDerecha{
+          float:right;
+          text-align: right;
+        }
+        .ReporteAsistencia{
+          text-align: center;
+          font-size:15px;
+
+        }
+        .subtotal{
+          border-collapse: separate!important;
+          border: 0px solid white!important;
+          font-weight: bold;
+          float:right;
+          text-align: right;
+        }
+    </style>
+</head>
+<body>
+<table id="t01">
+  
+</table>
+
+</body>
+</html>

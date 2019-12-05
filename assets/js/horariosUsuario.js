@@ -1438,7 +1438,8 @@ var buttonCommon = {
             }
         }
     }
-};  
+};
+
 var table;
 var id_edit;
 $.extend(jQuery.fn.dataTableExt.oSort, {
@@ -1502,6 +1503,12 @@ $(document).ready(function () {
                     $('#tipoLunes').val(data[0].tipo);
                     $('#entradaLunes').val(data[0].entrada);
                     $('#salidaLunes').val(data[0].salida);
+                    $("#horarioMartes").val(valueSelected).change();
+                    $("#horarioMiercoles").val(valueSelected).change();
+                    $("#horarioJueves").val(valueSelected).change();
+                    $("#horarioViernes").val(valueSelected).change();
+                    $("#horarioSabado").val(valueSelected).change();
+
                 }
             });
 
