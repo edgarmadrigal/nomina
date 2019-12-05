@@ -27,6 +27,38 @@ class ContratoRH extends CI_Model{
         //die();
         return  $result->result_array();
     }
+    
+    public function consultaSalario()    {
+        ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta        
+        $sp = "ConsultaSalario";        
+        $result = $this->db->query($sp);
+        return  $result->result_array();
+    }    
+    public function consultaRepresentante()    {
+        ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta        
+        $sp = "ConsultaRepresentante";        
+        $result = $this->db->query($sp);
+        return  $result->result_array();
+    }  
+    
+    public function ConsultaHorarioContrato()    {
+        ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta        
+        $sp = "ConsultaHorarioContrato";        
+        $result = $this->db->query($sp);
+        return  $result->result_array();
+    }  
+
+    
+    public function ConsultaDescanso()    {
+        ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta        
+        $sp = "ConsultaDescanso";        
+        $result = $this->db->query($sp);
+        return  $result->result_array();
+    }  
+    
+    
+
+    
 
 }
 

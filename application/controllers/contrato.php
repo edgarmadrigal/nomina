@@ -18,14 +18,29 @@ class contrato extends CI_Controller {
         $this->load->database();
     }
 
-    public function index(){
-
-      
-    } 
-    
-    public function reporteAsistencia(){
+    public function index(){          
       header('Access-Control-Allow-Origin: *');
-      
+      $data = [];
+      $this->load->model('ContratoRH');
+          if (isset($this->session->userdata['login'])) {
+        $data['user'] = $this->session->userdata['login']['user'];
+                    
+              if ($this->session->userdata['login']['exito']) {
+
+                $this->load->view('header', $data);
+                $this->load->view('contrato', $data);
+                $this->load->view('footer', $data);
+              } else {
+                  $this->load->view('login');
+            }
+          } else {
+              $this->load->view('login');
+      }
+    }
+    
+    
+    public function ReporteContrato(){
+      header('Access-Control-Allow-Origin: *');      
       $idsalario=$this->input->get('idsalario');
       $idrepresentante=$this->input->get('idrepresentante');
       $idhorario=$this->input->get('idhorario');
@@ -47,13 +62,9 @@ class contrato extends CI_Controller {
        }if (empty($iddescanso)){
         $iddescanso=null;
        }
-
        $this->load->model('ContratoRH');
-       $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);
-
-       
-      $dompdf = new Dompdf(array('isPhpEnabled' => true));
-          
+       $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);       
+      $dompdf = new Dompdf(array('isPhpEnabled' => true));          
       $REPRESENTANTE=$data[0]['REPRESENTANTE'];
       $EDOCIVIL=$data[0]['EDOCIVIL'];
       $NOMBRE=$data[0]['NOMBRE'];
@@ -68,13 +79,11 @@ class contrato extends CI_Controller {
       $DESCRIPCIONSALARIO=$data[0]['DESCRIPCIONSALARIO'];
       $DESCANSO=$data[0]['DESCANSO'];
       $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
-
-
       $fechaactual = getdate();
-      $FECHAHOY=" $fechaactual[mday] / $fechaactual[mon] / $fechaactual[year]";
+      $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";
       
       ob_start();      
-      require (dirname(__DIR__, 1)."/views/contrato.php");
+      require (dirname(__DIR__, 1)."/views/ReporteContrato.php");
       $html = ob_get_contents();//$this->output->get_output();
       ob_get_clean();      
       $dompdf->loadHtml($html);
@@ -97,8 +106,40 @@ class contrato extends CI_Controller {
         $x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle
       );      
       // Output the generated PDF to Browser
-      $dompdf->stream("contrato.pdf", array("Attachment"=>false));       
+      $dompdf->stream("ReporteContrato.pdf", array("Attachment"=>false));       
     }
+
+    public function consultaSalario(){
+          header('Access-Control-Allow-Origin: *');
+          $this->load->model('ContratoRH');
+          $data = $this->ContratoRH->consultaSalario();
+          echo json_encode($data);
+    }
+    public function consultaRepresentante(){
+      header('Access-Control-Allow-Origin: *');
+      $this->load->model('ContratoRH');
+      $data = $this->ContratoRH->consultaRepresentante();
+      echo json_encode($data);
+    }
+
+    public function ConsultaHorarioContrato(){
+      header('Access-Control-Allow-Origin: *');
+      $this->load->model('ContratoRH');
+      $data = $this->ContratoRH->ConsultaHorarioContrato();
+      echo json_encode($data);
+    }
+
+    public function ConsultaDescanso(){
+      header('Access-Control-Allow-Origin: *');
+      $this->load->model('ContratoRH');
+      $data = $this->ContratoRH->ConsultaDescanso();
+      echo json_encode($data);
+    }
+
+
+    
+    
+    
 
 }
 ?>
