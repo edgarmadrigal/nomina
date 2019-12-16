@@ -16,12 +16,7 @@
     <link href="assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/node_modules/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <!-- DATATABLES -->
-
-
-
-
-
-
+    
         <!-- CSS -->
             <!--cdn -->
             <!--
@@ -253,6 +248,11 @@
                                     <a class="waves-effect waves-dark" href="asistencias" aria-expanded="true">                                    
                                     <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
                                     <span class="hide-menu">Reporte Asistencia</span></a>
+                                </li>
+                                <li style="float: left;width: 100%;"> 
+                                    <a class="waves-effect waves-dark" href="contrato" aria-expanded="true">                                    
+                                    <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
+                                    <span class="hide-menu">Reporte Contrato</span></a>
                                 </li>
                             </ul>
                         </li>

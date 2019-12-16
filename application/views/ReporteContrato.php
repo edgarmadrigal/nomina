@@ -25,7 +25,7 @@
             una parte "LA EMPRESA" DELTA STAFF MANUFACTURING, S. DE R.L. DE C.V
         <br>
             Representada por el Lic. <strong><?php echo $REPRESENTANTE; ?></strong> y por la otra parte,
-            "EL TRABAJADOR"
+            "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong>
         <br>
             al tenor de las siguientes Declaraciones y Cláusulas.
         </p>
@@ -227,30 +227,6 @@
                 </TR>
             </TABLE>
             </strong> 
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
         <p></p>
     </body>
 </html>
