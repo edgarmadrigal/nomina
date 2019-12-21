@@ -457,7 +457,7 @@ var buttonCommon = {
         table = $('#example').DataTable();
         ModuloChecada.Init();
         $("#example").dataTable().fnDestroy();
-        base_url="http://127.0.0.1:8080/nomina/";
+        baseurl= "",
         TablaVacia = "No se encontraron resultados";
         checadasTabla=[];
             $('#id').val(0);

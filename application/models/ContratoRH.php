@@ -36,9 +36,9 @@ class ContratoRH extends CI_Model{
         return  $result->result_array();
     }   
     
-    public function ConsultaEmpleadoID($idempleado){
+    public function ConsultaEmpleadoIDCount($idempleado){
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta        
-        $sp = "ConsultaEmpleadoID ?";      
+        $sp = "ConsultaEmpleadoIDCount ?";      
         $params = array(
             'empleado_id'         => intval($idempleado),
             );  

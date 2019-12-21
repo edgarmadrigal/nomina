@@ -20,7 +20,8 @@
         $("#formulario").validate();
      
 ModuloChecada = {
-    baseurl: "http://192.168.128.24:8080/nomina/",
+    baseurl: "",
+    //baseurl: "http://192.168.128.24:8080/nomina/",
     validator: false,
     datosTablaChecadas: []
     //Válida campos Obligatorios

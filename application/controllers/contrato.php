@@ -65,7 +65,8 @@ class contrato extends CI_Controller {
        $this->load->model('ContratoRH');
 
        ///////***COMPROBAR SI EL; EMPLEADO EXISTE */
-       $existe=$this->ContratoRH->ConsultaEmpleadoID($idempleado);
+       $existe=$this->ContratoRH->ConsultaEmpleadoIDCount($idempleado);
+       $existe= $existe[0]['empleado_id'] ;
 
        if($existe==0){
          echo 'El empleado no existe o es de otra planta, favor de revisar correctamente la informacion';
@@ -89,8 +90,7 @@ class contrato extends CI_Controller {
             $DESCANSO=$data[0]['DESCANSO'];
             $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
             $fechaactual = getdate();
-            $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";
-            
+            $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
             ob_start();      
             require (dirname(__DIR__, 1)."/views/ReporteContrato.php");
             $html = ob_get_contents();//$this->output->get_output();
