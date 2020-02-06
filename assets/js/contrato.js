@@ -5,6 +5,7 @@ Modulo = {
     ,validator: false
 
     //Válida campos Obligatorios
+    ///2016
     
     , fnCargarSelects(){
         var varURL = Modulo.baseurl + "contrato/consultaSalario";
@@ -16,7 +17,7 @@ Modulo = {
             perfiles= JSON.parse(JSON.stringify(data));
             $('#salario').append('<option value="">Selecciona un salario</option>');
             $.each(perfiles, function( index, value ) { 
-                $('#salario').append('<option value="'+value.id+'">'+value.salario+'</option>');
+                $('#salario').append('<option value="'+value.id+'">'+value.salario+' - '+value.año+'</option>');
               });
         });
 

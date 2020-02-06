@@ -9,20 +9,32 @@
         </style>
     </head>
     <body>  
-    <p align="center" style="font-family: Stencil;">
-   
-    <b> DELTA STAFF MANUFACTURING </b>
+    <p align="center" style="font-family: Stencil;">   
+    <b> <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+              
+            }else{
+                echo "MANUFACTURAS LAJAT"; 
+
+            }  ?> </b>
     <br>
     <b>S. DE R. L. DE C. V. </b>
     <HR ></HR>
     </p>
         <p align="center">
             <strong>LA EMPRESA </strong>
-            <strong>DELTA STAFF MANUFACTURING</strong>
+            <strong><?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            }else{
+                echo "MANUFACTURAS LAJAT"; 
+
+            }   ?></strong>
             <strong> S DE R L DE C V</strong>
         </p>
             Contrato individual de trabajo por tiempo indeterminado que celebran por
-            una parte "LA EMPRESA" DELTA STAFF MANUFACTURING, S. DE R.L. DE C.V
+            una parte "LA EMPRESA" <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            }else{
+                echo "MANUFACTURAS LAJAT"; 
+
+            }   ?>, S. DE R.L. DE C.V
         <br>
             Representada por el Lic. <strong><?php echo $REPRESENTANTE; ?></strong> y por la otra parte,
             "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong>
@@ -33,31 +45,42 @@
             <strong> ANTECEDENTES</strong>
         </p>
         <p>
-            1.-"LA EMPRESA" denominada DELTA STAFF MANUFACTURING, S. DE RL. DE C.V es
+            1.-"LA EMPRESA" denominada <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            }else{
+                echo "MANUFACTURAS LAJAT"; 
+
+            }   ?>, S. DE RL. DE C.V es
             una sociedad legalmente constituida según las leyes mexicanas ante la fe
-            del Notario del Notario Publico numero __54___ del Distrito de Viesca según
-            obran en el volumen V, Instrumento 1105 de la fecha 16 de Noviembre de 1992
-            con domicilio en Calzada Zaragoza s/n Lote 8 Manzana 4 y legalmente
+            <?php echo $NOTARIO; ?>
+            y legalmente
             representada por su Apoderado Legal el Lic.  <strong><?php echo $REPRESENTANTE; ?></strong>.
         </p>
         <p>
             2.- "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong> manifiesta bajo protesta decir verdad de ser
             nacionalidad MEXICANA de años de edad, estado civil <strong><?php echo $EDOCIVIL; ?></strong> con domicilio
-            en <strong><?php echo $DIRECCION; ?></strong>
+            en <strong><?php print_r($DIRECCION); ?></strong>
         </p>
         <p>
             Registro de afiliación al IMSS <strong><?php echo $IMSS; ?></strong> , RFC <strong><?php echo $RFC; ?></strong> CURP <strong><?php echo $CURP; ?></strong>
         </p>
         <p>
-            3.- "LA EMPRESA" DELTA STAFF MANUFACTURING, S. DE R.L.DE C.V tiene como
+            3.- "LA EMPRESA" <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            }else{
+                echo "MANUFACTURAS LAJAT"; 
+
+            }   ?>, S. DE R.L.DE C.V tiene como
             objeto social La PRESTACION DE SERVICIOS PROFESIONALES Y TECNICOS
         </p>
         <p>
             4.- "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong> manifiesta que tiene la capacidad y aptitudes de
-            desarrollar el trabajo para el cual asido contratado.
+            desarrollar el trabajo para el cual ha sido contratado.
         </p>
         <p>
-            5.- "LA EMPRESA" DELTA STAFF MANUFACTURING, S. DE R.L DE .C.V requiere de
+            5.- "LA EMPRESA" <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            }else{
+                echo "MANUFACTURAS LAJAT"; 
+
+            }   ?>, S. DE R.L DE .C.V requiere de
             los servicios de personal apto para el desarrollo de sus Actividades y de
             modo especial para el puesto o funciones de <strong><?php echo $PUESTO; ?></strong> 
         </p>
@@ -71,7 +94,11 @@
         </p>
         <p>
             PRIMERA.- Para efectos de mayor brevedad se denominara en lo sucesivo a 
-            DELTA STAFF MANUFACTURING, S. DE R.L DE C.V como "LA EMPRESA", a  <strong><?php echo $NOMBRE; ?></strong>     
+            <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            }else{
+                echo "MANUFACTURAS LAJAT"; 
+
+            }   ?>, S. DE R.L DE C.V como "LA EMPRESA", a  <strong><?php echo $NOMBRE; ?></strong>     
             
             como "EL TRABAJADOR", a la Ley Federal del Trabajo como "LA LEY", al
             referirse al presente documento como "EL CONTRATO", y a los que lo
@@ -146,12 +173,12 @@
         la "EMPRESA", el  recibo correspondiente en los documentos que la misma le presente para tales fines. 
         </p>
         <p>
-        NOVENA.- "EL TRABAJADOR", recibirá el pago de su salario en el domicilio del lugar de las prestación de sus servicios. 
-        "LA EMPRESA" pagara su salario a "EL TRABAJADOR", los días SABADO de cada semana cuando "EL TRABAJADOR", contratado sea semanal, cada veinticinco 
+        NOVENA.- "EL TRABAJADOR", recibirá el pago de su salario por transferia bancaria de las prestaciónes de sus servicios. 
+        "LA EMPRESA" pagara su salario a "EL TRABAJADOR", los días VIERNES de cada semana cuando "EL TRABAJADOR", contratado sea semanal, cada veinticinco 
         días, precisamente los días 25 de cada mes cuando corresponda a "EL TRABAJADOR" de oficina.         
         </p>
         <p> 
-        DECIMA.- "EL TRABAJADOR" tendrá derecho por cada seis días de labores a disfrutar de un día de descanso con el pago  de salario diario correspondiente. 
+        DECIMA.- "EL TRABAJADOR" tendrá derecho por cada cinco días de labores a disfrutar de un día de descanso con el pago  de salario diario correspondiente. 
         Queda establecido preferentemente como día de descanso semanal el día <strong><?php echo $DESCANSO;?></strong> de cada semana,pudiendo ser cambiado el mismo por las necesidades 
         de la empresa.    
        </p>
@@ -198,16 +225,14 @@
         </p>
         <p>
         LEIDO  QUE  FUE  EL  PRESENTE  CONTRATO  POR  QUIENES  EN  EL  INTERVIENEN  LO  RATIFICAN E  IMPUESTOS  DE  SU  CONTENIDO  LO SUSCRIBEN  
-        POR  DUPLICADO  QUEDANDO  EL  ORIGINAL  EN  EL  PODER  DE  LA  EMPRESA  Y  LA COPIA  PARA  EL  TRABAJADOR  EN  LA  CIUDAD  DE  TORREON COAH. A <strong><?php echo $FECHAHOY; ?></strong> 
-        </p>
-        <p>
-            
+        POR  DUPLICADO  QUEDANDO  EL  ORIGINAL  EN  EL  PODER  DE  LA  EMPRESA  Y  LA COPIA  PARA  EL  TRABAJADOR  EN  LA  CIUDAD  DE  TORREON COAH. A <strong><?php echo $FECHAANTIGUEDAD;//$FECHAHOY; ?></strong>
+        <!--<strong><?php //echo $FECHAHOY; ?></strong> -->
         </p>
         <strong>
             <TABLE>
                 <TR>
                     <TD width="200px">&nbsp;</TD><TD>&nbsp;</TD><TD width="50px">&nbsp;&nbsp;&nbsp;
-                <BR><BR><BR><BR><BR><BR><BR></TD><TD>&nbsp;</TD><TD></TD>
+                <BR><BR></TD><TD>&nbsp;</TD><TD></TD>
                 </TR>
                 <TR>
                     <TD width="200px">&nbsp;</TD><TD>________________________</TD><TD width="50px">&nbsp;&nbsp;&nbsp;</TD><TD>________________________</TD><TD></TD>

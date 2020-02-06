@@ -326,7 +326,7 @@
                             if(source[0]==1){                                
                                 return '';
                             }else{
-                                return source[11]==0?'DIURNO':'NOCTURNO';
+                                return source[11]==0?'MATUTINO':'NOCTURNO';
                             }
                             }
                             ,"defaultContent": ""

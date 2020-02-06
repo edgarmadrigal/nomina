@@ -76,7 +76,9 @@ class contrato extends CI_Controller {
             $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);       
             $dompdf = new Dompdf(array('isPhpEnabled' => true));          
             $REPRESENTANTE=$data[0]['REPRESENTANTE'];
+            $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
             $EDOCIVIL=$data[0]['EDOCIVIL'];
+            $NOTARIO=$data[0]['NOTARIO'];
             $NOMBRE=$data[0]['NOMBRE'];
             $DIRECCION=$data[0]['DIRECCION'];
             $IMSS=$data[0]['IMSS'];
@@ -129,6 +131,8 @@ class contrato extends CI_Controller {
           $data = $this->ContratoRH->consultaSalario();
           echo json_encode($data);
     }
+
+    
     public function consultaRepresentante(){
       header('Access-Control-Allow-Origin: *');
       $this->load->model('ContratoRH');

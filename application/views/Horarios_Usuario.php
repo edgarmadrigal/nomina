@@ -563,7 +563,7 @@
 <script>
     $(function () {
         $("#fechaAsignacion").datepicker({
-            startDate: '-7d',  // ESTABLECE FECHA MINIMA HOY /// BLOQUEA DIAS ANTERIORES MINDATE minDate
+            //startDate: '-7d',  // ESTABLECE FECHA MINIMA HOY /// BLOQUEA DIAS ANTERIORES MINDATE minDate
             daysOfWeekDisabled: [0,2,3,4,5, 6], 
             dateFormat: "yyyy-mm-dd",
             autoclose: true, 

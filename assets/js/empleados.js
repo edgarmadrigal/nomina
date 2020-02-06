@@ -238,34 +238,35 @@
                         "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
+                    ,"dom": '<"top"flBip<"clear">>rt<"bottom"flBip<"clear">>'
                     ,buttons: [
                         $.extend( true, {}, buttonCommon, {
                             extend: 'copyHtml5',
                             exportOptions: {
                                 columns: [ 0, 1, 2, 3,4,5 ]
                             }                    
-                            ,title: 'HorarioLunes'  // titulo de excel
+                            ,title: 'Empleados'  // titulo de excel
                         } ),
                         $.extend( true, {}, buttonCommon, {
                             extend: 'excelHtml5',
                             exportOptions: {
                                 columns: [ 0, 1, 2, 3,4,5 ]
                             }
-                            ,title: 'HorarioLunes'
+                            ,title: 'Empleados'
                         } ),
                         $.extend( true, {}, buttonCommon, {
                             extend: 'csvHtml5',
                             exportOptions: {
                                 columns: [  0, 1, 2, 3,4,5 ]
                             }
-                            ,title: 'HorarioLunes'
+                            ,title: 'Empleados'
                         } ),
                         $.extend( true, {}, buttonCommon, {
                             extend: 'pdfHtml5',
                             exportOptions: {
                                 columns: [  0, 1, 2, 3,4,5 ]
                             }
-                            ,title: 'HorarioLunes'
+                            ,title: 'Empleados'
                         } ),
                     ]
                 });

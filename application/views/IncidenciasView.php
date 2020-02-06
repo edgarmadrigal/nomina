@@ -187,7 +187,7 @@
 <script>
     $(function () {
         $("#fechaInicio").datepicker({
-            startDate: '-0d',  // ESTABLECE FECHA MINIMA HOY /// BLOQUEA DIAS ANTERIORES MINDATE minDate
+           // startDate: '-0d',  // ESTABLECE FECHA MINIMA HOY /// BLOQUEA DIAS ANTERIORES MINDATE minDate
            // daysOfWeekDisabled: [0,2,3,4,5, 6], 
             dateFormat: "yyyy-mm-dd",
             autoclose: true, 
@@ -196,7 +196,7 @@
         }).datepicker('update', new Date());
         
         $("#fechaFin").datepicker({
-            startDate: '-0d',  // ESTABLECE FECHA MINIMA HOY /// BLOQUEA DIAS ANTERIORES MINDATE minDate
+           // startDate: '-0d',  // ESTABLECE FECHA MINIMA HOY /// BLOQUEA DIAS ANTERIORES MINDATE minDate
            // daysOfWeekDisabled: [0,2,3,4,5, 6], 
             dateFormat: "yyyy-mm-dd",
             autoclose: true, 

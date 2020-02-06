@@ -87,6 +87,13 @@ dr[7].ToString()                    UPC
                                             Actualizar  <i class="fa fa-refresh"></i>
                                         </button>
                                     </div>
+                                    <?php   if ($user->usuario=='EDGAR') {  ?> 
+                                    <div class="col-sm-2 col-sm-pull-4">
+                                        <button id="borrar" class="btn btn-danger">
+                                            Borrar  <i class="fa fa-refresh"></i>
+                                        </button>
+                                    </div>
+                                    <?php } ?>
                             </div>
                                 <div class="row">       
                                 <div class="col-2" >
@@ -186,35 +193,35 @@ dr[7].ToString()                    UPC
 
 </script>
 <style>
-.dataTables_wrapper {
-    padding-top: 10px;
-    overflow: hidden;
-}
-@media only screen and (min-width: 1000px) {
-    .table-responsive {
-        overflow-x: visible;
-        -ms-overflow-style: -ms-autohiding-scrollbar;
+    .dataTables_wrapper {
+        padding-top: 10px;
+        overflow: hidden;
     }
-}
-    .table-responsive {
-        overflow-x: auto;
+    @media only screen and (min-width: 1000px) {
+        .table-responsive {
+            overflow-x: visible;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
     }
-.loadTable {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+        .table-responsive {
+            overflow-x: auto;
+        }
+    .loadTable {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    }
+    /* Safari */
+    @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
 </style>

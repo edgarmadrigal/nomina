@@ -77,7 +77,7 @@ class incidencia extends CI_Controller {
 		   $this->email->initialize($config);
 	
 		 //Ponemos la dirección de correo que enviará el email y un nombre
-		   $this->email->from('ocastaneda@apparelinternational.com', 'Oscar Castañeda');
+		   $this->email->from('tbello@apparelinternational.com', 'Tomas Bello');
 			
 		 /*
 		  * Ponemos el o los destinatarios para los que va el email
@@ -85,7 +85,7 @@ class incidencia extends CI_Controller {
 		  * mismo
 		  */
 		  //ainvig4
-		   $this->email->to('emadrigal@apparelinternational.com');
+		   $this->email->to('ocastaneda@apparelinternational.com');
 			
 		 //Definimos el asunto del mensaje
 		 //  $this->email->subject($this->input->post("holaaa!"));
@@ -97,9 +97,8 @@ class incidencia extends CI_Controller {
 		   $this->email->message(
 				  // "Email: ".$this->input->post("email").
 				  // " Mensaje: ".$this->input->post("mensaje")
-				  "Buen dia Oscar,
-				  Esto es una prueba de edgar que se puede mandar cualquier correo de cualquier persona sin necesidad de la contraseña,
-				  no se por que solo para los programas si se blo
+				  "Buen dia Melva,
+				  Esto es una prueba de edgar que se puede mandar cualquier correo de cualquier persona sin necesidad de la contraseña
 				  Saludos "
 				   );
 			

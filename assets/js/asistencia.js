@@ -71,6 +71,38 @@ $(document).ready(function () {
              });
         }
      });
+
+
+     
+    $(document).on('click', '#borrar', function (e) {
+        if(!$('#NoSemana').val()){
+            alert('Favor de capturar el numero de semana');
+        }
+        else if($('#planta').val()==0){
+            alert('Favor de capturar la planta');
+        }else{
+            $.blockUI({ message: '<h1><img src="assets/js/busy.gif" /> Procesando...</h1>' }); 
+
+            var NoSemana=parseInt($("#NoSemana").val());
+            var anio=$("#anio").val();
+            var planta=parseInt($("#planta").val());
+
+             var varURL = Modulo.baseurl + "asistencias/borrar";
+             $.ajax({
+                 url:  varURL,
+                 type: 'post',
+                 dataType: 'json'
+                 ,data: {
+                    NoSemana:NoSemana,
+                    anio:anio,
+                    planta:planta,
+                },
+             }).done(function (data) { 
+                 $.unblockUI();
+                alert('Termino la actualizacion con exito');
+             });
+        }
+     });
 //puesto
 
     $(document).on('click', '#buscar', function (e) {

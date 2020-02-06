@@ -69,14 +69,16 @@
                                                     </button>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <!---
+                                    <div class="col-2" >
                                         <div class="form-group">
                                                     <label style="font-weight: bold!important;"> &nbsp; </label><br> 
                                             <button id="actualizarNomi" class="btn btn-warning">
                                                 <i class="fa fa-refresh"></i> Actualizar de Nomiplus</button>
                                             </button>
                                         </div>
-                                    </div> 
+                                    </div>
+                                    --> 
                                 </div> 
                                 <div class="row">
                                     <div class="col-12" style="text-align: -webkit-center;">

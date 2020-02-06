@@ -149,14 +149,11 @@
             catch (err) {
                 x = new Date().getTime();
             }
-
             return x;
         },
-
         "date-uk-asc": function (a, b) {
             return a - b;
         },
-
         "date-uk-desc": function (a, b) {
             return b - a;
         }
@@ -164,7 +161,8 @@
     
     $(document).ready(function () {
         $("#descripcionCorta").val().toUpperCase();
-        base_url="http://192.168.128.24:8080/nomina/";
+        base_url="";
+        //base_url="http://192.168.128.24:8080/nomina/";
         TablaVacia = "No se encontraron resultados";
         usuariosTabla=[];
         $('#id').val(0);

@@ -42,34 +42,39 @@ class asistencias extends CI_Controller {
     public function actualizarTodo(){        
       
         header('Access-Control-Allow-Origin: *');
+        $NoSemana=$this->input->post('NoSemana');
+        if (empty($NoSemana)){
+          $NoSemana=intval(date("W")); 
+        }
         $this->load->model('Asistencia');
-        $data = $this->Asistencia->actualizaTabla();
+        $data = $this->Asistencia->actualizaTabla($NoSemana);
         echo json_encode($data);
-      
-       /*
-       * Cuando cargamos una librería
-       * es similar a hacer en PHP puro esto:
-       * require_once("libreria.php");
-       * $lib=new Libreria();
-       */
     }
     
-    public function actualizar(){        
+    public function actualizar(){      
       header('Access-Control-Allow-Origin: *');
-      
       $NoSemana=$this->input->post('NoSemana');
       $anio=$this->input->post('anio');
       $planta=$this->input->post('planta');
       $this->load->model('Asistencia');
       $data = $this->Asistencia->actualizaPlanta($NoSemana,$anio,$planta);
-      echo json_encode($data);
+      echo json_encode($data);    
+    }
     
-     /*
-     * Cuando cargamos una librería
-     * es similar a hacer en PHP puro esto:
-     * require_once("libreria.php");
-     * $lib=new Libreria();
-     */
+    public function borrar(){      
+      header('Access-Control-Allow-Origin: *');
+      $NoSemana=$this->input->post('NoSemana');
+      $anio=$this->input->post('anio');
+      $planta=$this->input->post('planta');
+      $this->load->model('Asistencia');
+      $data = $this->Asistencia->borrar($NoSemana,$anio,$planta);
+      echo json_encode($data);    
+      /*
+      * Cuando cargamos una librería
+      * es similar a hacer en PHP puro esto:
+      * require_once("libreria.php");
+      * $lib=new Libreria();
+      */
     }
 
     public function reporteAsistencia(){

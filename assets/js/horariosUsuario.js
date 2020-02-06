@@ -18,7 +18,6 @@ jQuery.extend(jQuery.validator.messages, {
     min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
 });
 $("#formulario").validate();
-
 function validar(){    
     var horarioLunes = $("#horarioLunes").val()==0?false:true;
     var horarioMartes = $("#horarioMartes").val()==0?false:true;

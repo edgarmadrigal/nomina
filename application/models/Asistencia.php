@@ -19,12 +19,27 @@ class Asistencia extends CI_Model{
         $result = $this->db->query($sp,$params);
         return  $result->result_array();
     }
-    public function actualizaTabla(){
+    
+    public function borrar($NoSemana,$anio,$planta)
+    {        
+        ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
+        $sp = "BorraAsistencia ?,?,? "; 
+        $params = array(
+        'NoSemana' => intval($NoSemana),
+        'anio' => $anio,
+        'planta' => intval($planta));
+        
+        $result = $this->db->query($sp,$params);
+        return  $result->result_array();
+    }
+
+
+    public function actualizaTabla($NoSemana){
         
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '1',
         'Code' => null,
@@ -36,7 +51,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '2',
         'Code' => null,
@@ -47,7 +62,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '3',
         'Code' => null,
@@ -58,7 +73,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '4',
         'Code' => null,
@@ -69,7 +84,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '5',
         'Code' => null,
@@ -80,7 +95,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '6',
         'Code' => null,
@@ -91,7 +106,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '7',
         'Code' => null,
@@ -102,7 +117,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '8',
         'Code' => null,
@@ -114,7 +129,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '9',
         'Code' => null,
@@ -126,7 +141,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '10',
         'Code' => null,
@@ -138,7 +153,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '11',
         'Code' => null,
@@ -150,7 +165,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '12',
         'Code' => null,
@@ -162,7 +177,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '13',
         'Code' => null,
@@ -174,7 +189,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '14',
         'Code' => null,
@@ -186,7 +201,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '15',
         'Code' => null,
@@ -198,7 +213,7 @@ class Asistencia extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
         $params = array(
-        'NoSemana' => null,
+        'NoSemana' => $NoSemana,
         'anio' => null,
         'planta' => '16',
         'Code' => null,

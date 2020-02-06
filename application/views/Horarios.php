@@ -233,7 +233,7 @@
                                             <div class="col-md-6">
                                                 <label class="custom-control custom-radio">
                                                     <input id="tipoDiurno" name="radio" type="radio" class="custom-control-input" checked="checked">
-                                                    <span class="custom-control-label">Diurno</span>
+                                                    <span class="custom-control-label">Matutino</span>
                                                 </label>
                                                 
                                             </div>

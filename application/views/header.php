@@ -254,6 +254,11 @@
                                     <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
                                     <span class="hide-menu">Reporte Contrato</span></a>
                                 </li>
+                                <li style="float: left;width: 100%;"> 
+                                    <a class="waves-effect waves-dark" href="diarioController" aria-expanded="true">                                    
+                                    <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
+                                    <span class="hide-menu">Reporte Diario</span></a>
+                                </li>
                             </ul>
                         </li>
                         <li class=""> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
