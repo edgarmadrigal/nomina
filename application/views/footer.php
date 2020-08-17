@@ -1,6 +1,6 @@
  <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2018 Created by .Edgar Oswaldo Madrigal Reynoso </footer>
+            <footer class="footer">-------------------------------------------------- © Created by .Edgar Oswaldo Madrigal Reynoso </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

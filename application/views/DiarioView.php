@@ -117,6 +117,7 @@
 <script src="assets/js/diarioChecadas.js"></script>
 <script src="assets/js/calendarioEsp.js"></script>
 <script>
+
     $(function () {
         $("#fecha").datepicker({
            //endDate: '-0d',
@@ -129,6 +130,7 @@
             language: 'es',
         }).datepicker('update', new Date());
     });  
+
 </script>
 
 		

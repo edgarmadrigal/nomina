@@ -10,31 +10,41 @@
     </head>
     <body>  
     <p align="center" style="font-family: Stencil;">   
-    <b> <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
-              
+    <b> <?php 
+            if($SALARIO >73.04){         
+                echo $RAZONSOCIAL;               
             }else{
                 echo "MANUFACTURAS LAJAT"; 
 
-            }  ?> </b>
+            } 
+             ?> </b>
     <br>
     <b>S. DE R. L. DE C. V. </b>
     <HR ></HR>
     </p>
         <p align="center">
             <strong>LA EMPRESA </strong>
-            <strong><?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            <strong><?php if($SALARIO >73.04){ 
+        
+                echo $RAZONSOCIAL;  
+              
             }else{
                 echo "MANUFACTURAS LAJAT"; 
 
-            }   ?></strong>
+            } 
+             ?></strong>
             <strong> S DE R L DE C V</strong>
         </p>
             Contrato individual de trabajo por tiempo indeterminado que celebran por
-            una parte "LA EMPRESA" <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            una parte "LA EMPRESA" <?php if($SALARIO >73.04){ 
+        
+                echo $RAZONSOCIAL;  
+              
             }else{
                 echo "MANUFACTURAS LAJAT"; 
 
-            }   ?>, S. DE R.L. DE C.V
+            } 
+             ?>, S. DE R.L. DE C.V
         <br>
             Representada por el Lic. <strong><?php echo $REPRESENTANTE; ?></strong> y por la otra parte,
             "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong>
@@ -45,11 +55,15 @@
             <strong> ANTECEDENTES</strong>
         </p>
         <p>
-            1.-"LA EMPRESA" denominada <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            1.-"LA EMPRESA" denominada <?php if($SALARIO >73.04){ 
+        
+                echo $RAZONSOCIAL;  
+              
             }else{
                 echo "MANUFACTURAS LAJAT"; 
 
-            }   ?>, S. DE RL. DE C.V es
+            } 
+             ?>, S. DE RL. DE C.V es
             una sociedad legalmente constituida según las leyes mexicanas ante la fe
             <?php echo $NOTARIO; ?>
             y legalmente
@@ -64,11 +78,15 @@
             Registro de afiliación al IMSS <strong><?php echo $IMSS; ?></strong> , RFC <strong><?php echo $RFC; ?></strong> CURP <strong><?php echo $CURP; ?></strong>
         </p>
         <p>
-            3.- "LA EMPRESA" <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            3.- "LA EMPRESA" <?php if($SALARIO >73.04){ 
+        
+                echo $RAZONSOCIAL;  
+              
             }else{
                 echo "MANUFACTURAS LAJAT"; 
 
-            }   ?>, S. DE R.L.DE C.V tiene como
+            } 
+             ?>, S. DE R.L.DE C.V tiene como
             objeto social La PRESTACION DE SERVICIOS PROFESIONALES Y TECNICOS
         </p>
         <p>
@@ -76,11 +94,15 @@
             desarrollar el trabajo para el cual ha sido contratado.
         </p>
         <p>
-            5.- "LA EMPRESA" <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            5.- "LA EMPRESA" <?php if($SALARIO >73.04){ 
+        
+                echo $RAZONSOCIAL;  
+              
             }else{
                 echo "MANUFACTURAS LAJAT"; 
 
-            }   ?>, S. DE R.L DE .C.V requiere de
+            } 
+             ?>, S. DE R.L DE .C.V requiere de
             los servicios de personal apto para el desarrollo de sus Actividades y de
             modo especial para el puesto o funciones de <strong><?php echo $PUESTO; ?></strong> 
         </p>
@@ -94,11 +116,15 @@
         </p>
         <p>
             PRIMERA.- Para efectos de mayor brevedad se denominara en lo sucesivo a 
-            <?php if($SALARIO >73.04){ echo $RAZONSOCIAL;  
+            <?php if($SALARIO >73.04){ 
+        
+                echo $RAZONSOCIAL;  
+              
             }else{
                 echo "MANUFACTURAS LAJAT"; 
 
-            }   ?>, S. DE R.L DE C.V como "LA EMPRESA", a  <strong><?php echo $NOMBRE; ?></strong>     
+            } 
+             ?>, S. DE R.L DE C.V como "LA EMPRESA", a  <strong><?php echo $NOMBRE; ?></strong>     
             
             como "EL TRABAJADOR", a la Ley Federal del Trabajo como "LA LEY", al
             referirse al presente documento como "EL CONTRATO", y a los que lo
@@ -224,9 +250,13 @@
         a partir del día <strong><?php echo $FECHAANTIGUEDAD; ?></strong> 
         </p>
         <p>
+        VIGESIMA PRIMERA.- LA DESIGNACION DE BENEFICIARIOS A LOS QUE SE REFIERE EL ARTICULO 501 DE LA LFT , PARA EL PAGO DE LOS SALARIOS Y PRESTACIONES DEVENGADAS 
+        Y NO COBRADAS A LA MUERTE DE LOS TRABAJADORES O LAS QUE SE GENEREN POR SU FALLECIMIENTO O DESAPARICION DERIVADA DE UN ACTO DELINCUENCIAL.  
+        </p>
         LEIDO  QUE  FUE  EL  PRESENTE  CONTRATO  POR  QUIENES  EN  EL  INTERVIENEN  LO  RATIFICAN E  IMPUESTOS  DE  SU  CONTENIDO  LO SUSCRIBEN  
-        POR  DUPLICADO  QUEDANDO  EL  ORIGINAL  EN  EL  PODER  DE  LA  EMPRESA  Y  LA COPIA  PARA  EL  TRABAJADOR  EN  LA  CIUDAD  DE  TORREON COAH. A <strong><?php echo $FECHAANTIGUEDAD;//$FECHAHOY; ?></strong>
-        <!--<strong><?php //echo $FECHAHOY; ?></strong> -->
+        POR  DUPLICADO  QUEDANDO  EL  ORIGINAL  EN  EL  PODER  DE  LA  EMPRESA  Y  LA COPIA  PARA  EL  TRABAJADOR  EN  LA  CIUDAD  DE  TORREON COAH. A 
+        
+        <strong><?php ECHO $FECHAIMPRESION ?></strong> 
         </p>
         <strong>
             <TABLE>

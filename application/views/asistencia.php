@@ -69,7 +69,7 @@ dr[7].ToString()                    UPC
     <div class="container-fluid">           
         <div class="row">
             <div class="col-12">
-                <h4 class="card-title">Asistencia</h4> 
+                <h4 class="card-title">Asistencia</h4>
                 <div class="card">
                     <div class="card-body">     
                         <div class="table-responsive">    

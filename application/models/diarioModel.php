@@ -16,7 +16,7 @@ class diarioModel extends CI_Model{
         ini_set('pdo_sqlsrv.client_buffer_max_kb_size','524288'); // Setting to 512M - for pdo_sqlsrv
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
 
-        $sp = "ConsultaReporteDiario ?,? "; 
+        $sp = "ConsultaReporteDiario ?,? ";
         $params = array(
         'FECHA' => $fecha,
         'empresa_id' => intval($empresa_id));

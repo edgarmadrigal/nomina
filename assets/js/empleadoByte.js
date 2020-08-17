@@ -31,8 +31,6 @@
                 return false;
             }
         }
-
-        
 Modulo = {
     baseurl: "",
     //http://192.168.128.24:8080/nomina/
@@ -166,8 +164,7 @@ Modulo = {
                     "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
-                //"aaData": Solicitud.datosCredito.Proyecciones,
-                //,dom: 'Bfrtip',flBip
+                
                 ,"dom": '<"top"flBip<"clear">>rt<"bottom"flBip<"clear">>'
                 //, "dom": "<'row'<'col-sm-12'<'pull-right'><'pull-left'B>>>    <'row-fluid'<'span8'l><'span4'<'pull-right'f><'pull-left'T>r<'clearfix'>>>t<'row'<'col-sm-12'<'pull-left'i><'pull-right'p>>>"
                 ,buttons: [

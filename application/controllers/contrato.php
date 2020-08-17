@@ -91,6 +91,7 @@ class contrato extends CI_Controller {
             $DESCRIPCIONSALARIO=$data[0]['DESCRIPCIONSALARIO'];
             $DESCANSO=$data[0]['DESCANSO'];
             $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
+            $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];
             $fechaactual = getdate();
             $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
             ob_start();      

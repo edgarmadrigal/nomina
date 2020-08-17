@@ -35,8 +35,7 @@
                                             </select>
                                         </div>
                                     </div> 
-
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">No Empleado</label>
                                             <input id="noempleado" type="text" class="form-control" name="msg" placeholder="escriba NoEmpleado">

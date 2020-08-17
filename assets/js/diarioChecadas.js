@@ -1,4 +1,4 @@
-       
+  
 Modulo = {
     baseurl: "",
     //http://192.168.128.24:8080/nomina/
@@ -26,7 +26,6 @@ Modulo = {
     }
     //Construye la tabla 
     , fnConstruitTabla: function () {
-        
         table=$('#diario').DataTable({
                 data: Modulo.datosTabla,               
                 "bDestroy": true,
@@ -157,7 +156,6 @@ Modulo = {
                     } ),
                 ]
         });
-        
         table.columns().every( function () {
             var that = this;         
             $( 'input', this.header() ).on( 'keyup change', function () {
@@ -179,7 +177,6 @@ Modulo = {
                 }
             } );
         } );
-        
         $("#diario").css("display", "block");
         $(".loadTable").css("display", "none");
     }
@@ -251,32 +248,27 @@ var buttonCommon = {
         TablaVacia = "No se encontraron resultados";
         empleadosTabla=[];
             $('#id').val(0);
-            $('#example tfoot th').each( function () {
-                var title = $(this).text();
-                if(title!="Opciones"){
-                    $(this).html( title+'<br><input type="text" placeholder="Buscar '+title+'" />' );
-                }else{
-                    $(this).html(title);
-                }
-            });
-            $('#example thead th').each( function () {
-                var title = $(this).text();
-                if(title!="Opciones"){
-                    $(this).html( title+'<br><input type="text" placeholder="Buscar '+title+'" />' );
-                }else{
-                    $(this).html(title);
-                }
-            });  
+        $('#example tfoot th').each( function () {
+            var title = $(this).text();
+            if(title!="Opciones"){
+                $(this).html( title+'<br><input type="text" placeholder="Buscar '+title+'" />' );
+            }else{
+                $(this).html(title);
+            }
+        });
+        $('#example thead th').each( function () {
+            var title = $(this).text();
+            if(title!="Opciones"){
+                $(this).html( title+'<br><input type="text" placeholder="Buscar '+title+'" />' );
+            }else{
+                $(this).html(title);
+            }
+        });  
         $('#empresa').on('change', function() {
             var empresa=parseInt($('#empresa').val());
         });
-
-
-
-    
         $(document).on('click', '#actualizarTodo', function (e) {
             $.blockUI({ message: '<h1><img src="assets/js/busy.gif" /> Procesando...</h1>' }); 
-           
                var varURL = Modulo.baseurl + "asistencias/actualizarTodo";
                $.ajax({
                    url:  varURL,
@@ -292,6 +284,5 @@ var buttonCommon = {
             var fecha=$('#fecha').val();
             Modulo.fnObtenerDatos(empresa,fecha);
         });
-        
 
     });
