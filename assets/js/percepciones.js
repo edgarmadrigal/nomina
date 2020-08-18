@@ -32,7 +32,7 @@ Modulo = {
                 "bDestroy": true,
                 "scrollX": false,//"100%",
                 "draw": true,
-                "order": [[ 1, "asc" ]],
+                //"order": [[ 1, "asc" ]],
                 "iDisplayLength": 10                
                 , "oLanguage": {
                     "sProcessing": "Procesando...",
