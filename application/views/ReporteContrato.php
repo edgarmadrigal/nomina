@@ -17,7 +17,6 @@
                 echo "MANUFACTURAS LAJAT"; 
 
             } 
-            
              ?> </b>
     <br>
     <b>S. DE R. L. DE C. V. </b>
@@ -257,14 +256,7 @@
         LEIDO  QUE  FUE  EL  PRESENTE  CONTRATO  POR  QUIENES  EN  EL  INTERVIENEN  LO  RATIFICAN E  IMPUESTOS  DE  SU  CONTENIDO  LO SUSCRIBEN  
         POR  DUPLICADO  QUEDANDO  EL  ORIGINAL  EN  EL  PODER  DE  LA  EMPRESA  Y  LA COPIA  PARA  EL  TRABAJADOR  EN  LA  CIUDAD  DE  TORREON COAH. A 
         
-        <strong><?php
-        if($SALARIO >=102.68){         
-            echo $FECHAIMPRESION;               
-        }else{
-            echo $FECHAANTIGUEDAD; 
-
-        } 
-        ?></strong> 
+        <strong><?php ECHO $FECHAIMPRESION ?></strong> 
         </p>
         <strong>
             <TABLE>

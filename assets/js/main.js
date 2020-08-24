@@ -206,7 +206,7 @@ renderer:"bootstrap"});b.extend(f.ext.classes,{sWrapper:"dataTables_wrapper dt-b
  * --------------------------------------------------------------------------
  */
 
-//export default Button
+export default Button
 const Button = (($) => {
   /**
    * ------------------------------------------------------------------------
