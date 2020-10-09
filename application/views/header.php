@@ -262,7 +262,7 @@
                                 <li style="float: left;width: 100%;"> 
                                     <a class="waves-effect waves-dark" href="percepcionesController" aria-expanded="true">                                    
                                     <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                    <span class="hide-menu" style="font-size: 12px;" >Reporte Percepciones</span></a>
+                                    <span class="hide-menu" style="font-size: 15px;" >Reporte Percepciones</span></a>
                                 </li>
                             </ul>
                         </li>

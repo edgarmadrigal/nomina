@@ -81,7 +81,7 @@ class Importar extends CI_Controller {
                       $a3= date("Y-m-d H:i",strtotime ( '-3 minute' ,strtotime($value['A'])));
                       $a4= date("Y-m-d H:i",strtotime ( '-4 minute' ,strtotime($value['A'])));
                       $a5= date("Y-m-d H:i",strtotime ( '-5 minute' ,strtotime($value['A'])));
-*/
+                    */
                       
                       $fecha2= date("Y-m-d",strtotime($a));
                       
@@ -95,7 +95,7 @@ class Importar extends CI_Controller {
 
                       $completo=explode('(',$value['F']);
                       $usuarioid=$completo[0];
-/*
+                    /*
                       if(count($inserdata)>0){
                         foreach ($inserdata as $item) {
                             if($item['fechahora']==$a1 && $item['usuarioid']==$usuarioid){
@@ -138,10 +138,10 @@ class Importar extends CI_Controller {
                       $completo=explode('(',$value['E']);
                       $usuarioid=$completo[0];
 
-//                      $valida=$this->import->buscarChecadas($fecha,$hora,$usuarioid);
+                      //                      $valida=$this->import->buscarChecadas($fecha,$hora,$usuarioid);
 
-$valida=true;
-/*
+                      $valida=true;
+                      /*
                       if(count($inserdata)>0){
                         foreach ($inserdata as $item) {
                           if($item['fecha']==$fecha   && $item['hora']==$hora1 && $item['usuarioid']==$usuarioid){
@@ -192,5 +192,124 @@ $valida=true;
               echo $error['error'];
           }
   }
+
+
+
+
+  
+  public function subirChecadasTemperatura(){
+           
+    $path = 'uploads/';
+    require_once APPPATH."/third_party/PHPExcel.php";
+    $config['upload_path'] = $path;
+    $config['allowed_types'] = 'xlsx|xls|csv';
+    $config['remove_spaces'] = TRUE;
+    $this->load->library('upload', $config);
+    $this->upload->initialize($config);            
+    if (!$this->upload->do_upload('uploadFile')) {
+        $error = array('error' => $this->upload->display_errors());
+    } else {
+        $data = array('upload_data' => $this->upload->data());
+    }
+    if(empty($error)){
+      if (!empty($data['upload_data']['file_name'])) {
+        $import_xls_file = $data['upload_data']['file_name'];
+    } else {
+        $import_xls_file = 0;
+    }
+    $inputFileName = $path . $import_xls_file;            
+    try {
+          $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+          $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+          $objPHPExcel = $objReader->load($inputFileName);
+          $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+          $flag = true;
+          $i=0;
+          $inserdata=[];
+          $result=[];
+          $a=null;
+          $a1=null;
+          $a2=null;
+          $a3=null;
+          $a4=null;
+          $a5=null;
+          foreach ($allDataInSheet as $value) {
+          if($flag){
+            $flag =false;
+            continue;
+          } 
+          if($continua2){
+            if($value['F'] =='1:N Autenticaciￃﾳn exitosa (Rostro)'){
+
+              $fecha= date("Y-m-d",strtotime($value['A']));
+              
+              $fechahora= date("Y-m-d H:i",strtotime($value['A']));
+              
+              $hora= date("H:i",strtotime($value['A']));
+             /* 
+              $hora1= date("H:i",strtotime ( '-1 minute' ,strtotime($value['A'])));
+              $hora2= date("H:i",strtotime ( '-2 minute' ,strtotime($value['A'])));
+              $hora3= date("H:i",strtotime ( '-3 minute' ,strtotime($value['A'])));
+              $hora4= date("H:i",strtotime ( '-4 minute' ,strtotime($value['A'])));
+              $hora5= date("H:i",strtotime ( '-5 minute' ,strtotime($value['A'])));
+              */
+
+              $completo=explode('(',$value['E']);
+              $usuarioid=$completo[0];
+
+              //                      $valida=$this->import->buscarChecadas($fecha,$hora,$usuarioid);
+
+              $valida=true;
+              /*
+              if(count($inserdata)>0){
+                foreach ($inserdata as $item) {
+                  if($item['fecha']==$fecha   && $item['hora']==$hora1 && $item['usuarioid']==$usuarioid){
+                    $valida=false;  
+                  }if($item['fecha']==$fecha  && $item['hora']==$hora2 && $item['usuarioid']==$usuarioid){
+                    $valida=false;  
+                  }if($item['fecha']==$fecha  && $item['hora']==$hora3 && $item['usuarioid']==$usuarioid){
+                    $valida=false;  
+                  }if($item['fecha']==$fecha  && $item['hora']==$hora4 && $item['usuarioid']==$usuarioid){
+                    $valida=false;  
+                  }if($item['fecha']==$fecha  && $item['hora']==$hora5 && $item['usuarioid']==$usuarioid){
+                    $valida=false;  
+                  }
+                }
+              }  */   
+                $dia_id=date("w",strtotime($fecha)); 
+                  if($dia_id==0){
+                    $dia_id=7;
+                  }
+                  if($valida==true){ //no existe en la base de datos
+                      $inserdata[$i]['fecha'] =$fecha;
+                      $inserdata[$i]['fechahora'] =$fechahora;
+                      $inserdata[$i]['usuarioid'] = $usuarioid;
+                      $inserdata[$i]['hora'] = $hora;
+                      $inserdata[$i]['dia_id'] = $dia_id;
+                      $i++;
+                  }
+              }
+            }
+        }
+        if  ($inserdata){
+            //$sinduplicados = array_map("unserialize", array_unique(array_map("serialize",$inserdata)));
+           // $result = $this->import->importdata($sinduplicados);
+           $result = $this->import->importdata($inserdata);
+           
+        }
+        if($result){
+          echo "importacion Exitosa!";
+        }else{
+          echo "Esas checadas ya existen o el archivo no tiene informacion!";
+        } 
+  } 
+  catch (Exception $e) {
+       print_r('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME). '": ' .$e->getMessage());
+       die();
+  }
+  }else{
+      echo $error['error'];
+  }
+}
 }
 ?>

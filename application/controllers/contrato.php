@@ -76,6 +76,7 @@ class contrato extends CI_Controller {
             $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);       
             $dompdf = new Dompdf(array('isPhpEnabled' => true));          
             $REPRESENTANTE=$data[0]['REPRESENTANTE'];
+            $EMPRESA=$data[0]['EMPRESA'];
             $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
             $EDOCIVIL=$data[0]['EDOCIVIL'];
             $NOTARIO=$data[0]['NOTARIO'];
@@ -91,7 +92,9 @@ class contrato extends CI_Controller {
             $DESCRIPCIONSALARIO=$data[0]['DESCRIPCIONSALARIO'];
             $DESCANSO=$data[0]['DESCANSO'];
             $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
-            $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];
+            $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];            
+            $BENEFICIARIO=$data[0]['BENEFICIARIO'];
+            
             $fechaactual = getdate();
             $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
             ob_start();      
@@ -122,7 +125,6 @@ class contrato extends CI_Controller {
         } catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
-
        }    
     }
 

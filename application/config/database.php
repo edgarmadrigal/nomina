@@ -7,9 +7,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-    'hostname' => '192.168.128.245\TASQLEXPRESS',//'192.168.128.24',//'192.168.128.24',//
+    'hostname' => 'AIN-MSSRV\SISTEMASAIN',  //'192.168.128.24',//'192.168.128.24',//
     'username' => 'sa',
-    'password' => 'TANet001',//'dbAin1',//'dbAin1',//
+    'password' => 'SisAin03',  //'TANet001',//'dbAin1',//'dbAin1',//
     'database' => 'Nominas',
     'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
