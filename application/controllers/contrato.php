@@ -79,10 +79,15 @@ class contrato extends CI_Controller {
         try {
             $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);     
 
-            $dompdf = new Dompdf(array('isPhpEnabled' => true));          
+            $dompdf = new Dompdf(array('isPhpEnabled' => true));   
+                   
             if(empty($data)){
               echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita mas información ejemplo: "EDOCIVIL","DIRECCION","IMSS","RFC","CURP","BENEFICIARIO" ';
-            }else{
+            }
+            elseif ($data[0]['BENEFICIARIO']=='') {
+              echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita el "BENEFICIARIO" ';
+            }
+            else{
               $REPRESENTANTE=$data[0]['REPRESENTANTE'];
               $EMPRESA=$data[0]['EMPRESA'];
               $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
