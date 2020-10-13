@@ -11,6 +11,7 @@
     <body>  
     <p align="center" style="font-family: Stencil;">   
     <b> <?php 
+    try{
             if($SALARIO >73.04){         
                 echo $RAZONSOCIAL;               
             }else{
@@ -256,7 +257,12 @@
         </p>
         LEIDO  QUE  FUE  EL  PRESENTE  CONTRATO  POR  QUIENES  EN  EL  INTERVIENEN  LO  RATIFICAN E  IMPUESTOS  DE  SU  CONTENIDO  LO SUSCRIBEN  
         POR  DUPLICADO  QUEDANDO  EL  ORIGINAL  EN  EL  PODER  DE  LA  EMPRESA  Y  LA COPIA  PARA  EL  TRABAJADOR  EN  LA  CIUDAD  DE  <?php echo $EMPRESA; ?>        
-        <strong><?php ECHO $FECHAIMPRESION ?></strong> 
+        <strong><?php ECHO $FECHAIMPRESION;
+        } 
+         catch (Exception $e) {
+          echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+        }
+        ?></strong> 
         </p>
         <strong>
             <TABLE>

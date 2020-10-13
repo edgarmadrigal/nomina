@@ -65,35 +65,44 @@ class contrato extends CI_Controller {
        $this->load->model('ContratoRH');
 
        ///////***COMPROBAR SI EL; EMPLEADO EXISTE */
+       try{
        $existe=$this->ContratoRH->ConsultaEmpleadoIDCount($idempleado);
        $existe= $existe[0]['empleado_id'] ;
+      } catch (Exception $e) {
+        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+      }
 
        if($existe==0){
          echo 'El empleado no existe o es de otra planta, favor de revisar correctamente la informacion';
        }else
        {        
         try {
-            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);       
+            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);     
+
             $dompdf = new Dompdf(array('isPhpEnabled' => true));          
-            $REPRESENTANTE=$data[0]['REPRESENTANTE'];
-            $EMPRESA=$data[0]['EMPRESA'];
-            $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
-            $EDOCIVIL=$data[0]['EDOCIVIL'];
-            $NOTARIO=$data[0]['NOTARIO'];
-            $NOMBRE=$data[0]['NOMBRE'];
-            $DIRECCION=$data[0]['DIRECCION'];
-            $IMSS=$data[0]['IMSS'];
-            $RFC=$data[0]['RFC'];
-            $CURP=$data[0]['CURP'];
-            $PUESTO=$data[0]['PUESTO'];
-            $DIRECCIONEMPRESA=$data[0]['DIRECCIONEMPRESA'];
-            $HORARIOCONTRATO=$data[0]['HORARIOCONTRATO'];
-            $SALARIO=$data[0]['SALARIO'];
-            $DESCRIPCIONSALARIO=$data[0]['DESCRIPCIONSALARIO'];
-            $DESCANSO=$data[0]['DESCANSO'];
-            $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
-            $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];            
-            $BENEFICIARIO=$data[0]['BENEFICIARIO'];
+            if(empty($data)){
+              echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita mas información ejemplo: "EDOCIVIL","DIRECCION","IMSS","RFC","CURP","BENEFICIARIO" ';
+            }else{
+              $REPRESENTANTE=$data[0]['REPRESENTANTE'];
+              $EMPRESA=$data[0]['EMPRESA'];
+              $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
+              $EDOCIVIL=$data[0]['EDOCIVIL'];
+              $NOTARIO=$data[0]['NOTARIO'];
+              $NOMBRE=$data[0]['NOMBRE'];
+              $DIRECCION=$data[0]['DIRECCION'];
+              $IMSS=$data[0]['IMSS'];
+              $RFC=$data[0]['RFC'];
+              $CURP=$data[0]['CURP'];
+              $PUESTO=$data[0]['PUESTO'];
+              $DIRECCIONEMPRESA=$data[0]['DIRECCIONEMPRESA'];
+              $HORARIOCONTRATO=$data[0]['HORARIOCONTRATO'];
+              $SALARIO=$data[0]['SALARIO'];
+              $DESCRIPCIONSALARIO=$data[0]['DESCRIPCIONSALARIO'];
+              $DESCANSO=$data[0]['DESCANSO'];
+              $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
+              $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];            
+              $BENEFICIARIO=$data[0]['BENEFICIARIO'];
+            
             
             $fechaactual = getdate();
             $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
@@ -122,6 +131,7 @@ class contrato extends CI_Controller {
             );      
             // Output the generated PDF to Browser
             $dompdf->stream("ReporteContrato.pdf", array("Attachment"=>false));   
+          }
         } catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
