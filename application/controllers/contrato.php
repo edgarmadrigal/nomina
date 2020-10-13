@@ -87,7 +87,7 @@ class contrato extends CI_Controller {
             elseif ($data[0]['BENEFICIARIO']=='') {
               echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita el "BENEFICIARIO" ';
             }
-            else{
+            else {
               $REPRESENTANTE=$data[0]['REPRESENTANTE'];
               $EMPRESA=$data[0]['EMPRESA'];
               $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
@@ -107,35 +107,32 @@ class contrato extends CI_Controller {
               $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
               $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];            
               $BENEFICIARIO=$data[0]['BENEFICIARIO'];
-            
-            
-            $fechaactual = getdate();
-            $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
-            ob_start();      
-            require (dirname(__DIR__, 1)."/views/ReporteContrato.php");
-            $html = ob_get_contents();//$this->output->get_output();
-            ob_get_clean();      
-            $dompdf->loadHtml($html);
-            // (Optional) Setup the paper size and orientation
-            $dompdf->setPaper('Letter', 'portrait');
-            // Render the HTML as PDF
-            $dompdf->render();      
-            // Parameters
-            $x          = 505; 
-            $y          = 790;
-            $text       = "Página {PAGE_NUM} de {PAGE_COUNT}";     
-            $font       = $dompdf->getFontMetrics()->get_font('Helvetica', 'normal');   
-            $size       = 10;    
-            $color      = array(0,0,0);
-            $word_space = 0.0;
-            $char_space = 0.0;
-            $angle      = 0.0;
-      
-            $dompdf->getCanvas()->page_text(
-              $x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle
-            );      
-            // Output the generated PDF to Browser
-            $dompdf->stream("ReporteContrato.pdf", array("Attachment"=>false));   
+                        
+              $fechaactual = getdate();
+              $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
+              ob_start();      
+              require (dirname(__DIR__, 1)."/views/ReporteContrato.php");
+              $html = ob_get_contents();//$this->output->get_output();
+              ob_get_clean();      
+              $dompdf->loadHtml($html);
+              // (Optional) Setup the paper size and orientation
+              $dompdf->setPaper('Letter', 'portrait');
+              // Render the HTML as PDF
+              $dompdf->render();      
+              // Parameters
+              $x          = 505; 
+              $y          = 790;
+              $text       = "Página {PAGE_NUM} de {PAGE_COUNT}";     
+              $font       = $dompdf->getFontMetrics()->get_font('Helvetica', 'normal');   
+              $size       = 10;    
+              $color      = array(0,0,0);
+              $word_space = 0.0;
+              $char_space = 0.0;
+              $angle      = 0.0;
+        
+              $dompdf->getCanvas()->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);      
+              // Output the generated PDF to Browser
+              $dompdf->stream("ReporteContrato.pdf", array("Attachment"=>false));   
           }
         } catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
