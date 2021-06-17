@@ -28,8 +28,8 @@ class Importar extends CI_Controller {
 		}		
   }
  
-  public function uploadData(){
-           
+
+  public function uploadData() {
             $path = 'uploads/';
             require_once APPPATH."/third_party/PHPExcel.php";
             $config['upload_path'] = $path;
@@ -72,7 +72,7 @@ class Importar extends CI_Controller {
                    $continua = isset($value['G']);
                    $continua2 = isset($value['F']);
                     if($continua){
-                    if($value['G'] =='1:N authentication succeeded (Face)'){
+                    if($value['G'] =='1:N authentication succeeded (Face)' || $value['G'] =='1:N Autenticaciￃﾳn exitosa (Rostro)' ) {
 
                       
                       $a= date("Y-m-d H:i",strtotime($value['A']));
@@ -82,6 +82,7 @@ class Importar extends CI_Controller {
                       $a4= date("Y-m-d H:i",strtotime ( '-4 minute' ,strtotime($value['A'])));
                       $a5= date("Y-m-d H:i",strtotime ( '-5 minute' ,strtotime($value['A'])));
                     */
+                    
                       
                       $fecha2= date("Y-m-d",strtotime($a));
                       
@@ -120,25 +121,27 @@ class Importar extends CI_Controller {
                       }
                     }
                     else if($continua2){
-                    if($value['F'] =='1:N Autenticaciￃﾳn exitosa (Rostro)'){
+                    if($value['F'] =='1:N Autenticaciￃﾳn exitosa (Rostro)' ||  $value['F'] =='1:N authentication succeeded (Face)')   {
 
-                      $fecha= date("Y-m-d",strtotime($value['A']));
+
+
+                      /* NUEVO METODO PARA SACAR LA FECHA */
+                      $x= trim($value['A']);
+                      $x = date_create_from_format('d/m/Y H:i',$x );
+                      $date =  $x->getTimestamp();
+                         
+                      $fecha= date("Y-m-d",$date );
                       
-                      $fechahora= date("Y-m-d H:i",strtotime($value['A']));
+                      $fechahora= date("Y-m-d H:i",$date );
                       
-                      $hora= date("H:i",strtotime($value['A']));
-                     /* 
-                      $hora1= date("H:i",strtotime ( '-1 minute' ,strtotime($value['A'])));
-                      $hora2= date("H:i",strtotime ( '-2 minute' ,strtotime($value['A'])));
-                      $hora3= date("H:i",strtotime ( '-3 minute' ,strtotime($value['A'])));
-                      $hora4= date("H:i",strtotime ( '-4 minute' ,strtotime($value['A'])));
-                      $hora5= date("H:i",strtotime ( '-5 minute' ,strtotime($value['A'])));
-                      */
+                      $hora= date("H:i",$date );
 
                       $completo=explode('(',$value['E']);
                       $usuarioid=$completo[0];
 
-                      //                      $valida=$this->import->buscarChecadas($fecha,$hora,$usuarioid);
+
+                      
+                      //$valida=$this->import->buscarChecadas($fecha,$hora,$usuarioid);
 
                       $valida=true;
                       /*
@@ -157,24 +160,30 @@ class Importar extends CI_Controller {
                           }
                         }
                       }  */   
-                        $dia_id=date("w",strtotime($fecha)); 
-                          if($dia_id==0){
-                            $dia_id=7;
-                          }
-                          if($valida==true){ //no existe en la base de datos
+                        
+                      $dia_id=date("w",strtotime($fecha)); 
+                          
+
+
+                      
+                      if($dia_id==0){
+                        $dia_id=7;
+                      }
+
+                         // if($valida==true){ //no existe en la base de datos
                               $inserdata[$i]['fecha'] =$fecha;
                               $inserdata[$i]['fechahora'] =$fechahora;
                               $inserdata[$i]['usuarioid'] = $usuarioid;
                               $inserdata[$i]['hora'] = $hora;
                               $inserdata[$i]['dia_id'] = $dia_id;
                               $i++;
-                          }
+                          //}
                       }
                     }
                 }
                 if  ($inserdata){
                     //$sinduplicados = array_map("unserialize", array_unique(array_map("serialize",$inserdata)));
-                   // $result = $this->import->importdata($sinduplicados);
+                    //$result = $this->import->importdata($sinduplicados);
                    $result = $this->import->importdata($inserdata);
                    
                 }
@@ -193,10 +202,6 @@ class Importar extends CI_Controller {
           }
   }
 
-
-
-
-  
   public function subirChecadasTemperatura(){
            
     $path = 'uploads/';
@@ -302,14 +307,15 @@ class Importar extends CI_Controller {
         }else{
           echo "Esas checadas ya existen o el archivo no tiene informacion!";
         } 
-  } 
-  catch (Exception $e) {
+    }
+    catch (Exception $e) {
        print_r('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME). '": ' .$e->getMessage());
        die();
-  }
-  }else{
+    }
+    }
+    else{
       echo $error['error'];
+    }
   }
-}
 }
 ?>

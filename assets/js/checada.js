@@ -450,7 +450,6 @@ ModuloChecada = {
     //Load
     , Init: function () {
         ModuloChecada.fnCargarSelect();
-        ModuloChecada.fnObtenerDatos('MMS','','','');
     }
 }
 var buttonCommon = {

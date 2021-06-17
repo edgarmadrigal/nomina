@@ -78,7 +78,7 @@
                                     </div> 
                                 </div> 
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">Descanso</label>
                                             <select class="custom-select col-12" id="descanso">
@@ -90,7 +90,14 @@
                                             <label style="font-weight: bold!important;">No Empleado</label>
                                             <input id="noempleado" type="text" class="form-control" name="msg" placeholder="escriba NoEmpleado">
                                         </div>
-                                    </div>  
+                                    </div> 
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label style="font-weight: bold!important;">Comida</label>
+                                            <select class="custom-select col-12" id="comida">
+                                            </select>
+                                        </div>
+                                    </div> 
                                     <div class="col-2">
                                         <div class="form-group">
                                                     <label style="font-weight: bold!important;"> &nbsp; </label><br> 
@@ -113,20 +120,20 @@
 <script src="assets/js/contrato.js"></script>
 
 <style>
-.dataTables_wrapper {
+   .dataTables_wrapper {
     padding-top: 10px;
     overflow: hidden;
-}
-@media only screen and (min-width: 1000px) {
+   }
+   @media only screen and (min-width: 1000px) {
     .table-responsive {
         overflow-x: visible;
         -ms-overflow-style: -ms-autohiding-scrollbar;
     }
-}
-    .table-responsive {
-        overflow-x: auto;
-    }
-.loadTable {
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+  .loadTable {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;
@@ -134,14 +141,14 @@
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
-}
-/* Safari */
-@-webkit-keyframes spin {
+ }
+ /* Safari */
+ @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin {
+ }
+ @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
+ }
 </style>

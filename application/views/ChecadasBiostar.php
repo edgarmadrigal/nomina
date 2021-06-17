@@ -72,7 +72,7 @@
                                     <div class="col-2" >
                                         <div class="form-group">
                                                     <label style="font-weight: bold!important;"> &nbsp; </label><br> 
-                                            <button id="actualizarNomi" class="btn btn-warning">
+                                            <button id="actualizarNomi" class="btn btn-warning" style="display:none;">
                                                 <i class="fa fa-refresh"></i> Actualizar de Nomiplus</button>
                                             </button>
                                         </div>
@@ -94,26 +94,19 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Lunes</td>
-                                                    
-                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Martes</td>
-                                                    
-                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Miercoles</td>
-                                                    
-                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Jueves</td>
-                                                    
-                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Viernes</td>
-                                                    
+                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Lunes</td>                                                    
+                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Martes</td>                                                    
+                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Miercoles</td>                                                    
+                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Jueves</td>                                                    
+                                                    <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Viernes</td>                                                    
                                                     <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Sabado</td>
-
                                                     <td COLSPAN=4 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Domingo</td>
-                                                
                                                 </tr>
                                                 <tr>
                                                     <th>Numero</th>
                                                     <th>NombreCompleto</th>
                                                     <th>FechaInicio</th>
-                                                    <th>FechaFin</th>     
+                                                    <th>FechaFin</th>
 
                                                     <th style="border-left: inset!important;border-color: black;">L.Entrada</th>
                                                     <th>L.EntradaComedor</th>

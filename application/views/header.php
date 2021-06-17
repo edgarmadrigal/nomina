@@ -73,7 +73,7 @@
     <style>
         .icon--ei-clock{
             float: left!important;
-            margin-right: 17px!important;
+            margin-right: 2px!important;
         }
         .icon {
             float: left!important;
@@ -210,7 +210,7 @@
                                 </li>
                                 <li style="float: left!important;width: 100%;">  
                                     <a class="waves-effect waves-dark" href="horarios" aria-expanded="true">                               
-                                        <div id="horario" data-icon="ei-clock" data-size="s"></div>
+                                        <div id="horario" data-icon="ei-clock" data-size="s" ></div>
                                         <span class="hide-menu">Horarios</span>
                                     </a>
                                 </li>
@@ -243,8 +243,7 @@
                                     <i class="fa fa-table"></i>
                                     <span class="hide-menu">Reporte Checadas Biostar</span></a>
                                 </li>
-                           
-                                <li style="float: left;width: 100%;"> 
+                                <li style="float: left;width: 100%;">
                                     <a class="waves-effect waves-dark" href="asistencias" aria-expanded="true">                                    
                                     <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
                                     <span class="hide-menu">Reporte Asistencia</span></a>

@@ -3,7 +3,7 @@ class ContratoRH extends CI_Model{
     function ___construct(){ 
         parent::___construct();
     }
-    public function consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso)
+    public function consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida)
     {        
 
         ini_set('memory_limit','512M'); // This also needs to be increased in some cases. Can be changed to a higher value as per need)
@@ -11,7 +11,7 @@ class ContratoRH extends CI_Model{
         ini_set('pdo_sqlsrv.client_buffer_max_kb_size','524288'); // Setting to 512M - for pdo_sqlsrv
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
-        $sp = "ConsultaContrato ?,?,?,?,?,? "; ///595359567
+        $sp = "ConsultaContrato ?,?,?,?,?,?,? "; ///595359567
         ///
         $params = array(
         'idSalario'         => intval($idsalario),
@@ -20,6 +20,7 @@ class ContratoRH extends CI_Model{
         'idEmpleado'        => intval($idempleado),
         'idEmpresa'         => intval($idempresa),
         'idDescanso'        => intval($iddescanso),
+        'idComida'        => intval($idComida),
         );
         
         $result = $this->db->query($sp,$params);
@@ -46,6 +47,12 @@ class ContratoRH extends CI_Model{
         return  $result->result_array();
     }    
 
+    public function ConsultaComida(){
+        ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta        
+        $sp = "ConsultaComida";        
+        $result = $this->db->query($sp);
+        return  $result->result_array();
+    }  
     
 
     public function consultaRepresentante(){

@@ -5,7 +5,7 @@ class Asistencia extends CI_Model{
         parent::___construct();
     }
     public function consulta($NoSemana,$anio,$planta,$departamento,$puesto,$noempleado)
-    {        
+    {
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ConsultaAsistencia ?,?,?,?,?,? "; 
         $params = array(

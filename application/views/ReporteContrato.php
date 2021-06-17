@@ -12,7 +12,7 @@
     <p align="center" style="font-family: Stencil;">   
     <b> <?php 
     try{
-            if($SALARIO >73.04){         
+            if($SALARIO >73.04){
                 echo $RAZONSOCIAL;               
             }else{
                 echo "MANUFACTURAS LAJAT"; 
@@ -171,10 +171,9 @@
         <strong><?php echo $HORARIOCONTRATO; ?></strong>
         </p>
         <p>
-        Cuando el horario de labores sea continuo "EL TRABAJADOR", tendrá derecho a media hora de descanso para tomar alimentos y le será  computado dicho
+        Cuando el horario de labores sea continuo "EL TRABAJADOR", tendrá derecho a <strong><?php echo $COMIDA; ?></strong> de descanso para tomar alimentos y le será  computado dicho
         periodo dentro de su jornada de trabajo.
-        </p>        
-        <p>
+        </p><p>
         En el caso de cambio o remoción por necesidades de la empresa del lugar de prestación de servicios "EL TRABAJADOR" acepta que el horario podrá variar y se 
         allana a dicha modalidad, siempre y cuando el horario nunca sea mayor al legal ordinario.
         "EL TRABAJADOR" , únicamente podrá laborar tiempo extraordinario cuando "LA EMPRESA", se lo indique y medie orden  por escrito, la que señalara el día o los 

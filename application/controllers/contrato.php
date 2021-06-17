@@ -46,7 +46,8 @@ class contrato extends CI_Controller {
       $idhorario=$this->input->get('idhorario');
       $idempleado=$this->input->get('idempleado');
       $idempresa=$this->input->get('idempresa');
-      $iddescanso=$this->input->get('iddescanso');      
+      $iddescanso=$this->input->get('iddescanso');   
+      $idComida=$this->input->get('idComida');       
       
       // echo $NoSemana.$anio.$departamento.$noempleado;
       if (empty($idsalario)){
@@ -61,6 +62,8 @@ class contrato extends CI_Controller {
         $idempresa=null;
        }if (empty($iddescanso)){
         $iddescanso=null;
+       }if (empty($idComida)){
+        $idComida=null;
        }
        $this->load->model('ContratoRH');
 
@@ -77,17 +80,20 @@ class contrato extends CI_Controller {
        }else
        {        
         try {
-            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso);     
+            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida);     
 
             $dompdf = new Dompdf(array('isPhpEnabled' => true));   
-                   
-            if(empty($data)){
+            $ExisteEmpleado='';       
+          try{
+            $ExisteEmpleado=$data[0]['NOMBRE'];
+          }
+          catch (Exception $e) {
+            echo 'El empleado no existe'.$e->getMessage();
+          }
+            if ($ExisteEmpleado!='' && $data[0]['BENEFICIARIO']=='' ) {
               echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita mas información ejemplo: "EDOCIVIL","DIRECCION","IMSS","RFC","CURP","BENEFICIARIO" ';
             }
-            elseif ($data[0]['BENEFICIARIO']=='') {
-              echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita el "BENEFICIARIO" ';
-            }
-            else {
+            else  if($ExisteEmpleado!=''){
               $REPRESENTANTE=$data[0]['REPRESENTANTE'];
               $EMPRESA=$data[0]['EMPRESA'];
               $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
@@ -107,6 +113,7 @@ class contrato extends CI_Controller {
               $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
               $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];            
               $BENEFICIARIO=$data[0]['BENEFICIARIO'];
+              $COMIDA=$data[0]['COMIDA'];
                         
               $fechaactual = getdate();
               $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
@@ -133,6 +140,8 @@ class contrato extends CI_Controller {
               $dompdf->getCanvas()->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);      
               // Output the generated PDF to Browser
               $dompdf->stream("ReporteContrato.pdf", array("Attachment"=>false));   
+          }else{
+            echo 'El empleado no existe';
           }
         } catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
@@ -147,6 +156,13 @@ class contrato extends CI_Controller {
           echo json_encode($data);
     }
 
+
+    public function ConsultaComida(){
+      header('Access-Control-Allow-Origin: *');
+      $this->load->model('ContratoRH');
+      $data = $this->ContratoRH->ConsultaComida();
+      echo json_encode($data);
+    }
     
     public function consultaRepresentante(){
       header('Access-Control-Allow-Origin: *');

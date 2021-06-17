@@ -857,11 +857,13 @@ sidebar navigation
     transition: none;
     -webkit-transition: none;
     -o-transition: none; }
+    
 
 /****************
 When click on sidebar toggler and also for tablet
 *****************/
-@media (min-width: 768px) {
+@media (min-width: 168px) {
+
   .mini-sidebar .sidebar-nav #sidebarnav li {
     position: relative; }
   .mini-sidebar .sidebar-nav #sidebarnav > li > ul {
@@ -900,7 +902,9 @@ When click on sidebar toggler and also for tablet
   .mini-sidebar .sidebar-footer,
   .mini-sidebar .user-profile .profile-text,
   .mini-sidebar > .label {
-    display: none; }
+    display: none; 
+  }
+  
   .mini-sidebar .nav-devider {
     width: 70px; }
   .mini-sidebar .sidebar-nav {
@@ -914,7 +918,8 @@ When click on sidebar toggler and also for tablet
     .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a .hide-menu {
       display: inline; }
     .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a .label {
-      display: none; } }
+      display: none; }     
+    }
 
 @media (max-width: 767px) {
   .mini-sidebar .left-sidebar {
@@ -5641,7 +5646,8 @@ File: scss
   display: none !important; }
 
 .card-inverse .card-blockquote, .card-inverse .card-footer, .card-inverse .card-header, .card-inverse .card-title {
-  color: #ffffff; }
+  color: #ffffff; 
+}
 
 /*
 Template Name: Admin Pro Admin
@@ -5677,14 +5683,16 @@ File: scss
   .website-visitor {
     height: 353px; }
   .auto-height {
-    min-height: 186px; } }
+    min-height: 186px; } 
+}
 
 /*-- ============================================================== 
  Small Desktop & above all (1024px) 
  ============================================================== */
 @media (min-width: 1024px) {
   .page-wrapper {
-    margin-left: 260px; } }
+    margin-left: 260px; } 
+}
 
 @media (max-width: 1023px) {
   .page-wrapper {
@@ -5747,56 +5755,78 @@ File: scss
   .container-fluid {
     padding: 25px 15px 25px 15px; }
   /*Header*/
+  
   .topbar {
     position: fixed;
-    width: 100%; }
-    .topbar .top-navbar {
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-      -webkit-align-items: center; }
-      .topbar .top-navbar .navbar-collapse {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        width: 100%; }
-      .topbar .top-navbar .navbar-nav {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row; }
-        .topbar .top-navbar .navbar-nav > .nav-item.show {
-          position: static; }
-          .topbar .top-navbar .navbar-nav > .nav-item.show .dropdown-menu {
-            width: 100%;
-            margin-top: 0px; }
-        .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
-          padding-left: .50rem;
-          padding-right: .50rem; }
-        .topbar .top-navbar .navbar-nav .dropdown-menu {
-          position: absolute; }
+    width: 100%; 
+  }
+
+  .topbar .top-navbar {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-items: center; 
+  }
+
+  .topbar .top-navbar .navbar-collapse {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%; 
+  }
+
+  .topbar .top-navbar .navbar-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row; 
+  }
+
+  .topbar .top-navbar .navbar-nav > .nav-item.show {
+    position: static; 
+  }
+
+  .topbar .top-navbar .navbar-nav > .nav-item.show .dropdown-menu {
+    width: 100%;
+    margin-top: 0px; 
+  }
+  
+  .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
+    padding-left: .50rem;
+    padding-right: .50rem; 
+  }
+  
+  .topbar .top-navbar .navbar-nav .dropdown-menu {
+    position: absolute; 
+  }
   .mega-dropdown .dropdown-menu {
     height: 480px;
-    overflow: auto; }
+    overflow: auto; 
+  }
   /*Sidebar and wrapper*/
   .mini-sidebar .page-wrapper {
     margin-left: 0px;
-    padding-top: 70px; }
+    padding-top: 70px; 
+  }
   .comment-text .comment-footer .action-icons {
     display: block;
-    padding: 10px 0; }
+    padding: 10px 0; 
+  }
   .vtabs .tabs-vertical {
-    width: auto; }
+    width: auto;
+  }
   /*Footer*/
   .material-icon-list-demo .icons div {
-    width: 100%; }
+    width: 100%; 
+  }
   .error-page .footer {
     position: fixed;
     bottom: 0px;
-    z-index: 10; }
+    z-index: 10; 
+  }
   .error-box {
     position: relative;
     padding-bottom: 60px; }

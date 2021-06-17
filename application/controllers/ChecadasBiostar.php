@@ -89,9 +89,6 @@ class ChecadasBiostar extends CI_Controller {
         
         echo json_encode($result);
     }
-
-
-
     function consultaDepartamento(){
 
         $planta=$this->input->post('planta');

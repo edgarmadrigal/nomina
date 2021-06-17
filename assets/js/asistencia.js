@@ -97,7 +97,7 @@ $(document).ready(function () {
                     anio:anio,
                     planta:planta,
                 },
-             }).done(function (data) { 
+             }).done(function (data) {
                  $.unblockUI();
                 alert('Termino la actualizacion con exito');
              });

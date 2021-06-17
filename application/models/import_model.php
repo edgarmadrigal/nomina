@@ -5,7 +5,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 class Import_model extends CI_Model {
 
     public function importData($data) {
-
         $res = $this->db->insert_batch('checadas',$data);
         if($res){
             return TRUE;
@@ -34,8 +33,7 @@ class Import_model extends CI_Model {
             $login = true;
         }
         return $login;
-    }
- 
+    } 
 }
  
 ?>

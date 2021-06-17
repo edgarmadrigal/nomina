@@ -70,7 +70,18 @@ Modulo = {
                 $('#descanso').append('<option value="'+value.id+'">'+value.nombre+'</option>');
               });
         });
-        
+        var varURL = Modulo.baseurl + "contrato/ConsultaComida";
+        $.ajax({
+            url:  varURL,
+            type: 'post',
+            dataType: 'json'
+        }).done(function (data) {                
+            perfiles= JSON.parse(JSON.stringify(data));
+            $('#comida').append('<option value="">Selecciona el tiempo de comida</option>');
+            $.each(perfiles, function( index, value ) { 
+                $('#comida').append('<option value="'+value.id+'">'+value.Comida+'</option>');
+              });
+        });
 
 
 
@@ -82,11 +93,12 @@ Modulo = {
 }
 $(document).ready(function () {
     Modulo.Init();
-    
-
     $(document).on('click', '#buscar', function (e) {
         e.preventDefault();  
-        if($('#salario').val()==0 || $('#representante').val()==0 || $('#horario').val()==0 || $('#planta').val()==0 || $('#descanso').val()==0 || $('#noempleado').val()=='' ){
+        if($('#salario').val()==0 || $('#representante').val()==0 
+        || $('#horario').val()==0 || $('#planta').val()==0 
+        || $('#descanso').val()==0 || $('#noempleado').val()=='' 
+        || $('#comida').val()=='' || $('#comida').val()=='NaN'){
             alert('Favor de capturar toda la informacion requerida');
         }        
         else{
@@ -96,7 +108,8 @@ $(document).ready(function () {
             +'&idhorario='+parseInt($("#horario").val())
             +'&idempleado='+parseInt($("#noempleado").val())
             +'&idempresa='+parseInt($("#planta").val())
-            +'&iddescanso='+parseInt($("#descanso").val()); 
+            +'&iddescanso='+parseInt($("#descanso").val())
+            +'&idComida='+parseInt($("#comida").val()); 
             
             
             window.open(varURL);

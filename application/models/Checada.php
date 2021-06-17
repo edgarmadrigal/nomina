@@ -7,7 +7,7 @@ class Checada extends CI_Model{
         //$this->load->library('pedeo', [$this->mysql]);
     }
     public function consulta($NoSemana,$anio,$departamento,$noempleado)
-    {        
+    {
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
         $sp = "ConsultaChecadas ?,?,?,? "; 
         $params = array(
