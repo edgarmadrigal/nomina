@@ -17,7 +17,7 @@ class ChecadasBiostar extends CI_Controller {
     }
 
 	public function index()
-	{ 
+	{
 		header('Access-Control-Allow-Origin: *');
 		$data = [];
 		$this->load->model('ChecadaBiostar');

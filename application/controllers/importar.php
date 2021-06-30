@@ -76,43 +76,17 @@ class Importar extends CI_Controller {
 
                       
                       $a= date("Y-m-d H:i",strtotime($value['A']));
-                    /*  $a1= date("Y-m-d H:i",strtotime ( '-1 minute' ,strtotime($value['A'])));
-                      $a2= date("Y-m-d H:i",strtotime ( '-2 minute' ,strtotime($value['A'])));
-                      $a3= date("Y-m-d H:i",strtotime ( '-3 minute' ,strtotime($value['A'])));
-                      $a4= date("Y-m-d H:i",strtotime ( '-4 minute' ,strtotime($value['A'])));
-                      $a5= date("Y-m-d H:i",strtotime ( '-5 minute' ,strtotime($value['A'])));
-                    */
-                    
                       
                       $fecha2= date("Y-m-d",strtotime($a));
                       
                       $hora2= date("H:i",strtotime($a));
 
-                    //  $valida=$this->import->buscarChecadas($fecha2,$hora2, $value['G']);    
-
                        $valida=true;
-                      // $valida=$this->import->buscarChecadas($fecha2,$hora2, $value['G']);  
                       
 
                       $completo=explode('(',$value['F']);
                       $usuarioid=$completo[0];
-                    /*
-                      if(count($inserdata)>0){
-                        foreach ($inserdata as $item) {
-                            if($item['fechahora']==$a1 && $item['usuarioid']==$usuarioid){
-                              $valida=false;  
-                            }
-                            if($item['fechahora']==$a2 && $item['usuarioid']==$usuarioid){
-                              $valida=false;  
-                            }if($item['fechahora']==$a3 && $item['usuarioid']==$usuarioid){
-                              $valida=false;  
-                            }if($item['fechahora']==$a4 && $item['usuarioid']==$usuarioid){
-                              $valida=false;  
-                            }if($item['fechahora']==$a5 && $item['usuarioid']==$usuarioid){
-                              $valida=false;  
-                            }
-                          }
-                        }     */                 
+
                           if($valida==true){ //no existe en la base de datos
                               $inserdata[$i]['fechahora'] =$a;
                               $inserdata[$i]['usuarioid'] = $value['F'];
@@ -126,6 +100,19 @@ class Importar extends CI_Controller {
 
 
                       /* NUEVO METODO PARA SACAR LA FECHA */
+
+                      $fecha= date("Y-m-d",strtotime($value['A']));
+              
+                      $fechahora= date("Y-m-d H:i",strtotime($value['A']));
+                      
+                      $hora= date("H:i",strtotime($value['A']));
+                      
+
+                      $completo=explode('(',$value['E']);
+                      $usuarioid=$completo[0];
+                      $valida=true;   
+                      $dia_id=date("w",strtotime($fecha)); 
+/*
                       $x= trim($value['A']);
                       $x = date_create_from_format('d/m/Y H:i',$x );
                       $date =  $x->getTimestamp();
@@ -136,35 +123,15 @@ class Importar extends CI_Controller {
                       
                       $hora= date("H:i",$date );
 
+
                       $completo=explode('(',$value['E']);
                       $usuarioid=$completo[0];
-
-
-                      
-                      //$valida=$this->import->buscarChecadas($fecha,$hora,$usuarioid);
-
                       $valida=true;
-                      /*
-                      if(count($inserdata)>0){
-                        foreach ($inserdata as $item) {
-                          if($item['fecha']==$fecha   && $item['hora']==$hora1 && $item['usuarioid']==$usuarioid){
-                            $valida=false;  
-                          }if($item['fecha']==$fecha  && $item['hora']==$hora2 && $item['usuarioid']==$usuarioid){
-                            $valida=false;  
-                          }if($item['fecha']==$fecha  && $item['hora']==$hora3 && $item['usuarioid']==$usuarioid){
-                            $valida=false;  
-                          }if($item['fecha']==$fecha  && $item['hora']==$hora4 && $item['usuarioid']==$usuarioid){
-                            $valida=false;  
-                          }if($item['fecha']==$fecha  && $item['hora']==$hora5 && $item['usuarioid']==$usuarioid){
-                            $valida=false;  
-                          }
-                        }
-                      }  */   
-                        
+
                       $dia_id=date("w",strtotime($fecha)); 
-                          
+                      
 
-
+*/
                       
                       if($dia_id==0){
                         $dia_id=7;
@@ -182,8 +149,8 @@ class Importar extends CI_Controller {
                     }
                 }
                 if  ($inserdata){
-                    //$sinduplicados = array_map("unserialize", array_unique(array_map("serialize",$inserdata)));
-                    //$result = $this->import->importdata($sinduplicados);
+                    $sinduplicados = array_map("unserialize", array_unique(array_map("serialize",$inserdata)));
+                    $result = $this->import->importdata($sinduplicados);
                    $result = $this->import->importdata($inserdata);
                    
                 }
@@ -246,43 +213,50 @@ class Importar extends CI_Controller {
           if($continua2){
             if($value['F'] =='1:N Autenticaciￃﾳn exitosa (Rostro)'){
 
+
+
+
+
+              
+                      /* NUEVO METODO PARA SACAR LA FECHA */
+                      $x= trim($value['A']);
+                      $x = date_create_from_format('d/m/Y H:i',$x );
+                      $date =  $x->getTimestamp();
+                         
+                      $fecha= date("Y-m-d",$date );
+                      
+                      $fechahora= date("Y-m-d H:i",$date );
+                      
+                      $hora= date("H:i",$date );
+
+
+                      $completo=explode('(',$value['E']);
+                      $usuarioid=$completo[0];
+                      $valida=true;
+
+                      $dia_id=date("w",strtotime($fecha)); 
+
+
+
+
+
+
+/*
+metodo anterior
               $fecha= date("Y-m-d",strtotime($value['A']));
               
               $fechahora= date("Y-m-d H:i",strtotime($value['A']));
               
               $hora= date("H:i",strtotime($value['A']));
-             /* 
-              $hora1= date("H:i",strtotime ( '-1 minute' ,strtotime($value['A'])));
-              $hora2= date("H:i",strtotime ( '-2 minute' ,strtotime($value['A'])));
-              $hora3= date("H:i",strtotime ( '-3 minute' ,strtotime($value['A'])));
-              $hora4= date("H:i",strtotime ( '-4 minute' ,strtotime($value['A'])));
-              $hora5= date("H:i",strtotime ( '-5 minute' ,strtotime($value['A'])));
-              */
+              
 
               $completo=explode('(',$value['E']);
               $usuarioid=$completo[0];
+              $valida=true;   
+              $dia_id=date("w",strtotime($fecha)); 
 
-              //                      $valida=$this->import->buscarChecadas($fecha,$hora,$usuarioid);
-
-              $valida=true;
-              /*
-              if(count($inserdata)>0){
-                foreach ($inserdata as $item) {
-                  if($item['fecha']==$fecha   && $item['hora']==$hora1 && $item['usuarioid']==$usuarioid){
-                    $valida=false;  
-                  }if($item['fecha']==$fecha  && $item['hora']==$hora2 && $item['usuarioid']==$usuarioid){
-                    $valida=false;  
-                  }if($item['fecha']==$fecha  && $item['hora']==$hora3 && $item['usuarioid']==$usuarioid){
-                    $valida=false;  
-                  }if($item['fecha']==$fecha  && $item['hora']==$hora4 && $item['usuarioid']==$usuarioid){
-                    $valida=false;  
-                  }if($item['fecha']==$fecha  && $item['hora']==$hora5 && $item['usuarioid']==$usuarioid){
-                    $valida=false;  
-                  }
-                }
-              }  */   
-                $dia_id=date("w",strtotime($fecha)); 
-                  if($dia_id==0){
+*/
+       if($dia_id==0){
                     $dia_id=7;
                   }
                   if($valida==true){ //no existe en la base de datos
@@ -297,8 +271,8 @@ class Importar extends CI_Controller {
             }
         }
         if  ($inserdata){
-            //$sinduplicados = array_map("unserialize", array_unique(array_map("serialize",$inserdata)));
-           // $result = $this->import->importdata($sinduplicados);
+            $sinduplicados = array_map("unserialize", array_unique(array_map("serialize",$inserdata)));
+            $result = $this->import->importdata($sinduplicados);
            $result = $this->import->importdata($inserdata);
            
         }
