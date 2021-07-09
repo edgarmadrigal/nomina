@@ -23,7 +23,7 @@ class Checadas extends CI_Controller {
 		$this->load->model('Checada');
         if (isset($this->session->userdata['login'])) {
 			$data['user'] = $this->session->userdata['login']['user'];
-            $data['checadas'] =json_encode( $this->Checada->consulta(NULL,NULL,NULL,NULL));
+            //$data['checadas'] =json_encode( $this->Checada->consulta(NULL,NULL,NULL,NULL));
             			
             if ($this->session->userdata['login']['exito']) {
 				$this->load->view('header', $data);
