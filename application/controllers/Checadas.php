@@ -68,6 +68,28 @@ class Checadas extends CI_Controller {
 		$result =$this->Checada->consulta($NoSemana,$anio,$departamento,$noempleado);
         echo json_encode($result);
     }
+	function consultaReprocesar()
+    {
+		header('Access-Control-Allow-Origin: *'); 
+        $NoSemana=$this->input->post('NoSemana');
+        $anio=$this->input->post('anio');
+        $departamento=$this->input->post('departamento');
+        $noempleado=$this->input->post('noempleado');
+       // echo $NoSemana.$anio.$departamento.$noempleado;
+       if (empty($NoSemana)){
+        $NoSemana=null;
+       }if (empty($anio)){
+        $anio=null;
+       }if (empty($noempleado)){
+        $noempleado=null;
+       }if (empty($departamento)){
+        $departamento=null;
+       }
+        $this->load->model('Checada');
+        $result = array('data' => array());
+		$result =$this->Checada->consultaReprocesar($NoSemana,$anio,$departamento,$noempleado);
+        echo json_encode($result);
+    }
 
     function consultaChecadasMYSQL(){
         $this->load->model('Checada');

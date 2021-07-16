@@ -412,7 +412,7 @@ ModuloChecada = {
     //Load
     , Init: function () {
         ModuloChecada.fnCargarSelect();
-        ModuloChecada.fnObtenerDatos('2','','','','','');
+        //ModuloChecada.fnObtenerDatos('2','','','','','');
     }
 }
 var buttonCommon = {

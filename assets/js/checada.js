@@ -63,6 +63,28 @@ ModuloChecada = {
                 ModuloChecada.fnConstruitTabla();
             });
     }
+    , fnObtenerDatosReprocesados: function (departamento,noempleado,NoSemana,anio) {
+        $("#tablaEmp").css("display", "none");
+        $(".loadTable").css("display", "block");
+            var varURL = ModuloChecada.baseurl + "checadas/consultaReprocesar";
+            /**Ajax */
+            $.ajax({
+                url: varURL,
+                data: {
+                    departamento: departamento,
+                    noempleado:noempleado,
+                    NoSemana:NoSemana,
+                    anio:anio,
+                },
+                type: 'post',
+                //contentType: 'application/json; charset=utf-8',
+            }).done(function (data) {
+                ModuloChecada.datosTablaChecadas=JSON.parse(data);
+                ModuloChecada.fnConstruitTabla();
+            });
+    }
+
+    
     //Construye la tabla 
     , fnConstruitTabla: function () {
         
@@ -522,13 +544,21 @@ var buttonCommon = {
         });
 
         $(document).on('click', '#buscar', function (e) {
-
-
             var departamento=$('#departamento').val();
             var noempleado=$('#noempleado').val();
             var NoSemana=$('#NoSemana').val();
             var anio=$('#anio').val();
             ModuloChecada.fnObtenerDatos(departamento,noempleado,NoSemana,anio);
         });
+
+        $(document).on('click', '#reprocesar', function (e) {
+            var departamento=$('#departamento').val();
+            var noempleado=$('#noempleado').val();
+            var NoSemana=$('#NoSemana').val();
+            var anio=$('#anio').val();
+            ModuloChecada.fnObtenerDatosReprocesados77(departamento,noempleado,NoSemana,anio);
+        });
+
+        
         
     });

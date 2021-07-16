@@ -23,8 +23,7 @@ class ChecadasBiostar extends CI_Controller {
 		$this->load->model('ChecadaBiostar');
         if (isset($this->session->userdata['login'])) {
 			$data['user'] = $this->session->userdata['login']['user'];
-            $data['checadas'] =json_encode( $this->ChecadaBiostar->consulta(NULL,NULL,NULL,NULL,NULL,NULL));
-            			
+           /// $data['checadas'] =json_encode( $this->ChecadaBiostar->consulta(NULL,NULL,NULL,NULL,NULL,NULL));
             if ($this->session->userdata['login']['exito']) {
 				$this->load->view('header', $data);
 				$this->load->view('ChecadasBiostar', $data);
@@ -70,6 +69,10 @@ class ChecadasBiostar extends CI_Controller {
 
         echo json_encode($result);
     }
+    
+
+
+
     function consultaPlanta(){
 
 		header('Access-Control-Allow-Origin: *');
