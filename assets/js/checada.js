@@ -556,7 +556,7 @@ var buttonCommon = {
             var noempleado=$('#noempleado').val();
             var NoSemana=$('#NoSemana').val();
             var anio=$('#anio').val();
-            ModuloChecada.fnObtenerDatosReprocesados77(departamento,noempleado,NoSemana,anio);
+            ModuloChecada.fnObtenerDatosReprocesados(departamento,noempleado,NoSemana,anio);
         });
 
         
