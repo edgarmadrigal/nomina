@@ -58,6 +58,20 @@ Modulo = {
                 $('#planta').append('<option value="'+value.id+'">'+value.nombre+'</option>');
               });
         });
+
+        var varURL = Modulo.baseurl + "contrato/consultaRazon";
+        $.ajax({
+            url:  varURL,
+            type: 'post',
+            dataType: 'json'
+        }).done(function (data){
+            perfiles= JSON.parse(JSON.stringify(data));
+            $('#razon').append('<option value="">Selecciona una razon Social</option>');
+            $.each(perfiles, function( index, value ) { 
+                $('#razon').append('<option value="'+value.id+'">'+value.nombre+'</option>');
+              });
+        });
+
         var varURL = Modulo.baseurl + "contrato/ConsultaDescanso";
         $.ajax({
             url:  varURL,
@@ -97,7 +111,7 @@ $(document).ready(function () {
         e.preventDefault();  
         if($('#salario').val()==0 || $('#representante').val()==0 
         || $('#horario').val()==0 || $('#planta').val()==0 
-        || $('#descanso').val()==0 || $('#noempleado').val()=='' 
+        || $('#descanso').val()==0 || $('#noempleado').val()=='' || $('#razon').val()=='' 
         || $('#comida').val()=='' || $('#comida').val()=='NaN'){
             alert('Favor de capturar toda la informacion requerida');
         }        
@@ -109,7 +123,8 @@ $(document).ready(function () {
             +'&idempleado='+parseInt($("#noempleado").val())
             +'&idempresa='+parseInt($("#planta").val())
             +'&iddescanso='+parseInt($("#descanso").val())
-            +'&idComida='+parseInt($("#comida").val()); 
+            +'&idComida='+parseInt($("#comida").val())            
+            +'&idrazon='+parseInt($("#razon").val()); 
             
             
             window.open(varURL);

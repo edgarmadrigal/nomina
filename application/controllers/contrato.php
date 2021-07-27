@@ -48,6 +48,9 @@ class contrato extends CI_Controller {
       $idempresa=$this->input->get('idempresa');
       $iddescanso=$this->input->get('iddescanso');   
       $idComida=$this->input->get('idComida');       
+      $idrazon=$this->input->get('idrazon');
+
+
       
       // echo $NoSemana.$anio.$departamento.$noempleado;
       if (empty($idsalario)){
@@ -64,6 +67,8 @@ class contrato extends CI_Controller {
         $iddescanso=null;
        }if (empty($idComida)){
         $idComida=null;
+       }if (empty($idrazon)){
+        $idrazon=null;
        }
        $this->load->model('ContratoRH');
 
@@ -80,7 +85,7 @@ class contrato extends CI_Controller {
        }else
        {        
         try {
-            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida);     
+            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida,$idrazon);     
 
             $dompdf = new Dompdf(array('isPhpEnabled' => true));   
             $ExisteEmpleado='';       
@@ -156,6 +161,15 @@ class contrato extends CI_Controller {
           echo json_encode($data);
     }
 
+
+
+    function consultaRazon(){
+      header('Access-Control-Allow-Origin: *');
+          $this->load->model('ContratoRH');
+          $result =$this->ContratoRH->consultaRazon();          
+          echo json_encode($result);
+      }
+  
 
     public function ConsultaComida(){
       header('Access-Control-Allow-Origin: *');

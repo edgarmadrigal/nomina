@@ -19,6 +19,16 @@ class Contrato2 extends CI_Model{
         return  $result->result_array();
     }
 
+
+    public function consultaRazon()
+    {
+        $sp = "consultaRazon";        
+        $result = $this->db->query($sp);
+        return  $result->result_array();
+    }
+
+    
+
 }
 
 ?>

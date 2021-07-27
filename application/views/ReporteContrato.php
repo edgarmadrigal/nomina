@@ -12,12 +12,7 @@
     <p align="center" style="font-family: Stencil;">   
     <b> <?php 
     try{
-            if($SALARIO >73.04){
-                echo $RAZONSOCIAL;               
-            }else{
-                echo "MANUFACTURAS LAJAT"; 
-
-            } 
+                echo $RAZONSOCIAL;    
              ?> </b>
     <br>
     <b>S. DE R. L. DE C. V. </b>
@@ -25,26 +20,14 @@
     </p>
         <p align="center">
             <strong>LA EMPRESA </strong>
-            <strong><?php if($SALARIO >73.04){ 
-        
+            <strong><?php 
                 echo $RAZONSOCIAL;  
-              
-            }else{
-                echo "MANUFACTURAS LAJAT"; 
-
-            } 
              ?></strong>
             <strong> S DE R L DE C V</strong>
         </p>
             Contrato individual de trabajo por tiempo indeterminado que celebran por
-            una parte "LA EMPRESA" <?php if($SALARIO >73.04){ 
-        
+            una parte "LA EMPRESA" <?php 
                 echo $RAZONSOCIAL;  
-              
-            }else{
-                echo "MANUFACTURAS LAJAT"; 
-
-            } 
              ?>, S. DE R.L. DE C.V
         <br>
             Representada por el Lic. <strong><?php echo $REPRESENTANTE; ?></strong> y por la otra parte,
@@ -56,14 +39,8 @@
             <strong> ANTECEDENTES</strong>
         </p>
         <p>
-            1.-"LA EMPRESA" denominada <?php if($SALARIO >73.04){ 
-        
-                echo $RAZONSOCIAL;  
-              
-            }else{
-                echo "MANUFACTURAS LAJAT"; 
-
-            } 
+            1.-"LA EMPRESA" denominada <?php 
+                echo $RAZONSOCIAL; 
              ?>, S. DE RL. DE C.V es
             una sociedad legalmente constituida según las leyes mexicanas ante la fe
             <?php echo $NOTARIO; ?>
@@ -79,14 +56,8 @@
             Registro de afiliación al IMSS <strong><?php echo $IMSS; ?></strong> , RFC <strong><?php echo $RFC; ?></strong> CURP <strong><?php echo $CURP; ?></strong>
         </p>
         <p>
-            3.- "LA EMPRESA" <?php if($SALARIO >73.04){ 
-        
+            3.- "LA EMPRESA" <?php 
                 echo $RAZONSOCIAL;  
-              
-            }else{
-                echo "MANUFACTURAS LAJAT"; 
-
-            } 
              ?>, S. DE R.L.DE C.V tiene como
             objeto social La PRESTACION DE SERVICIOS PROFESIONALES Y TECNICOS
         </p>
@@ -95,14 +66,8 @@
             desarrollar el trabajo para el cual ha sido contratado.
         </p>
         <p>
-            5.- "LA EMPRESA" <?php if($SALARIO >73.04){ 
-        
+            5.- "LA EMPRESA" <?php 
                 echo $RAZONSOCIAL;  
-              
-            }else{
-                echo "MANUFACTURAS LAJAT"; 
-
-            } 
              ?>, S. DE R.L DE .C.V requiere de
             los servicios de personal apto para el desarrollo de sus Actividades y de
             modo especial para el puesto o funciones de <strong><?php echo $PUESTO; ?></strong> 
@@ -117,14 +82,8 @@
         </p>
         <p>
             PRIMERA.- Para efectos de mayor brevedad se denominara en lo sucesivo a 
-            <?php if($SALARIO >73.04){ 
-        
+            <?php 
                 echo $RAZONSOCIAL;  
-              
-            }else{
-                echo "MANUFACTURAS LAJAT"; 
-
-            } 
              ?>, S. DE R.L DE C.V como "LA EMPRESA", a  <strong><?php echo $NOMBRE; ?></strong>     
             
             como "EL TRABAJADOR", a la Ley Federal del Trabajo como "LA LEY", al

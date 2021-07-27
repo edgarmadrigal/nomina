@@ -47,10 +47,17 @@
                     <div class="card-body">     
                         <div class="table-responsive">    
                             <div class="dataTables_wrapper dt-bootstrap4"> 
-                                <div class="row">                                   
+                                <div class="row">                                     
                                     <div class="col-2" >
                                         <div class="form-group">
-                                            <label style="font-weight: bold!important;">Planta</label>
+                                            <label style="font-weight: bold!important;">Razon Social</label>
+                                            <select class="custom-select col-12" id="razon">
+                                            </select>
+                                        </div>
+                                    </div>                                   
+                                    <div class="col-2" >
+                                        <div class="form-group">
+                                            <label style="font-weight: bold!important;">Área</label>
                                             <select class="custom-select col-12" id="planta">
                                             </select>
                                         </div>
@@ -69,7 +76,7 @@
                                             </select>
                                         </div>
                                     </div> 
-                                    <div class="col-5">
+                                    <div class="col-2">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">Horario</label>
                                             <select class="custom-select col-12" id="horario">
