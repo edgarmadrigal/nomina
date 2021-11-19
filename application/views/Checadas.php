@@ -32,7 +32,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">Departamento</label>
                                             <select class="custom-select col-12" id="departamento">
@@ -48,7 +48,7 @@
                                     <div class="col-1">
                                         <div class="form-group">
                                                     <label style="font-weight: bold!important;"> &nbsp; </label><br> 
-                                                    <button id="buscar" class="btn btn-info">
+                                                    <button id="buscar" class="btn btn-danger">
                                                         <i class="fa fa-search"></i> Buscar
                                                     </button>
                                         </div>
@@ -60,7 +60,15 @@
                                                         <i class="fa fa-refresh"></i>ReProcesar
                                                     </button>
                                         </div>
-                                    </div>
+                                    </div> &nbsp; 
+                                    <div class="col-1 " style="margin-left: 15px;">
+                                        <div class="form-group">
+                                                    <label style="font-weight: bold!important;"> &nbsp; </label><br> 
+                                                    <button id="act" class="btn btn-info">
+                                                    <i class="fa fa-search"></i>ACTIVOS/INACTIVOS
+                                                    </button>
+                                        </div>
+                                    </div> 
 
                                 </div> 
                                 <div class="row">
@@ -253,5 +261,9 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+.btn {
+    padding: 7px 2px!important;
+    cursor: pointer;
 }
 </style>

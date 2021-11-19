@@ -12,9 +12,10 @@
     <p align="center" style="font-family: Stencil;">   
     <b> 
     CONTRATO INDIVIDUAL DE TRABAJO POR TIEMPO DETERMINADO que celebran por una parte la 
-    empresa TECH CREATIONS TORREON S. DE R.L. DE C.V., a través de su representante legal, la C. EMA 
-    FLORES BULNES, a quien en lo sucesivo se le denominara “La Empresa”, y por la 
-    otra___________________________ _______________________________, a quien en lo sucesivo se le denominara 
+    empresa <?php try{print_r("<b>".$RAZONSOCIAL."</b>");  }catch (Exception $e) {echo 'Excepción capturada: ',  $e->getMessage(), "\n";}?>
+    , a través de su representante legal, la <?php echo $REPRESENTANTE; ?></strong>
+    , a quien en lo sucesivo se le denominara “La Empresa”, y por la 
+    otra __<strong><?php echo $NOMBRE; ?></strong>__ , a quien en lo sucesivo se le denominara 
     como “El/La Trabajador(a)”, al tenor de las siguientes declaraciones y cláusulas: </b>
     <HR ></HR>
     </p>
@@ -23,20 +24,19 @@
             <strong>“La Empresa” manifiesta:</strong>
         </p>
         <br>
-            Representada por el Lic. <strong><?php echo $REPRESENTANTE; ?></strong> y por la otra parte,
-            "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong>
-        <br>
-            al tenor de las siguientes Declaraciones y Cláusulas.
-        </p>
-        <p align="center">
-            <strong> ANTECEDENTES</strong>
-        </p>
-        <p>
           
-        I.	Ser una persona moral, constituida conforme a las leyes del país, como se acredita conforme a la Escritura Pública número: 15, Libro Primero de sociedades mercantiles, de fecha 05 de Febrero de 2019, pasada ante la fe del Corredor Público número 89 Lic. Rosa Ileana Márquez Martínez de Torreón, Coahuila.
-        II.	Está representada en la firma del presente contrato por la C.  EMA FLORES BULNES en su carácter de apoderado legal de la compañía, facultades que contiene la póliza descrita anteriormente.
-        III.	Tener su domicilio en BOULEVARD PEDRO RODRIGUEZ TRIANA #747 INT 31, PARQUE INDUSTRIAL ORIENTE, JUMBO PLAZA, C.P. 27278 TORREÓN, COAHUILA.
-        “El/La Trabajador(a)” declara:
+        I.	  Ser una persona moral, constituida conforme a las leyes del país, como se acredita conforme a la 
+        Escritura Pública número: 15, Libro Primero de sociedades mercantiles, de fecha 05 de Febrero de 2019
+        , pasada ante la fe del Corredor Público número 89 Lic. Rosa Ileana Márquez Martínez de Torreón, Coahuila.
+        II.	  Está representada en la firma del presente contrato por <?php echo $REPRESENTANTE; ?></strong> en su carácter 
+        de apoderado legal de la compañía, facultades que contiene la póliza descrita anteriormente.
+        III.  Tener su domicilio en BOULEVARD PEDRO RODRIGUEZ TRIANA #747 INT 31, PARQUE 
+        INDUSTRIAL ORIENTE, JUMBO PLAZA, C.P. 27278 TORREÓN, COAHUILA.
+
+        <p align="left">
+            <strong>“El/La Trabajador(a)” declara:</strong>
+        </p>
+        <br>
         I.	Llamarse como ha quedado escrito, ser de nacionalidad MEXICANA, sexo ___, tener ____ años de edad, estado civil __________________, con Registro Federal de Contribuyentes _______________________, Clave Única del Registro de Población ________________________________ y con domicilio particular __________________________.
         II.	Que tiene la capacidad y aptitudes necesarias para desarrollar el trabajo origen de este contrato.
         III.	Estar de acuerdo en desempeñar su actividad conforme a las condiciones establecidas en este contrato.

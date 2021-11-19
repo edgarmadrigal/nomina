@@ -35,6 +35,13 @@
                 <div class="card">
                     <div class="card-body">     
                         <form>
+                            FORMATO ESPERADO:
+                            <a id="descargar" class="btn btn-info"  href="http://177.244.42.94:8087/nomina/reportX_1.csv" download>
+                                <i class="fa fa-download"></i> Descargar
+                            </a>
+                            <BR>
+                            <BR>
+                            <BR>
                             Subir archivo de excel : 
                             <input type="file" name="uploadFile" value="" class="col-md-6"/><br><br>
                             <input id="subir" type="button" name="submit" value="Subir" class="col-md-2" />

@@ -16,6 +16,9 @@
                                       <i class="fa fa-plus-circle"></i> Agregar Incidencia</button>
                                   </button>  
                               </div> 
+                              <button id="correo" class="btn btn-info" data-toggle="modal" data-target="#MandarCorreo" style="display:none;">
+                                      <i class="fa fa-paper-plane"></i> MandaCorreo</button>
+                                  </button>  
                           </div>                      
                           <div class="row">
                                 <div class="col-12">   

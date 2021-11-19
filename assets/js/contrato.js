@@ -107,6 +107,37 @@ Modulo = {
 }
 $(document).ready(function () {
     Modulo.Init();
+    $("#razon").select2({
+        tags: true
+      });
+
+      $("#planta").select2({
+        tags: true
+      });
+
+      
+      $("#salario").select2({
+        tags: true
+      });
+      
+      $("#representante").select2({
+        tags: true
+      });
+      
+      $("#horario").select2({
+        tags: true
+      });
+      $("#descanso").select2({
+        tags: true
+      });
+      
+      $("#comida").select2({
+        tags: true
+      });
+      
+      
+
+
     $(document).on('click', '#buscar', function (e) {
         e.preventDefault();  
         if($('#salario').val()==0 || $('#representante').val()==0 

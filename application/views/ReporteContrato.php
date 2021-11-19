@@ -12,23 +12,34 @@
     <p align="center" style="font-family: Stencil;">   
     <b> <?php 
     try{
-                echo $RAZONSOCIAL;    
+                 print_r("<b>".$RAZONSOCIAL."</b>");        
+        }
+        catch (Exception $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+          }
              ?> </b>
     <br>
-    <b>S. DE R. L. DE C. V. </b>
+    
     <HR ></HR>
     </p>
         <p align="center">
             <strong>LA EMPRESA </strong>
             <strong><?php 
-                echo $RAZONSOCIAL;  
+    try{
+                 print_r("<b>".$RAZONSOCIAL."</b>");  
+        }catch (Exception $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+          }
              ?></strong>
-            <strong> S DE R L DE C V</strong>
         </p>
             Contrato individual de trabajo por tiempo indeterminado que celebran por
             una parte "LA EMPRESA" <?php 
-                echo $RAZONSOCIAL;  
-             ?>, S. DE R.L. DE C.V
+    try{
+                 print_r("<b>".$RAZONSOCIAL."</b>");     
+        }catch (Exception $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+          }
+             ?>
         <br>
             Representada por el Lic. <strong><?php echo $REPRESENTANTE; ?></strong> y por la otra parte,
             "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong>
@@ -40,8 +51,12 @@
         </p>
         <p>
             1.-"LA EMPRESA" denominada <?php 
-                echo $RAZONSOCIAL; 
-             ?>, S. DE RL. DE C.V es
+        try{
+                 print_r("<b>".$RAZONSOCIAL."</b>");            
+        }catch (Exception $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+          }
+             ?>, es
             una sociedad legalmente constituida según las leyes mexicanas ante la fe
             <?php echo $NOTARIO; ?>
             y legalmente
@@ -57,8 +72,12 @@
         </p>
         <p>
             3.- "LA EMPRESA" <?php 
-                echo $RAZONSOCIAL;  
-             ?>, S. DE R.L.DE C.V tiene como
+    try{
+                 print_r("<b>".$RAZONSOCIAL."</b>");  
+        }catch (Exception $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+          }
+             ?>, tiene como
             objeto social La PRESTACION DE SERVICIOS PROFESIONALES Y TECNICOS
         </p>
         <p>
@@ -67,8 +86,12 @@
         </p>
         <p>
             5.- "LA EMPRESA" <?php 
-                echo $RAZONSOCIAL;  
-             ?>, S. DE R.L DE .C.V requiere de
+    try{
+                  print_r("<b>".$RAZONSOCIAL."</b>");  
+        }catch (Exception $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+          }
+             ?>, requiere de
             los servicios de personal apto para el desarrollo de sus Actividades y de
             modo especial para el puesto o funciones de <strong><?php echo $PUESTO; ?></strong> 
         </p>
@@ -83,8 +106,12 @@
         <p>
             PRIMERA.- Para efectos de mayor brevedad se denominara en lo sucesivo a 
             <?php 
-                echo $RAZONSOCIAL;  
-             ?>, S. DE R.L DE C.V como "LA EMPRESA", a  <strong><?php echo $NOMBRE; ?></strong>     
+    try{
+                 print_r("<b>".$RAZONSOCIAL."</b>");        
+        }catch (Exception $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+          }
+             ?> como "LA EMPRESA", a  <strong><?php echo $NOMBRE; ?></strong>     
             
             como "EL TRABAJADOR", a la Ley Federal del Trabajo como "LA LEY", al
             referirse al presente documento como "EL CONTRATO", y a los que lo
@@ -206,7 +233,7 @@
         </p>
         <p>
         VIGESIMA.- "LAS PARTES" reconocen como fecha de antigüedad o de inicio de prestación de servicios del "TRABAJADOR",
-        a partir del día <strong><?php echo $FECHAANTIGUEDAD; ?></strong> 
+        a partir del día <strong><?php echo $FECHAANTIGUEDAD;//FECHA_INGRESO ?></strong> 
         </p>
         <p>
         VIGESIMA PRIMERA.- EL TRABAJADOR DESIGNA A : <strong><?php echo $BENEFICIARIO; ?></strong> COMO BENEFICIARIO COMO LO REFIERE EL ARTICULO 501 DE LA LFT ,
@@ -215,12 +242,15 @@
         </p>
         LEIDO  QUE  FUE  EL  PRESENTE  CONTRATO  POR  QUIENES  EN  EL  INTERVIENEN  LO  RATIFICAN E  IMPUESTOS  DE  SU  CONTENIDO  LO SUSCRIBEN  
         POR  DUPLICADO  QUEDANDO  EL  ORIGINAL  EN  EL  PODER  DE  LA  EMPRESA  Y  LA COPIA  PARA  EL  TRABAJADOR  EN  LA  CIUDAD  DE  <?php echo $EMPRESA; ?>        
-        <strong><?php ECHO $FECHAIMPRESION;
+        <strong><?php
+        try{
+        ECHO $FECHAIMPRESION ;// FECHA_INGRESO
         } 
          catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
-        ?></strong> 
+        ?>
+        </strong> 
         </p>
         <strong>
             <TABLE>

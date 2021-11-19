@@ -8,35 +8,46 @@
 <script src="assets/js/bootstrap-datepicker.js"></script>
 
 <style>
+    .select2-container--open .select2-dropdown--below {
+    width: min-content!important;
+    }
+    .select2-results {
+    display: block;
+    width: max-content!important;
+    }   
+    body {
+        font-size: 10px;
+    }
     @media only screen and (min-width: 1000px) {
-        .table-responsive {
-            overflow-x: visible;
-            -ms-overflow-style: -ms-autohiding-scrollbar;
-        }
+    .table-responsive {
+        overflow-x: visible;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
     }
     .table-responsive {
         overflow-x: auto;
     }
     .loadTable {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
-    animation: spin 2s linear infinite;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
     }
     /* Safari */
     @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
     }
     @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-    }
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }   
 </style>
 <script src="assets/js/jquery.blockUI.js"></script>
+
 
 <div class="page-wrapper">   
     <div class="container-fluid">           
@@ -51,7 +62,7 @@
                                     <div class="col-2" >
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">Razon Social</label>
-                                            <select class="custom-select col-12" id="razon">
+                                            <select class="custom-select col-12 " id="razon">
                                             </select>
                                         </div>
                                     </div>                                   
@@ -126,7 +137,16 @@
 
 <script src="assets/js/contrato.js"></script>
 
+
+
+
 <style>
+    .form-control {
+    color: #67757c;
+    min-height: 12px;
+    display: initial;
+    HEIGHT: 29PX;
+}
    .dataTables_wrapper {
     padding-top: 10px;
     overflow: hidden;
@@ -158,4 +178,6 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
  }
+
+
 </style>

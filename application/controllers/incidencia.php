@@ -39,7 +39,6 @@ class incidencia extends CI_Controller {
 
 		  //Cargamos la librería email
 		  $this->load->library('email');
-        
 		  /*
 		   * Configuramos los parámetros para enviar el email,
 		   * las siguientes configuraciones es recomendable
@@ -47,7 +46,6 @@ class incidencia extends CI_Controller {
 		   * en este caso para hacer un ejemplo rápido lo hacemos
 		   * en el propio controlador
 		   */
-		   
 		  //Indicamos el protocolo a utilizar
 		   $config['protocol'] = 'smtp';         
 		  
@@ -61,7 +59,7 @@ class incidencia extends CI_Controller {
 		   //$config["smtp_pass"] = '0110EM18';   
 			
 		  //El puerto que utilizará el servidor smtp
-		   $config["smtp_port"] = '25';
+		   $config["smtp_port"] = '2525';
 		   
 		  //El juego de caracteres a utilizar
 		   $config['charset'] = 'utf-8';
@@ -77,7 +75,7 @@ class incidencia extends CI_Controller {
 		   $this->email->initialize($config);
 	
 		 //Ponemos la dirección de correo que enviará el email y un nombre
-		   $this->email->from('tbello@apparelinternational.com', 'Tomas Bello');
+		   $this->email->from('aluna@gmail.com', 'Abril Luna');
 			
 		 /*
 		  * Ponemos el o los destinatarios para los que va el email
@@ -85,21 +83,19 @@ class incidencia extends CI_Controller {
 		  * mismo
 		  */
 		  //ainvig4
-		   $this->email->to('ocastaneda@apparelinternational.com');
+		   $this->email->to('aluna@apparelinternational.com');
 			
 		 //Definimos el asunto del mensaje
 		 //  $this->email->subject($this->input->post("holaaa!"));
    
 		   
-		   $this->email->subject('holaaa!');
+		   $this->email->subject('Mija!');
 			
 		 //Definimos el mensaje a enviar
 		   $this->email->message(
 				  // "Email: ".$this->input->post("email").
 				  // " Mensaje: ".$this->input->post("mensaje")
-				  "Buen dia Melva,
-				  Esto es una prueba de edgar que se puede mandar cualquier correo de cualquier persona sin necesidad de la contraseña
-				  Saludos "
+				  "Que paso mija ya tengo tu gmail! "
 				   );
 			
 		   //Enviamos el email y si se produce bien o mal que avise con una flasdata

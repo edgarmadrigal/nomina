@@ -19,6 +19,23 @@ class Checada extends CI_Model{
         $result = $this->db->query($sp,$params);
         return  $result->result_array();
     }
+
+    
+
+    public function ConsultaChecadasActivosInactivos($NoSemana,$anio,$departamento,$noempleado)
+    {
+        ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
+        $sp = "ConsultaChecadasActivosInactivos ?,?,?,? "; 
+        $params = array(
+        'NoSemana' => $NoSemana,
+        'anio' => $anio,
+        'Code' => $departamento,
+        'NoEmpleado' => $noempleado);
+        
+        $result = $this->db->query($sp,$params);
+        return  $result->result_array();
+    }
+
     public function consultaReprocesar($NoSemana,$anio,$departamento,$noempleado)
     {
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta

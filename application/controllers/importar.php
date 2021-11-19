@@ -72,17 +72,36 @@ class Importar extends CI_Controller {
                    $continua = isset($value['G']);
                    $continua2 = isset($value['F']);
                     if($continua){
-                    if($value['G'] =='1:N authentication succeeded (Face)' || $value['G'] =='1:N Autenticaciￃﾳn exitosa (Rostro)' ) {
+                    if($value['G'] =='1:N authentication succeeded (Face)' 
+                    || $value['G'] =='1:N Autenticaciￃﾳn exitosa (Rostro)' 
+                    || $value['G'] =='1:N Autenticaci??n exitosa (Rostro)' 
+                     || $value['G'] =='1:N Autenticación exitosa (Rostro)'   ) {
+                      
+                     
+                      
+                      /* NUEVO METODO PARA SACAR LA FECHA */
+                          $x= trim($value['A']);
+                          $x = date_create_from_format('d/m/Y H:i',$x );
+                          $date =  $x->getTimestamp();                       
+                          $fechahora= date("Y-m-d H:i",$date );       
 
-                      
-                      $a= date("Y-m-d H:i",strtotime($value['A']));
-                      
-                      $fecha2= date("Y-m-d",strtotime($a));
-                      
-                      $hora2= date("H:i",strtotime($a));
+                          $fecha_actual = strtotime("2021-01-01 00:00");
+                          $fecha_entrada =  $fechahora;
 
-                       $valida=true;
-                      
+                          if($fecha_actual > $fecha_entrada)
+                          {
+                        //      echo "La fecha actual es mayor a la comparada.".$fecha_entrada;                                                             
+                              $fecha= date("Y-m-d",$date );                
+                              $hora= date("H:i",$date );
+                          }else
+                            {
+                              $fecha=  date("Y-m-d H:i",strtotime($value['A']));  
+                              $fechahora= date("Y-m-d",strtotime($a));                           
+                              $hora= date("H:i",strtotime($a));    
+                          // echo "La fecha comparada es igual o menor".$fecha;
+                        }
+
+                       $valida=true;                     
 
                       $completo=explode('(',$value['F']);
                       $usuarioid=$completo[0];
@@ -95,18 +114,74 @@ class Importar extends CI_Controller {
                       }
                     }
                     else if($continua2){
-                    if($value['F'] =='1:N Autenticaciￃﾳn exitosa (Rostro)' ||  $value['F'] =='1:N authentication succeeded (Face)')   {
+                      if($value['F'] =='1:N Autenticaciￃﾳn exitosa (Rostro)' 
+                      ||  $value['F'] =='1:N authentication succeeded (Face)' 
+                      || $value['F']  =='1:N authentication succeeded (Face)' 
+                      || $value['F'] =='1:N Autenticaci??n exitosa (Rostro)' 
+                      || $value['F'] =='1:N Autenticación exitosa (Rostro)'      ){
 
 
-
+                      
                       /* NUEVO METODO PARA SACAR LA FECHA */
-
-                      $fecha= date("Y-m-d",strtotime($value['A']));
+                      
+                      try{
+                        $fecha= date("Y-m-d",strtotime($value['A']));
               
-                      $fechahora= date("Y-m-d H:i",strtotime($value['A']));
-                      
-                      $hora= date("H:i",strtotime($value['A']));
-                      
+                        $fechahora= date("Y-m-d H:i",strtotime($value['A']));
+                        
+                        $hora=  date("H:i",strtotime($value['A']));
+
+
+
+                        //echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+                       /* $fecha=  date("Y-m-d H:i",strtotime($value['A']));  
+                        $fechahora= date("Y-m-d",strtotime($a));                           
+                        $hora= date("H:i",strtotime($a));    */
+
+                        $fecha_entrada =  $fechahora;
+                      }catch (Exception $e) {
+                        
+                        
+                        $x= trim($value['A']);
+                        $x = date_create_from_format('d/m/Y H:i',$x );
+                        $date =  $x->getTimestamp();                       
+                        $fechahora= date("Y-m-d H:i",$date );  
+                        $fecha_entrada =  $fechahora;     
+                     }
+
+
+                      /*echo $fechahora;
+                      die();
+                      */
+  
+                        $fecha_actual = '2021-01-01 00:00';
+
+                        //echo 'fecha_actual:'.$fecha_actual.' fecha_entrada:'.$fecha_entrada;
+                      //die();
+
+                      if($fecha_actual > $fecha_entrada)
+                      {
+                    //      echo "La fecha actual es mayor a la comparada.".$fecha_entrada;   
+                    
+                          $x= trim($value['A']);
+                          $x = date_create_from_format('d/m/Y H:i',$x );
+                          $date =  $x->getTimestamp();                       
+                          $fechahora= date("Y-m-d H:i",$date );  
+                          $fecha_entrada =  $fechahora;   
+                          $fecha= date("Y-m-d",$date );                  
+                          $hora= date("H:i",$date );
+                      }else
+                        {
+                         /*$fecha= date("Y-m-d",$date );                
+                          $hora= date("H:i",$date );   */                      
+                          
+                          //$fecha= date("Y-m-d",strtotime($value['A']));
+              
+                          //$fechahora= date("Y-m-d H:i",strtotime($value['A']));
+                          
+                          //$hora= date("H:i",strtotime($value['A']));
+                       // echo "La fecha comparada es igual o menor".$fecha;
+		                }
 
                       $completo=explode('(',$value['E']);
                       $usuarioid=$completo[0];
@@ -115,28 +190,31 @@ class Importar extends CI_Controller {
 /*
                       $x= trim($value['A']);
                       $x = date_create_from_format('d/m/Y H:i',$x );
-                      $date =  $x->getTimestamp();
-                         
-                      $fecha= date("Y-m-d",$date );
-                      
-                      $fechahora= date("Y-m-d H:i",$date );
-                      
+                      $date =  $x->getTimestamp();                         
+                      $fecha= date("Y-m-d",$date );                      
+                      $fechahora= date("Y-m-d H:i",$date );                      
                       $hora= date("H:i",$date );
-
-
                       $completo=explode('(',$value['E']);
                       $usuarioid=$completo[0];
                       $valida=true;
-
                       $dia_id=date("w",strtotime($fecha)); 
-                      
-
 */
-                      
+                      $datetime1 = date('Y-m-d');
+                      $datetime1 =strtotime ( $datetime1 ) ;
+                      $datetime1 = date_create(date ( 'Y-m-d' ));
+                      $datetime2 = date_create($fechahora); //fecha de db  
+                      $interval = date_diff($datetime1, $datetime2,false);  
+                      $dias = intval($interval->format('%R%a'));  
+///*/validar que sea antes de hoy////*/*/*/*/*/*/********************************************************************************************************************** */
+/************************************************************************************************************************************************************************** */
+                      if ($dias <= 0) {
+                        $result=true;
+                      }else if ($dias > 0) {
+                        $result=false;
+                      }
                       if($dia_id==0){
                         $dia_id=7;
                       }
-
                          // if($valida==true){ //no existe en la base de datos
                               $inserdata[$i]['fecha'] =$fecha;
                               $inserdata[$i]['fechahora'] =$fechahora;
@@ -148,10 +226,11 @@ class Importar extends CI_Controller {
                       }
                     }
                 }
-                if  ($inserdata){
+                if  ($inserdata && $result){
                     $sinduplicados = array_map("unserialize", array_unique(array_map("serialize",$inserdata)));
                     $result = $this->import->importdata($sinduplicados);
-                   $result = $this->import->importdata($inserdata);
+
+                   //$result = $this->import->importdata($inserdata);
                    
                 }
                 if($result){

@@ -196,7 +196,12 @@
                                     <a class="waves-effect waves-dark" href="empleados" aria-expanded="true">
                                     <i class="fa fa-address-card"></i>
                                     <span class="hide-menu">Empleados</span></a>
-                                </li>                                                               
+                                </li> 
+                                <li style="float: left;width: 100%;">  
+                                    <a class="waves-effect waves-dark" href="EmpleadosController_Pedri" aria-expanded="true">
+                                    <i class="fa fa-address-card"></i>
+                                    <span class="hide-menu">Empleados Pedriceña</span></a>
+                                </li>                                                                                               
                                 <li style="float: left;width: 100%;">  
                                     <a class="waves-effect waves-dark" href="byte" aria-expanded="true">
                                     <i class="fa fa-male"></i><i class="fa fa-random"></i>
@@ -253,6 +258,7 @@
                                     <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
                                     <span class="hide-menu">Reporte Contrato</span></a>
                                 </li>
+
                                 <li style="float: left;width: 100%;"> 
                                     <a class="waves-effect waves-dark" href="diarioController" aria-expanded="true">                                    
                                     <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
@@ -262,6 +268,28 @@
                                     <a class="waves-effect waves-dark" href="percepcionesController" aria-expanded="true">                                    
                                     <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
                                     <span class="hide-menu" style="font-size: 15px;" >Reporte Percepciones</span></a>
+                                </li>
+                                
+                                <li style="float: left;width: 100%;"> 
+                                    <a class="waves-effect waves-dark" href="retencionesController" aria-expanded="true">                                    
+                                    <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
+                                    <span class="hide-menu">Reporte Retenciones</span></a>
+                                </li>
+                                
+                                <li style="float: left;width: 100%;"> 
+                                    <a class="waves-effect waves-dark" href="relacionSolicitudesController" aria-expanded="true">                                    
+                                    <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
+                                    <span class="hide-menu">Reporte Relacion de Solicitudes</span></a>
+                                </li>
+                                <li style="float: left;width: 100%;"> 
+                                    <a class="waves-effect waves-dark" href="costoController" aria-expanded="true">                                    
+                                    <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
+                                    <span class="hide-menu">Reporte Costo</span></a>
+                                </li>
+                                <li style="float: left;width: 100%;"> 
+                                    <a class="waves-effect waves-dark" href="pensionController" aria-expanded="true">                                    
+                                    <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
+                                    <span class="hide-menu">Reporte Pension Alimenticia</span></a>
                                 </li>
                             </ul>
                         </li>

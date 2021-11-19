@@ -11,21 +11,21 @@ $(function () {
             bindto: '#visitor',
             data: {
                 columns: [
-                    ['Other', 30],
-                    ['Desktop', 10],
-                    ['Tablet', 40],
-                    ['Mobile', 50],
+                    ['TBG', 10],
+                    ['MMS', 30],
+                    ['AE', 40],
+                    ['TT1', 50],
                 ],
                 type: 'donut',
-                onclick: function (d, i) { console.log("onclick", d, i); },
-                onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-                onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                //onclick: function (d, i) { console.log("onclick", d, i); },
+                //onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                //onmouseout: function (d, i) { console.log("onmouseout", d, i); }
             },
             donut: {
                 label: {
                     show: false
                 },
-                title: "Visits",
+                title: "Faltas",
                 width: 20,
             },
             legend: {
@@ -41,36 +41,56 @@ $(function () {
         // Sales chart
         Morris.Area({
             element: 'sales-chart',
-            data: [{
-                period: '2017-01-01',
-                Enero: 10,
-                Febrero: 80,
-                Marzo: 90
-            }, {
-                period: '2017-01-02',
-                Enero: 10,
-                Febrero: 80,
-                Marzo: 90         
-            }, {
-                period: '2017-01-03',
-                Enero: 90,
-                Febrero: 76,
-                Marzo: 90
-            }],
-
+            data: [
+                {
+                    period: '2022-01-01',
+                    Retardos: 10,
+                    Faltas: 20,
+                    Asistencias: 30         
+                },
+                {
+                    period: '2022-01-02',
+                    Retardos: 20,
+                    Faltas: 30,
+                    Asistencias: 40
+                },
+                {
+                    period: '2022-01-03',
+                    Retardos: 30,
+                    Faltas: 35,
+                    Asistencias: 50         
+                }
+             ,{
+                period: '2022-01-04',
+                Retardos: 40,
+                Faltas: 45,
+                Asistencias: 60         
+            } , {
+                period: '2022-01-05',
+                Retardos: 30,
+                Faltas: 35,
+                Asistencias: 50         
+            } ,  
+            {
+                period: '2022-01-06',
+                Retardos: 10,
+                Faltas: 10,
+                Asistencias: 10
+            }, 
+        ],
             xkey: 'period',
             xLabels: 'day',
-            ykeys: ['Enero','Febrero','Marzo'],
-            labels: ['Enero','Febrero','Marzo'],
+            ykeys: ['Retardos','Faltas','Asistencias'],
+            labels: ['Retardos','Faltas','Asistencias'],
             pointSize: 2,
             fillOpacity: 0,
             pointStrokeColors: ['#20aee3', '#24d2b5', '#6772e5'],
             behaveLikeLine: true,
             gridLineColor: 'gray',
-            lineWidth: 3,
+            lineWidth:3,
             hideHover: 'auto',
             resize: true,
-            //colors:['red', '#24d2b5', '#6772e5'],
+            colors:['red', '#ff9041', '#ff9041'],
 
         });
     
@@ -78,7 +98,7 @@ $(function () {
         { y: '2014', a: 50, b: 90},
         { y: '2015', a: 65,  b: 75},
         { y: '2016', a: 50,  b: 50},
-        { y: '2017', a: 75,  b: 60},
+        { y: '2022', a: 75,  b: 60},
         { y: '2018', a: 80,  b: 65},
         { y: '2019', a: 90,  b: 70},
         { y: '2020', a: 100, b: 75},
@@ -113,10 +133,10 @@ $(function () {
     Morris.Donut({
         element: 'pie-chart',
     data: [
-        {label: "Friends", value: 30},
-        {label: "Allies", value: 15},
-        {label: "Enemies", value: 45},
-        {label: "Neutral", value: 10}
+        {label: "TBG", value: 30},
+        {label: "MMS", value: 15},
+        {label: "TT1", value: 45},
+        {label: "AE", value: 10}
     ]
     });
 

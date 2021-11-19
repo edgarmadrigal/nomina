@@ -74,19 +74,20 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex m-b-30 no-block">
-                                    <h5 class="card-title m-b-0 align-self-center">Our Visitors</h5>
+                                    <h5 class="card-title m-b-0 align-self-center">Faltas</h5>
                                     <div class="ml-auto">
                                         <select class="custom-select b-0">
-                                            <option selected="">Today</option>
-                                            <option value="1">Tomorrow</option>
+                                            <option selected="">Hoy</option>
+                                            <option value="1">Ayer</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div id="visitor" style="height:260px; width:100%;"></div>
                                 <ul class="list-inline m-t-30 text-center font-12">
-                                    <li><i class="fa fa-circle text-purple"></i> Tablet</li>
-                                    <li><i class="fa fa-circle text-success"></i> Desktops</li>
-                                    <li><i class="fa fa-circle text-info"></i> Mobile</li>
+                                    <li><i class="fa fa-circle text-purple"></i> TBG</li>
+                                    <li><i class="fa fa-circle text-success"></i> TT1</li>
+                                    <li><i class="fa fa-circle text-info"></i> AE</li>
+                                    <li><i class="fa fa-circle " style="color: rgb(236, 239, 241) !important; "></i> MMS</li>
                                 </ul>
                             </div>
                         </div>

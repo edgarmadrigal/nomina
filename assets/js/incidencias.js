@@ -75,6 +75,15 @@ Modulo = {
     dtLunes: [],
     dtValidar:[]
     //Válida campos Obligatorios
+    ,fnMandaCorreo(){
+        $.ajax({
+            url:  Modulo.baseurl+'incidencia/MandaCorreo',
+            type: 'post',
+            dataType: 'json'
+        }).done(function (data) {
+           //-------- $('#mensaje').val(data[0]);
+        }); 
+    }
     , fnValidarObligatorios: function () {
     var estatusValidacion =
 
@@ -343,6 +352,11 @@ $(document).ready(function () {
             $(this).html(title);
         }
     });
+
+    
+    $(document).on('click', '#correo', function (e) {
+       Modulo.fnMandaCorreo();
+    }); 
 
     $('#selEmpleado').on('change', function() {
         lunes = $('#lunes').DataTable();

@@ -142,7 +142,6 @@ class asistencias extends CI_Controller {
       $TotalTiempoExtra= new DateTime('00:00:00');
       $TotalEmpleados=0;
 
-      ///esto es un nuevo comentario
       ob_start();      
       require (dirname(__DIR__, 1)."/views/ReporteAsistencia.php");
       $html = ob_get_contents();//$this->output->get_output();

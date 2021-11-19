@@ -1,0 +1,631 @@
+﻿Date,Device ID,Device,User Group,User,Event
+2021-11-18 11:43:23,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-18 11:43:18,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-18 11:36:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200011,1:N authentication succeeded (Face)
+2021-11-18 11:33:23,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-18 11:32:29,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200001,1:N authentication succeeded (Face)
+2021-11-18 11:32:25,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200007,1:N authentication succeeded (Face)
+2021-11-18 11:32:02,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200006,1:N authentication succeeded (Face)
+2021-11-18 11:31:50,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200081,1:N authentication succeeded (Face)
+2021-11-18 11:31:27,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200009,1:N authentication succeeded (Face)
+2021-11-18 11:30:32,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-18 11:30:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200005,1:N authentication succeeded (Face)
+2021-11-18 11:29:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200012,1:N authentication succeeded (Face)
+2021-11-18 11:29:16,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200027,1:N authentication succeeded (Face)
+2021-11-18 11:29:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200013,1:N authentication succeeded (Face)
+2021-11-18 11:28:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200039,1:N authentication succeeded (Face)
+2021-11-18 11:28:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200064,1:N authentication succeeded (Face)
+2021-11-18 11:28:27,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200050,1:N authentication succeeded (Face)
+2021-11-18 11:28:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200050,1:N authentication succeeded (Face)
+2021-11-18 11:28:22,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,1:N authentication succeeded (Face)
+2021-11-18 11:28:18,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200067,1:N authentication succeeded (Face)
+2021-11-18 11:28:13,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200047,1:N authentication succeeded (Face)
+2021-11-18 11:28:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200033,1:N authentication succeeded (Face)
+2021-11-18 11:28:05,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200049,1:N authentication succeeded (Face)
+2021-11-18 11:28:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200090,1:N authentication succeeded (Face)
+2021-11-18 11:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200044,1:N authentication succeeded (Face)
+2021-11-18 11:27:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200079,1:N authentication succeeded (Face)
+2021-11-18 11:27:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200015,1:N authentication succeeded (Face)
+2021-11-18 11:27:42,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200092,1:N authentication succeeded (Face)
+2021-11-18 11:27:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200059,1:N authentication succeeded (Face)
+2021-11-18 11:27:35,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200060,1:N authentication succeeded (Face)
+2021-11-18 11:27:33,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200058,1:N authentication succeeded (Face)
+2021-11-18 11:27:29,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200051,1:N authentication succeeded (Face)
+2021-11-18 11:27:26,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200025,1:N authentication succeeded (Face)
+2021-11-18 11:27:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200072,1:N authentication succeeded (Face)
+2021-11-18 11:27:19,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200043,1:N authentication succeeded (Face)
+2021-11-18 11:27:15,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200021,1:N authentication succeeded (Face)
+2021-11-18 11:27:12,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200075,1:N authentication succeeded (Face)
+2021-11-18 11:27:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200069,1:N authentication succeeded (Face)
+2021-11-18 11:27:02,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200045,1:N authentication succeeded (Face)
+2021-11-18 11:26:57,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:26:51,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:26:45,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:26:36,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:26:26,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:26:17,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:26:07,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200063,1:N authentication succeeded (Face)
+2021-11-18 11:25:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200023,1:N authentication succeeded (Face)
+2021-11-18 11:25:52,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200065,1:N authentication succeeded (Face)
+2021-11-18 11:25:49,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200061,1:N authentication succeeded (Face)
+2021-11-18 11:25:45,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:25:34,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:25:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200055,1:N authentication succeeded (Face)
+2021-11-18 11:25:20,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200056,1:N authentication succeeded (Face)
+2021-11-18 11:25:17,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200046,1:N authentication succeeded (Face)
+2021-11-18 11:25:14,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200052,1:N authentication succeeded (Face)
+2021-11-18 11:25:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200053,1:N authentication succeeded (Face)
+2021-11-18 11:25:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200057,1:N authentication succeeded (Face)
+2021-11-18 11:24:58,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 11:24:49,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200037,1:N authentication succeeded (Face)
+2021-11-18 11:24:47,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200014,1:N authentication succeeded (Face)
+2021-11-18 11:24:42,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200028,1:N authentication succeeded (Face)
+2021-11-18 11:24:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200042,1:N authentication succeeded (Face)
+2021-11-18 11:24:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200074,1:N authentication succeeded (Face)
+2021-11-18 11:24:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200016,1:N authentication succeeded (Face)
+2021-11-18 11:24:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200073,1:N authentication succeeded (Face)
+2021-11-18 11:24:27,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200054,1:N authentication succeeded (Face)
+2021-11-18 11:24:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200068,1:N authentication succeeded (Face)
+2021-11-18 11:24:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200048,1:N authentication succeeded (Face)
+2021-11-18 11:24:19,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200018,1:N authentication succeeded (Face)
+2021-11-18 11:24:13,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200019,1:N authentication succeeded (Face)
+2021-11-18 11:24:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200085,1:N authentication succeeded (Face)
+2021-11-18 11:24:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200030,1:N authentication succeeded (Face)
+2021-11-18 11:24:05,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200070,1:N authentication succeeded (Face)
+2021-11-18 11:24:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200083,1:N authentication succeeded (Face)
+2021-11-18 11:23:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200041,1:N authentication succeeded (Face)
+2021-11-18 11:23:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200086,1:N authentication succeeded (Face)
+2021-11-18 11:23:52,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200091,1:N authentication succeeded (Face)
+2021-11-18 11:23:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200082,1:N authentication succeeded (Face)
+2021-11-18 11:23:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200084,1:N authentication succeeded (Face)
+2021-11-18 11:23:43,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200088,1:N authentication succeeded (Face)
+2021-11-18 11:23:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200078,1:N authentication succeeded (Face)
+2021-11-18 11:23:38,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200077,1:N authentication succeeded (Face)
+2021-11-18 11:23:35,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200020,1:N authentication succeeded (Face)
+2021-11-18 11:23:29,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200038,1:N authentication succeeded (Face)
+2021-11-18 11:23:26,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200071,1:N authentication succeeded (Face)
+2021-11-18 11:23:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200017,1:N authentication succeeded (Face)
+2021-11-18 11:23:18,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200024,1:N authentication succeeded (Face)
+2021-11-18 11:23:14,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200080,1:N authentication succeeded (Face)
+2021-11-18 11:23:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200029,1:N authentication succeeded (Face)
+2021-11-18 11:23:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200032,1:N authentication succeeded (Face)
+2021-11-18 11:23:04,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200031,1:N authentication succeeded (Face)
+2021-11-18 11:23:00,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200076,1:N authentication succeeded (Face)
+2021-11-18 11:22:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200022,1:N authentication succeeded (Face)
+2021-11-18 11:22:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200034,1:N authentication succeeded (Face)
+2021-11-18 09:42:17,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-18 09:41:36,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-18 08:07:15,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200020,Authentication failed (Timeout)
+2021-11-18 06:56:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200042,1:N authentication succeeded (Face)
+2021-11-18 06:54:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200015,1:N authentication succeeded (Face)
+2021-11-18 06:54:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200032,1:N authentication succeeded (Face)
+2021-11-18 06:54:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200061,1:N authentication succeeded (Face)
+2021-11-18 06:54:20,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200031,1:N authentication succeeded (Face)
+2021-11-18 06:35:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200076,1:N authentication succeeded (Face)
+2021-11-18 06:32:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200032,1:N authentication succeeded (Face)
+2021-11-18 06:31:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200061,1:N authentication succeeded (Face)
+2021-11-18 06:31:20,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200042,1:N authentication succeeded (Face)
+2021-11-18 06:31:17,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200042,1:N authentication succeeded (Face)
+2021-11-18 06:31:13,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200015,1:N authentication succeeded (Face)
+2021-11-18 06:31:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200031,1:N authentication succeeded (Face)
+2021-11-18 06:30:50,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200088,1:N authentication succeeded (Face)
+2021-11-18 06:30:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200085,1:N authentication succeeded (Face)
+2021-11-18 06:30:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200086,1:N authentication succeeded (Face)
+2021-11-18 06:30:42,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,1:N authentication succeeded (Face)
+2021-11-18 06:28:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200084,1:N authentication succeeded (Face)
+2021-11-18 06:28:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200083,1:N authentication succeeded (Face)
+2021-11-18 06:05:16,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200086,1:N authentication succeeded (Face)
+2021-11-18 06:04:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200076,1:N authentication succeeded (Face)
+2021-11-18 06:03:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200085,1:N authentication succeeded (Face)
+2021-11-18 06:03:16,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200067,1:N authentication succeeded (Face)
+2021-11-18 06:03:13,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,1:N authentication succeeded (Face)
+2021-11-18 06:03:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200083,1:N authentication succeeded (Face)
+2021-11-18 06:03:06,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200088,1:N authentication succeeded (Face)
+2021-11-18 06:03:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200084,1:N authentication succeeded (Face)
+2021-11-18 03:03:15,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200054,1:N authentication succeeded (Face)
+2021-11-18 02:14:02,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 02:04:49,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200067,1:N authentication succeeded (Face)
+2021-11-18 02:00:26,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200043,1:N authentication succeeded (Face)
+2021-11-18 02:00:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200075,1:N authentication succeeded (Face)
+2021-11-18 01:56:49,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200048,1:N authentication succeeded (Face)
+2021-11-18 01:55:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200009,1:N authentication succeeded (Face)
+2021-11-18 01:55:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200007,1:N authentication succeeded (Face)
+2021-11-18 01:55:29,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200034,1:N authentication succeeded (Face)
+2021-11-18 01:55:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200036,1:N authentication succeeded (Face)
+2021-11-18 01:54:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200035,1:N authentication succeeded (Face)
+2021-11-18 01:54:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200065,1:N authentication succeeded (Face)
+2021-11-18 01:54:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200027,1:N authentication succeeded (Face)
+2021-11-18 01:54:07,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200013,1:N authentication succeeded (Face)
+2021-11-18 01:54:02,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200066,1:N authentication succeeded (Face)
+2021-11-18 01:54:02,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 01:53:56,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 01:53:46,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200063,1:N authentication succeeded (Face)
+2021-11-18 01:53:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200064,1:N authentication succeeded (Face)
+2021-11-18 01:53:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200005,1:N authentication succeeded (Face)
+2021-11-18 01:53:22,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200001,1:N authentication succeeded (Face)
+2021-11-18 01:53:19,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200039,1:N authentication succeeded (Face)
+2021-11-18 01:53:07,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200040,1:N authentication succeeded (Face)
+2021-11-18 01:53:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200022,1:N authentication succeeded (Face)
+2021-11-18 01:52:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200050,1:N authentication succeeded (Face)
+2021-11-18 01:52:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200070,1:N authentication succeeded (Face)
+2021-11-18 01:52:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200049,1:N authentication succeeded (Face)
+2021-11-18 01:52:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200088,1:N authentication succeeded (Face)
+2021-11-18 01:52:41,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200083,1:N authentication succeeded (Face)
+2021-11-18 01:52:37,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200068,1:N authentication succeeded (Face)
+2021-11-18 01:52:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200047,1:N authentication succeeded (Face)
+2021-11-18 01:52:31,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200033,1:N authentication succeeded (Face)
+2021-11-18 01:52:27,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200090,1:N authentication succeeded (Face)
+2021-11-18 01:52:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200091,1:N authentication succeeded (Face)
+2021-11-18 01:52:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200092,1:N authentication succeeded (Face)
+2021-11-18 01:52:18,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,1:N authentication succeeded (Face)
+2021-11-18 01:52:15,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200084,1:N authentication succeeded (Face)
+2021-11-18 01:52:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200086,1:N authentication succeeded (Face)
+2021-11-18 01:52:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200082,1:N authentication succeeded (Face)
+2021-11-18 01:52:04,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200085,1:N authentication succeeded (Face)
+2021-11-18 01:52:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200074,1:N authentication succeeded (Face)
+2021-11-18 01:51:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200059,1:N authentication succeeded (Face)
+2021-11-18 01:51:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200073,1:N authentication succeeded (Face)
+2021-11-18 01:51:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200058,1:N authentication succeeded (Face)
+2021-11-18 01:51:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200060,1:N authentication succeeded (Face)
+2021-11-18 01:51:44,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200079,1:N authentication succeeded (Face)
+2021-11-18 01:51:42,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200080,1:N authentication succeeded (Face)
+2021-11-18 01:51:38,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200014,1:N authentication succeeded (Face)
+2021-11-18 01:51:33,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200029,1:N authentication succeeded (Face)
+2021-11-18 01:51:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200056,1:N authentication succeeded (Face)
+2021-11-18 01:51:25,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200031,1:N authentication succeeded (Face)
+2021-11-18 01:51:20,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 01:51:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200061,1:N authentication succeeded (Face)
+2021-11-18 01:51:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200055,1:N authentication succeeded (Face)
+2021-11-18 01:51:04,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200025,1:N authentication succeeded (Face)
+2021-11-18 01:51:00,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200076,1:N authentication succeeded (Face)
+2021-11-18 01:50:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200057,1:N authentication succeeded (Face)
+2021-11-18 01:50:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200052,1:N authentication succeeded (Face)
+2021-11-18 01:50:50,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200028,1:N authentication succeeded (Face)
+2021-11-18 01:50:47,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200023,1:N authentication succeeded (Face)
+2021-11-18 01:50:44,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200053,1:N authentication succeeded (Face)
+2021-11-18 01:50:41,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200051,1:N authentication succeeded (Face)
+2021-11-18 01:50:37,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200032,1:N authentication succeeded (Face)
+2021-11-18 01:50:33,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200038,1:N authentication succeeded (Face)
+2021-11-18 01:50:29,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200071,1:N authentication succeeded (Face)
+2021-11-18 01:50:25,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200046,1:N authentication succeeded (Face)
+2021-11-18 01:50:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200010,1:N authentication succeeded (Face)
+2021-11-18 01:49:41,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200015,1:N authentication succeeded (Face)
+2021-11-18 01:48:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200072,1:N authentication succeeded (Face)
+2021-11-18 01:48:41,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200019,1:N authentication succeeded (Face)
+2021-11-18 01:48:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200019,1:N authentication succeeded (Face)
+2021-11-18 01:48:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200016,1:N authentication succeeded (Face)
+2021-11-18 01:48:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200041,1:N authentication succeeded (Face)
+2021-11-18 01:48:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200062,1:N authentication succeeded (Face)
+2021-11-18 01:48:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200044,1:N authentication succeeded (Face)
+2021-11-18 01:47:51,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 01:47:19,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200037,1:N authentication succeeded (Face)
+2021-11-18 01:46:52,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200012,1:N authentication succeeded (Face)
+2021-11-18 01:46:22,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200011,1:N authentication succeeded (Face)
+2021-11-18 01:45:52,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200069,1:N authentication succeeded (Face)
+2021-11-18 01:45:04,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200018,1:N authentication succeeded (Face)
+2021-11-18 01:44:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200042,1:N authentication succeeded (Face)
+2021-11-18 01:44:50,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200045,1:N authentication succeeded (Face)
+2021-11-18 01:43:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200030,1:N authentication succeeded (Face)
+2021-11-18 01:41:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200021,1:N authentication succeeded (Face)
+2021-11-18 01:41:43,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200081,1:N authentication succeeded (Face)
+2021-11-18 01:41:22,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 01:41:16,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 01:41:13,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-18 01:37:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200006,1:N authentication succeeded (Face)
+2021-11-18 01:35:52,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200078,1:N authentication succeeded (Face)
+2021-11-18 01:35:49,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200077,1:N authentication succeeded (Face)
+2021-11-18 01:16:28,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200024,1:N authentication succeeded (Face)
+2021-11-18 01:16:25,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200024,1:N authentication succeeded (Face)
+2021-11-18 01:16:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200017,1:N authentication succeeded (Face)
+2021-11-18 01:16:05,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200017,1:N authentication succeeded (Face)
+2021-11-18 01:08:20,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:08:18,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:08:15,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:08:13,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:08:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:08:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:08:05,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:08:02,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:08:00,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:52,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:50,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:47,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:44,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:42,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:37,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 01:07:27,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,1:N authentication succeeded (Face)
+2021-11-18 00:58:48,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 00:58:42,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 00:57:21,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 00:57:15,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 00:57:07,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 00:55:05,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 00:54:59,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-18 00:54:53,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 14:27:49,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 14:27:49,542198617,FaceStation 2 542198617 (192.168.8.220),,,DHCP connected
+2021-11-17 14:27:42,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper off
+2021-11-17 14:27:38,542198617,FaceStation 2 542198617 (192.168.8.220),,,Device started
+2021-11-17 14:27:38,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network disconnected
+2021-11-17 11:45:33,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 11:45:33,542198617,FaceStation 2 542198617 (192.168.8.220),,,DHCP connected
+2021-11-17 11:45:25,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper off
+2021-11-17 11:45:22,542198617,FaceStation 2 542198617 (192.168.8.220),,,Device started
+2021-11-17 11:45:22,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network disconnected
+2021-11-17 11:38:44,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200009,1:N authentication succeeded (Face)
+2021-11-17 11:38:28,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200011,1:N authentication succeeded (Face)
+2021-11-17 11:38:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200007,1:N authentication succeeded (Face)
+2021-11-17 11:38:18,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200001,1:N authentication succeeded (Face)
+2021-11-17 11:38:12,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200005,1:N authentication succeeded (Face)
+2021-11-17 11:38:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200005,1:N authentication succeeded (Face)
+2021-11-17 11:37:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200081,1:N authentication succeeded (Face)
+2021-11-17 11:37:54,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 11:37:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200010,1:N authentication succeeded (Face)
+2021-11-17 11:37:27,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200027,1:N authentication succeeded (Face)
+2021-11-17 11:37:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200012,1:N authentication succeeded (Face)
+2021-11-17 11:37:19,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200013,1:N authentication succeeded (Face)
+2021-11-17 11:37:14,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200052,1:N authentication succeeded (Face)
+2021-11-17 11:37:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200055,1:N authentication succeeded (Face)
+2021-11-17 11:37:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200056,1:N authentication succeeded (Face)
+2021-11-17 11:37:05,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200058,1:N authentication succeeded (Face)
+2021-11-17 11:37:02,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200060,1:N authentication succeeded (Face)
+2021-11-17 11:36:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200059,1:N authentication succeeded (Face)
+2021-11-17 11:36:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200015,1:N authentication succeeded (Face)
+2021-11-17 11:36:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200039,1:N authentication succeeded (Face)
+2021-11-17 11:36:42,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200064,1:N authentication succeeded (Face)
+2021-11-17 11:36:37,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200050,1:N authentication succeeded (Face)
+2021-11-17 11:36:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200067,1:N authentication succeeded (Face)
+2021-11-17 11:36:29,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200072,1:N authentication succeeded (Face)
+2021-11-17 11:36:26,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200040,1:N authentication succeeded (Face)
+2021-11-17 11:36:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200022,1:N authentication succeeded (Face)
+2021-11-17 11:36:19,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200049,1:N authentication succeeded (Face)
+2021-11-17 11:36:14,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200074,1:N authentication succeeded (Face)
+2021-11-17 11:36:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200073,1:N authentication succeeded (Face)
+2021-11-17 11:36:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200047,1:N authentication succeeded (Face)
+2021-11-17 11:36:05,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200033,1:N authentication succeeded (Face)
+2021-11-17 11:36:02,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200025,1:N authentication succeeded (Face)
+2021-11-17 11:35:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200021,1:N authentication succeeded (Face)
+2021-11-17 11:35:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200066,1:N authentication succeeded (Face)
+2021-11-17 11:35:44,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 11:35:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200063,1:N authentication succeeded (Face)
+2021-11-17 11:35:28,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200065,1:N authentication succeeded (Face)
+2021-11-17 11:35:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200051,1:N authentication succeeded (Face)
+2021-11-17 11:35:22,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200051,1:N authentication succeeded (Face)
+2021-11-17 11:35:16,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200020,1:N authentication succeeded (Face)
+2021-11-17 11:35:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200043,1:N authentication succeeded (Face)
+2021-11-17 11:35:07,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200024,1:N authentication succeeded (Face)
+2021-11-17 11:35:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200048,1:N authentication succeeded (Face)
+2021-11-17 11:34:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200028,1:N authentication succeeded (Face)
+2021-11-17 11:34:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200014,1:N authentication succeeded (Face)
+2021-11-17 11:34:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200042,1:N authentication succeeded (Face)
+2021-11-17 11:34:44,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200075,1:N authentication succeeded (Face)
+2021-11-17 11:34:41,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200031,1:N authentication succeeded (Face)
+2021-11-17 11:34:37,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200061,1:N authentication succeeded (Face)
+2021-11-17 11:34:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200068,1:N authentication succeeded (Face)
+2021-11-17 11:34:29,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200091,1:N authentication succeeded (Face)
+2021-11-17 11:34:26,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200090,1:N authentication succeeded (Face)
+2021-11-17 11:34:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200092,1:N authentication succeeded (Face)
+2021-11-17 11:34:17,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200069,1:N authentication succeeded (Face)
+2021-11-17 11:34:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200053,1:N authentication succeeded (Face)
+2021-11-17 11:34:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200057,1:N authentication succeeded (Face)
+2021-11-17 11:34:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200037,1:N authentication succeeded (Face)
+2021-11-17 11:33:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200062,1:N authentication succeeded (Face)
+2021-11-17 11:33:37,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200017,1:N authentication succeeded (Face)
+2021-11-17 11:33:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200045,1:N authentication succeeded (Face)
+2021-11-17 11:33:28,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200030,1:N authentication succeeded (Face)
+2021-11-17 11:33:25,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200041,1:N authentication succeeded (Face)
+2021-11-17 11:33:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200070,1:N authentication succeeded (Face)
+2021-11-17 11:33:16,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200018,1:N authentication succeeded (Face)
+2021-11-17 11:33:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200038,1:N authentication succeeded (Face)
+2021-11-17 11:33:05,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200046,1:N authentication succeeded (Face)
+2021-11-17 11:33:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200044,1:N authentication succeeded (Face)
+2021-11-17 11:32:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200016,1:N authentication succeeded (Face)
+2021-11-17 11:32:44,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200019,1:N authentication succeeded (Face)
+2021-11-17 11:32:41,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200023,1:N authentication succeeded (Face)
+2021-11-17 11:32:38,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200023,1:N authentication succeeded (Face)
+2021-11-17 11:32:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200071,1:N authentication succeeded (Face)
+2021-11-17 11:32:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200078,1:N authentication succeeded (Face)
+2021-11-17 11:32:27,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200077,1:N authentication succeeded (Face)
+2021-11-17 11:32:24,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200034,1:N authentication succeeded (Face)
+2021-11-17 11:32:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,1:N authentication succeeded (Face)
+2021-11-17 11:32:17,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200082,1:N authentication succeeded (Face)
+2021-11-17 11:32:14,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200084,1:N authentication succeeded (Face)
+2021-11-17 11:32:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200076,1:N authentication succeeded (Face)
+2021-11-17 11:32:07,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200079,1:N authentication succeeded (Face)
+2021-11-17 11:32:04,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200080,1:N authentication succeeded (Face)
+2021-11-17 11:32:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200032,1:N authentication succeeded (Face)
+2021-11-17 11:31:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200036,1:N authentication succeeded (Face)
+2021-11-17 11:31:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200088,1:N authentication succeeded (Face)
+2021-11-17 11:31:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200083,1:N authentication succeeded (Face)
+2021-11-17 11:31:49,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200086,1:N authentication succeeded (Face)
+2021-11-17 11:31:46,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200085,1:N authentication succeeded (Face)
+2021-11-17 11:31:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200054,1:N authentication succeeded (Face)
+2021-11-17 11:31:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200035,1:N authentication succeeded (Face)
+2021-11-17 11:31:33,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200029,1:N authentication succeeded (Face)
+2021-11-17 11:31:29,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200026,1:N authentication succeeded (Face)
+2021-11-17 11:02:43,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-17 10:32:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 10:32:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 10:32:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 10:32:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 10:19:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 09:43:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 09:42:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 09:42:54,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 09:42:31,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 09:42:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 09:42:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 09:42:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200012,1:N authentication succeeded (Face)
+2021-11-17 09:41:45,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 09:41:37,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 09:28:02,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200051,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200050,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200049,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200048,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200047,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200046,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200045,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200044,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200043,User update succeeded
+2021-11-17 09:27:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200042,User update succeeded
+2021-11-17 09:27:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200041,User update succeeded
+2021-11-17 09:27:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200040,User update succeeded
+2021-11-17 09:27:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200039,User update succeeded
+2021-11-17 09:27:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200038,User update succeeded
+2021-11-17 09:27:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200037,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200036,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200035,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200034,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200033,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200032,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200031,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200030,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200029,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200028,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200027,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200026,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200025,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200024,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200023,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200022,User update succeeded
+2021-11-17 09:27:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200021,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200020,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200019,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200018,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200017,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200016,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200015,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200014,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200013,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200012,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200011,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200010,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200009,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200007,User update succeeded
+2021-11-17 09:27:56,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200006,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200005,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200001,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200092,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200091,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200090,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200088,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200086,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200085,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200084,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200083,User update succeeded
+2021-11-17 09:27:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200082,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200081,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200080,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200079,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200078,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200077,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200076,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200075,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200074,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200073,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200072,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200071,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200070,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200069,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200068,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200067,User update succeeded
+2021-11-17 09:27:54,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200066,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200065,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200064,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200063,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200062,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200061,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200060,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200059,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200058,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200057,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200056,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200055,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200054,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200053,User update succeeded
+2021-11-17 09:27:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200052,User update succeeded
+2021-11-17 09:27:52,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,1(Administrator),User update succeeded
+2021-11-17 09:17:57,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-17 09:17:28,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-17 09:17:28,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-17 09:17:23,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-17 09:14:35,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-17 09:14:30,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-17 09:13:07,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-17 09:13:02,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-17 09:10:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,1(Administrator),User enrollment succeeded
+2021-11-17 09:09:42,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-17 09:09:33,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-17 09:09:33,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-17 09:08:28,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 09:08:28,542198617,FaceStation 2 542198617 (192.168.8.220),,,DHCP connected
+2021-11-17 08:48:34,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 08:48:34,542198617,FaceStation 2 542198617 (192.168.8.220),,,DHCP connected
+2021-11-17 08:47:53,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 08:47:53,542198617,FaceStation 2 542198617 (192.168.8.220),,,DHCP connected
+2021-11-17 08:38:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200013,1:N authentication succeeded (Face)
+2021-11-17 08:37:26,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200007,1:N authentication succeeded (Face)
+2021-11-17 08:37:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200007,User enrollment succeeded
+2021-11-17 08:36:49,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200011,1:N authentication succeeded (Face)
+2021-11-17 08:36:42,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200011,User enrollment succeeded
+2021-11-17 08:35:14,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200009,User enrollment succeeded
+2021-11-17 08:34:31,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200005,User enrollment succeeded
+2021-11-17 08:33:07,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 08:33:01,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 08:32:28,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200002,User enrollment succeeded
+2021-11-17 08:31:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200001,1:N authentication succeeded (Face)
+2021-11-17 08:31:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200001,User enrollment succeeded
+2021-11-17 08:28:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200092,User enrollment succeeded
+2021-11-17 08:28:34,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200091,User enrollment succeeded
+2021-11-17 08:28:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200090,User enrollment succeeded
+2021-11-17 08:27:33,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 08:27:27,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 08:27:17,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 08:25:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,1:N authentication succeeded (Face)
+2021-11-17 08:25:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,1:N authentication succeeded (Face)
+2021-11-17 08:25:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200089,User enrollment succeeded
+2021-11-17 08:25:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200030,
+2021-11-17 08:24:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200088,User enrollment succeeded
+2021-11-17 08:24:12,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200086,User enrollment succeeded
+2021-11-17 08:23:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200085,User enrollment succeeded
+2021-11-17 08:23:12,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200083,User enrollment succeeded
+2021-11-17 08:22:20,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200084,User enrollment succeeded
+2021-11-17 08:20:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200082,User enrollment succeeded
+2021-11-17 08:20:19,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200080,User enrollment succeeded
+2021-11-17 08:19:37,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200079,User enrollment succeeded
+2021-11-17 08:19:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200077,User enrollment succeeded
+2021-11-17 08:18:41,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200078,User enrollment succeeded
+2021-11-17 08:17:33,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200006,1:N authentication succeeded (Face)
+2021-11-17 08:17:14,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200006,User enrollment succeeded
+2021-11-17 08:16:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200076,1:N authentication succeeded (Face)
+2021-11-17 08:16:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200076,User enrollment succeeded
+2021-11-17 08:16:03,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200075,User enrollment succeeded
+2021-11-17 08:15:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200072,User enrollment succeeded
+2021-11-17 08:15:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200074,User enrollment succeeded
+2021-11-17 08:14:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200073,User enrollment succeeded
+2021-11-17 08:13:46,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200071,User enrollment succeeded
+2021-11-17 08:11:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200070,User enrollment succeeded
+2021-11-17 08:11:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200069,User enrollment succeeded
+2021-11-17 08:10:46,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200068,User enrollment succeeded
+2021-11-17 08:10:07,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200067,User enrollment succeeded
+2021-11-17 08:09:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200066,User enrollment succeeded
+2021-11-17 08:08:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200065,User enrollment succeeded
+2021-11-17 08:08:18,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200064,User enrollment succeeded
+2021-11-17 08:07:35,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200063,User enrollment succeeded
+2021-11-17 08:06:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200062,1:N authentication succeeded (Face)
+2021-11-17 08:06:06,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 08:05:25,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200062,User enrollment succeeded
+2021-11-17 08:04:21,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 08:02:31,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 08:00:06,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200061,User enrollment succeeded
+2021-11-17 07:59:33,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200059,1:N authentication succeeded (Face)
+2021-11-17 07:59:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200060,User enrollment succeeded
+2021-11-17 07:58:43,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200059,User enrollment succeeded
+2021-11-17 07:58:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200058,User enrollment succeeded
+2021-11-17 07:57:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200057,User enrollment succeeded
+2021-11-17 07:55:49,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200056,User enrollment succeeded
+2021-11-17 07:54:53,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200054,1:N authentication succeeded (Face)
+2021-11-17 07:54:47,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200055,1:N authentication succeeded (Face)
+2021-11-17 07:54:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200055,User enrollment succeeded
+2021-11-17 07:53:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200054,User enrollment succeeded
+2021-11-17 07:53:04,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200053,User enrollment succeeded
+2021-11-17 07:52:19,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200052,User enrollment succeeded
+2021-11-17 07:51:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200051,User enrollment succeeded
+2021-11-17 07:50:59,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200044,User enrollment succeeded
+2021-11-17 07:50:22,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200050,User enrollment succeeded
+2021-11-17 07:49:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200049,User enrollment succeeded
+2021-11-17 07:49:28,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200048,User enrollment succeeded
+2021-11-17 07:48:58,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200047,User enrollment succeeded
+2021-11-17 07:48:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200046,User enrollment succeeded
+2021-11-17 07:46:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200045,User enrollment succeeded
+2021-11-17 07:46:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200043,User enrollment succeeded
+2021-11-17 07:45:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200042,User enrollment succeeded
+2021-11-17 07:45:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200041,User enrollment succeeded
+2021-11-17 07:44:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200040,User enrollment succeeded
+2021-11-17 07:43:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200039,User enrollment succeeded
+2021-11-17 07:42:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200038,User enrollment succeeded
+2021-11-17 07:42:12,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200037,User enrollment succeeded
+2021-11-17 07:41:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200036,User enrollment succeeded
+2021-11-17 07:41:18,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200035,User enrollment succeeded
+2021-11-17 07:40:17,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200034,User enrollment succeeded
+2021-11-17 07:39:55,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200033,User enrollment succeeded
+2021-11-17 07:39:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200032,User enrollment succeeded
+2021-11-17 07:38:46,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200031,User enrollment succeeded
+2021-11-17 07:38:08,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200030,User enrollment succeeded
+2021-11-17 07:36:32,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200026,1:N authentication succeeded (Face)
+2021-11-17 07:36:29,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 07:36:29,542198617,FaceStation 2 542198617 (192.168.8.220),,,DHCP connected
+2021-11-17 07:36:23,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200029,User enrollment succeeded
+2021-11-17 07:35:47,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200028,User enrollment succeeded
+2021-11-17 07:35:14,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200026,User enrollment succeeded
+2021-11-17 07:34:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200025,User enrollment succeeded
+2021-11-17 07:34:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200024,User enrollment succeeded
+2021-11-17 07:31:38,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper off
+2021-11-17 07:31:26,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper on
+2021-11-17 07:30:11,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper off
+2021-11-17 07:29:29,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper on
+2021-11-17 07:27:30,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200023,User enrollment succeeded
+2021-11-17 07:27:02,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200022,User enrollment succeeded
+2021-11-17 07:26:39,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200021,User enrollment succeeded
+2021-11-17 07:25:05,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper off
+2021-11-17 07:21:40,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200020,1:N authentication succeeded (Face)
+2021-11-17 07:21:25,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 07:21:13,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200020,User enrollment succeeded
+2021-11-17 07:19:57,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200019,User enrollment succeeded
+2021-11-17 07:19:26,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper on
+2021-11-17 07:19:25,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper off
+2021-11-17 07:18:57,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-17 07:18:57,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network disconnected
+2021-11-17 07:18:50,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper on
+2021-11-17 07:18:12,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200018,User enrollment succeeded
+2021-11-17 07:17:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200017,User enrollment succeeded
+2021-11-17 07:17:10,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200016,User enrollment succeeded
+2021-11-17 07:16:25,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200014,User enrollment succeeded
+2021-11-17 07:15:48,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200015,User enrollment succeeded
+2021-11-17 07:14:17,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200081,1:N authentication succeeded (Face)
+2021-11-17 07:14:09,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 07:13:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200010,User enrollment succeeded
+2021-11-17 07:13:05,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 07:12:41,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200027,User enrollment succeeded
+2021-11-17 07:12:04,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200081,User enrollment succeeded
+2021-11-17 07:11:03,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 07:10:46,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200013,1:N authentication succeeded (Face)
+2021-11-17 07:10:44,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200013,1:N authentication succeeded (Face)
+2021-11-17 07:10:35,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200013,User enrollment succeeded
+2021-11-17 07:08:51,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 07:08:45,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 07:08:36,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200012,1:N authentication succeeded (Face)
+2021-11-17 07:08:31,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200012,1:N authentication succeeded (Face)
+2021-11-17 07:08:21,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,200012,User enrollment succeeded
+2021-11-17 07:07:11,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),1:N authentication succeeded (Face)
+2021-11-17 07:07:01,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,96333(Oscar Castañeda),User enrollment succeeded
+2021-11-17 07:05:45,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,1(Administrator),User deletion succeeded
+2021-11-17 07:05:09,542198617,FaceStation 2 542198617 (192.168.8.220),All Users,1(Administrator),User update succeeded
+2021-11-17 07:04:09,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-17 07:04:06,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar disconnected
+2021-11-17 07:04:06,542198617,FaceStation 2 542198617 (192.168.8.220),,,BioStar connected
+2021-11-17 06:59:40,542198617,FaceStation 2 542198617 (192.168.8.220),,,DHCP connected
+2021-11-17 06:55:13,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 06:54:59,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network disconnected
+2021-11-17 06:54:59,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 06:54:48,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network disconnected
+2021-11-17 06:39:27,542198617,FaceStation 2 542198617 (192.168.8.220),,,DHCP connected
+2021-11-17 06:37:46,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper off
+2021-11-17 06:37:33,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network connected
+2021-11-17 06:36:55,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper on
+2021-11-17 06:09:29,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 06:09:23,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 06:06:48,542198617,FaceStation 2 542198617 (192.168.8.220),,,Authentication failed (Timeout)
+2021-11-17 05:57:24,542198617,FaceStation 2 542198617 (192.168.8.220),,,Tamper off
+2021-11-17 05:57:22,542198617,FaceStation 2 542198617 (192.168.8.220),,,Device started
+2021-11-17 05:57:22,542198617,FaceStation 2 542198617 (192.168.8.220),,,Network disconnected

@@ -40,7 +40,8 @@ class contrato extends CI_Controller {
     
     
     public function ReporteContrato(){
-      header('Access-Control-Allow-Origin: *');      
+      header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        
       $idsalario=$this->input->get('idsalario');
       $idrepresentante=$this->input->get('idrepresentante');
       $idhorario=$this->input->get('idhorario');
@@ -48,7 +49,7 @@ class contrato extends CI_Controller {
       $idempresa=$this->input->get('idempresa');
       $iddescanso=$this->input->get('iddescanso');   
       $idComida=$this->input->get('idComida');       
-      $idrazon=$this->input->get('idrazon');
+      $idrazon=$this->input->get('idrazon');  
 
 
       
@@ -93,7 +94,8 @@ class contrato extends CI_Controller {
             $ExisteEmpleado=$data[0]['NOMBRE'];
           }
           catch (Exception $e) {
-            echo 'El empleado no existe'.$e->getMessage();
+            echo 'El empleado no existe ó Revisa la dirección de el empleado la ciudad y el estado'.$e->getMessage();
+
           }
             if ($ExisteEmpleado!='' && $data[0]['BENEFICIARIO']=='' ) {
               echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita mas información ejemplo: "EDOCIVIL","DIRECCION","IMSS","RFC","CURP","BENEFICIARIO" ';
@@ -118,7 +120,8 @@ class contrato extends CI_Controller {
               $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
               $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];            
               $BENEFICIARIO=$data[0]['BENEFICIARIO'];
-              $COMIDA=$data[0]['COMIDA'];
+              $COMIDA=$data[0]['COMIDA'];              
+              $FECHA_INGRESO=$data[0]['FECHA_INGRESO'];   
                         
               $fechaactual = getdate();
               $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            

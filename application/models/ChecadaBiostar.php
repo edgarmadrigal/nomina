@@ -29,7 +29,7 @@ class ChecadaBiostar extends CI_Model{
 
     public function consultaPlanta()
     {
-        $sp = "ConsultaPlantaMicrosip";        
+        $sp = "ConsultaPlantaMicrosip_PEDRI";        
         $result = $this->db->query($sp);
         return  $result->result_array();
     }
@@ -38,9 +38,11 @@ class ChecadaBiostar extends CI_Model{
         ini_set('max_execution_time', 0); 
 
         sqlsrv_configure('WarningsReturnAsErrors', 0);
-
-        $result = $this->db->query("ConsultaDepartamentoMicrosip {$planta}")->result_array();
-
+        if($planta==''){
+            $result = 'x';
+        }else{            
+            $result = $this->db->query("ConsultaDepartamentoMicrosip {$planta}")->result_array();
+        }
         return  $result;
     }
     public function consultaPuesto ($planta)
@@ -48,8 +50,11 @@ class ChecadaBiostar extends CI_Model{
         ini_set('max_execution_time', 0); 
 
         sqlsrv_configure('WarningsReturnAsErrors', 0);
-        
-        $result = $this->db->query("ConsultaPuestoMicrosip {$planta}")->result_array();
+        if($planta==''){
+            $result = 'x';
+        }else{            
+            $result = $this->db->query("ConsultaPuestoMicrosip {$planta}")->result_array();
+        }
 
         return  $result;
     }

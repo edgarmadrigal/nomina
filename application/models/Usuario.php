@@ -2,7 +2,8 @@
 //MODELO usuario
 class Usuario extends CI_Model{
 
-    function ___construct(){
+    function ___construct()
+    {
         parent::___construct();
 		$this->load->library('form_validation');
     }
@@ -21,14 +22,16 @@ class Usuario extends CI_Model{
     }
 
    /** ------------------------------------------------------------------------ */     
-    public function consulta_Usuarios(){
+    public function consulta_Usuarios()
+    {
         $usuarios = $this->db->select('id,nombre,usuario,password,idPerfil')
         ->from('usuarios')
         ->get()
         ->result();                 
         return $usuarios;
     }
-    public function existe($usuario){
+    public function existe($usuario)
+    {
         if(isset($usuario)){
             $existe = $this->db->select('usuario')
                     ->from('usuarios')
@@ -46,7 +49,8 @@ class Usuario extends CI_Model{
         return $existe;
     }
 
-    public function login_usuario($usuario, $password){
+    public function login_usuario($usuario, $password)
+    {
         if((isset($usuario))&&(isset($password))){
             //$pass = md5($password);
             $login = $this->db->select('id,nombre,usuario,idPerfil')
@@ -68,7 +72,8 @@ class Usuario extends CI_Model{
         return $login;
     }
 
-    function get_usuario($id){
+    function get_usuario($id)
+    {
         $usuario = $this->db->select('id,nombre,usuario,password,idPerfil')
                                 ->from('usuarios')
                                 ->where('id',$id)
@@ -77,18 +82,21 @@ class Usuario extends CI_Model{
         return $usuario;
     }
     
-    function delete_usuario($id){
+    function delete_usuario($id)
+    {
         $this->db->delete('usuarios',array('id' => $id));        
         return true;
     }
     
-    function update_usuario($id,$data){
+    function update_usuario($id,$data)
+    {
 
         $this->db->where('id', $id)
               ->update('usuarios', $data);
             return true;              
     }    
-    public function insert_usuario($data){   
+    public function insert_usuario($data)
+    {   
         
        $usuario =   [
        'nombre'     =>  $data['nombre'],

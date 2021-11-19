@@ -389,7 +389,7 @@ $.extend(jQuery.fn.dataTableExt.oSort, {
             type: 'post',
             dataType: 'json'
         }).done(function (data) {  
-            alert("Se actualizo con exito");
+            alert("Se actualizo con exito "+data[0].TOTAL);
             $.unblockUI();
             $("#tablaEmp").css("display", "block");
             $(".loadTable").css("display", "none");
