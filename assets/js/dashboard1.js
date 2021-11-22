@@ -11,10 +11,10 @@ $(function () {
             bindto: '#visitor',
             data: {
                 columns: [
-                    ['TBG', 10],
-                    ['MMS', 30],
-                    ['AE', 40],
-                    ['TT1', 50],
+                    ['TBG', ~~(Math.random() * (25 - 5) + 5)],
+                    ['MMS', ~~(Math.random() * (25 - 10) + 10)],
+                    ['AE', ~~(Math.random() * (25 - 5) + 5)],
+                    ['TT1', ~~(Math.random() * (25 - 15) + 15)],
                 ],
                 type: 'donut',
                 //onclick: function (d, i) { console.log("onclick", d, i); },
@@ -44,38 +44,38 @@ $(function () {
             data: [
                 {
                     period: '2022-01-01',
-                    Retardos: 10,
-                    Faltas: 20,
-                    Asistencias: 30         
+                    Retardos: ~~(Math.random() * (100 - 20) + 20),
+                    Faltas: ~~(Math.random() * (100 - 20) + 20),
+                    Asistencias: ~~(Math.random() * (100 - 20) + 20)         
                 },
                 {
                     period: '2022-01-02',
-                    Retardos: 20,
-                    Faltas: 30,
-                    Asistencias: 40
+                    Retardos: ~~(Math.random() * (80 - 70) + 70),
+                    Faltas: ~~(Math.random() * (80 - 70) + 70),
+                    Asistencias: ~~(Math.random() * (80 - 70) + 70)
                 },
                 {
                     period: '2022-01-03',
-                    Retardos: 30,
-                    Faltas: 35,
-                    Asistencias: 50         
+                    Retardos: ~~(Math.random() * (70 - 50) + 50),
+                    Faltas: ~~(Math.random() * (75 - 55) + 55),
+                    Asistencias: ~~(Math.random() * (70 - 50) + 50)
                 }
              ,{
                 period: '2022-01-04',
-                Retardos: 40,
-                Faltas: 45,
-                Asistencias: 60         
+                Retardos: ~~(Math.random() * (50 - 40) + 40),
+                Faltas: ~~(Math.random() * (50 - 40) + 40),
+                Asistencias: ~~(Math.random() * (50 - 40) + 40)    
             } , {
                 period: '2022-01-05',
-                Retardos: 30,
-                Faltas: 35,
-                Asistencias: 50         
+                Retardos: ~~(Math.random() * (40 - 25) + 25),
+                Faltas: ~~(Math.random() * (40 - 25) + 25),
+                Asistencias: ~~(Math.random() * (40 - 25) + 25)
             } ,  
             {
                 period: '2022-01-06',
-                Retardos: 10,
-                Faltas: 10,
-                Asistencias: 10
+                    Retardos: ~~(Math.random() * (30 - 20) + 20),
+                    Faltas: ~~(Math.random() * (20 - 10) + 10),
+                    Asistencias: ~~(Math.random() *(20 - 10) + 10),
             }, 
         ],
             xkey: 'period',
