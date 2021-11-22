@@ -59,9 +59,9 @@
                                     </div>
                                     <div class="ml-auto">
                                         <ul class="list-inline text-center font-12">
-                                            <li><i class="fa fa-circle text-success"></i>Retardos</li>
-                                            <li><i class="fa fa-circle text-info"></i> Faltas</li>
-                                            <li><i class="fa fa-circle text-warning"></i> Asistencias</li>
+                                            <li><i class="fa fa-circle" style="color: green !important; "></i>Retardos</li>
+                                            <li><i class="fa fa-circle" style="color: gray !important; "></i> Faltas</li>
+                                            <li><i class="fa fa-circle" style="color: #007bff !important; "></i> Asistencias</li>
                                         </ul>
                                     </div>
                                 </div>
