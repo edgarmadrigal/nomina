@@ -72,7 +72,6 @@ $(document).ready(function () {
         }
      });
 
-
      
     $(document).on('click', '#borrar', function (e) {
         if(!$('#NoSemana').val()){
@@ -105,6 +104,59 @@ $(document).ready(function () {
      });
 //puesto
 
+$(document).on('click', '#buscarAcumulado', function (e) {
+    e.preventDefault();  
+    if(!$('#NoSemana').val()){
+        alert('Favor de capturar el numero de semana');
+    }
+    else if($('#planta').val()==0){
+        alert('Favor de capturar la planta');
+    }
+    else{
+        var departamento=$("#departamento").val();
+        var puesto=$("#puesto").val();
+        var noempleado=$("#noempleado").val();
+
+        if($("#departamento").val()==null || $("#departamento").val()==0 ){
+            $("#departamento").val('');
+            var departamento='';
+        }
+        if($("#puesto").val()==null  || $("#puesto").val()=='null' || $("#puesto").val()==0   ){
+            $("#puesto").val('');
+            var puesto='';
+        }
+        if($("#noempleado").val()==null){
+            $("#noempleado").val('');
+            var noempleado='';
+        }
+
+        var varURL = Modulo.baseurl 
+        + "asistencias/reporteAsistenciaNominas?NoSemana="
+        +$("#NoSemana").val()+'&anio='+$("#anio").val()+'&planta='+parseInt($("#planta").val())+'&departamento='+departamento+'&puesto='+puesto+'&noempleado='+noempleado; 
+        
+    /*
+    //para debugear
+    $.ajax({
+        url:  varURL,
+        type: 'get',
+        dataType: 'json'
+    }).done(function (data) {
+        alert(data);
+        //perfiles= JSON.parse(JSON.stringify());       
+    });
+    
+        */
+        
+        window.open(varURL);
+    }
+   // window.location.assign(varURL);
+});
+
+
+
+
+
+
     $(document).on('click', '#buscar', function (e) {
         e.preventDefault();  
         if(!$('#NoSemana').val()){
@@ -136,7 +188,7 @@ $(document).ready(function () {
             +$("#NoSemana").val()+'&anio='+$("#anio").val()+'&planta='+parseInt($("#planta").val())+'&departamento='+departamento+'&puesto='+puesto+'&noempleado='+noempleado; 
             
         /*
-        para debugear
+        //para debugear
         $.ajax({
             url:  varURL,
             type: 'get',
@@ -145,8 +197,8 @@ $(document).ready(function () {
             alert(data);
             //perfiles= JSON.parse(JSON.stringify());       
         });
+        
             */
-            
             
             window.open(varURL);
         }

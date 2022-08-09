@@ -1,0 +1,142 @@
+Date	Device ID	Device	User Group	User	Event
+08/07/2022 07:07	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+08/07/2022 07:07	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1218	1:N authentication succeeded (Face)
+08/07/2022 07:07	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82308	1:N authentication succeeded (Face)
+08/07/2022 01:49	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+08/07/2022 01:28	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+07/07/2022 23:25	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+07/07/2022 22:51	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82308	1:N authentication succeeded (Face)
+07/07/2022 22:51	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82308	1:N authentication succeeded (Face)
+07/07/2022 22:37	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1218	1:N authentication succeeded (Face)
+07/07/2022 22:36	542361075	FaceStation 2 542361075 (192.168.5.220)			Tamper off
+07/07/2022 22:36	542361075	FaceStation 2 542361075 (192.168.5.220)			Device started
+07/07/2022 22:36	542361075	FaceStation 2 542361075 (192.168.5.220)			Network connected
+07/07/2022 16:37	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+07/07/2022 16:36	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+07/07/2022 16:36	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82296	1:N authentication succeeded (Face)
+07/07/2022 16:36	542361075	FaceStation 2 542361075 (192.168.5.220)			Authentication failed (Timeout)
+07/07/2022 16:35	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+07/07/2022 16:35	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar disconnected
+07/07/2022 11:41	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+07/07/2022 11:38	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+07/07/2022 11:18	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+07/07/2022 11:03	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+07/07/2022 11:02	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+07/07/2022 10:31	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82296	1:N authentication succeeded (Face)
+07/07/2022 10:31	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+07/07/2022 10:29	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82312	1:N authentication succeeded (Face)
+07/07/2022 10:09	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82312	1:N authentication succeeded (Face)
+07/07/2022 10:02	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+07/07/2022 10:02	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82296	1:N authentication succeeded (Face)
+07/07/2022 09:32	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+07/07/2022 08:00	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82275	1:N authentication succeeded (Face)
+07/07/2022 07:54	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82283	1:N authentication succeeded (Face)
+07/07/2022 07:30	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+07/07/2022 07:21	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82308	1:N authentication succeeded (Face)
+07/07/2022 07:15	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1(Administrator)	User update succeeded
+07/07/2022 07:15	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar connected
+07/07/2022 07:14	542361075	FaceStation 2 542361075 (192.168.5.220)			Device Disconnection Detected
+07/07/2022 07:09	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+07/07/2022 07:07	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+07/07/2022 07:07	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1255	1:N authentication succeeded (Face)
+07/07/2022 07:07	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82310	1:N authentication succeeded (Face)
+07/07/2022 07:06	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1214	1:N authentication succeeded (Face)
+07/07/2022 07:06	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82312	1:N authentication succeeded (Face)
+07/07/2022 07:05	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1218	1:N authentication succeeded (Face)
+07/07/2022 07:04	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+07/07/2022 07:03	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+07/07/2022 07:01	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82296	1:N authentication succeeded (Face)
+07/07/2022 02:16	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+07/07/2022 01:59	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+07/07/2022 01:21	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1255	1:N authentication succeeded (Face)
+06/07/2022 23:01	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1255	1:N authentication succeeded (Face)
+06/07/2022 23:00	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+06/07/2022 22:53	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82308	1:N authentication succeeded (Face)
+06/07/2022 22:53	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82310	1:N authentication succeeded (Face)
+06/07/2022 22:32	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1218	1:N authentication succeeded (Face)
+06/07/2022 22:32	542361075	FaceStation 2 542361075 (192.168.5.220)			Tamper off
+06/07/2022 22:32	542361075	FaceStation 2 542361075 (192.168.5.220)			Device started
+06/07/2022 22:32	542361075	FaceStation 2 542361075 (192.168.5.220)			Network connected
+06/07/2022 16:38	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+06/07/2022 16:37	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar disconnected
+06/07/2022 16:36	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+06/07/2022 16:36	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+06/07/2022 16:36	542361075	FaceStation 2 542361075 (192.168.5.220)			Authentication failed (Timeout)
+06/07/2022 12:39	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+06/07/2022 12:21	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+06/07/2022 12:14	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+06/07/2022 11:36	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+06/07/2022 11:01	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+06/07/2022 10:03	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+06/07/2022 09:34	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+06/07/2022 08:01	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82275	1:N authentication succeeded (Face)
+06/07/2022 07:56	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82283	1:N authentication succeeded (Face)
+06/07/2022 07:18	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82308	1:N authentication succeeded (Face)
+06/07/2022 07:10	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+06/07/2022 07:07	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+06/07/2022 07:05	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1255	1:N authentication succeeded (Face)
+06/07/2022 07:05	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+06/07/2022 07:05	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1218	1:N authentication succeeded (Face)
+06/07/2022 07:05	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82310	1:N authentication succeeded (Face)
+06/07/2022 07:04	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+06/07/2022 07:02	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+06/07/2022 06:56	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1214	1:N authentication succeeded (Face)
+06/07/2022 06:56	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82312	1:N authentication succeeded (Face)
+06/07/2022 01:55	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+06/07/2022 01:26	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+05/07/2022 23:09	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82322	1:N authentication succeeded (Face)
+05/07/2022 23:09	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1255	1:N authentication succeeded (Face)
+05/07/2022 22:58	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82308	1:N authentication succeeded (Face)
+05/07/2022 22:58	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82310	1:N authentication succeeded (Face)
+05/07/2022 22:40	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1218	1:N authentication succeeded (Face)
+05/07/2022 22:40	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1(Administrator)	User update succeeded
+05/07/2022 22:40	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar connected
+05/07/2022 22:40	542361075	FaceStation 2 542361075 (192.168.5.220)			Tamper off
+05/07/2022 22:40	542361075	FaceStation 2 542361075 (192.168.5.220)			Device started
+05/07/2022 22:40	542361075	FaceStation 2 542361075 (192.168.5.220)			Network connected
+05/07/2022 16:53	542361075	FaceStation 2 542361075 (192.168.5.220)			Device Disconnection Detected
+05/07/2022 16:38	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+05/07/2022 16:38	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+05/07/2022 16:38	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82296	1:N authentication succeeded (Face)
+05/07/2022 15:13	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	96333	1:N authentication succeeded (Face)
+05/07/2022 15:13	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+05/07/2022 15:12	542361075	FaceStation 2 542361075 (192.168.5.220)			Authentication failed (Timeout)
+05/07/2022 15:12	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1(Administrator)	User update succeeded
+05/07/2022 15:12	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	96333	1:N authentication succeeded (Face)
+05/07/2022 15:12	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	96333	User enrollment succeeded
+05/07/2022 15:11	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1(Administrator)	User update succeeded
+05/07/2022 15:11	542361075	FaceStation 2 542361075 (192.168.5.220)			Authentication failed (Timeout)
+05/07/2022 15:11	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1(Administrator)	User update succeeded
+05/07/2022 15:11	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar connected
+05/07/2022 15:11	542361075	FaceStation 2 542361075 (192.168.5.220)			Authentication failed (Timeout)
+05/07/2022 15:09	542361075	FaceStation 2 542361075 (192.168.5.220)			Tamper off
+05/07/2022 15:09	542361075	FaceStation 2 542361075 (192.168.5.220)			DHCP connected
+05/07/2022 15:09	542361075	FaceStation 2 542361075 (192.168.5.220)			Device started
+05/07/2022 15:09	542361075	FaceStation 2 542361075 (192.168.5.220)			Network connected
+05/07/2022 15:09	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar disconnected
+05/07/2022 15:09	542361075	FaceStation 2 542361075 (192.168.5.220)			Device restarted
+05/07/2022 15:09	542361075	FaceStation 2 542361075 (192.168.5.220)			Device Disconnection Detected
+05/07/2022 15:09	542361075	FaceStation 2 542361075 (192.168.5.220)			Device reset
+04/07/2022 12:35	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar disconnected
+04/07/2022 12:34	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar disconnected
+04/07/2022 12:34	542361075	FaceStation 2 542361075 (192.168.5.220)			BioStar disconnected
+04/07/2022 12:33	542361075	FaceStation 2 542361075 (192.168.5.220)			Network disconnected
+04/07/2022 11:45	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+04/07/2022 11:29	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+04/07/2022 11:13	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+04/07/2022 11:03	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+04/07/2022 11:03	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+04/07/2022 10:32	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+04/07/2022 10:30	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82296	1:N authentication succeeded (Face)
+04/07/2022 10:03	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82296	1:N authentication succeeded (Face)
+04/07/2022 10:03	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+04/07/2022 09:33	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+04/07/2022 09:33	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+04/07/2022 07:49	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82283	1:N authentication succeeded (Face)
+04/07/2022 07:19	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82309	1:N authentication succeeded (Face)
+04/07/2022 07:11	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82297	1:N authentication succeeded (Face)
+04/07/2022 07:04	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82302	1:N authentication succeeded (Face)
+04/07/2022 07:02	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82296	1:N authentication succeeded (Face)
+04/07/2022 07:01	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82313	1:N authentication succeeded (Face)
+04/07/2022 06:49	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	82312	1:N authentication succeeded (Face)
+04/07/2022 06:49	542361075	FaceStation 2 542361075 (192.168.5.220)	All Users	1214	1:N authentication succeeded (Face)

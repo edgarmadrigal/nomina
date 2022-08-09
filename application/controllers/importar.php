@@ -75,7 +75,7 @@ class Importar extends CI_Controller {
                     if($value['G'] =='1:N authentication succeeded (Face)' 
                     || $value['G'] =='1:N Autenticaciￃﾳn exitosa (Rostro)' 
                     || $value['G'] =='1:N Autenticaci??n exitosa (Rostro)' 
-                     || $value['G'] =='1:N Autenticación exitosa (Rostro)'   ) {
+                     || $value['G']=='1:N Autenticación exitosa (Rostro)'   ) {
                       
                      
                       

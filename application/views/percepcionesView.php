@@ -81,10 +81,7 @@
             </div>
         </div>
     </div>
-</div>  
-
-
-
+</div>
 <style>
 @media only screen and (min-width: 1000px) {
     .table-responsive {
@@ -128,8 +125,9 @@
             todayHighlight: true, 
             language: 'es',
         }).datepicker('update', new Date());
-    });  
-
+    }); 
+    
+    
     $(function () {
         $("#datepicker2").datepicker({
            //endDate: '-0d',

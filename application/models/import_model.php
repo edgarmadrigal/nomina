@@ -6,6 +6,8 @@ class Import_model extends CI_Model {
 
     public function importData($data) {
         $res = $this->db->insert_batch('checadas',$data);
+
+        
         if($res){
             return TRUE;
         }else{

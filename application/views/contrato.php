@@ -17,6 +17,7 @@
     }   
     body {
         font-size: 10px;
+        font-weight: bold;
     }
     @media only screen and (min-width: 1000px) {
     .table-responsive {
@@ -96,20 +97,28 @@
                                     </div> 
                                 </div> 
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">Descanso</label>
                                             <select class="custom-select col-12" id="descanso">
                                             </select>
                                         </div>
                                     </div> 
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">No Empleado</label>
                                             <input id="noempleado" type="text" class="form-control" name="msg" placeholder="escriba NoEmpleado">
                                         </div>
                                     </div> 
-                                    <div class="col-3">
+                                    
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                            <label style="font-weight: bold!important;">nacionalidad</label>
+                                            <select class="custom-select col-12" id="nacionalidad">
+                                            </select>
+                                        </div>
+                                    </div> 
+                                    <div class="col-2">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">Comida</label>
                                             <select class="custom-select col-12" id="comida">
@@ -146,10 +155,12 @@
     min-height: 12px;
     display: initial;
     HEIGHT: 29PX;
+    font-weight: bold;
 }
    .dataTables_wrapper {
     padding-top: 10px;
     overflow: hidden;
+    font-weight: bold;    
    }
    @media only screen and (min-width: 1000px) {
     .table-responsive {
@@ -159,6 +170,7 @@
   }
   .table-responsive {
     overflow-x: auto;
+    font-weight: bold;
   }
   .loadTable {
   border: 16px solid #f3f3f3;
@@ -168,6 +180,7 @@
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+  font-weight: bold;
  }
  /* Safari */
  @-webkit-keyframes spin {

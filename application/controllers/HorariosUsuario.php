@@ -17,7 +17,6 @@ class HorariosUsuario extends CI_Controller {
 		public function index(){
 			header('Access-Control-Allow-Origin: *');
 					$data = []; 
-					
 			$this->load->model('HorarioUsuario');
 					if (isset($this->session->userdata['login'])) {
 							$data['user'] = $this->session->userdata['login']['user'];
@@ -54,13 +53,14 @@ class HorariosUsuario extends CI_Controller {
 				$data = array(
 				'idhorario_lunes' 		=> $this->input->post('idhorarioLunes',true),
 				'idhorario_martes' 		=> $this->input->post('idhorarioMartes',true),
-				'idhorario_miercoles' => $this->input->post('idhorarioMiercoles',true),
+				'idhorario_miercoles'   => $this->input->post('idhorarioMiercoles',true),
 				'idhorario_jueves'		=> $this->input->post('idhorarioJueves',true),
 				'idhorario_viernes'		=> $this->input->post('idhorarioViernes',true),
 				'idhorario_sabado'		=> $this->input->post('idhorarioSabado',true),
 				'idhorario_domingo'		=> $this->input->post('idhorarioDomingo',true),
-				'descripcion'					=> $this->input->post('descripcion',true),				
-				'fechaAsignacion'			=> $this->input->post('fechaAsignacion',true),
+				'descripcion'			=> $this->input->post('descripcion',true),				
+				'fechaAsignacion'		=> $this->input->post('fechaAsignacion',true),				
+				'cantidad'				=> $this->input->post('cantidad',true)
 			);
 				$this->load->model('HorarioUsuario');
 				//print_r($params);die();
@@ -80,9 +80,10 @@ class HorariosUsuario extends CI_Controller {
 						'idhorario_viernes'		=> $this->input->post('idhorarioViernes',true),
 						'idhorario_sabado'		=> $this->input->post('idhorarioSabado',true),
 						'idhorario_domingo'		=> $this->input->post('idhorarioDomingo',true),
-						'idEstatus'						=> 1,			
-						'descripcion'					=> $this->input->post('descripcion',true),				
-						'fechaAsignacion'			=> $this->input->post('fechaAsignacion',true),
+						'idEstatus'				=> 1,			
+						'descripcion'			=> $this->input->post('descripcion',true),				
+						'fechaAsignacion'		=> $this->input->post('fechaAsignacion',true),				
+						'cantidad'				=> $this->input->post('cantidad',true)
 					);
 	
 					$dt['exito'] = $this->HorarioUsuario->AgregarHorariosEmpleado($data);

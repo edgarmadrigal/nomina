@@ -201,7 +201,18 @@
                                     <a class="waves-effect waves-dark" href="EmpleadosController_Pedri" aria-expanded="true">
                                     <i class="fa fa-address-card"></i>
                                     <span class="hide-menu">Empleados Pedriceña</span></a>
-                                </li>                                                                                               
+                                </li>  
+                                <!-- Boton de Leon Guzman // Josue-->  
+                                <li style="float: left;width: 100%;">  
+                                    <a class="waves-effect waves-dark" href="EmpleadosController_Leon_Guzman" aria-expanded="true">
+                                    <i class="fa fa-address-card"></i>
+                                    <span class="hide-menu">Empleados León Guzmán</span></a>
+                                </li>     
+                                <li style="float: left;width: 100%;">  
+                                    <a class="waves-effect waves-dark" href="EmpleadosController_Eventuales" aria-expanded="true">
+                                    <i class="fa fa-address-card"></i>
+                                    <span class="hide-menu">Empleados Eventuales</span></a>
+                                </li>                                                                                          
                                 <li style="float: left;width: 100%;">  
                                     <a class="waves-effect waves-dark" href="byte" aria-expanded="true">
                                     <i class="fa fa-male"></i><i class="fa fa-random"></i>
@@ -301,6 +312,12 @@
                                     <i class="fa fa-upload"></i>
                                     <span class="hide-menu">Importar</span></a>
                                 </li> 
+                                <li style="float: left;width: 100%;"> 
+                                    <a class="waves-effect waves-dark" href="ActualizaChecadasNomiPlusController" aria-expanded="true">
+                                    <i class="fa fa-upload"></i>
+                                    <span class="hide-menu">Importar Checadas Nomiplus</span></a>
+                                </li> 
+                                
                             </ul>
                         </li>
                     </ul>

@@ -26,11 +26,14 @@ function validar(){
     var horarioViernes = $("#horarioViernes").val()==0?false:true;
     var horarioSabado = $("#horarioSabado").val()==0?false:true;
     var horarioDomingo = $("#horarioDomingo").val()==0?false:true;
+    var cantidad = $("#cantidad").val()==""?false:true;
+    
 
     if(horarioLunes==true && horarioMartes== true && horarioMiercoles == true 
         && horarioJueves== true && horarioViernes == true && horarioSabado== true 
-        && horarioDomingo == true 
+        && horarioDomingo == true  && cantidad == true 
         ){
+            
         return true;
     }else{
         return false;
@@ -1414,6 +1417,7 @@ Modulo = {
                     }                     
                     $('#descripcion').val(data[0].descripcion);
                     $('#fechaAsignacion').val(data[0].fechaAsignacion);
+                    $('#cantidad').val(data[0].cantidad);
                     
                     ///Debuggear a ver como se puede acomodar en la vista
         
@@ -1507,6 +1511,7 @@ $(document).ready(function () {
                     $("#horarioJueves").val(valueSelected).change();
                     $("#horarioViernes").val(valueSelected).change();
                     $("#horarioSabado").val(valueSelected).change();
+                    $("#horarioDomingo").val(valueSelected).change();
 
                 }
             });
@@ -1992,7 +1997,7 @@ $(document).ready(function () {
     $(document).on('click', '#btn_guardar', function (e) {
         e.preventDefault();                       
         if(validar()){
-            var id= $('#id').val();
+            var id= $('#id').val().trim();
             if($('#fechaAsignacion').val()!=''){
                 if(id>0){
                     ///GUARDAR EDICION
@@ -2001,7 +2006,7 @@ $(document).ready(function () {
                         type: 'post',
                         dataType: 'json',
                         data: {
-                            'id'                    : $('#id').val(),
+                            'id'                    : $('#id').val().trim(),
                             'idhorarioLunes'        : $('#horarioLunes').val(),
                             'idhorarioMartes'       : $('#horarioMartes').val(),
                             'idhorarioMiercoles'    : $('#horarioMiercoles').val(),
@@ -2010,7 +2015,8 @@ $(document).ready(function () {
                             'idhorarioSabado'       : $('#horarioSabado').val(),
                             'idhorarioDomingo'      : $('#horarioDomingo').val(),
                             'descripcion'           : $('#descripcion').val(),
-                            'fechaAsignacion'       : $('#fechaAsignacion').val()
+                            'fechaAsignacion'       : $('#fechaAsignacion').val(),
+                            'cantidad'              : $("#cantidad").val()
                         }
                     }).done(function (data) {
                         if (data) {
@@ -2043,7 +2049,7 @@ $(document).ready(function () {
                         type: 'post',
                         dataType: 'json',
                         data: {
-                            'empleado_id'           : $('#selEmpleado').val(),
+                            'empleado_id'           : $('#selEmpleado').val().trim(),
                             'idhorarioLunes'        : $('#horarioLunes').val(),
                             'idhorarioMartes'       : $('#horarioMartes').val(),
                             'idhorarioMiercoles'    : $('#horarioMiercoles').val(),
@@ -2052,7 +2058,8 @@ $(document).ready(function () {
                             'idhorarioSabado'       : $('#horarioSabado').val(),
                             'idhorarioDomingo'      : $('#horarioDomingo').val(),
                             'descripcion'           : $('#descripcion').val(),
-                            'fechaAsignacion'       : $('#fechaAsignacion').val()
+                            'fechaAsignacion'       : $('#fechaAsignacion').val(),
+                            'cantidad'              : $("#cantidad").val()
                         }
                     }).done(function (data) {
                         if (data) {
@@ -2084,6 +2091,7 @@ $(document).ready(function () {
                 alert('Favor de seleccionar una fecha de Asignación');
             }            
         }else{
+            
             alert('Favor de completar el horario');
         }
     });

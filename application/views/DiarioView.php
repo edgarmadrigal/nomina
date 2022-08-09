@@ -61,12 +61,12 @@
                                                     <th>EMP. PLANTA</th>
                                                     <th>EMP. MATUTINO</th>
                                                     <th>EMP. NOCTURNO</th>
-                                                    <th>A. MATUTINO</th>
-                                                    <th>A. NOCTURNO</th>
-                                                    <th>F. MATUTINO</th>
-                                                    <th>F. NOCTURNO</th>
-                                                    <th>R. MATUTINO</th>
-                                                    <th>R. NOCTURNO</th>
+                                                    <th>ASIS. MATUTINO</th>
+                                                    <th>ASIS. NOCTURNO</th>
+                                                    <th>FALT. MATUTINO</th>
+                                                    <th>FALT. NOCTURNO</th>
+                                                    <th>RET. MATUTINO</th>
+                                                    <th>RET. NOCTURNO</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
@@ -75,12 +75,12 @@
                                                     <th>EMP. PLANTA</th>
                                                     <th>EMP. MATUTINO</th>
                                                     <th>EMP. NOCTURNO</th>
-                                                    <th>A. MATUTINO</th>
-                                                    <th>A. NOCTURNO</th>
-                                                    <th>F. MATUTINO</th>
-                                                    <th>F. NOCTURNO</th>
-                                                    <th>R. MATUTINO</th>
-                                                    <th>R. NOCTURNO</th>
+                                                    <th>ASIS. MATUTINO</th>
+                                                    <th>ASIS. NOCTURNO</th>
+                                                    <th>FALT. MATUTINO</th>
+                                                    <th>FALT. NOCTURNO</th>
+                                                    <th>RET. MATUTINO</th>
+                                                    <th>RET. NOCTURNO</th>
                                                 </tr>
                                             </tfoot>
                                         </table>

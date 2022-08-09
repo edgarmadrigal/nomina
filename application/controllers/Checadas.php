@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Checadas extends CI_Controller {
-	
 	public function construct()
 	{
 		header('Access-Control-Allow-Origin: *');

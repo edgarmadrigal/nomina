@@ -1,8 +1,7 @@
 <html>
 <head>
 <?php header('Access-Control-Allow-Origin: *');  ?>
-
-    <style type="text/css">
+<style type="text/css">
         hr {
         page-break-after: always;
         border: 0;
@@ -88,9 +87,7 @@
         .der{
           float:right;
         }
-
-    </style>
-
+</style>
 </head>
 <body> 
 <table id="t01">
@@ -106,7 +103,7 @@
     <tr >
       <th COLSPAN=3><span class="fecha"><?php echo $fechaactual;?></span>  </th>
       <th> </th>
-      <th></th>
+      <th> </th>
       <th> </th>
       <th> </th>
       <th> </th>
@@ -126,16 +123,43 @@
       <th>Domingo___</th>
       <th>Ret</th>
       <th>Falta</th>
-      <th>Extra_____</th>
+      <th>Extra_______</th>
     </tr>
   </thead>
   <tbody>
   <?php
   
+function toHours($min,$hr)
+  { //obtener segundos
+  $secMin = $min * 60;
+    //obtener segundos 
+  $secHr = $hr * 3600;
+  $sec=$secMin+$secHr;
+  //dias es la division de n segs entre 86400 segundos que representa un dia
+  $dias=floor($sec/86400);
+  //mod_hora es el sobrante, en horas, de la division de días; 
+  $mod_hora=$sec%86400;
+  //hora es la division entre el sobrante de horas y 3600 segundos que representa una hora;
+  $horas=floor($mod_hora/3600); 
+  //mod_minuto es el sobrante, en minutos, de la division de horas; 
+  $mod_minuto=$mod_hora%3600;
+  //minuto es la division entre el sobrante y 60 segundos que representa un minuto;
+  $minutos=floor($mod_minuto/60);
+    $horas=substr(str_repeat(0, 2).$horas, - 2);
+    $minutos=substr(str_repeat(0, 2).$minutos, - 2);
+    if($dias<=0){
+      $text = $horas.':'.$minutos.':00';
+    }else{
+      $text = $dias.' '.$horas.':'.$minutos.':00';
+    }
+  return $text; 
+  }
+
 
   $TotalFaltas=0;
   $TotalRetardos=0;
-  $TotalTiempoExtra= new DateTime('00:00:00');
+ // $TotalTiempoExtra= new DateTime('00:00:00');
+  $TotalTiempoExtra= 0;
   $TotalEmpleados=0;
   $contador=0;
   $contador2=0;
@@ -143,7 +167,7 @@
   $depID=0;
   $count=0;
   $renglon=0;
-  print_r($data);
+  //print_r($data);
    foreach ($data as $row) {
      
     $contador=$contador+1; 
@@ -151,7 +175,7 @@
     if($contador==1){
       
       $renglon= $renglon+1; 
-      $depID=$row['departamento_id'];
+      $depID=$row['nombreDepartamento'];
       echo '<tr>
             <td ><b>'.$row['departamento_id'].'</b></td>
             <td COLSPAN=2><b>'.$row['nombreDepartamento'].'</b></td>
@@ -167,12 +191,16 @@
             <td></td>
           </tr>';
     }
-      if($depID==$row['departamento_id']){
+      if($depID==$row['nombreDepartamento']){
 
       }else{
         
+            $OTRODEPTO=1;
         $renglon= $renglon+1;
-        $sumaTiempoExtra=$dt->format('H:i:s');
+        
+        //echo $dt;
+        //die();
+      $sumaTiempoExtra=toHours($sumaminutosTiempoExtra,$sumahorasTiempoExtra);
         echo  '<tr>
         <td class="subtotal"></td>
         <td COLSPAN=2 class="subtotal">SubTotal:</td>
@@ -190,17 +218,29 @@
       
             $TotalRetardos=$sumaRetardos+$TotalRetardos;
             $TotalFaltas= $sumaFaltas+$TotalFaltas;
+            
+            $horas = intval($row['TotalhorasExtra']); 
+            $minutos= intval($row['TotalminutosExtra']); //nos saltamos los : puntos 
+    
+            $sumahorasTiempoExtra=$horas +$sumahorasTiempoExtra;
+            $sumaminutosTiempoExtra=$minutos +$sumaminutosTiempoExtra;
+            
+            $sumaTiempoExtra=toHours($sumaminutosTiempoExtra,$sumahorasTiempoExtra);
+
+            $TotalhorasTiempoExtra=$sumahorasTiempoExtra +$TotalhorasTiempoExtra;
+              $TotalminutosTiempoExtra=$sumaminutosTiempoExtra +$TotalminutosTiempoExtra;
+
+
+              $TotalTiempoExtra=toHours($TotalminutosTiempoExtra,$TotalhorasTiempoExtra);
           
-            $horas = substr($sumaTiempoExtra,0,2); 
-            $minutos = substr($sumaTiempoExtra,3,2); //nos saltamos los : puntos 
-            $interval = new DateInterval("PT{$horas}H{$minutos}M");
-            $TotalTiempoExtra->add($interval);
             $TotalEmpleados=$TotalEmpleados+$contador2;            
             $sumaRetardos=0;
             $sumaFaltas=0;
-            $sumaTiempoExtra= new DateTime('00:00:00');
+            $sumahorasTiempoExtra=0;
+            $sumaminutosTiempoExtra=0;
+            $sumasegundosTiempoExtra=0;
+            $sumaTiempoExtra='00:00:00';
             $contador2=0;  
-            $dt=new DateTime('00:00:00');
             
         $renglon= $renglon+1;
         echo '<tr>
@@ -217,7 +257,6 @@
               <td></td>
               <td></td>
             </tr>';
-            $OTRODEPTO=1;
       }
       $contador2=$contador2+1;
       if (strlen($row['LunesEntrada'])>3){
@@ -268,16 +307,17 @@
         $sumaFaltas=$row['FaltasTotales']+$sumaFaltas;
         
 
-        $horas = substr($row['TotalTiempoExtra'],0,2); 
-        $minutos = substr($row['TotalTiempoExtra'],3,2); //nos saltamos los : puntos 
-        $segundos = substr($row['TotalTiempoExtra'],1,2); //nos saltamos los : puntos  
+        $horas = intval($row['TotalhorasExtra']); 
+        $minutos= intval($row['TotalminutosExtra']); //nos saltamos los : puntos 
 
-        $iv = new DateInterval("PT{$horas}H{$minutos}M");
-        $dt->add($iv);
+        $sumahorasTiempoExtra=$horas +$sumahorasTiempoExtra;
+        $sumaminutosTiempoExtra=$minutos +$sumaminutosTiempoExtra;
+
+        $sumaTiempoExtra=toHours($sumaminutosTiempoExtra,$sumahorasTiempoExtra);
+
       
         if( $OTRODEPTO==0){
           if(count($data)==$contador){
-          $sumaTiempoExtra=$dt->format('H:i:s');
           
             $renglon= $renglon+1;
               echo  '<tr>
@@ -298,53 +338,27 @@
               $TotalRetardos=$sumaRetardos+$TotalRetardos;
               $TotalFaltas= $sumaFaltas+$TotalFaltas;
             
-              $horas = substr($sumaTiempoExtra,0,2); 
-              $minutos = substr($sumaTiempoExtra,3,2); //nos saltamos los : puntos 
-              $interval = new DateInterval("PT{$horas}H{$minutos}M");
-              $TotalTiempoExtra->add($interval);
+              $TotalhorasTiempoExtra=$sumahorasTiempoExtra +$TotalhorasTiempoExtra;
+              $TotalminutosTiempoExtra=$sumaminutosTiempoExtra +$TotalminutosTiempoExtra;
+
+              $TotalTiempoExtra=toHours($TotalminutosTiempoExtra,$TotalhorasTiempoExtra);
+
               $TotalEmpleados=$TotalEmpleados+$contador2;            
               $sumaRetardos=0;
               $sumaFaltas=0;
-              $sumaTiempoExtra= new DateTime('00:00:00');
               $contador2=0;  
-              $dt=new DateTime('00:00:00');
+              $sumahorasTiempoExtra=0;
+              $sumaminutosTiempoExtra=0;
+              $sumasegundosTiempoExtra=0;
+              $sumaTiempoExtra='00:00:00';
         }
       }
       else {
 
         
-        $sumaTiempoExtra=$dt->format('H:i:s');
-        $depID=$row['departamento_id'];
+        //$sumaTiempoExtra=$dt;
+        $depID=$row['nombreDepartamento'];
         
-       /* echo  '<tr>
-                <td class="subtotal"></td>
-                <td COLSPAN=2 class="subtotal">SubTotal:</td>
-                <td class="subtotal">'.$contador2.'</td>
-                <td class="subtotal">Empleado(s)</td>
-                <td class="subtotal"></td>
-                <td class="subtotal"></td>
-                <td class="subtotal"></td>
-                <td class="subtotal"></td>
-                <td class="subtotal"></td>
-                <td class="subtotal">'.$sumaRetardos.'</td>
-                <td class="subtotal">'.$sumaFaltas.'</td>
-                <td class="subtotal">'.$sumaTiempoExtra.'</td>
-              </tr>';
-            */  
-           /* $TotalRetardos=$sumaRetardos+$TotalRetardos;
-            $TotalFaltas= $sumaFaltas+$TotalFaltas;
-          
-            $horas = substr($sumaTiempoExtra,0,2); 
-            $minutos = substr($sumaTiempoExtra,3,2); //nos saltamos los : puntos 
-            $interval = new DateInterval("PT{$horas}H{$minutos}M");
-            $TotalTiempoExtra->add($interval);
-            $TotalEmpleados=$TotalEmpleados+$contador2;            
-            $sumaRetardos=0;
-            $sumaFaltas=0;
-            $sumaTiempoExtra= new DateTime('00:00:00');
-            $contador2=0;  
-            $dt=new DateTime('00:00:00');
-            $OTRODEPTO=0;*/
       }
 
       /*aquiiiii!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/ 
@@ -352,7 +366,11 @@
     if(count($data)==$count){
       
       $renglon= $renglon+1;
-      $sumaTiempoExtra=$dt->format('H:i:s');
+      
+      
+        if($contador2>0){
+
+          $sumaTiempoExtra=toHours($sumaminutosTiempoExtra,$sumahorasTiempoExtra);
           echo  '<tr>
           <td class="subtotal"></td>
           <td COLSPAN=2 class="subtotal">SubTotal:</td>
@@ -367,24 +385,22 @@
           <td class="subtotal">'.$sumaFaltas.'</td>
           <td class="subtotal">'.$sumaTiempoExtra.'</td>
           </tr>';
+
+          $TotalhorasTiempoExtra=$sumahorasTiempoExtra +$TotalhorasTiempoExtra;
+          $TotalminutosTiempoExtra=$sumaminutosTiempoExtra +$TotalminutosTiempoExtra;
+          
+          $TotalTiempoExtra=toHours($TotalminutosTiempoExtra,$TotalhorasTiempoExtra);
+        }
     
           $TotalRetardos=$sumaRetardos+$TotalRetardos;
           $TotalFaltas= $sumaFaltas+$TotalFaltas;
-        
-          $horas = substr($sumaTiempoExtra,0,2); 
-          $minutos = substr($sumaTiempoExtra,3,2); //nos saltamos los : puntos 
-          $interval = new DateInterval("PT{$horas}H{$minutos}M");
-          $TotalTiempoExtra->add($interval);
+          
+
           $TotalEmpleados=$TotalEmpleados+$contador2;            
           $sumaRetardos=0;
           $sumaFaltas=0;
-          $sumaTiempoExtra= new DateTime('00:00:00');
           $contador2=0;  
-          $dt=new DateTime('00:00:00');
     }
-
-
-    
     if( $renglon>=68){
       /*if($contador==19){*/
         echo '<!---51 rengones salto de linea-->
@@ -393,11 +409,8 @@
         </tr>';
         $renglon=0;
       }else{
-
       }
-    
   }
-
   ?>
       <tr>
         <td class="total"></td>
@@ -411,7 +424,7 @@
         <td class="total"></td>
         <td class="total"><?php echo $TotalRetardos ?></td>
         <td class="total"><?php echo $TotalFaltas ?></td>
-        <td class="total"><?php echo $TotalTiempoExtra->format('H:i:s') ?></td>
+        <td class="total"><?php echo $TotalTiempoExtra //echo $TotalTiempoExtra ?></td>
       </tr>
 
   </tbody>

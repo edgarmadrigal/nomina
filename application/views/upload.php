@@ -26,6 +26,10 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
     }
+    .archivo{
+        /*width: 520px;*/
+        height: 220px;
+    }
 </style>
 <div class="page-wrapper">   
     <div class="container-fluid">           
@@ -43,8 +47,8 @@
                             <BR>
                             <BR>
                             Subir archivo de excel : 
-                            <input type="file" name="uploadFile" value="" class="col-md-6"/><br><br>
-                            <input id="subir" type="button" name="submit" value="Subir" class="col-md-2" />
+                            <input  type="file" name="uploadFile" value="" class="col-md-10 archivo"/><br><br>
+                            <input id="subir" type="button" name="submit" value="Subir" class="col-md-12" />
                             
                         </form>
                         

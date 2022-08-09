@@ -49,8 +49,8 @@ class contrato extends CI_Controller {
       $idempresa=$this->input->get('idempresa');
       $iddescanso=$this->input->get('iddescanso');   
       $idComida=$this->input->get('idComida');       
-      $idrazon=$this->input->get('idrazon');  
-
+      $idNacionalidad=$this->input->get('idNacionalidad');  
+      $idrazon=$this->input->get('idrazon');         
 
       
       // echo $NoSemana.$anio.$departamento.$noempleado;
@@ -70,6 +70,8 @@ class contrato extends CI_Controller {
         $idComida=null;
        }if (empty($idrazon)){
         $idrazon=null;
+       }if (empty($idNacionalidad)){
+        $idNacionalidad=null;
        }
        $this->load->model('ContratoRH');
 
@@ -86,7 +88,7 @@ class contrato extends CI_Controller {
        }else
        {        
         try {
-            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida,$idrazon);     
+            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida,$idNacionalidad,$idrazon);     
 
             $dompdf = new Dompdf(array('isPhpEnabled' => true));   
             $ExisteEmpleado='';       
@@ -122,6 +124,8 @@ class contrato extends CI_Controller {
               $BENEFICIARIO=$data[0]['BENEFICIARIO'];
               $COMIDA=$data[0]['COMIDA'];              
               $FECHA_INGRESO=$data[0]['FECHA_INGRESO'];   
+              $NACIONALIDAD=$data[0]['NACIONALIDAD'];            
+              $EDAD=$data[0]['EDAD'];                
                         
               $fechaactual = getdate();
               $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
@@ -181,6 +185,12 @@ class contrato extends CI_Controller {
       echo json_encode($data);
     }
     
+    public function ConsultaNacionalidad(){
+      header('Access-Control-Allow-Origin: *');
+      $this->load->model('ContratoRH');
+      $data = $this->ContratoRH->ConsultaNacionalidad();
+      echo json_encode($data);
+    }
     public function consultaRepresentante(){
       header('Access-Control-Allow-Origin: *');
       $this->load->model('ContratoRH');

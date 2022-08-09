@@ -96,7 +96,20 @@ Modulo = {
                 $('#comida').append('<option value="'+value.id+'">'+value.Comida+'</option>');
               });
         });
-
+        
+        var varURL = Modulo.baseurl + "contrato/ConsultaNacionalidad";
+        $.ajax({
+            url:  varURL,
+            type: 'post',
+            dataType: 'json'
+        }).done(function (data) {                
+            perfiles= JSON.parse(JSON.stringify(data));
+            $('#nacionalidad').append('<option value="">Selecciona la nacionalidad</option>');
+            $.each(perfiles, function( index, value ) { 
+                $('#nacionalidad').append('<option value="'+value.id+'">'+value.nombre+'</option>');
+              });
+        });
+        
 
 
     }
@@ -135,6 +148,10 @@ $(document).ready(function () {
         tags: true
       });
       
+      $("#nacionalidad").select2({
+        tags: true
+      });
+      
       
 
 
@@ -143,7 +160,7 @@ $(document).ready(function () {
         if($('#salario').val()==0 || $('#representante').val()==0 
         || $('#horario').val()==0 || $('#planta').val()==0 
         || $('#descanso').val()==0 || $('#noempleado').val()=='' || $('#razon').val()=='' 
-        || $('#comida').val()=='' || $('#comida').val()=='NaN'){
+        || $('#comida').val()=='' || $('#comida').val()=='NaN' || $('#nacionalidad').val()==0 || $('#nacionalidad').val()=='' ){
             alert('Favor de capturar toda la informacion requerida');
         }        
         else{
@@ -154,7 +171,8 @@ $(document).ready(function () {
             +'&idempleado='+parseInt($("#noempleado").val())
             +'&idempresa='+parseInt($("#planta").val())
             +'&iddescanso='+parseInt($("#descanso").val())
-            +'&idComida='+parseInt($("#comida").val())            
+            +'&idComida='+parseInt($("#comida").val())      
+            +'&idNacionalidad='+parseInt($("#nacionalidad").val())                  
             +'&idrazon='+parseInt($("#razon").val()); 
             
             

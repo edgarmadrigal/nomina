@@ -44,36 +44,36 @@ $(function () {
             data: [
                 {
                     period: '2022-01-01',
-                    Retardos: ~~(Math.random() * (100 - 20) + 20),
-                    Faltas: ~~(Math.random() * (100 - 20) + 20),
-                    Asistencias: ~~(Math.random() * (100 - 20) + 20)         
+                    Retardos: ~~(Math.random() * (10 - 10) + 10),
+                    Faltas: ~~(Math.random() * (100 - 10) + 10),
+                    Asistencias: ~~(Math.random() * (100 - 10) + 10)         
                 },
                 {
                     period: '2022-01-02',
-                    Retardos: ~~(Math.random() * (80 - 70) + 70),
+                    Retardos: ~~(Math.random() * (30 - 30) + 20),
                     Faltas: ~~(Math.random() * (80 - 70) + 70),
                     Asistencias: ~~(Math.random() * (80 - 70) + 70)
                 },
                 {
                     period: '2022-01-03',
-                    Retardos: ~~(Math.random() * (70 - 50) + 50),
+                    Retardos: ~~(Math.random() * (35 - 40) + 40),
                     Faltas: ~~(Math.random() * (75 - 55) + 55),
                     Asistencias: ~~(Math.random() * (70 - 50) + 50)
                 }
              ,{
                 period: '2022-01-04',
-                Retardos: ~~(Math.random() * (50 - 40) + 40),
+                Retardos: ~~(Math.random() * (60 - 10) + 40),
                 Faltas: ~~(Math.random() * (50 - 40) + 40),
                 Asistencias: ~~(Math.random() * (50 - 40) + 40)    
             } , {
                 period: '2022-01-05',
-                Retardos: ~~(Math.random() * (40 - 25) + 25),
+                Retardos: ~~(Math.random() * (70 - 10) +55),
                 Faltas: ~~(Math.random() * (40 - 25) + 25),
                 Asistencias: ~~(Math.random() * (40 - 25) + 25)
             } ,  
             {
                 period: '2022-01-06',
-                    Retardos: ~~(Math.random() * (30 - 20) + 20),
+                    Retardos: ~~(Math.random() * (100 - 80) + 90),
                     Faltas: ~~(Math.random() * (20 - 10) + 10),
                     Asistencias: ~~(Math.random() *(20 - 10) + 10),
             }, 

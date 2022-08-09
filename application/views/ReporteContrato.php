@@ -64,11 +64,11 @@
         </p>
         <p>
             2.- "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong> manifiesta bajo protesta decir verdad de ser
-            nacionalidad MEXICANA de años de edad, estado civil <strong><?php echo $EDOCIVIL; ?></strong> con domicilio
+            nacionalidad <strong><?php print_r($NACIONALIDAD); ?></strong> de <strong><?php print_r($EDAD); ?></strong> años de edad, estado civil <strong><?php echo $EDOCIVIL; ?></strong> con domicilio
             en <strong><?php print_r($DIRECCION); ?></strong>
         </p>
         <p>
-            Registro de afiliación al IMSS <strong><?php echo $IMSS; ?></strong> , RFC <strong><?php echo $RFC; ?></strong> CURP <strong><?php echo $CURP; ?></strong>
+            Registro de afiliación al IMSS <strong><?php echo $IMSS; ?></strong> , RFC <strong><?php echo $RFC; ?></strong> CURP <strong><?php echo $CURP; ?></strong>.
         </p>
         <p>
             3.- "LA EMPRESA" <?php 
@@ -78,7 +78,7 @@
             echo 'Excepción capturada: ',  $e->getMessage(), "\n";
           }
              ?>, tiene como
-            objeto social La PRESTACION DE SERVICIOS PROFESIONALES Y TECNICOS
+            objeto social La PRESTACION DE SERVICIOS PROFESIONALES Y TECNICOS.
         </p>
         <p>
             4.- "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong> manifiesta que tiene la capacidad y aptitudes de
@@ -93,7 +93,7 @@
           }
              ?>, requiere de
             los servicios de personal apto para el desarrollo de sus Actividades y de
-            modo especial para el puesto o funciones de <strong><?php echo $PUESTO; ?></strong> 
+            modo especial para el puesto o funciones de <strong><?php echo $PUESTO; ?></strong> .
         </p>
         <p>
             6.- "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong> esta conforme en desempeñar los requerimientos de la
@@ -233,7 +233,7 @@
         </p>
         <p>
         VIGESIMA.- "LAS PARTES" reconocen como fecha de antigüedad o de inicio de prestación de servicios del "TRABAJADOR",
-        a partir del día <strong><?php echo $FECHAANTIGUEDAD;//FECHA_INGRESO ?></strong> 
+        a partir del día <strong><?php echo $FECHAANTIGUEDAD;//FECHA_INGRESO ?></strong> .
         </p>
         <p>
         VIGESIMA PRIMERA.- EL TRABAJADOR DESIGNA A : <strong><?php echo $BENEFICIARIO; ?></strong> COMO BENEFICIARIO COMO LO REFIERE EL ARTICULO 501 DE LA LFT ,
@@ -249,7 +249,7 @@
          catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
-        ?>
+        ?>.
         </strong> 
         </p>
         <strong>

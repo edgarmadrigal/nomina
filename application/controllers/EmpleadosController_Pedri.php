@@ -44,8 +44,7 @@ class EmpleadosController_Pedri extends CI_Controller {
 		$result = array('data' => array());
 		$this->load->model('empleadoModel_Pedri');
 		$data =$this->empleadoModel_Pedri->consulta();
-		foreach ($data as $key => $value) {  
-			// button
+		foreach ($data as $key => $value) {
 			$buttons = '
 			<div class="btn-group" >
 			  <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,6 +75,8 @@ class EmpleadosController_Pedri extends CI_Controller {
 		$this->load->model('empleadoModel_Pedri');
         $id = $this->input->post('id');
         $data = [
+			
+	 	'empleado_id'           	=> $this->input->post('NUMERO'),  
 		'NUMERO'           			=> $this->input->post('NUMERO'),
 		'NOMBRE_COMPLETO'           => $this->input->post('NOMBRE_COMPLETO'),
 		'NOMBRES'                	=> $this->input->post('NOMBRES'				),
@@ -83,6 +84,7 @@ class EmpleadosController_Pedri extends CI_Controller {
 		'APELLIDO_MATERNO'       	=> $this->input->post('APELLIDO_MATERNO'	),       
 		'NOMBRE_PUESTO'       		=> $this->input->post('NOMBRE_PUESTO'		),  
 		'NOMBRE_DEPARTAMENTO'       => $this->input->post('NOMBRE_DEPARTAMENTO'	),
+		'ESTATUS'       			=> 'A',
 		];
         echo $this->empleadoModel_Pedri->update_empleado($id, $data);
     }

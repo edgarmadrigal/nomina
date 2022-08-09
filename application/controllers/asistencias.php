@@ -18,25 +18,23 @@ class asistencias extends CI_Controller {
         $this->load->model('Asistencia');
     }
 
-    public function index(){          
+    public function index(){
       header('Access-Control-Allow-Origin: *');
       $data = [];
       //$this->load->model('Asistencia');
           if (isset($this->session->userdata['login'])) {
-        $data['user'] = $this->session->userdata['login']['user'];
-              //$data['checadas'] =json_encode( $this->Checada->consulta(NULL,NULL,NULL,NULL));
-                    
+              $data['user'] = $this->session->userdata['login']['user'];
+              //$data['checadas'] =json_encode( $this->Checada->consulta(NULL,NULL,NULL,NULL));                    
               if ($this->session->userdata['login']['exito']) {
-
                 $this->load->view('header', $data);
                 $this->load->view('asistencia', $data);
                 $this->load->view('footer', $data);
               } else {
                   $this->load->view('login');
             }
-          } else {
-              $this->load->view('login');
-      }
+          }else {
+           $this->load->view('login');
+        }
     }
     
     public function actualizarTodo(){        
@@ -114,36 +112,164 @@ class asistencias extends CI_Controller {
       $data =$this->Asistencia->consulta($NoSemana,$anio,$planta,$departamento,$puesto,$noempleado);
  
       //$data=print_r(json_encode($data));
-      /*;
-      die();*/
+      //die();
       $dompdf = new Dompdf(array('isPhpEnabled' => true));      
       $titulo='Reporte de Asistencia';
       $fechaactual = getdate();
       $fechaactual="Fecha de Impresion: $fechaactual[mday] / $fechaactual[mon] / $fechaactual[year]";
       $NoSemana=$data[0]['NoSemana'];
       
-      $Numerodepartamento='50';
-      $Nombredepartamento='ADMINISTRACIóN';
+      $Numerodepartamento='21';
+      $Nombredepartamento='PEDRISENA';
+      $sumasegundosTiempoExtra=0;
+      $sumaminutosTiempoExtra=0;
+      $sumahorasTiempoExtra=0;
+      $AsistenciaSemanal=0;
+
+      $sumaAsistencia=0;
+      $totalAsistencia=0;
+
+      $TotalsegundosTiempoExtra=0;
+      $TotalminutosTiempoExtra=0;
+      $TotalhorasTiempoExtra=0;
       
       $NumeroEmpleado='96358';
       $NombreEmpleado='EDGAR';
       $sumaRetardos=0;
       $sumaFaltas=0;
-      $sumaTiempoExtra= new DateTime('00:00:00');
-      $total=new DateTime('00:00:00');
+      //$sumaTiempoExtra= new DateTime('00:00:00');
+      $sumaTiempoExtra="00:00:00";
+      //$total=new DateTime('00:00:00');
+      $total=0;
       
-      $dt = new DateTime('00:00:00');
-      $horas='0';
-      $segundos='0';
-      $minutos='0';
+      //$dt = new DateTime('00:00:00');
+      $dt = 0;
+      $horas=0;
+      $segundos=0;
+      $minutos=0;
 
       $TotalFaltas=0;
       $TotalRetardos=0;
-      $TotalTiempoExtra= new DateTime('00:00:00');
+      //$TotalTiempoExtra= new DateTime('00:00:00');
+      $TotalTiempoExtra="00:00:00";
       $TotalEmpleados=0;
 
       ob_start();      
       require (dirname(__DIR__, 1)."/views/ReporteAsistencia.php");
+      $html = ob_get_contents();//$this->output->get_output();
+      ob_get_clean();
+      
+      $dompdf->loadHtml(utf8_decode($html));
+
+      // (Optional) Setup the paper size and orientation
+      $dompdf->setPaper('A4', 'portrait');
+
+      // Render the HTML as PDF
+      $dompdf->render();
+      
+      // Parameters
+      $x          = 505;
+      $y          = 790;
+      $text       = "Página {PAGE_NUM} de {PAGE_COUNT}";     
+      $font       = $dompdf->getFontMetrics()->get_font('Helvetica', 'normal');   
+      $size       = 10;    
+      $color      = array(0,0,0);
+      $word_space = 0.0;
+      $char_space = 0.0;
+      $angle      = 0.0;
+
+      $dompdf->getCanvas()->page_text(
+        $x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle
+      );
+      
+      // Output the generated PDF to Browser
+      $dompdf->stream("ReporteAsistencia.pdf", array("Attachment"=>false));
+       
+
+    }
+
+
+    public function reporteAsistenciaNominas(){
+      
+      header('Access-Control-Allow-Origin: *'); 
+       
+      $NoSemana=$this->input->get('NoSemana');
+      $anio=$this->input->get('anio');
+      $planta=$this->input->get('planta');
+      $departamento=$this->input->get('departamento');
+      $puesto=$this->input->get('puesto');
+      $noempleado=$this->input->get('noempleado');
+      // echo $NoSemana.$anio.$departamento.$noempleado;
+      if (empty($NoSemana)){
+        $NoSemana=null;
+       }if (empty($anio)){
+        $anio=null;
+       }if (empty($noempleado)){
+        $noempleado=null;
+       }if (empty($planta)){
+        $planta=null;
+       }
+       if (empty($departamento)){
+        $departamento=NULL;
+       }
+       if (empty($planta)){
+        $planta=NULL;
+       }
+       if (empty($puesto)){
+        $puesto=NULL;
+       }
+      $this->load->model('Asistencia');
+
+
+      //$data = array('data' => array()); 
+
+      $data =$this->Asistencia->consulta($NoSemana,$anio,$planta,$departamento,$puesto,$noempleado);
+ 
+      //$data=print_r(json_encode($data));
+      //die();
+      $dompdf = new Dompdf(array('isPhpEnabled' => true));      
+      $titulo='Reporte de Asistencia';
+      $fechaactual = getdate();
+      $fechaactual="Fecha de Impresion: $fechaactual[mday] / $fechaactual[mon] / $fechaactual[year]";
+      $NoSemana=$data[0]['NoSemana'];
+      
+      $Numerodepartamento='21';
+      $Nombredepartamento='PEDRISENA';
+      $sumasegundosTiempoExtra=0;
+      $sumaminutosTiempoExtra=0;
+      $sumahorasTiempoExtra=0;
+      $AsistenciaSemanal=0;
+
+      $sumaAsistencia=0;
+      $totalAsistencia=0;
+
+      $TotalsegundosTiempoExtra=0;
+      $TotalminutosTiempoExtra=0;
+      $TotalhorasTiempoExtra=0;
+      
+      $NumeroEmpleado='96358';
+      $NombreEmpleado='EDGAR';
+      $sumaRetardos=0;
+      $sumaFaltas=0;
+      //$sumaTiempoExtra= new DateTime('00:00:00');
+      $sumaTiempoExtra="00:00:00";
+      //$total=new DateTime('00:00:00');
+      $total=0;
+      
+      //$dt = new DateTime('00:00:00');
+      $dt = 0;
+      $horas=0;
+      $segundos=0;
+      $minutos=0;
+
+      $TotalFaltas=0;
+      $TotalRetardos=0;
+      //$TotalTiempoExtra= new DateTime('00:00:00');
+      $TotalTiempoExtra="00:00:00";
+      $TotalEmpleados=0;
+
+      ob_start();      
+      require (dirname(__DIR__, 1)."/views/ReporteAsistenciaNominas.php");
       $html = ob_get_contents();//$this->output->get_output();
       ob_get_clean();
       

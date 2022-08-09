@@ -29,7 +29,7 @@
                 <h4 class="card-title">Asignacion de Horarios</h4> 
                 <div class="card">
                     <div class="card-body">     
-                        <div class="container">   
+                        <div class="container">
                           <div class="row">              
                               <div id="asignar" class="col-md-12 text-right" style="display:none;">
                                   <button id="nuevo" class="btn btn-info" data-toggle="modal" data-target="#ModificarDia" >
@@ -348,7 +348,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
-                <h4 class="modal-title" id="myModal_categoriasLabel">AGREGAR</h4>
+                <h4 class="modal-title" id="myModal_categoriasLabel"></h4>
             </div>
             <div class="modal-body">
                 <div class="container">  
@@ -543,6 +543,9 @@
                         </div>
                         <label style="font-weight: bold!important;">Descripción:</label> 
                         <input type="text" id="descripcion" class="form-control valid">  
+
+                        <label style="font-weight: bold!important;">Cantidad de dias por Semana:</label> 
+                        <input type="number" id="cantidad" class="form-control valid">
 
                         <center>
                     </fieldset>
