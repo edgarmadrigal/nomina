@@ -205,7 +205,7 @@ $(document).on('click', '#buscarAcumulado', function (e) {
        // window.location.assign(varURL);
     });
 
-    
+    /*
     $('#planta').on('change', function() {
         $('#departamento').empty();   
         $('#puesto').empty();
@@ -247,7 +247,7 @@ $(document).on('click', '#buscarAcumulado', function (e) {
                 $('#puesto').append('<option value="'+value.ID+'">'+value.descripcion+'</option>');
             });
         });                
-    });
+    });*/
 
 
 });

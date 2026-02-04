@@ -50,7 +50,7 @@
 
         SEXTA.- “El /La Trabajador(a) disfrutará de un día de descanso con goce de salario íntegro por cada seis de trabajo, el cual será preferentemente el domingo de cada semana. “La Empresa” podrá, previo acuerdo con “El/La Trabajador(a)”, variar el descanso semanal conforme a las necesidades de la misma.
         SEPTIMA.- “El/La Trabajador(a)” no podrá laborar tiempo extraordinario de trabajo, sin previa autorización por escrito que “La empresa” le otorgue por conducto de sus representantes.
-        OCTAVA.- “El/La Trabajador(a)” disfrutara de un periodo anual de vacaciones de 6 días el cual, se incrementara anualmente en los términos señalados en el artículo 76 de La Ley Federal del Trabajo.
+        OCTAVA.- “El/La Trabajador(a)” disfrutara de un periodo anual de vacaciones de 12 días el cual, se incrementara anualmente en los términos señalados en el artículo 76 de La Ley Federal del Trabajo.
         NOVENA.- “El/La Trabajador(a)” percibirá un aguinaldo anual de quince días de salario, el cual se cubrirá de manera proporcional a los servicios prestados a “La Empresa” durante dicho periodo.
         DECIMA.- “El/La Trabajador(a)” se obliga en términos de la fracción V del artículo 134 de La Ley Federal del Trabajo, a someterse a los reconocimientos y exámenes médicos que “La Empresa” le indique.
         DECIMA PRIMERA.- “El/La Trabajador(a)” se obliga a participar en los cursos de capacitación y adiestramiento que “La Empresa” le indique para el mejor conocimiento y desarrollo de sus aptitudes mismo que podrán impartirse dentro y/o fuera de la jornada de labores.

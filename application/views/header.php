@@ -182,6 +182,21 @@
                         <i class="fa fa-home"></i>
                         <span class="hide-menu">Inicio</span></a>
                         </li>
+
+                            
+                        <?php if ($user->idPerfil==6) {?>
+
+                        
+                                    <li style="float: left;width: 100%;"> 
+                                        <a class="waves-effect waves-dark" href="produccion" aria-expanded="true">
+                                        <i class="fa fa-product-hunt"></i>
+                                        <span class="hide-menu">Produccion </span></a>
+                                    </li>
+                        <?php } ?>      
+
+
+                        
+                        <?php if ($user->idPerfil!=6) {?>
                         <li class=""> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
                             <i class="icon-Double-Circle"></i><span class="hide-menu">Catalogos</span></a>
                             <ul aria-expanded="true" class="collapse" style="">                             
@@ -208,6 +223,19 @@
                                     <i class="fa fa-address-card"></i>
                                     <span class="hide-menu">Empleados León Guzmán</span></a>
                                 </li>     
+                                <!-- Boton de Leon Guzman // Josue-->  
+                                <li style="float: left;width: 100%;">  
+                                    <a class="waves-effect waves-dark" href="EmpleadosController_TCT" aria-expanded="true">
+                                    <i class="fa fa-address-card"></i>
+                                    <span class="hide-menu">Empleados TCT</span></a>
+                                </li> 
+                                <!-- Boton de Leon_Guzman_Almoadas // Jorge-->  
+                                <li style="float: left;width: 100%;">  
+                                    <a class="waves-effect waves-dark" href="EmpleadosController_Leon_Guzman_Almohadas" aria-expanded="true">
+                                    <i class="fa fa-address-card"></i>
+                                    <span class="hide-menu">Empleados León Guzmán Almohadas</span></a>
+                                </li>     
+                                <!-- Boton de LLeon_Guzman_Almoadas // Jorge-->  
                                 <li style="float: left;width: 100%;">  
                                     <a class="waves-effect waves-dark" href="EmpleadosController_Eventuales" aria-expanded="true">
                                     <i class="fa fa-address-card"></i>
@@ -218,7 +246,7 @@
                                     <i class="fa fa-male"></i><i class="fa fa-random"></i>
                                     <span class="hide-menu">Empleados Byte</span></a>
                                 </li>                                                                
-                                <li style="float: left;width: 100%;"> 
+                                <li style="float: left;width: 100%;">
                                     <a class="waves-effect waves-dark" href="horariosusuario" aria-expanded="true">
                                     <i class="fa fa-male"></i><i class="fa fas fa-plus-circle"></i>
                                     <span class="hide-menu">Asignacion de Horarios</span>
@@ -320,6 +348,7 @@
                                 
                             </ul>
                         </li>
+                        <?php } ?>  
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

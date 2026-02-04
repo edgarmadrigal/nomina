@@ -22,9 +22,7 @@ class ContratoRH extends CI_Model{
         'idComida'        => intval($idComida),
         'idNacionalidad'  => intval($idNacionalidad),
         'idRazon'        => intval($idrazon),
-        
-        );
-        
+        );        
         $result = $this->db->query($sp,$params);
 
         //print_r($result->result_array());

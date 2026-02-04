@@ -153,7 +153,7 @@ class contrato extends CI_Controller {
               // Output the generated PDF to Browser
               $dompdf->stream("ReporteContrato.pdf", array("Attachment"=>false));   
           }else{
-            echo 'El empleado no existe';
+            echo 'El empleado no existe ó Revisa la dirección de el empleado la ciudad y el estado';
           }
         } catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
