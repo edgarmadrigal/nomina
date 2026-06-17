@@ -9,6 +9,10 @@ class ChecadaBiostar extends CI_Model{
     public function consulta($NoSemana,$anio,$planta,$departamento,$puesto,$noempleado)
     {        
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
+        
+        sqlsrv_configure('WarningsReturnAsErrors', 0);
+        /*print_r($NoSemana.''.$anio.''.$planta);
+        die();*/
         $sp = "ConsultaChecadasEmpleadosTorreonBiostar ?,?,?,?,?,? "; 
         $params = array(
         'NoSemana' => $NoSemana,
@@ -18,7 +22,8 @@ class ChecadaBiostar extends CI_Model{
         'puesto' => $puesto,
         'NoEmpleado' => $noempleado);
         
-        $result = $this->db->query($sp,$params);
+       $result  = $this->db->query($sp,$params);
+        
         return  $result->result_array();
     }
     public function ActualizarChecadasNomiplus(){        
@@ -59,7 +64,9 @@ class ChecadaBiostar extends CI_Model{
         return  $result;
     }
 
-    
+    /**
+     * ConsultaProductos
+     * txtCartonsPacked.Text = x[0].CartonNumber.ToString(); */
    
 
 }

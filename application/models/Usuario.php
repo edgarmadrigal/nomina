@@ -10,9 +10,10 @@ class Usuario extends CI_Model{
 /**----------------------------------------------------------------------------  */
     public function consulta()
     {
-        $this->db->select('u.id,u.nombre,u.usuario,p.perfil');
+        $this->db->select('u.id,u.nombre,u.usuario,p.perfil,e.nombre as planta');
         $this->db->from('usuarios u');
         $this->db->join('perfiles p', 'u.idPerfil = p.id');
+        $this->db->join('empresas e', 'u.idPlanta = e.id');
         $aResult = $this->db->get();
         if(!$aResult->num_rows() == 1)
         {
@@ -24,7 +25,7 @@ class Usuario extends CI_Model{
    /** ------------------------------------------------------------------------ */     
     public function consulta_Usuarios()
     {
-        $usuarios = $this->db->select('id,nombre,usuario,password,idPerfil')
+        $usuarios = $this->db->select('id,nombre,usuario,password,idPerfil,idPlanta')
         ->from('usuarios')
         ->get()
         ->result();                 
@@ -40,7 +41,8 @@ class Usuario extends CI_Model{
                     ->num_rows();
             if($existe){
                 $existe = true;
-            } else {
+            }
+            else {
                 $existe = false;
             }
         } else {
@@ -53,7 +55,7 @@ class Usuario extends CI_Model{
     {
         if((isset($usuario))&&(isset($password))){
             //$pass = md5($password);
-            $login = $this->db->select('id,nombre,usuario,idPerfil')
+            $login = $this->db->select('id,nombre,usuario,idPerfil,idPlanta')
                     ->from('usuarios')
                     ->where('usuario',$usuario)
                     ->where('password',$password)
@@ -74,7 +76,7 @@ class Usuario extends CI_Model{
 
     function get_usuario($id)
     {
-        $usuario = $this->db->select('id,nombre,usuario,password,idPerfil')
+        $usuario = $this->db->select('id,nombre,usuario,password,idPerfil,idPlanta')
                                 ->from('usuarios')
                                 ->where('id',$id)
                                 ->get()
@@ -102,7 +104,8 @@ class Usuario extends CI_Model{
        'nombre'     =>  $data['nombre'],
        'usuario'   =>  $data['usuario'],
        'password'     =>  $data['password'],       
-       'idPerfil'     =>  $data['idPerfil']
+       'idPerfil'     =>  $data['idPerfil'],      
+       'idPlanta'     =>  $data['idPlanta'],
        ];   
        $d=true;        
        $this->db->insert('usuarios',$usuario);

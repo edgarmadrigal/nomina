@@ -15,9 +15,7 @@ class CostoModel extends CI_Model{
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
 
         $sp = "ConsultaReporteCosto ?,? "; 
-        $params = array(
-        'FechaInicio' => $fechaInicio,
-        'FechaFin' => $fechaFin);
+        $params = array('FechaInicio' => $fechaInicio,'FechaFin' => $fechaFin);
         
         $result = $this->db->query($sp,$params);
         
@@ -51,7 +49,8 @@ class CostoModel extends CI_Model{
       
         $file = "costo.txt"; //le doy un nombre al archivo
         
-        file_put_contents($file,"CENTRO COSTO;DEPARTAMENTO;PLANILLA;PERCEP;HOREXT;GRATIF;INCENT;PPYADE;CROM;TOTPER;SUBEMP;ISPT;IMSS;CAJAAHO;INFONAVIT;PREAHO;PREEMP;INTERGAS;OTRASRET;TOTAL" . PHP_EOL); //creamos el archivo
+        file_put_contents($file,"CENTRO COSTO;DEPARTAMENTO;PLANILLA;PERCEP;HOREXT;GRATIF;INCENT;PPYADE;CROM;TOTPER;SUBEMP;ISPT;IMSS;CAJAAHO;INFONAVIT;PREAHO;PREEMP;INTERGAS;OTRASRET;TOTAL".PHP_EOL);
+         //creamos el archivo
           
         for($i = 0; $i < count($result); $i++)
             {
@@ -122,7 +121,7 @@ class CostoModel extends CI_Model{
                    
                     }
                 }
-                file_put_contents($file, PHP_EOL, FILE_APPEND); //agrego un salto de linea
+                file_put_contents($file,PHP_EOL, FILE_APPEND); //agrego un salto de linea
             }
         if (file_exists($file)) { //verifico que el archivo haya sido creado
             header('Content-Description: File Transfer');
@@ -144,10 +143,6 @@ class CostoModel extends CI_Model{
           //en caso no se haya creado el archivo, muestro un mensaje
           echo "Hubo un error al momento de crear el archivo, verifique los permisos de las carpetas del servidor.";
         }
-        
-        
-       
-       
         return  $result;    
       }
 

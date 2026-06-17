@@ -49,7 +49,6 @@
                                         <table id="relacionSolicitudes" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>RAZON_SOCIAL</th>
                                                     <th>GRUPO</th>
                                                     <th>IMPORTE</th>
@@ -60,7 +59,6 @@
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>RAZON_SOCIAL</th>
                                                     <th>GRUPO</th>
                                                     <th>IMPORTE</th>

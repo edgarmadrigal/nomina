@@ -29,7 +29,16 @@ class Importar extends CI_Controller {
   }
  
 
+  public function subirPlanta() {
+            header('Access-Control-Allow-Origin: *');
+            $planta   =   $this->input->post('planta');
+            $this->session->set_userdata('planta', $planta);
+            echo json_encode($planta);
+  }
+
   public function uploadData() {
+    header('Access-Control-Allow-Origin: *');
+    $idPlanta=$this->session->userdata('planta');
             $path = 'uploads/';
             require_once APPPATH."/third_party/PHPExcel.php";
             $config['upload_path'] = $path;
@@ -111,6 +120,7 @@ class Importar extends CI_Controller {
                               $inserdata[$i]['usuarioid'] = $value['F'];
                               $i++;
                           }
+                          
                       }
                     }
                     else if($continua2){
@@ -119,29 +129,19 @@ class Importar extends CI_Controller {
                       || $value['F']  =='1:N authentication succeeded (Face)' 
                       || $value['F'] =='1:N Autenticaci??n exitosa (Rostro)' 
                       || $value['F'] =='1:N Autenticación exitosa (Rostro)'      ){
-
-
                       
                       /* NUEVO METODO PARA SACAR LA FECHA */
                       
                       try{
-                        $fecha= date("Y-m-d",strtotime($value['A']));
-              
-                        $fechahora= date("Y-m-d H:i",strtotime($value['A']));
-                        
+                        $fecha= date("Y-m-d",strtotime($value['A']));              
+                        $fechahora= date("Y-m-d H:i",strtotime($value['A']));                        
                         $hora=  date("H:i",strtotime($value['A']));
-
-
-
                         //echo 'Excepción capturada: ',  $e->getMessage(), "\n";
                        /* $fecha=  date("Y-m-d H:i",strtotime($value['A']));  
                         $fechahora= date("Y-m-d",strtotime($a));                           
                         $hora= date("H:i",strtotime($a));    */
-
                         $fecha_entrada =  $fechahora;
-                      }catch (Exception $e) {
-                        
-                        
+                      }catch (Exception $e) {         
                         $x= trim($value['A']);
                         $x = date_create_from_format('d/m/Y H:i',$x );
                         $date =  $x->getTimestamp();                       
@@ -187,7 +187,14 @@ class Importar extends CI_Controller {
                       $usuarioid=$completo[0];
                       $valida=true;   
                       $dia_id=date("w",strtotime($fecha)); 
+                      $idPlanta= $this->session->userdata('planta');
+
+                             
+                               
+                            
+                      
 /*
+
                       $x= trim($value['A']);
                       $x = date_create_from_format('d/m/Y H:i',$x );
                       $date =  $x->getTimestamp();                         
@@ -221,6 +228,7 @@ class Importar extends CI_Controller {
                               $inserdata[$i]['usuarioid'] = $usuarioid;
                               $inserdata[$i]['hora'] = $hora;
                               $inserdata[$i]['dia_id'] = $dia_id;
+                              $inserdata[$i]['idPlanta'] =  $idPlanta;                              
                               $i++;
                           //}
                       }
@@ -244,7 +252,8 @@ class Importar extends CI_Controller {
                die();
           }
           }else{
-              echo $error['error'];
+            print_r('Error');
+              //echo $error['error'];
           }
   }
 
@@ -344,6 +353,7 @@ metodo anterior
                       $inserdata[$i]['usuarioid'] = $usuarioid;
                       $inserdata[$i]['hora'] = $hora;
                       $inserdata[$i]['dia_id'] = $dia_id;
+                      $inserdata[$i]['idPlanta'] =  $idPlanta;      
                       $i++;
                   }
               }

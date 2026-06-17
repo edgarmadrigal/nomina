@@ -20,7 +20,7 @@ class Checada extends CI_Model{
         return  $result->result_array();
     }
 
-    
+    /*'625','631','651','652','653','657','671','673','674','675','676','677','678','690','691','692','694','695','697','698','794'*/
 
     public function ConsultaChecadasActivosInactivos($NoSemana,$anio,$departamento,$noempleado)
     {

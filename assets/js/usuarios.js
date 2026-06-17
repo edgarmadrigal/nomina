@@ -24,8 +24,9 @@
             var password = $("#password").valid();
             var nombre = $("#nombre").valid();
             var perfil = $("#perfil").valid();
-
-            if(usuario==true && password== true && nombre == true){
+            var planta = $("#planta").valid();
+            
+            if(usuario==true && password== true && nombre == true && planta== true){
                 return true;
             }else{
                 return false;
@@ -55,6 +56,7 @@
                     $('#password').val(data.password); 
                     $('#id').val(data.id);
                     var perfil=data.idPerfil;
+                    var planta=data.idPlanta;
                     $.ajax({
                         url:  base_url+'usuarios/consultaPerfil',
                         type: 'post',
@@ -65,17 +67,47 @@
                         $('#perfil').append('<option value="">Selecciona</option>');
                         $.each(perfiles, function( index, value ) { 
                             $('#perfil').append('<option value="'+index+'">'+value.perfil+'</option>');
-                        });                        
+                        });   
+                        
                         $("#perfil").val(perfil-1);                        
                         $('#id').val(id_edit);
                         $('#nombre').removeClass("error");
                         $('#usuario').removeClass("error");
                         $('#password').removeClass("error");
                         $('#perfil').removeClass("error");
+                        $('#planta').removeClass("error");
                         $('#nombre-error').hide();
                         $('#usuario-error').hide();
                         $('#password-error').hide();
                         $('#perfil-error').hide();
+                    });
+
+                    $.ajax({
+                        url:  base_url+'usuarios/consultaPlanta',
+                        type: 'post',
+                        dataType: 'json'
+                    }).done(function (data){                             
+                        plantas= JSON.parse(JSON.stringify(data));
+
+                        $('#planta').append('<option value="">Selecciona</option>');
+                        $.each(plantas, function( index, value ) { 
+                            $('#planta').append('<option value="'+index+'">'+value.nombre+'</option>');
+                        });   
+                        
+                        
+                        $("#perfil").val(perfil-1);    
+                        $("#planta").val(planta-1);                        
+                        $('#id').val(id_edit);
+                        $('#nombre').removeClass("error");
+                        $('#usuario').removeClass("error");
+                        $('#password').removeClass("error");
+                        $('#perfil').removeClass("error");
+                        $('#planta').removeClass("error");
+                        $('#nombre-error').hide();
+                        $('#usuario-error').hide();
+                        $('#password-error').hide();
+                        $('#perfil-error').hide();
+                        $('#planta-error').hide();
                     });
                 } else {
                     $('#nombre').val('');
@@ -158,7 +190,7 @@
             exportOptions: {
                 format: {
                     body: function ( data, row, column, node ) {
-                        // Strip $ from salary column to make it numeric
+                        //
                         return data;/*column === 5 ?
                             data.replace( /[$,]/g, '' ) :
                             data;/**/
@@ -171,7 +203,7 @@
             responsive: true,
             'orders': [],
             "columnDefs": [
-                { "orderable": false, "targets": 4 } ///no se puede ordenar por la Operacion que es la columna 4
+                { "orderable": false, "targets": 5 } ///no se puede ordenar por la Operacion que es la columna 4
                 ],
             ajax: {
                 type: "POST",
@@ -216,25 +248,25 @@
                 $.extend( true, {}, buttonCommon, {
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ]
+                        columns: [ 0, 1, 2, 3 ,4]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ]
+                        columns:  [ 0, 1, 2, 3 ,4]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3]
+                        columns:  [ 0, 1, 2, 3 ,4]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ]
+                        columns:  [ 0, 1, 2, 3 ,4]
                     }
                 } ),
             ]
@@ -284,6 +316,7 @@
             var nombre = $('#nombre').val();
             var password = $('#password').val();     
             var idPerfil = parseInt($('#perfil').val())+1;   
+            var idPlanta= parseInt($('#planta').val())+1;   
                        
             if(validar()){
                 var id= $('#id').val();
@@ -299,6 +332,7 @@
                             'nombre':nombre,
                             'password': password,
                             'idPerfil': idPerfil,
+                            'idPlanta': idPlanta,
                         }
                     }).done(function (data) {
                         if (data) {
@@ -339,6 +373,7 @@
                             'nombre':nombre,
                             'password': password,
                             'idPerfil': idPerfil,
+                            'idPlanta': idPlanta,
                         }
                     }).done(function (data) {
                         if (data) {
@@ -377,8 +412,10 @@
             $('#usuario').val(''); 
             $('#password').val(''); 
             $('#id').val(0);         
-            $('#perfil').empty();  
+            $('#perfil').empty();    
+            $('#planta').empty();  
             var perfil = $("#perfil").valid();
+            var planta = $("#planta").valid();
             document.getElementById("drop-remove").checked = false;
             var x = document.getElementById("password");            
              x.type = "password";
@@ -391,6 +428,18 @@
                 $('#perfil').append('<option value="">Selecciona</option>');
                 $.each(perfiles, function( index, value ) { 
                     $('#perfil').append('<option value="'+index+'">'+value.perfil+'</option>');
+                  });
+            });
+            
+            $.ajax({
+                url:  base_url+'usuarios/consultaPlanta',
+                type: 'post',
+                dataType: 'json'
+            }).done(function (data) {                
+                plantas= JSON.parse(JSON.stringify(data));
+                $('#planta').append('<option value="">Selecciona</option>');
+                $.each(plantas, function( index, value ) { 
+                    $('#planta').append('<option value="'+index+'">'+value.nombre+'</option>');
                   });
             });
         });

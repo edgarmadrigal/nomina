@@ -6,6 +6,9 @@
             body{
                 font-size: 11px!important;
             }
+            .texto_chico{
+                font-size: 9px!important;
+            }
         </style>
     </head>
     <body>  
@@ -35,7 +38,7 @@
             Contrato individual de trabajo por tiempo indeterminado que celebran por
             una parte "LA EMPRESA" <?php 
     try{
-                 print_r("<b>".$RAZONSOCIAL."</b>");     
+                 print_r("<b class='texto_chico' >".$RAZONSOCIAL."</b>");     
         }catch (Exception $e) {
             echo 'Excepción capturada: ',  $e->getMessage(), "\n";
           }
@@ -81,16 +84,16 @@
             objeto social La PRESTACION DE SERVICIOS PROFESIONALES Y TECNICOS.
         </p>
         <p>
-            4.- "EL TRABAJADOR" <strong><?php echo $NOMBRE; ?></strong> manifiesta que tiene la capacidad y aptitudes de
+            4.- "EL TRABAJADOR" <strong style="texto_chico" ><?php echo $NOMBRE; ?></strong> manifiesta que tiene la capacidad y aptitudes de
             desarrollar el trabajo para el cual ha sido contratado.
         </p>
         <p>
             5.- "LA EMPRESA" <?php 
-    try{
+            try{
                   print_r("<b>".$RAZONSOCIAL."</b>");  
-        }catch (Exception $e) {
+            }catch (Exception $e) {
             echo 'Excepción capturada: ',  $e->getMessage(), "\n";
-          }
+            }
              ?>, requiere de
             los servicios de personal apto para el desarrollo de sus Actividades y de
             modo especial para el puesto o funciones de <strong><?php echo $PUESTO; ?></strong> .
@@ -105,12 +108,12 @@
         </p>
         <p>
             PRIMERA.- Para efectos de mayor brevedad se denominara en lo sucesivo a 
-            <?php 
-    try{
+      <?php 
+        try{
                  print_r("<b>".$RAZONSOCIAL."</b>");        
         }catch (Exception $e) {
             echo 'Excepción capturada: ',  $e->getMessage(), "\n";
-          }
+        }
              ?> como "LA EMPRESA", a  <strong><?php echo $NOMBRE; ?></strong>     
             
             como "EL TRABAJADOR", a la Ley Federal del Trabajo como "LA LEY", al
@@ -154,8 +157,11 @@
         QUINTA .- La duración de la jornada de trabajo será de 48 horas, quedando distribuido a manera enunciativa como sigue: 
         </p>
         <p>
-        <strong><?php echo $HORARIOCONTRATO; ?></strong>
+        <strong><?php echo $HORARIOCONTRATO; ?></strong>      <strong><?php if($idhorario==10) { ?>
+            JORNADA MATUTINA 48 , JORNADA MIXTA 45 , JORNADA NOCTURNA 42.</strong>
+            <?php } ?>
         </p>
+  
         <p>
         Cuando el horario de labores sea continuo "EL TRABAJADOR", tendrá derecho a <strong><?php echo $COMIDA; ?></strong> de descanso para tomar alimentos y le será  computado dicho
         periodo dentro de su jornada de trabajo.
@@ -171,7 +177,7 @@
         SEXTA.- "EL TRABAJADOR", acepta y por ende queda por establecido que cuando por razones convenientes para "LA EMPRESA", esta modifique el horario de
         trabajo, podrá desempeñar su jornada en el que quede establecido.
         </p>
-        <p><br>
+        <p>
         SEPTIMA.- "EL TRABAJADOR", deberá presentarse puntualmente a sus labores en el horario de trabajo establecido y  cumplir con los sistemas de registro y
         control de asistencia diaria que la empresa establezca. En caso de retraso o falta de asistencia injustificada podrá "LA EMPRESA", imponerle la corrección
         disciplinaria que contempla el Reglamento Interior de Trabajo, o "LA LEY".
@@ -254,20 +260,34 @@
         </p>
         <strong>
             <TABLE>
+            <?php if(print_r($RAZONSOCIAL)=='SERVICIOS Y SUMINISTROS DE EMPAQUE DE LA LAGUNA SA DE CV') { ?>
+                <TR><TD width="200px">&nbsp;</TD><TD>&nbsp;</TD><TD width="50px">&nbsp;&nbsp;&nbsp; <BR> <BR>  <BR><BR></TR>
+            <?php } else { ?>
                 <TR>
-                    <TD width="200px">&nbsp;</TD><TD>&nbsp;</TD><TD width="50px">&nbsp;&nbsp;&nbsp;
+                    <TD width="200px">&nbsp;</TD><TD>&nbsp;</TD><TD width="50px">&nbsp;&nbsp;&nbsp;       
                 <BR><BR></TD><TD>&nbsp;</TD><TD></TD>
                 </TR>
+                <?php }?>
                 <TR>
                     <TD width="200px">&nbsp;</TD><TD>________________________</TD><TD width="50px">&nbsp;&nbsp;&nbsp;</TD><TD>________________________</TD><TD></TD>
                 </TR>
                 <TR>
                     <TD  width="200px">&nbsp;</TD><TD><center>LA EMPRESA</center></TD><TD width="50px">&nbsp;&nbsp;&nbsp;</TD><TD><center>EL TRABAJADOR</center></TD><TD></TD>
                 </TR>
+
+                <?php if(print_r($RAZONSOCIAL)=='SERVICIOS Y SUMINISTROS DE EMPAQUE DE LA LAGUNA SA DE CV') { ?>
+                <TR><TD width="200px">&nbsp;</TD><TD>&nbsp;</TD><TD width="50px">&nbsp;&nbsp;&nbsp; <BR> <BR><BR><BR> </TR>
+            <?php } else { ?>
                 <TR>
                     <TD width="200px">&nbsp;</TD><TD>&nbsp;</TD><TD width="50px">&nbsp;&nbsp;&nbsp;
                 <BR><BR><BR><BR><BR><BR><BR></TD><TD>&nbsp;</TD><TD></TD>
                 </TR>
+                <?php }?>
+
+
+                
+
+
                 <TR>
                     <TD width="200px">&nbsp;</TD><TD>________________________</TD><TD width="50px">&nbsp;&nbsp;&nbsp;</TD><TD>________________________</TD><TD></TD>
                 </TR>

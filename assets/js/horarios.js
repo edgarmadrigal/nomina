@@ -76,7 +76,7 @@
                     id: id_edit
                 }
             }).done(function (data) {
-                if (data) {    
+                if (data) {
                     var tipoDiurno      = data.tipo == 0 ? true : false;
                     var tipoNocturno    = data.tipo == 1 ? true : false;
                     var comedor         = data.comedor == 1 ? true : false;

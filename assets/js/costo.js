@@ -23,8 +23,9 @@ Modulo = {
             //Modulo.datosTabla=data;
 
             var a = document.createElement('a');
+            
             var file_name = "CT_"+fechaFin;
-            a.href = "http://177.244.42.94:8087/nomina/costo.txt";
+            a.href =  window.location.origin +"/nomina/costo.txt";
             a.download = file_name;
             a.click();
         });

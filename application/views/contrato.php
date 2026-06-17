@@ -134,6 +134,15 @@
                                         </div>
                                     </div>
                                     
+                                <div class="row">              
+                                    <div class="col-md-12 text-right">
+                                        <div class="messages"></div>
+                                        <button id="actualizar" class="btn btn-warning" >
+                                            <i class="fa fa-refresh"></i> Actualizar Empleados Microsip</button><!-- fa-spin -->
+                                       <!-- </button>  -->
+                                    </div> 
+                                </div>      
+                                    
                                 </div> 
                             </div>
                         </div>
@@ -145,7 +154,8 @@
 </div>  
 
 <script src="assets/js/contrato.js"></script>
-
+<script src="assets/js/jquery.blockUI.js"></script>
+<!--<script src="assets/js/empleados.js"></script>--->
 
 
 

@@ -49,7 +49,6 @@
                                         <table id="retenciones" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>CONCEPTO</th>
                                                     <th>IMPORTE</th>
                                                     <th>FECHA_INICIO</th>
@@ -58,7 +57,6 @@
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>CONCEPTO</th>
                                                     <th>IMPORTE</th>
                                                     <th>FECHA_INICIO</th>

@@ -61,6 +61,7 @@ class Home extends CI_Controller {
 				if($login_admin){
 					$login['user'] = $login_admin->login;
 					$login['exito'] = true;
+					//$login['idEmpresa'] = $login_admin->login;
 				} else {
 					$this->session->sess_destroy();
 					$login['exito'] = 0;

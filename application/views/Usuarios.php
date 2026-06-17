@@ -27,6 +27,7 @@
                                                     <th>Nombre</th>
                                                     <th>Usuario</th>
                                                     <th>Perfil</th>
+                                                    <th>Planta</th>                                                    
                                                     <th>Opciones</th>
                                                 </tr>
                                             </thead>
@@ -36,6 +37,7 @@
                                                     <th>Nombre</th>
                                                     <th>Usuario</th>
                                                     <th>Perfil</th>
+                                                    <th>Planta</th>   
                                                     <th>Opciones</th>
                                                 </tr>
                                             </tfoot>
@@ -101,6 +103,15 @@
                                     <div class="form-group">
                                             <label style="font-weight: bold!important;">Perfil</label>
                                             <select class="custom-select col-12 required" id="perfil" required>
+                                            </select>
+                                        </div>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-md-12">                            
+                                    <div class="form-group">
+                                            <label style="font-weight: bold!important;">Planta</label>
+                                            <select class="custom-select col-12 required" id="planta" required>
                                             </select>
                                         </div>
                                 </div>

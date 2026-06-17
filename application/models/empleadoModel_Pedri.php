@@ -9,7 +9,8 @@ class empleadoModel_Pedri extends CI_Model{
 /**----------------------------------------------------------------------------  */
 
    /** ------------------------------------------------------------------------ */     
-    public function consulta_empleados(){
+    public function consulta_empleados()
+    {
         
         $empleado = $this->db->select('id,NUMERO,NOMBRE_COMPLETO,NOMBRE_PUESTO,NOMBRE_DEPARTAMENTO,ESTATUS')
                                 ->from('empleados')
@@ -32,11 +33,8 @@ class empleadoModel_Pedri extends CI_Model{
         return $aResult->result_array();
     }
 
-
-
-
-
-    function get_empleado($id){
+    function get_empleado($id)
+    {
         $empleado = $this->db->select('id,NUMERO,NOMBRES,APELLIDO_PATERNO,APELLIDO_MATERNO,NOMBRE_PUESTO,NOMBRE_DEPARTAMENTO,ESTATUS')
                                 ->from('empleados')
                                 ->where('id',$id)
@@ -45,20 +43,23 @@ class empleadoModel_Pedri extends CI_Model{
         return $empleado;
     }
     
-    function delete_empleado($id){
+    function delete_empleado($id)
+    {
         $this->db->where('id', $id)
         ->update('empleados', $data);
        // $this->db->delete('empleados',array('id' => $id));        
         return true;
     }
     
-    function update_empleado($id,$data){
+    function update_empleado($id,$data)
+    {
 
         $this->db->where('id', $id)
               ->update('empleados', $data);
             return true;              
     }    
-    public function insert_empleado($data){   
+    public function insert_empleado($data)
+    {   
         
        $empleado =   [
         'empresa_id'                   =>   21,

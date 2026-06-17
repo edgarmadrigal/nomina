@@ -34,7 +34,7 @@ Modulo = {
                 "bDestroy": true,
                 "scrollX": false,//"100%",
                 "draw": true,
-                //"order": [[ 1, "asc" ]],
+                "order": [[ 3, "asc" ]],
                 "iDisplayLength": 30               
                 , "oLanguage": {
                     "sProcessing": "Procesando...",
@@ -62,33 +62,27 @@ Modulo = {
                     }
                 }
                 ,
-                "aoColumns": [
-                    {
-                        "aTargets": [0],
-                        "mData": function (source, type, val) {
-                            return source.id;
-                             }
-                    },    
+                "aoColumns": [ 
                    {
-                       "aTargets": [1],
+                       "aTargets": [0],
                        "mData": function (source, type, val) {
                            return source.concepto;
                             }
                    },    
                    {
-                       "aTargets": [2],
+                       "aTargets": [1],
                        "mData": function (source, type, val) {
                            return source.importe;
                             }
                    },    
                    {
-                       "aTargets": [3],
+                       "aTargets": [2],
                        "mData": function (source, type, val) {
                            return source.fechaInicio;
                             }
                    },    
                    {
-                       "aTargets": [4],
+                       "aTargets": [3],
                        "mData": function (source, type, val) {
                            return source.fechaFin;
                             }
@@ -106,28 +100,28 @@ Modulo = {
                     $.extend( true, {}, buttonCommon, {
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4]
+                            columns: [ 0, 1, 2, 3]
                         }
                         ,title: 'RELACION DE PAGOS RETENCIONES'
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4]
+                            columns: [ 0, 1, 2, 3]
                         }
                         ,title: 'RELACION DE PAGOS RETENCIONES'
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'csvHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4]
+                            columns: [ 0, 1, 2, 3]
                         }
                         ,title: 'RELACION DE PAGOS RETENCIONES'
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'pdfHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4]
+                            columns: [ 0, 1, 2, 3]
                         }
                         ,title: 'RELACION DE PAGOS RETENCIONES'
                     } ),

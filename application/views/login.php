@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php header('Access-Control-Allow-Origin: *');  ?>
+
 <html lang="es-mx">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +17,7 @@
 
 <head>
   <link rel="stylesheet" media="screen" href="assets/particules/css/style.css">
+<script src="assets/js/login.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="particles-js"  >
@@ -27,7 +29,7 @@
 			    	<h3 class="panel-title">Iniciar Session</h3>
 			 	</div>
 			  	<div  class="panel-body">
-			    	<form rol="form">
+			    	<form id="edgar" rol="form">
                     <fieldset>
 			    	  	<div class="form-group">
 			    		    <input class="form-control" placeholder="usuario" name="usuario" id="usuario" type="text">
@@ -38,7 +40,11 @@
 			    		<div class="form-group">
                             <span id="error" class="error invalid-feedback text-center"></span>
                         </div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Entrar" id="admin_login">
+			    		<input class="btn btn-lg btn-success btn-block g-recaptcha" 
+						 type="submit" 
+						data-sitekey="6LfK63YrAAAAAOkaDGY-EDLDATU3jDKuFFBv7GbT" 
+						data-callback='onSubmit' 
+						data-action='submit' value="Entrar" id="admin_login">
 			    	</fieldset>
 			      	</form>
 			    </div>
@@ -47,7 +53,14 @@
 	</div>
 </div>
 </div>
-<!-- scripts -->
+
+
+<script>
+  function onSubmit(token) {
+    document.getElementById("edgar").submit();
+  }
+</script>
+
 <script src="assets/particules/particles.js"></script>
 <script src="assets/particules/js/app.js"></script>
 <style>
@@ -55,11 +68,14 @@
     background: black;
     position: static;
     float: left;
- }   
+ }
 </style>
 
 
+<!---aqui es otro login-->
+
 <!--
+
   <style >
 	/* colors */
 
@@ -279,8 +295,8 @@
 	}
 
 </style>
--->
-<!--scripts
+
+
 <form>
 	<div class="svgContainer" >
 		<div>
@@ -387,33 +403,38 @@
 			</svg>
 		</div>
 	</div>
+	<form rol="form">
+		<fieldset>
+			<div class="inputGroup inputGroup1"></br>
+			<p class="helper helper1"></p>
+				<label for="loginEmail" id="loginEmailLabel">usuario:</label>
+				<input id="loginEmail"  maxlength="254" style="border-width: 1px;border-style: dashed;"/>
+			</div>
+			<div class="inputGroup inputGroup2">
+				<label for="loginPassword" id="loginPasswordLabel">contraseña:</label>
+				<input type="password" id="loginPassword" style="border-width: 1px;border-style: dashed;width: 143px;"/>
+				<label id="showPasswordToggle" for="showPasswordCheck">Show
+					<input id="showPasswordCheck" type="checkbox" style="border-width: 1px;border-style: dashed;"/>
+					<div class="indicator"></div>
+				</label>
+			</div>
+			<input class="btn btn-lg btn-success btn-block" type="submit" id="admin_login">
+			
+	</fieldset>
+	</form>
 	
-	<div class="inputGroup inputGroup1">
-		<label for="loginEmail" id="loginEmailLabel">Email</label>
-		<input type="email" id="loginEmail" maxlength="254" />
-		<p class="helper helper1">email@domain.com</p>
-	</div>
-	<div class="inputGroup inputGroup2">
-		<label for="loginPassword" id="loginPasswordLabel">Password</label>
-		<input type="password" id="loginPassword" />
-		<label id="showPasswordToggle" for="showPasswordCheck">Show
-			<input id="showPasswordCheck" type="checkbox"/>
-			<div class="indicator"></div>
-		</label>
-	</div>
-	<div class="inputGroup inputGroup3">
-		<button id="login">Log in</button>
-	</div>	
+<script src="assets/js/login.js" type="text/javascript"></script>
+
 </form>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js" type="text/javascript"></script>
 
+-->
+	<!--este no va 
+	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js?r=182" type="text/javascript"></script>-->
+	
 
-	/**este no va */
-	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js?r=182" type="text/javascript"></script>
-
-
-
+<!--
 
 <script type="text/javascript">
 		var emailLabel = document.querySelector("#loginEmailLabel"),
@@ -1011,6 +1032,4 @@
 
 		initLoginForm();
 
-</script>
-
--->
+</script>-->

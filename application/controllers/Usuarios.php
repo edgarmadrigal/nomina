@@ -45,6 +45,15 @@ class Usuarios extends CI_Controller {
         echo json_encode($data);
 
 	}
+	
+	public function consultaPlanta()
+	{ 
+		header('Access-Control-Allow-Origin: *');
+		$this->load->model('Planta');
+		$data = $this->Planta->consulta_Planta();
+        echo json_encode($data);
+
+	}
 
 	function consulta()
     {
@@ -78,6 +87,7 @@ class Usuarios extends CI_Controller {
 				$value['nombre'],
 				$value['usuario'],
 				$value['perfil'],
+				$value['planta'],
 				$buttons
 			);
 		} // /foreach
@@ -94,7 +104,8 @@ class Usuarios extends CI_Controller {
             'nombre' => $this->input->post('nombre'),
             'usuario' => $this->input->post('usuario'),
             'password' => $this->input->post('password'),
-            'idPerfil' => $this->input->post('idPerfil')
+            'idPerfil' => $this->input->post('idPerfil'),
+            'idPlanta' => $this->input->post('idPlanta')
         ];
         echo $this->Usuario->update_usuario($id, $data);
     }
@@ -115,7 +126,8 @@ class Usuarios extends CI_Controller {
             'nombre' => $this->input->post('nombre'),
             'usuario' => $this->input->post('usuario'),
             'password' => $this->input->post('password'),
-            'idPerfil' => $this->input->post('idPerfil')
+            'idPerfil' => $this->input->post('idPerfil'),
+            'idPlanta' => $this->input->post('idPlanta')
         ];
 
         $dt['exito'] = $this->Usuario->insert_usuario($data);

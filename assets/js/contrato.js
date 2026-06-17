@@ -154,6 +154,24 @@ $(document).ready(function () {
       
       
 
+    
+
+      $(document).on('click', '#actualizar', function (e) {
+        $.blockUI({ message: '<h1><img src="assets/js/busy.gif" /> Procesando...</h1>' });
+    $("#tablaEmp").css("display", "none");
+    $(".loadTable").css("display", "block");  
+    var varURL = Modulo.baseurl + "empleados/actualizar";
+    $.ajax({
+        url:  varURL,
+        type: 'post',
+        dataType: 'json'
+    }).done(function (data) {  
+        alert("Se actualizo con exito "+data[0].TOTAL);
+        $.unblockUI();
+        $("#tablaEmp").css("display", "block");
+        $(".loadTable").css("display", "none");
+    });
+});
 
     $(document).on('click', '#buscar', function (e) {
         e.preventDefault();  
@@ -183,3 +201,5 @@ $(document).ready(function () {
     
 
 });
+
+

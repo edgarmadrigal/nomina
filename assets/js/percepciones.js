@@ -78,13 +78,13 @@ Modulo = {
                        "mData": function (source, type, val) {
                            return source.GPO;
                             }
-                   },    
+                   }, 
                    {
                        "aTargets": [3],
                        "mData": function (source, type, val) {
                            return source.EMPRESA;
                             }
-                   },    
+                   },      
                    {
                        "aTargets": [4],
                        "mData": function (source, type, val) {
@@ -122,25 +122,25 @@ Modulo = {
                     $.extend( true, {}, buttonCommon, {
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                            columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                         }
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6,7]
+                            columns: [ 0, 1, 2, 3, 4, 5, 6]
                         }
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'csvHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7]
+                            columns: [ 0, 1, 2, 3, 4, 5, 6]
                         }
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'pdfHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                            columns: [ 0, 1, 2, 3, 4, 5, 6]
                         }
                     } ),
                 ]

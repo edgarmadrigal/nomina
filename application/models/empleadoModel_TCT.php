@@ -1,5 +1,5 @@
 <?php
-//MODELO empleado (Modificado por Josue)
+//MODELO empleado
 class empleadoModel_TCT extends CI_Model{
 
     function ___construct(){

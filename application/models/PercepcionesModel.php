@@ -22,7 +22,6 @@ class percepcionesModel extends CI_Model{
         $result = $this->db->query($sp,$params);
         
         return  $result->result_array();
-        
     }
 
     public function consultaPercepciones(){
@@ -47,10 +46,7 @@ class percepcionesModel extends CI_Model{
             return false;
         }
         return $aResult->result_array();
-
     }
-
-
 }
 
 ?>

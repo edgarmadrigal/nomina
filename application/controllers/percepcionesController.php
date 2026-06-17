@@ -37,21 +37,17 @@ class percepcionesController extends CI_Controller {
       }
     }
     public function consulta(){
-		header('Access-Control-Allow-Origin: *');
-		$fechaInicio = $this->input->post('fechaInicio');
-		$fechaFin = $this->input->post('fechaFin');
-		$result = array('data' => array());
+
+        header('Access-Control-Allow-Origin: *');
+        $fechaInicio = $this->input->post('fechaInicio');
+        $fechaFin = $this->input->post('fechaFin');
+        $result = array('data' => array());
         $this->load->model('PercepcionesModel');
         
-        
-        
         $this->PercepcionesModel->consulta($fechaInicio,$fechaFin);
-
-        
-        
         $data=$this->PercepcionesModel->consultaPercepciones();
 
-		echo json_encode($data);
+		    echo json_encode($data);
     }
     
 }

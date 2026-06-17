@@ -29,9 +29,15 @@
                                                 <option  value="2020">2020</option>
                                                 <option  value="2021">2021</option>
                                                 <option    value="2022">2022</option>
-                                                <option selected value="2023">2023</option>
-                                                <option  value="2024">2024</option>
-                                                <option  value="2025">2025</option>
+                                                <option  value="2023">2023</option>
+                                                <option   value="2024">2024</option>
+                                                <option   value="2025">2025</option>
+                                                <option selected value="2026">2026</option>
+                                                <option  value="2027">2027</option>
+                                                <option  value="2028">2028</option>
+                                                <option  value="2029">2029</option>
+                                                <option  value="2030">2030</option>
+                                                <option  value="2031">2031</option>
                                             </select>
                                         </div>
                                     </div>
@@ -60,12 +66,17 @@
                                         </div>
                                     </div> 
 -->
+<!--
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label style="font-weight: bold!important;">No Empleado</label>
                                             <input id="noempleado" type="text" class="form-control" name="msg" placeholder="escriba NoEmpleado">
                                         </div>
                                     </div>
+
+
+-->
+
                                     <div class="col-2">
                                         <div class="form-group">
                                                     <label style="font-weight: bold!important;"> &nbsp; </label><br> 

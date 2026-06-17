@@ -42,14 +42,11 @@ class RelacionSolicitudesController extends CI_Controller {
 		$fechaFin = $this->input->post('fechaFin');
 		$result = array('data' => array());
         $this->load->model('RelacionSolicitudesModel');
-        
-        
-        
-        $data=$this->RelacionSolicitudesModel->consulta($fechaInicio,$fechaFin);
+        $this->RelacionSolicitudesModel->consulta($fechaInicio,$fechaFin);
 
         
         
-        //$data=$this->RelacionSolicitudesModel->consultaRelacionSolicitudes();
+        $data=$this->RelacionSolicitudesModel->consultaRelacionSolicitudes($fechaInicio,$fechaFin);
 
 		echo json_encode($data);
     }

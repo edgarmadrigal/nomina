@@ -62,45 +62,39 @@ Modulo = {
                     }
                 }
                 ,
-                "aoColumns": [
-                    {
-                        "aTargets": [0],
-                        "mData": function (source, type, val) {
-                            return source.id;
-                             }
-                    },    
+                "aoColumns": [ 
                    {
-                       "aTargets": [1],
+                       "aTargets": [0],
                        "mData": function (source, type, val) {
                            return source.razonSocial;
                             }
                    },    
                    {
-                       "aTargets": [2],
+                       "aTargets": [1],
                        "mData": function (source, type, val) {
                            return source.code;
                             }
                    },    
                    {
-                       "aTargets": [3],
+                       "aTargets": [2],
                        "mData": function (source, type, val) {
                            return source.total;
                             }
                    },    
                    {
-                       "aTargets": [4],
+                       "aTargets": [3],
                        "mData": function (source, type, val) {
                            return source.descripcion;
                             }
                    },        
                    {
-                       "aTargets": [5],
+                       "aTargets": [4],
                        "mData": function (source, type, val) {
                            return source.fechaInicio;
                             }
                    },    
                    {
-                       "aTargets": [6],
+                       "aTargets": [5],
                        "mData": function (source, type, val) {
                            return source.fechaFin;
                             }
@@ -118,28 +112,28 @@ Modulo = {
                     $.extend( true, {}, buttonCommon, {
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4,5,6]
+                            columns: [ 0, 1, 2, 3, 4,5]
                         }
                         ,title: 'RELACION DE SOLICITUDES'
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4,5,6]
+                            columns: [ 0, 1, 2, 3, 4,5]
                         }
                         ,title: 'RELACION DE SOLICITUDES'
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'csvHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4,5,6]
+                            columns: [ 0, 1, 2, 3, 4,5]
                         }
                         ,title: 'RELACION DE SOLICITUDES'
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'pdfHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4,5,6]
+                            columns: [ 0, 1, 2, 3, 4,5]
                         }
                         ,title: 'RELACION DE SOLICITUDES'
                     } ),

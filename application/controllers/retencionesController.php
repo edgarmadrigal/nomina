@@ -45,11 +45,11 @@ class retencionesController extends CI_Controller {
         
         
         
-        $data=$this->retencionesModel->consulta($fechaInicio,$fechaFin);
+       $this->retencionesModel->consulta($fechaInicio,$fechaFin);
 
         
         
-        //$data=$this->retencionesModel->consultaretenciones();
+        $data=$this->retencionesModel->consultaretenciones($fechaInicio,$fechaFin);
 
 		echo json_encode($data);
     }

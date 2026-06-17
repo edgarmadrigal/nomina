@@ -1,5 +1,5 @@
 <?php
-//MODELO empleado (Modificado por Josue)
+//MODELO empleado
 class empleadoModel_Leon_Guzman_Almohadas extends CI_Model{
 
     function ___construct(){

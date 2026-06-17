@@ -5,10 +5,10 @@
 
 <script src="assets/js/jquery.blockUI.js"></script>
 <!-- ============================================================== -->
-<!-- Page wrapper  -->
+<!-- Page wrapper ESTILO1  9876543210 123-->
 <!-- ============================================================== -->
 <div class="page-wrapper">   
-    <div class="container-fluid">           ñ
+    <div class="container-fluid">           
         <div class="row">
             <div class="col-12">
                 <h4 class="card-title">Importa de Nomiplus las Checadas Invalidas de Eventuales a la Base de Datos</h4> 
@@ -37,7 +37,6 @@
                                             <i class="fa fa-refresh"></i> Importar Checadas </button><!-- fa-spin -->
                                        <!-- </button>  -->
                                     </div> 
-                                    
                                 </div>      
                             </div>
                     </div>

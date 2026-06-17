@@ -88,8 +88,7 @@ class contrato extends CI_Controller {
        }else
        {        
         try {
-            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida,$idNacionalidad,$idrazon);     
-
+            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida,$idNacionalidad,$idrazon); 
             $dompdf = new Dompdf(array('isPhpEnabled' => true));   
             $ExisteEmpleado='';       
           try{
@@ -125,7 +124,8 @@ class contrato extends CI_Controller {
               $COMIDA=$data[0]['COMIDA'];              
               $FECHA_INGRESO=$data[0]['FECHA_INGRESO'];   
               $NACIONALIDAD=$data[0]['NACIONALIDAD'];            
-              $EDAD=$data[0]['EDAD'];                
+              $EDAD=$data[0]['EDAD'];   
+              $IDHORARIO=$idhorario;             
                         
               $fechaactual = getdate();
               $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
@@ -158,7 +158,7 @@ class contrato extends CI_Controller {
         } catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
-       }    
+       }
     }
 
     public function consultaSalario(){

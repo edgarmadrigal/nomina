@@ -63,10 +63,11 @@ class ChecadasBiostar extends CI_Controller {
        if (empty($puesto)){
         $puesto=null;
        }
+       // print_r($NoSemana.' '.$anio.' '.$planta);
+        //die();
         $this->load->model('ChecadaBiostar');
         $result = array('data' => array());
 		$result =$this->ChecadaBiostar->consulta($NoSemana,$anio,$planta,$departamento,$puesto,$noempleado);
-
         echo json_encode($result);
     }
     

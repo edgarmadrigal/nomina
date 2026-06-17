@@ -4,7 +4,6 @@ class HorarioUsuario extends CI_Model{
 
     function ___construct(){
         parent::___construct();
-		//$this->load->library('form_validation');
     }
 
     public function consultaPlanta(){
@@ -14,6 +13,12 @@ class HorarioUsuario extends CI_Model{
         ->get()
         ->result();                 
         return $usuarios;
+        /*
+        4107
+        1,279.6
+        7 DE AGOSTO
+        */
+
     }
     public function consultaEmpleado($search){
 
@@ -30,6 +35,7 @@ class HorarioUsuario extends CI_Model{
         ->result_array();
         return $usuarios;
     }    
+    
     public function consultaHorario($empleado_id,$idDia)
     {
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
@@ -56,8 +62,6 @@ class HorarioUsuario extends CI_Model{
         return $d;
     }
     
-
-    
     public function consultaHorarioEditar($id)
     {
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
@@ -67,7 +71,6 @@ class HorarioUsuario extends CI_Model{
         $result = $this->db->query($sp,$params);
         return  $result->result_array();
     }
-
     
     public function consultaHorarioID($id)
     {
@@ -78,9 +81,6 @@ class HorarioUsuario extends CI_Model{
         $result = $this->db->query($sp,$params);
         return  $result->result_array();
     }
-    
-    
-
     
     public function consultaHorarios()    {
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta        
