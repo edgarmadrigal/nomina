@@ -37,15 +37,16 @@ Modulo = {
     }
 
     , fnCargarPlantas: function () {
-        var varURL = Modulo.baseurl + "MenuController/obtenerPlantas";
+        var varURL = Modulo.baseurl + "checadasBiostar/consultaPlanta";
         $.ajax({
             url: varURL,
-            type: 'get',
+            type: 'post',
             dataType: 'json'
         }).done(function (data) {
             $('#planta').html('');
+            $('#planta').append('<option value="">Selecciona una planta</option>');
             $.each(data, function (i, item) {
-                $('#planta').append('<option value="' + item.empresa_id + '">' + item.nombre_empresa + '</option>');
+                $('#planta').append('<option value="' + item.id + '">' + item.nombre + '</option>');
             });
         }).fail(function() {
             console.log("Error al cargar plantas");
