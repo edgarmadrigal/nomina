@@ -4,7 +4,7 @@ Modulo = {
     validator: false,
     datosTabla: []    
     
-    , fnObtenerDatos: function (fechaInicio, fechaFin, em) {
+    , fnObtenerDatos: function (NoSemana, anio, planta, Code, puesto, NoEmpleado) {
         $(".loadTable").css("display", "block");
         var varURL = Modulo.baseurl + "controllerReporteAsistenciatxt/exportar";
         
@@ -12,15 +12,18 @@ Modulo = {
             url: varURL,
             type: 'post',
             data: {
-                fechaInicio: fechaInicio,
-                fechaFin: fechaFin,
-                empresa_id: parseInt(em),
+                NoSemana: parseInt(NoSemana),
+                anio: anio,
+                planta: planta,
+                Code: Code,
+                puesto: puesto,
+                NoEmpleado: NoEmpleado,
             },
         }).done(function (data) {
             $(".loadTable").css("display", "none");
  
             var a = document.createElement('a'); 
-            var file_name = "ReporteAsistencia_" + $('#planta option:selected').html() + "_" + fechaFin;
+            var file_name = "ReporteAsistencia_" + $('#planta option:selected').html() + "_Semana_" + NoSemana + "_" + anio;
             a.href = window.location.origin + "/nomina/reporteAsistenciatxt.txt";
             a.download = file_name;
             a.click();
@@ -47,44 +50,28 @@ Modulo = {
     }
 
     , fnInicializar: function () {
-        // Inicializar datepickers
-        $("#datepicker").datepicker({
-            format: "yyyy/mm/dd",
-            autoclose: true
-        });
-        
-        $("#datepicker2").datepicker({
-            format: "yyyy/mm/dd",
-            autoclose: true
-        });
-        
         // Cargar plantas
         Modulo.fnCargarPlantas();
-        
-        // Establecer fechas por defecto
-        var today = new Date();
-        var firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-        
-        $("#fecha1").val(firstDay.getFullYear() + "/" + 
-                        (firstDay.getMonth() + 1).toString().padStart(2, '0') + "/" + 
-                        firstDay.getDate().toString().padStart(2, '0'));
-        
-        $("#fecha2").val(today.getFullYear() + "/" + 
-                        (today.getMonth() + 1).toString().padStart(2, '0') + "/" + 
-                        today.getDate().toString().padStart(2, '0'));
 
         // Eventos
         $("#buscar").click(function () {
-            var fechaInicio = $("#fecha1").val();
-            var fechaFin = $("#fecha2").val();
+            var NoSemana = $("#NoSemana").val();
+            var anio = $("#anio").val();
             var planta = $("#planta").val();
-            
-            if (!fechaInicio || !fechaFin || !planta) {
-                alert("Por favor complete todos los campos");
+            var Code = $("#departamento").val();
+            var puesto = $("#puesto").val();
+            var NoEmpleado = $("#noempleado").val();
+
+            if (!NoSemana) {
+                alert("Favor de capturar el numero de semana");
                 return;
             }
-            
-            Modulo.fnObtenerDatos(fechaInicio, fechaFin, planta);
+            if (!planta) {
+                alert("Favor de capturar la planta");
+                return;
+            }
+
+            Modulo.fnObtenerDatos(NoSemana, anio, planta, Code, puesto, NoEmpleado);
         });
     }
 };
