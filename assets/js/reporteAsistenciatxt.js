@@ -22,11 +22,14 @@ Modulo = {
         }).done(function (data) {
             $(".loadTable").css("display", "none");
  
-            var a = document.createElement('a'); 
-            var file_name = "ReporteAsistencia_" + $('#planta option:selected').html() + "_Semana_" + NoSemana + "_" + anio;
-            a.href = window.location.origin + "/nomina/reporteAsistenciatxt.txt";
+            var blob = new Blob([data], { type: "text/plain" });
+            var a = document.createElement('a');
+            var nombrePlanta = $('#planta option:selected').html().trim();
+            var file_name = "ReporteAsistencia_" + nombrePlanta + "_Semana_" + NoSemana + "_" + anio + ".txt";
+            a.href = window.URL.createObjectURL(blob);
             a.download = file_name;
             a.click();
+            window.URL.revokeObjectURL(a.href);
         }).fail(function() {
             $(".loadTable").css("display", "none");
             alert("Error al descargar el archivo");
