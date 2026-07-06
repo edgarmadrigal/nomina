@@ -48,7 +48,9 @@ class ReporteAsistenciatxtModel extends CI_Model{
         $result = $result->result_array();   
       
         $file = "reporteAsistenciatxt.txt";
-        
+
+        file_put_contents($file, ""); //creamos el archivo vacio para que siempre exista
+
         // Crear archivo con datos formateados
         if (count($result) > 0) {
             // Agrupar datos por empleado
