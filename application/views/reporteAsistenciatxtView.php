@@ -19,7 +19,17 @@
                                             <input id="NoSemana" type="text" class="form-control" name="msg" placeholder="escriba NoSemana" >
                                         </div>
                                     </div>                   
-                            
+                            <div class="col-2" >
+                                <div class="form-group">
+                                    <label style="font-weight: bold!important;">Año</label>
+                                    <select class="custom-select col-12" id="anio">
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option selected value="2026">2026</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-2" >
                                 <div class="form-group">
                                     <label style="font-weight: bold!important;">Planta</label>
@@ -64,6 +74,24 @@
                                                 <option value="40"> DELTA2							</option>			
                                                 <option value="41"> TBG								</option>	 
                                 </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label style="font-weight: bold!important;">Departamento</label>
+                                    <input id="departamento" type="text" class="form-control" placeholder="escriba Departamento">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label style="font-weight: bold!important;">Puesto</label>
+                                    <input id="puesto" type="text" class="form-control" placeholder="escriba Puesto">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label style="font-weight: bold!important;">No Empleado</label>
+                                    <input id="noempleado" type="text" class="form-control" placeholder="escriba NoEmpleado">
                                 </div>
                             </div>
                             <div class="col-2">
