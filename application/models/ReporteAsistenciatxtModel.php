@@ -84,22 +84,22 @@ class ReporteAsistenciatxtModel extends CI_Model{
                         file_put_contents($file, "|1.2|" . $fila['LunesFalta'] . PHP_EOL, FILE_APPEND);
                     }
                     if (isset($fila['MartesFalta']) && $fila['MartesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['MartesFalta'] . PHP_EOL, FILE_APPEND);
+                        file_put_contents($file, "|1.2|" . $fila['MartesFalta'] . PHP_EOL, FILE_APPEND);
                     }
                     if (isset($fila['MiercolesFalta']) && $fila['MiercolesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['MiercolesFalta'] . PHP_EOL, FILE_APPEND);
+                        file_put_contents($file, "|1.2|" . $fila['MiercolesFalta'] . PHP_EOL, FILE_APPEND);
                     }
                     if (isset($fila['JuevesFalta']) && $fila['JuevesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['JuevesFalta'] . PHP_EOL, FILE_APPEND);
+                        file_put_contents($file, "|1.2|" . $fila['JuevesFalta'] . PHP_EOL, FILE_APPEND);
                     }
                     if (isset($fila['ViernesFalta']) && $fila['ViernesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['ViernesFalta'] . PHP_EOL, FILE_APPEND);
+                        file_put_contents($file, "|1.2|" . $fila['ViernesFalta'] . PHP_EOL, FILE_APPEND);
                     }
                     if (isset($fila['SabadoFalta']) && $fila['SabadoFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['SabadoFalta'] . PHP_EOL, FILE_APPEND);
+                        file_put_contents($file, "|1.2|" . $fila['SabadoFalta'] . PHP_EOL, FILE_APPEND);
                     }
                     if (isset($fila['DomingoFalta']) && $fila['DomingoFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['DomingoFalta'] . PHP_EOL, FILE_APPEND);
+                        file_put_contents($file, "|1.2|" . $fila['DomingoFalta'] . PHP_EOL, FILE_APPEND);
                     }
                 }
             }
