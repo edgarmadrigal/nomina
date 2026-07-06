@@ -51,56 +51,23 @@ class ReporteAsistenciatxtModel extends CI_Model{
 
         file_put_contents($file, ""); //creamos el archivo vacio para que siempre exista
 
-        // Crear archivo con datos formateados
-        if (count($result) > 0) {
-            // Agrupar datos por empleado
-            $empleados = array();
-            
-            foreach ($result as $row) {
-                $numEmpleado = $row['PrimerRenglon']; // Número de empleado con formato
-                
-                if (!isset($empleados[$numEmpleado])) {
-                    $empleados[$numEmpleado] = array();
-                }
-                
-                $empleados[$numEmpleado][] = $row;
-            }
-            
-            // Escribir datos al archivo
-            foreach ($empleados as $numEmpleado => $datos) {
-                // Escribir línea principal del empleado
-                file_put_contents($file, "|" . $numEmpleado . PHP_EOL, FILE_APPEND);
-                
-                // Escribir líneas adicionales
-                foreach ($datos as $fila) {
-                    // Formato: |1.1|CODIGO,VALOR
-                    if (isset($fila['PremioPorAsistencia'])) {
-                        file_put_contents($file, "|1.1|" . $fila['PremioPorAsistencia'] . PHP_EOL, FILE_APPEND);
-                    }
-                    if (isset($fila['PremioPorPuntualidad'])) {
-                        file_put_contents($file, "|1.1|" . $fila['PremioPorPuntualidad'] . PHP_EOL, FILE_APPEND);
-                    }
-                    if (isset($fila['LunesFalta']) && $fila['LunesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.2|" . $fila['LunesFalta'] . PHP_EOL, FILE_APPEND);
-                    }
-                    if (isset($fila['MartesFalta']) && $fila['MartesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['MartesFalta'] . PHP_EOL, FILE_APPEND);
-                    }
-                    if (isset($fila['MiercolesFalta']) && $fila['MiercolesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['MiercolesFalta'] . PHP_EOL, FILE_APPEND);
-                    }
-                    if (isset($fila['JuevesFalta']) && $fila['JuevesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['JuevesFalta'] . PHP_EOL, FILE_APPEND);
-                    }
-                    if (isset($fila['ViernesFalta']) && $fila['ViernesFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['ViernesFalta'] . PHP_EOL, FILE_APPEND);
-                    }
-                    if (isset($fila['SabadoFalta']) && $fila['SabadoFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['SabadoFalta'] . PHP_EOL, FILE_APPEND);
-                    }
-                    if (isset($fila['DomingoFalta']) && $fila['DomingoFalta'] != 'NULL') {
-                        file_put_contents($file, "|1.1|" . $fila['DomingoFalta'] . PHP_EOL, FILE_APPEND);
-                    }
+        // Escribir datos al archivo (los valores ya vienen con sus prefijos |1|, |1.1|, |1.2| desde el SP)
+        $campos = array(
+            'PremioporAsistencia',
+            'PremioporPuntualidad',
+            'LunesFalta',
+            'MartesFalta',
+            'MiercolesFalta',
+            'JuevesFalta',
+            'ViernesFalta',
+            'SabadoFalta',
+            'DomingoFalta',
+        );
+        foreach ($result as $fila) {
+            file_put_contents($file, $fila['PrimerRenglon'] . PHP_EOL, FILE_APPEND);
+            foreach ($campos as $campo) {
+                if (isset($fila[$campo]) && $fila[$campo] !== '' && $fila[$campo] != 'NULL') {
+                    file_put_contents($file, $fila[$campo] . PHP_EOL, FILE_APPEND);
                 }
             }
         }
