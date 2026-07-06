@@ -478,7 +478,7 @@ var buttonCommon = {
                     $(this).html(title);
                 }
             });  
-
+/*
             $('#planta').on('change', function() {
                 $('#departamento').empty();   
                 $('#puesto').empty();
@@ -501,7 +501,8 @@ var buttonCommon = {
                     });
                 });
             });
-    
+            */
+    /*
             $('#departamento').on('change', function() {
                 var planta=parseInt($('#planta').val());                       
                 var varURL = ModuloChecada.baseurl + "checadasBiostar/consultaPuesto";
@@ -521,7 +522,7 @@ var buttonCommon = {
                     });
                 });                
             });
-
+*/
 
 
         $(document).on('click', '#buscar', function (e) {

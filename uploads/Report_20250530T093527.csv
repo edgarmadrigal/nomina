@@ -1,0 +1,1405 @@
+﻿Date,Device ID,Device,User Group,User,Event
+2025-05-30 09:35:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-30 09:29:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-30 09:29:56,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-30 08:39:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-30 08:33:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-30 08:26:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-30 08:24:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-30 08:23:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-30 08:23:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-30 08:23:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-30 08:19:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-30 08:19:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-30 08:18:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-30 08:17:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-30 08:17:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-30 08:17:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-30 08:14:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-30 08:13:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-30 08:13:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-30 08:13:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-30 08:12:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-30 08:11:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-30 08:10:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-30 08:09:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-30 08:07:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-30 08:07:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-30 08:07:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-30 08:06:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-30 08:04:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-30 08:04:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-30 08:03:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-30 08:03:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-30 08:03:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-30 08:03:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,1:N authentication succeeded (Face)
+2025-05-30 08:03:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-30 08:03:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-30 08:03:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-30 08:03:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-30 08:03:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-30 08:03:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-30 08:02:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-30 08:00:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-30 08:00:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-30 08:00:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-30 08:00:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-30 08:00:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-30 08:00:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-30 07:59:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-30 07:58:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-30 07:57:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-30 07:57:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001208,1:N authentication succeeded (Face)
+2025-05-30 07:55:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-30 07:55:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-30 07:53:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-30 07:51:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-30 07:49:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-30 07:49:33,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-30 07:49:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-30 07:49:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-30 07:48:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-30 07:48:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,1:N authentication succeeded (Face)
+2025-05-30 06:12:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-30 06:03:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-29 22:38:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-29 22:12:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-29 20:36:18,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-29 20:20:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-29 20:19:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-29 20:01:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-29 19:26:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-29 19:01:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1556,1:N authentication succeeded (Face)
+2025-05-29 18:57:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-29 18:52:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-29 18:49:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-29 18:45:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-29 18:33:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-29 18:32:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-29 18:24:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-29 18:24:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-29 18:23:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-29 18:20:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-29 18:20:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-29 18:17:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 18:17:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 18:15:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 18:11:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-29 18:11:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-29 18:11:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-29 18:10:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-29 18:09:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-29 18:09:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-29 18:09:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-29 18:07:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-29 18:07:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-29 18:07:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-29 18:07:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,1:N authentication succeeded (Face)
+2025-05-29 18:07:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,User update succeeded
+2025-05-29 18:06:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,User enrollment succeeded
+2025-05-29 18:06:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,User deletion succeeded
+2025-05-29 18:05:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 18:05:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 18:05:40,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 18:05:31,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 18:05:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-29 18:05:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,1:N authentication succeeded (Face)
+2025-05-29 18:04:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-29 18:04:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-29 18:04:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001208,1:N authentication succeeded (Face)
+2025-05-29 18:04:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001208,User update succeeded
+2025-05-29 18:04:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001208,User enrollment succeeded
+2025-05-29 18:03:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001208,User deletion succeeded
+2025-05-29 18:03:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 18:02:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-29 18:02:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-29 18:02:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 18:02:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-29 18:01:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-29 18:01:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-29 18:01:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-29 18:01:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-29 18:01:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 18:01:27,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 18:01:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-29 18:01:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-29 18:01:07,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 18:00:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-29 18:00:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-29 18:00:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-29 18:00:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-29 18:00:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-29 18:00:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-29 18:00:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-29 18:00:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-29 18:00:19,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 18:00:11,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 17:59:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-29 17:59:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-29 17:59:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-29 17:59:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-29 17:59:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-29 17:59:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-29 17:59:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-29 17:59:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-29 17:59:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-29 17:59:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-29 17:59:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-29 17:59:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-29 17:39:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device time changed
+2025-05-29 17:39:30,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device time changed
+2025-05-29 17:27:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 17:27:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 17:27:18,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 17:26:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 17:26:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 17:25:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 17:25:22,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 17:23:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 17:23:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 17:23:05,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 17:21:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 17:21:41,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 17:18:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 17:15:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 17:15:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 17:15:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 17:03:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 17:03:41,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 17:01:26,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:58:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:58:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:57:38,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:56:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:56:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:56:23,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:55:43,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:54:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:52:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:52:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:52:22,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:47:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:47:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:46:31,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:45:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:45:43,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:44:53,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:43:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:43:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:43:23,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:42:43,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:41:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:41:43,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:40:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:39:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:39:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:39:18,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:38:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:38:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:38:16,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:37:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:37:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:36:24,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:35:44,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:34:44,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:32:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:32:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:32:34,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 16:06:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 16:06:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 16:06:06,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 15:53:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 15:52:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 15:52:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 15:50:47,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 15:27:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 15:27:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 15:26:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 15:21:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-29 15:15:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 14:53:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 14:53:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,1:N authentication succeeded (Face)
+2025-05-29 14:53:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,1:N authentication succeeded (Face)
+2025-05-29 14:53:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,User update succeeded
+2025-05-29 14:52:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001209,User enrollment succeeded
+2025-05-29 14:51:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001176,User deletion succeeded
+2025-05-29 14:51:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 14:51:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 14:51:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001176,1:N authentication succeeded (Face)
+2025-05-29 14:51:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001176,1:N authentication succeeded (Face)
+2025-05-29 14:47:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 14:44:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 14:44:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 14:42:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001176,Duplicate Face
+2025-05-29 14:41:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 14:41:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 14:41:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001208,1:N authentication succeeded (Face)
+2025-05-29 14:40:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001208,User update succeeded
+2025-05-29 14:40:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001208,User enrollment succeeded
+2025-05-29 14:37:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 14:37:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 14:36:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,1:N authentication succeeded (Face)
+2025-05-29 14:36:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,User update succeeded
+2025-05-29 14:35:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,User enrollment succeeded
+2025-05-29 14:35:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,User deletion succeeded
+2025-05-29 14:34:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 14:34:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-29 14:29:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-29 14:27:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 14:25:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 14:25:35,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 14:21:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-29 14:20:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 14:20:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-29 14:10:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-29 14:08:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-29 14:07:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-29 14:07:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-29 14:04:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-29 14:03:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-29 14:02:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-29 14:02:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-29 14:02:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-29 14:02:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-29 14:02:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-29 14:01:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-29 14:01:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-29 14:01:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-29 14:00:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-29 13:59:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-29 13:59:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-29 13:59:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-29 13:57:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-29 13:56:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-29 13:55:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-29 13:55:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-29 13:53:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-29 13:52:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-29 13:52:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-29 13:52:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-29 13:52:29,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-29 13:51:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-29 13:49:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-29 13:49:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-29 13:49:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-29 13:48:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-29 13:46:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-29 13:45:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-29 13:45:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-29 13:44:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-29 13:44:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-29 13:44:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-29 13:37:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-29 13:35:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-29 13:32:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-29 13:27:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-29 13:26:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-29 13:26:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-29 13:25:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-29 13:23:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-29 13:22:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-29 13:20:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-29 13:18:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-29 13:18:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-29 13:11:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-29 13:07:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-29 13:04:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-29 13:03:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-29 13:03:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-29 13:03:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-29 13:02:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-29 13:02:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-29 13:02:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-29 13:02:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-29 13:02:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-29 13:02:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-29 13:01:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-29 13:01:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-29 13:01:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-29 13:01:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-29 13:01:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-29 13:01:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-29 13:01:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-29 13:01:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-29 13:01:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-29 13:00:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-29 13:00:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-29 13:00:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-29 13:00:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-29 13:00:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-29 13:00:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-29 13:00:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-29 13:00:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-29 13:00:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-29 13:00:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-29 13:00:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-29 13:00:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-29 13:00:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-29 13:00:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-29 13:00:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-29 13:00:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-29 12:59:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-29 12:59:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-29 12:59:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-29 12:59:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-29 12:59:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-29 12:59:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-29 12:59:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-29 12:59:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-29 12:59:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-29 12:59:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-29 12:59:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-29 12:59:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-29 12:59:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-29 10:02:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-29 10:02:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-29 09:41:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-29 09:21:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-29 09:21:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-29 09:08:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-29 09:05:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-29 09:05:04,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-29 08:49:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-29 08:26:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-29 08:23:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-29 08:21:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-29 08:21:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-29 08:19:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-29 08:16:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-29 08:16:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-29 08:16:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-29 08:16:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-29 08:14:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-29 08:13:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-29 08:13:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-29 08:10:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-29 08:10:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-29 08:10:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-29 08:09:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-29 08:09:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-29 08:09:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-29 08:07:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-29 08:06:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-29 08:05:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-29 08:04:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-29 08:03:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-29 08:03:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-29 08:03:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-29 08:02:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-29 08:01:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-29 08:01:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-29 08:00:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-29 08:00:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-29 08:00:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-29 08:00:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-29 08:00:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-29 08:00:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-29 08:00:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-29 08:00:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-29 07:59:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-29 07:59:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-29 07:58:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-29 07:58:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-29 07:56:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-29 07:56:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-29 07:56:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-29 07:53:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-29 07:53:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-29 07:52:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-29 07:52:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-29 07:52:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-29 07:51:56,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-29 07:51:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-29 07:51:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-29 07:49:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-29 06:21:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-28 22:25:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-28 22:05:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-28 20:38:15,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-28 20:04:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-28 18:49:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-28 18:49:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-28 18:49:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-28 18:49:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-28 18:41:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-28 18:41:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-28 18:41:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-28 18:41:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-28 18:40:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-28 18:40:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-28 18:39:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-28 18:39:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-28 18:39:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-28 18:39:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-28 18:39:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-28 18:27:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-28 18:27:20,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 18:24:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-28 18:23:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-28 18:23:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-28 18:19:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 18:19:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 18:17:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-28 18:17:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-28 18:11:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-28 18:11:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-28 18:11:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-28 18:10:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-28 18:10:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-28 18:10:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-28 18:10:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-28 18:10:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-28 18:09:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-28 18:09:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-28 18:09:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-28 18:06:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-28 18:06:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,1:N authentication succeeded (Face)
+2025-05-28 18:05:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-28 18:05:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-28 18:05:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-28 18:04:27,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 18:03:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-28 18:03:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 18:03:40,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 18:03:27,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 18:02:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-28 18:02:47,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 18:02:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-28 18:02:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-28 18:02:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-28 18:02:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-28 18:02:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-28 18:02:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-28 18:01:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-28 18:01:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-28 18:01:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-28 18:01:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-28 18:01:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-28 18:01:23,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 18:01:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-28 18:01:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-28 18:01:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-28 18:01:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-28 18:01:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-28 18:00:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-28 18:00:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-28 18:00:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-28 18:00:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-28 18:00:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-28 18:00:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-28 18:00:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-28 17:54:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1556,1:N authentication succeeded (Face)
+2025-05-28 17:16:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 17:16:42,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 17:16:13,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 17:13:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 17:13:40,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 17:13:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 17:04:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 17:04:54,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 17:02:53,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 17:01:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 17:01:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 16:58:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 16:57:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 16:57:40,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 16:57:04,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 16:51:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 16:51:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 16:51:30,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 16:35:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 16:35:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 16:35:13,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 16:32:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 16:32:41,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 16:32:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 16:15:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 16:15:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 16:14:31,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 16:02:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 16:02:38,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 16:01:07,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 16:00:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 15:55:03,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 15:38:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 15:38:38,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 15:36:21,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 15:34:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-28 15:16:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,1:N authentication succeeded (Face)
+2025-05-28 15:15:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,User update succeeded
+2025-05-28 15:15:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001207,User enrollment succeeded
+2025-05-28 15:13:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-28 15:05:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 15:05:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 15:05:38,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 15:00:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-28 14:57:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-28 14:17:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-28 14:10:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-28 14:07:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-28 14:06:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-28 14:06:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-28 14:05:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-28 14:05:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-28 14:03:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-28 14:03:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-28 14:03:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-28 14:03:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-28 14:03:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-28 14:02:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-28 14:02:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-28 14:02:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-28 14:02:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-28 14:00:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-28 13:59:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-28 13:59:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-28 13:58:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-28 13:58:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-28 13:57:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-28 13:56:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-28 13:55:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-28 13:51:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-28 13:51:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-28 13:51:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-28 13:50:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-28 13:50:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-28 13:50:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-28 13:50:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-28 13:50:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-28 13:49:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-28 13:49:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-28 13:49:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-28 13:48:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-28 13:47:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-28 13:46:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-28 13:46:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-28 13:46:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-28 13:46:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-28 13:45:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-28 13:38:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-28 13:34:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-28 13:34:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-28 13:30:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-28 13:29:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-28 13:28:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-28 13:28:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-28 13:27:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-28 13:26:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-28 13:21:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-28 13:16:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-28 13:11:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-28 13:11:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-28 13:09:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-28 13:05:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-28 13:03:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-28 13:03:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-28 13:03:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-28 13:03:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-28 13:03:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-28 13:02:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-28 13:02:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-28 13:02:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-28 13:02:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-28 13:02:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-28 13:02:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-28 13:02:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-28 13:01:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-28 13:01:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-28 13:01:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-28 13:01:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-28 13:01:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-28 13:01:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-28 13:01:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-28 13:01:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-28 13:01:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-28 13:01:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-28 13:01:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-28 13:01:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-28 13:01:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-28 13:00:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-28 13:00:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-28 13:00:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-28 13:00:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-28 13:00:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-28 13:00:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-28 13:00:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-28 13:00:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-28 13:00:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-28 13:00:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-28 13:00:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-28 13:00:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-28 13:00:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-28 13:00:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-28 13:00:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-28 12:59:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-28 12:59:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-28 12:59:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-28 12:59:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-28 12:59:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-28 12:59:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-28 12:59:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-28 12:59:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-28 12:59:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-28 12:59:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-28 11:30:55,542340161,FaceStation 2 542340161 (192.168.0.201),,,Tamper off
+2025-05-28 11:30:49,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device started
+2025-05-28 11:30:49,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-28 10:30:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 10:25:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,1:N authentication succeeded (Face)
+2025-05-28 10:25:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,User update succeeded
+2025-05-28 10:24:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001206,User enrollment succeeded
+2025-05-28 10:24:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-28 10:24:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,Administrator menu entered
+2025-05-28 10:14:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-28 10:13:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 10:13:41,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 10:13:12,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 10:12:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 10:12:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 10:12:28,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 10:00:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 10:00:26,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 09:56:12,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 09:35:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 09:35:55,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 09:35:10,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 09:31:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 09:29:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 09:24:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 09:24:55,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 09:24:40,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 09:05:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 09:05:04,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 09:04:30,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-28 08:55:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-28 08:55:55,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-28 08:49:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-28 08:36:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-28 08:24:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-28 08:21:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-28 08:18:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001013,1:N authentication succeeded (Face)
+2025-05-28 08:18:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-28 08:18:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-28 08:16:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-28 08:16:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-28 08:16:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-28 08:14:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-28 08:14:05,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-28 08:13:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-28 08:13:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001192,1:N authentication succeeded (Face)
+2025-05-28 08:13:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-28 08:13:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001193,1:N authentication succeeded (Face)
+2025-05-28 08:12:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-28 08:12:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-28 08:09:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-28 08:07:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-28 08:07:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-28 08:07:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-28 08:06:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-28 08:06:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-28 08:06:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-28 08:05:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-28 08:05:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-28 08:03:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-28 08:03:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-28 08:02:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-28 08:02:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-28 08:01:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-28 08:01:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-28 08:01:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-28 08:01:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-28 08:01:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-28 08:01:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-28 08:01:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-28 08:01:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-28 08:01:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-28 08:01:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-28 08:00:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-28 07:59:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-28 07:59:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-28 07:59:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-28 07:58:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-28 07:58:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-28 07:57:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-28 07:57:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-28 07:57:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-28 07:57:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-28 07:57:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-28 07:52:25,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-28 07:52:20,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-28 07:52:19,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-28 07:50:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-28 06:13:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-27 22:25:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-27 20:37:14,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-27 20:03:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 20:03:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 20:02:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 20:02:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 20:02:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 20:02:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 20:01:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-27 20:00:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-27 18:56:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-27 18:56:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-27 18:56:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-27 18:56:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-27 18:54:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-27 18:54:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-27 18:51:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-27 18:51:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001190,1:N authentication succeeded (Face)
+2025-05-27 18:51:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-27 18:50:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-27 18:45:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-27 18:43:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-27 18:23:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-27 18:11:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-27 18:11:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-27 18:08:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-27 18:07:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-27 18:07:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-27 18:07:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-27 18:07:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-27 18:07:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-27 18:05:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-27 18:04:08,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 18:03:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-27 18:03:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-27 18:03:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-27 18:03:40,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-27 18:03:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-27 18:03:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-27 18:03:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-27 18:03:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-27 18:03:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-27 18:02:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-27 18:02:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-27 18:02:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-27 18:02:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-27 18:01:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-27 18:01:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-27 18:01:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-27 18:01:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-27 18:01:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-27 18:01:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-27 18:01:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-27 18:01:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-27 18:01:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-27 18:01:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-27 18:01:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-27 18:01:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-27 18:00:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-27 18:00:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-27 18:00:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-27 18:00:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-27 18:00:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-27 18:00:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-27 18:00:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-27 18:00:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-27 17:58:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 17:58:20,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 17:32:43,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 17:26:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1556,1:N authentication succeeded (Face)
+2025-05-27 17:08:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 17:08:21,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 16:25:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 15:50:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 15:49:49,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 15:16:04,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 15:15:24,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 15:14:47,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 15:14:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-27 15:14:18,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 15:07:02,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 15:05:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 15:04:57,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 15:04:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 15:03:28,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 15:01:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 15:01:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 15:00:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 15:00:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 15:00:18,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:59:03,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:58:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:58:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:58:12,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:57:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:56:28,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:55:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:55:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:53:59,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:53:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:52:46,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:51:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:50:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:50:20,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:49:07,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:47:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:47:19,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:46:59,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:28:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:21:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:21:16,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:17:31,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:16:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:16:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:12:57,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:12:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:12:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:11:09,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 14:10:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-27 14:10:53,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-27 14:10:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-27 14:10:48,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-27 14:10:46,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-27 14:10:31,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-27 14:08:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-27 14:07:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:07:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:06:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 14:06:16,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 14:03:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-27 14:03:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-27 14:03:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-27 14:02:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-27 14:01:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-27 14:01:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-27 14:01:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001190,1:N authentication succeeded (Face)
+2025-05-27 14:00:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-27 14:00:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-27 14:00:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-27 14:00:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-27 13:58:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-27 13:58:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-27 13:57:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-27 13:56:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-27 13:56:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-27 13:54:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-27 13:54:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-27 13:54:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 13:51:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-27 13:51:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-27 13:50:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-27 13:50:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-27 13:50:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 13:50:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-27 13:49:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-27 13:49:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-27 13:49:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-27 13:49:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-27 13:48:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-27 13:48:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-27 13:46:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-27 13:46:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-27 13:46:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-27 13:46:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-27 13:42:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-27 13:41:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-27 13:41:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-27 13:41:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-27 13:38:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-27 13:37:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-27 13:34:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 13:29:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-27 13:29:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-27 13:26:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-27 13:22:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-27 13:21:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-27 13:11:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-27 13:11:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-27 13:11:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-27 13:07:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-27 13:05:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-27 13:03:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-27 13:02:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-27 13:02:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-27 13:02:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-27 13:01:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-27 13:01:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-27 13:01:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-27 13:01:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-27 13:01:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-27 13:01:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-27 13:01:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-27 13:00:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-27 13:00:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-27 13:00:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-27 13:00:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-27 13:00:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-27 13:00:33,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-27 13:00:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-27 13:00:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-27 13:00:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-27 13:00:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-27 13:00:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-27 13:00:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-27 13:00:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-27 13:00:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-27 13:00:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-27 12:59:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-27 12:59:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-27 12:59:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-27 12:59:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-27 12:59:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-27 12:59:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-27 12:59:31,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-27 12:59:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-27 12:59:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-27 12:59:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-27 12:59:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-27 12:59:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-27 12:58:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-27 12:58:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-27 12:58:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001190,1:N authentication succeeded (Face)
+2025-05-27 12:58:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-27 12:58:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-27 12:58:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-27 12:58:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-27 12:48:18,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:33:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 12:33:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:33:09,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:30:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 12:30:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:25:59,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:24:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 12:24:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:22:46,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:21:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 12:21:43,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:20:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:19:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 12:19:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:18:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:18:43,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:18:19,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:17:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:15:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:14:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 12:14:52,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:13:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:12:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 12:12:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:12:17,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 12:11:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 12:11:22,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 11:32:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 10:22:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 10:22:34,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 10:20:59,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 10:19:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 10:19:38,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 10:15:27,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 10:14:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 10:14:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 10:11:04,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 10:09:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 10:09:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 10:08:16,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 10:07:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 10:07:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 10:05:52,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 10:05:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 10:00:25,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 09:59:37,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 09:59:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 09:58:44,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 09:54:48,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 09:53:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 09:53:34,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 09:48:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 09:47:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 09:47:35,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 09:44:45,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-27 08:49:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-27 08:47:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-27 08:47:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-27 08:31:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-27 08:31:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001190,1:N authentication succeeded (Face)
+2025-05-27 08:25:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-27 08:19:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-27 08:16:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-27 08:16:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-27 08:16:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-27 08:13:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-27 08:12:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-27 08:12:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-27 08:10:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-27 08:10:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-27 08:10:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-27 08:08:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-27 08:07:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-27 08:07:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-27 08:06:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-27 08:05:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-27 08:04:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-27 08:04:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-27 08:03:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1556,1:N authentication succeeded (Face)
+2025-05-27 08:03:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-27 08:02:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-27 08:01:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-27 08:01:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-27 08:01:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-27 08:01:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-27 08:01:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-27 08:01:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-27 08:01:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-27 08:01:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-27 08:01:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-27 08:01:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-27 08:01:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-27 08:01:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-27 08:01:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001139,1:N authentication succeeded (Face)
+2025-05-27 08:00:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-27 08:00:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-27 08:00:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-27 07:59:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-27 07:57:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-27 07:56:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-27 07:56:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-27 07:56:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-27 07:55:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-27 07:55:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-27 07:54:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-27 07:54:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-27 07:54:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-27 07:54:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-27 07:53:40,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-27 07:53:34,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-27 07:53:33,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-27 07:51:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-27 06:11:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-26 22:28:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-26 22:01:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-26 20:28:30,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-26 20:02:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001022,1:N authentication succeeded (Face)
+2025-05-26 18:39:13,542340161,FaceStation 2 542340161 (192.168.0.201),,,Tamper off
+2025-05-26 18:39:07,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device started
+2025-05-26 18:39:07,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-26 18:29:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-26 18:29:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-26 18:29:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-26 18:22:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-26 18:18:10,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 18:17:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-26 18:12:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-26 18:10:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-26 18:10:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-26 18:10:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-26 18:10:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-26 18:09:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-26 18:09:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-26 18:06:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-26 18:05:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-26 18:04:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-26 18:04:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-26 18:04:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-26 18:04:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-26 18:03:58,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-26 18:03:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-26 18:03:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-26 18:03:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-26 18:03:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-26 18:03:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-26 18:03:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-26 18:03:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-26 18:03:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-26 18:02:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-26 18:02:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-26 18:02:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-26 18:02:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-26 18:02:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-26 18:02:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-26 18:01:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-26 18:01:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-26 18:01:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-26 18:01:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-26 18:01:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-26 18:01:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-26 18:01:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-26 18:01:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-26 18:01:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-26 18:01:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-26 18:01:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-26 18:01:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-26 18:01:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-26 18:01:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001190,1:N authentication succeeded (Face)
+2025-05-26 18:00:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-26 18:00:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-26 18:00:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-26 18:00:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-26 18:00:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-26 18:00:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-26 18:00:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-26 18:00:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-26 18:00:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-26 18:00:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-26 18:00:13,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-26 18:00:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-26 18:00:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-26 17:34:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 17:34:46,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 17:34:27,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 17:33:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 17:33:46,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 17:33:03,542340161,FaceStation 2 542340161 (192.168.0.201),,,Tamper off
+2025-05-26 17:32:57,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device started
+2025-05-26 17:32:57,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-26 17:11:36,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device time changed
+2025-05-26 17:11:30,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device time changed
+2025-05-26 16:23:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 16:23:52,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 16:22:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 16:21:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 16:21:52,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 16:21:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 16:20:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 16:20:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 16:20:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,Tamper off
+2025-05-26 16:20:25,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device started
+2025-05-26 16:20:25,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-26 16:10:54,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network disconnected
+2025-05-26 16:10:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 16:10:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 16:10:01,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 16:08:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 16:08:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 16:07:33,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 16:06:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 16:06:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 16:06:04,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 15:30:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-26 15:20:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 15:20:50,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 15:20:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-26 15:20:04,542340161,FaceStation 2 542340161 (192.168.0.201),,,Tamper off
+2025-05-26 15:19:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device started
+2025-05-26 15:19:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-26 14:44:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,1:N authentication succeeded (Face)
+2025-05-26 14:44:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,User update succeeded
+2025-05-26 14:43:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001205,User enrollment succeeded
+2025-05-26 14:42:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001164,User deletion succeeded
+2025-05-26 14:42:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,Administrator menu entered
+2025-05-26 14:38:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 14:37:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 14:37:49,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 14:19:48,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 14:17:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 14:17:07,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 14:16:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-26 14:10:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-26 14:09:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-26 14:08:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-26 14:08:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-26 14:08:23,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 14:07:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001129,1:N authentication succeeded (Face)
+2025-05-26 14:06:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001190,1:N authentication succeeded (Face)
+2025-05-26 14:06:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-26 14:03:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-26 14:03:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-26 14:02:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-26 14:02:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001041,1:N authentication succeeded (Face)
+2025-05-26 14:00:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-26 14:00:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-26 14:00:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-26 13:59:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-26 13:58:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-26 13:57:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-26 13:56:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-26 13:56:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-26 13:56:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-26 13:55:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-26 13:55:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-26 13:55:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-26 13:53:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-26 13:50:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-26 13:50:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-26 13:50:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-26 13:50:09,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-26 13:49:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-26 13:49:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-26 13:48:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-26 13:45:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-26 13:44:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-26 13:43:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-26 13:41:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-26 13:41:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-26 13:38:40,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-26 13:38:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-26 13:38:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-26 13:33:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001167,1:N authentication succeeded (Face)
+2025-05-26 13:32:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-26 13:29:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-26 13:26:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-26 13:26:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-26 13:25:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-26 13:25:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-26 13:24:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-26 13:21:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-26 13:18:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-26 13:18:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-26 13:18:03,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-26 13:12:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-26 13:11:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-26 13:08:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 13:08:29,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 13:07:09,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 13:06:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 13:06:29,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 13:06:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-26 13:05:40,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 13:04:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 13:04:29,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 13:03:09,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 13:02:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-26 13:02:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-26 13:02:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-26 13:02:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-26 13:02:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 13:02:29,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 13:02:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-26 13:02:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-26 13:01:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-26 13:01:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-26 13:01:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-26 13:01:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-26 13:01:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-26 13:01:37,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-26 13:01:11,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-26 13:01:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-26 13:01:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-26 13:00:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-26 13:00:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-26 13:00:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-26 13:00:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-26 13:00:32,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-26 13:00:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-26 13:00:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-26 13:00:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-26 13:00:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-26 13:00:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-26 13:00:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-26 13:00:08,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-26 13:00:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-26 13:00:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-26 12:59:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-26 12:59:56,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-26 12:59:53,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-26 12:59:50,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-26 12:59:47,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-26 12:59:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-26 12:59:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-26 12:59:38,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-26 12:59:34,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-26 12:59:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-26 12:59:27,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-26 12:59:23,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-26 12:59:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001190,1:N authentication succeeded (Face)
+2025-05-26 12:59:16,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-26 12:59:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-26 12:59:10,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 12:59:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-26 12:57:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 12:57:29,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 12:57:13,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 12:47:00,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-26 12:27:29,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 12:27:28,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:53:09,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:41:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:38:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:38:48,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:37:53,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:35:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:35:48,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:34:57,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:34:47,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:34:43,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:34:03,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:33:34,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:32:54,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:32:54,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:32:52,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:32:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:32:48,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:31:59,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:30:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:30:48,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:25:59,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:23:48,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:23:48,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:22:45,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:22:05,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:22:03,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:21:18,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:20:53,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:20:32,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:19:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 10:19:03,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:18:31,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:17:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:17:15,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:13:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:13:35,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:12:55,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:11:59,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 10:11:04,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 10:09:39,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar disconnected
+2025-05-26 09:41:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,1(Administrator),User update succeeded
+2025-05-26 09:41:49,542340161,FaceStation 2 542340161 (192.168.0.201),,,BioStar connected
+2025-05-26 08:45:28,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001016,1:N authentication succeeded (Face)
+2025-05-26 08:40:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001194,1:N authentication succeeded (Face)
+2025-05-26 08:40:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001141,1:N authentication succeeded (Face)
+2025-05-26 08:37:43,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001190,1:N authentication succeeded (Face)
+2025-05-26 08:32:20,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200006,1:N authentication succeeded (Face)
+2025-05-26 08:27:26,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001188,1:N authentication succeeded (Face)
+2025-05-26 08:26:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001024,1:N authentication succeeded (Face)
+2025-05-26 08:23:45,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001168,1:N authentication succeeded (Face)
+2025-05-26 08:22:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001023,1:N authentication succeeded (Face)
+2025-05-26 08:22:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001166,1:N authentication succeeded (Face)
+2025-05-26 08:21:05,542340161,FaceStation 2 542340161 (192.168.0.201),,,Tamper off
+2025-05-26 08:20:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device started
+2025-05-26 08:20:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected
+2025-05-26 08:19:41,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001086,1:N authentication succeeded (Face)
+2025-05-26 08:19:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001005,1:N authentication succeeded (Face)
+2025-05-26 08:18:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,200398,1:N authentication succeeded (Face)
+2025-05-26 08:18:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001157,1:N authentication succeeded (Face)
+2025-05-26 08:18:46,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001012,1:N authentication succeeded (Face)
+2025-05-26 08:18:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001154,1:N authentication succeeded (Face)
+2025-05-26 08:18:31,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001102,1:N authentication succeeded (Face)
+2025-05-26 08:18:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001017,1:N authentication succeeded (Face)
+2025-05-26 08:18:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001071,1:N authentication succeeded (Face)
+2025-05-26 08:18:17,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001003,1:N authentication succeeded (Face)
+2025-05-26 08:18:14,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001046,1:N authentication succeeded (Face)
+2025-05-26 08:18:10,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001020,1:N authentication succeeded (Face)
+2025-05-26 08:18:07,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001015,1:N authentication succeeded (Face)
+2025-05-26 08:18:04,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001200,1:N authentication succeeded (Face)
+2025-05-26 08:18:01,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001151,1:N authentication succeeded (Face)
+2025-05-26 08:17:57,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001029,1:N authentication succeeded (Face)
+2025-05-26 08:17:51,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001204,1:N authentication succeeded (Face)
+2025-05-26 08:17:46,542340161,FaceStation 2 542340161 (192.168.0.201),,,Authentication failed (Timeout)
+2025-05-26 08:17:36,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001137,1:N authentication succeeded (Face)
+2025-05-26 08:17:25,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001133,1:N authentication succeeded (Face)
+2025-05-26 08:17:22,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001165,1:N authentication succeeded (Face)
+2025-05-26 08:17:19,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001187,1:N authentication succeeded (Face)
+2025-05-26 08:17:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001172,1:N authentication succeeded (Face)
+2025-05-26 08:17:12,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001201,1:N authentication succeeded (Face)
+2025-05-26 08:17:06,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001126,1:N authentication succeeded (Face)
+2025-05-26 08:17:02,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001182,1:N authentication succeeded (Face)
+2025-05-26 08:16:59,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001186,1:N authentication succeeded (Face)
+2025-05-26 08:16:55,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001191,1:N authentication succeeded (Face)
+2025-05-26 08:16:52,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001007,1:N authentication succeeded (Face)
+2025-05-26 08:16:49,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001202,1:N authentication succeeded (Face)
+2025-05-26 08:16:44,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001097,1:N authentication succeeded (Face)
+2025-05-26 08:16:42,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001179,1:N authentication succeeded (Face)
+2025-05-26 08:16:39,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001121,1:N authentication succeeded (Face)
+2025-05-26 08:16:35,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001034,1:N authentication succeeded (Face)
+2025-05-26 08:16:30,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001198,1:N authentication succeeded (Face)
+2025-05-26 08:16:24,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001001,1:N authentication succeeded (Face)
+2025-05-26 08:16:21,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001006,1:N authentication succeeded (Face)
+2025-05-26 08:16:18,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001203,1:N authentication succeeded (Face)
+2025-05-26 08:16:15,542340161,FaceStation 2 542340161 (192.168.0.201),All Users,993001163,1:N authentication succeeded (Face)
+2025-05-26 08:15:58,542340161,FaceStation 2 542340161 (192.168.0.201),,,Tamper off
+2025-05-26 08:15:52,542340161,FaceStation 2 542340161 (192.168.0.201),,,Device started
+2025-05-26 08:15:51,542340161,FaceStation 2 542340161 (192.168.0.201),,,Network connected

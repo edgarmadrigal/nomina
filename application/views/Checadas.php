@@ -93,19 +93,19 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Lunes</td>
+                                                    <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Lunes</td>
                                                     
-                                                    <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Martes</td>
+                                                    <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Martes</td>
                                                     
-                                                    <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Miercoles</td>
+                                                    <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Miercoles</td>
                                                     
-                                                    <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Jueves</td>
+                                                    <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Jueves</td>
                                                     
-                                                    <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Viernes</td>
+                                                    <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Viernes</td>
                                                     
-                                                    <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Sabado</td>
+                                                    <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Sabado</td>
 
-                                                    <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Domingo</td>
+                                                    <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Domingo</td>
                                                 
                                                 </tr>
                                                 <tr>
@@ -114,43 +114,50 @@
                                                     <th>FechaInicio</th>
                                                     <th>FechaFin</th>     
 
-                                                    <th style="border-left: inset!important;border-color: black;">Lunes</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th >Lunes</th>
                                                     <th>L.Entrada</th>
                                                     <th>L.EntradaComedor</th>
                                                     <th>L.SalidaComedor</th>
                                                     <th>L.Salida</th>
 
-                                                    <th style="border-left: inset!important;border-color: black;">Martes</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th >Martes</th>
                                                     <th>MA.Entrada</th>
                                                     <th>MA.EntradaComedor</th>
                                                     <th>MA.SalidaComedor</th>
                                                     <th>MA.Salida</th>
 
-                                                    <th style="border-left: inset!important;border-color: black;">Miercoles</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th >Miercoles</th>
                                                     <th>MI.Entrada</th>
                                                     <th>MI.EntradaComedor</th>
                                                     <th>MI.SalidaComedor</th>
                                                     <th>MI.Salida</th>
                                                     
-                                                    <th style="border-left: inset!important;border-color: black;">Jueves</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th>Jueves</th>
                                                     <th>J.Entrada</th>
                                                     <th>J.EntradaComedor</th>
                                                     <th>J.SalidaComedor</th>
                                                     <th>J.Salida</th>
                                                     
-                                                    <th style="border-left: inset!important;border-color: black;">Viernes</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th>Viernes</th>
                                                     <th>V.Entrada</th>
                                                     <th>V.EntradaComedor</th>
                                                     <th>V.SalidaComedor</th>
                                                     <th>V.Salida</th>
                                                     
-                                                    <th style="border-left: inset!important;border-color: black;">Sabado</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th>Sabado</th>
                                                     <th>S.Entrada</th>
                                                     <th>S.EntradaComedor</th>
                                                     <th>S.SalidaComedor</th>
                                                     <th>S.Salida</th>
                                                     
-                                                    <th style="border-left: inset!important;border-color: black;">Domingo</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th>Domingo</th>
                                                     <th>D.Entrada</th>
                                                     <th>D.EntradaComedor</th>
                                                     <th>D.SalidaComedor</th>
@@ -165,43 +172,51 @@
                                                     <th>FechaInicio</th>
                                                     <th>FechaFin</th>     
 
-                                                    <th style="border-left: inset!important;border-color: black;">Lunes</th>
+                                                    
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th >Lunes</th>
                                                     <th>L.Entrada</th>
                                                     <th>L.EntradaComedor</th>
                                                     <th>L.SalidaComedor</th>
                                                     <th>L.Salida</th>
 
-                                                    <th style="border-left: inset!important;border-color: black;">Martes</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th >Martes</th>
                                                     <th>MA.Entrada</th>
                                                     <th>MA.EntradaComedor</th>
                                                     <th>MA.SalidaComedor</th>
                                                     <th>MA.Salida</th>
 
-                                                    <th style="border-left: inset!important;border-color: black;">Miercoles</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th >Miercoles</th>
                                                     <th>MI.Entrada</th>
                                                     <th>MI.EntradaComedor</th>
                                                     <th>MI.SalidaComedor</th>
                                                     <th>MI.Salida</th>
                                                     
-                                                    <th style="border-left: inset!important;border-color: black;">Jueves</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th>Jueves</th>
                                                     <th>J.Entrada</th>
                                                     <th>J.EntradaComedor</th>
                                                     <th>J.SalidaComedor</th>
                                                     <th>J.Salida</th>
                                                     
-                                                    <th style="border-left: inset!important;border-color: black;">Viernes</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th>Viernes</th>
                                                     <th>V.Entrada</th>
                                                     <th>V.EntradaComedor</th>
                                                     <th>V.SalidaComedor</th>
                                                     <th>V.Salida</th>
                                                     
-                                                    <th style="border-left: inset!important;border-color: black;">Sabado</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th>Sabado</th>
                                                     <th>S.Entrada</th>
                                                     <th>S.EntradaComedor</th>
                                                     <th>S.SalidaComedor</th>
                                                     <th>S.Salida</th>
                                                     
-                                                    <th style="border-left: inset!important;border-color: black;">Domingo</th>
+                                                    <th style="border-left: inset!important;border-color: black;"></th>
+                                                    <th>Domingo</th>
                                                     <th>D.Entrada</th>
                                                     <th>D.EntradaComedor</th>
                                                     <th>D.SalidaComedor</th>
@@ -213,19 +228,19 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Lunes</td>
+                                                        <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Lunes</td>
                                                         
-                                                        <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Martes</td>
+                                                        <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Martes</td>
                                                         
-                                                        <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Miercoles</td>
+                                                        <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Miercoles</td>
                                                         
-                                                        <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Jueves</td>
+                                                        <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Jueves</td>
                                                         
-                                                        <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Viernes</td>
+                                                        <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Viernes</td>
                                                         
-                                                        <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Sabado</td>
+                                                        <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Sabado</td>
     
-                                                        <td COLSPAN=5 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Domingo</td>
+                                                        <td COLSPAN=6 style="border-style: groove;border-width: 2px;text-align: center;font-size:large;font-weight:bold;color:black;border-color: black;" >Domingo</td>
                                                     </tr>
                                             </tfoot>
                                         </table>

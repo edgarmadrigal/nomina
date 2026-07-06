@@ -19,13 +19,36 @@
         });
         $("#formulario").validate();
      
+var buttonCommon = {
+    exportOptions: {
+        format: {
+            body: function (data, row, column, node) {
+                if (typeof data === 'string') {
+                    return data.replace(/<[^>]*>/g, '');
+                }
+                return data;
+            }
+        }
+    }
+};
+
 ModuloChecada = {
     baseurl: "",
     //baseurl: "http://192.168.128.24:8080/nomina/",
     validator: false,
-    datosTablaChecadas: []
+    datosTablaChecadas: [],
+    fnDayStatus: function(entrada, entradaComedor, salidaComedor, salida) {
+        var e = (entrada || '').trim();
+        var ec = (entradaComedor || '').trim();
+        var sc = (salidaComedor || '').trim();
+        var s = (salida || '').trim();
+        if (!e && !ec && !sc && !s) {
+            return '<span class="badge badge-danger" style="font-size:90%">FALTA</span>';
+        }
+        return '<span class="badge badge-success" style="font-size:90%">ASISTE</span>';
+    },
     //Válida campos Obligatorios
-    , fnValidarObligatorios: function () {
+    fnValidarObligatorios: function () {
         var estatusValidacion =
 
         $("#formSolicitud").valid({
@@ -176,33 +199,40 @@ ModuloChecada = {
                    {
                        "aTargets": [4],
                        "mData": function (source, type, val) {
-                           return source.Lunes;
+                           return ModuloChecada.fnDayStatus(source.LunesEntrada, source.LunesEntradaComedor, source.LunesSalidaComedor, source.LunesSalida);
                             }
                             ,"defaultContent": ""
                    }, 
                    {
                        "aTargets": [5],
                        "mData": function (source, type, val) {
-                           return source.LunesEntrada;
+                           return source.Lunes;
                             }
                             ,"defaultContent": ""
-                   },    
+                   }, 
                    {
                        "aTargets": [6],
                        "mData": function (source, type, val) {
-                           return source.LunesEntradaComedor;
+                           return source.LunesEntrada;
                             }
                             ,"defaultContent": ""
                    },    
                    {
                        "aTargets": [7],
                        "mData": function (source, type, val) {
-                           return source.LunesSalidaComedor;
+                           return source.LunesEntradaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
                        "aTargets": [8],
+                       "mData": function (source, type, val) {
+                           return source.LunesSalidaComedor;
+                            }
+                            ,"defaultContent": ""
+                   },    
+                   {
+                       "aTargets": [9],
                        "mData": function (source, type, val) {
                            return source.LunesSalida;
                             }
@@ -210,140 +240,169 @@ ModuloChecada = {
                    },    
                    
                    {
-                    "aTargets": [9],
+                    "aTargets": [10],
+                    "mData": function (source, type, val) {
+                        return ModuloChecada.fnDayStatus(source.MartesEntrada, source.MartesEntradaComedor, source.MartesSalidaComedor, source.MartesSalida);
+                         }
+                         ,"defaultContent": ""
+                    },   
+                   
+                   {
+                    "aTargets": [11],
                     "mData": function (source, type, val) {
                         return source.Martes;
                          }
                          ,"defaultContent": ""
                     },   
                    {
-                       "aTargets": [10],
+                       "aTargets": [12],
                        "mData": function (source, type, val) {
                            return source.MartesEntrada;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [11],
+                       "aTargets": [13],
                        "mData": function (source, type, val) {
                            return source.MartesEntradaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [12],
+                       "aTargets": [14],
                        "mData": function (source, type, val) {
                            return source.MartesSalidaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [13],
+                       "aTargets": [15],
                        "mData": function (source, type, val) {
                            return source.MartesSalida;
                             }
                             ,"defaultContent": ""
                    },                  
                    {
-                       "aTargets": [14],
+                       "aTargets": [16],
                        "mData": function (source, type, val) {
-                           return source.Miercoles;
+                           return ModuloChecada.fnDayStatus(source.MiercolesEntrada, source.MiercolesEntradaComedor, source.MiercolesSalidaComedor, source.MiercolesSalida);
                             }
                             ,"defaultContent": ""
                    },                   
                    {
-                       "aTargets": [15],
+                       "aTargets": [17],
+                       "mData": function (source, type, val) {
+                           return source.Miercoles;
+                            }
+                            ,"defaultContent": ""
+                   },                      
+                   {
+                       "aTargets": [18],
                        "mData": function (source, type, val) {
                            return source.MiercolesEntrada;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [16],
+                       "aTargets": [19],
                        "mData": function (source, type, val) {
                            return source.MiercolesEntradaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [17],
+                       "aTargets": [20],
                        "mData": function (source, type, val) {
                            return source.MiercolesSalidaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [18],
+                       "aTargets": [21],
                        "mData": function (source, type, val) {
                            return source.MiercolesSalida;
                             }
                             ,"defaultContent": ""
                    },                  
                    {
-                       "aTargets": [19],
+                       "aTargets": [22],
+                       "mData": function (source, type, val) {
+                           return ModuloChecada.fnDayStatus(source.JuevesEntrada, source.JuevesEntradaComedor, source.JuevesSalidaComedor, source.JuevesSalida);
+                            }
+                            ,"defaultContent": ""
+                   },                
+                   {
+                       "aTargets": [23],
                        "mData": function (source, type, val) {
                            return source.Jueves;
                             }
                             ,"defaultContent": ""
-                   },                 
+                   },            
                    {
-                       "aTargets": [20],
+                       "aTargets": [24],
                        "mData": function (source, type, val) {
                            return source.JuevesEntrada;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [21],
+                       "aTargets": [25],
                        "mData": function (source, type, val) {
                            return source.JuevesEntradaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [22],
+                       "aTargets": [26],
                        "mData": function (source, type, val) {
                            return source.JuevesSalidaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [23],
+                       "aTargets": [27],
                        "mData": function (source, type, val) {
                            return source.JuevesSalida;
                             }
                             ,"defaultContent": ""
                    }, 
                    {
-                       "aTargets": [24],
+                       "aTargets": [28],
                        "mData": function (source, type, val) {
-                           return source.Viernes;
+                           return ModuloChecada.fnDayStatus(source.ViernesEntrada, source.ViernesEntradaComedor, source.ViernesSalidaComedor, source.ViernesSalida);
                             }
                             ,"defaultContent": ""
                    }, 
                    {
-                       "aTargets": [25],
+                       "aTargets": [29],
+                       "mData": function (source, type, val) {
+                           return source.Viernes;
+                            }
+                            ,"defaultContent": ""
+                   },     
+                   {
+                       "aTargets": [30],
                        "mData": function (source, type, val) {
                            return source.ViernesEntrada;
                             }
                             ,"defaultContent": ""
                    },       
                    {
-                       "aTargets": [26],
+                       "aTargets": [31],
                        "mData": function (source, type, val) {
                            return source.ViernesEntradaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [27],
+                       "aTargets": [32],
                        "mData": function (source, type, val) {
                            return source.ViernesSalidaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
-                       "aTargets": [28],
+                       "aTargets": [33],
                        "mData": function (source, type, val) {
                            return source.ViernesSalida;
                             }
@@ -351,71 +410,84 @@ ModuloChecada = {
                    }, 
                    
                    {
-                       "aTargets": [29],
-                       "mData": function (source, type, val) {
-                           return source.Sabado;
-                            }
-                            ,"defaultContent": ""
-                   },    
-                   
-                   {
-                       "aTargets": [30],
-                       "mData": function (source, type, val) {
-                           return source.SabadoEntrada;
-                            }
-                            ,"defaultContent": ""
-                   },    
-                   {
-                       "aTargets": [31],
-                       "mData": function (source, type, val) {
-                           return source.SabadoEntradaComedor;
-                            }
-                            ,"defaultContent": ""
-                   },    
-                   {
-                       "aTargets": [32],
-                       "mData": function (source, type, val) {
-                           return source.SabadoSalidaComedor;
-                            }
-                            ,"defaultContent": ""
-                   },    
-                   {
-                       "aTargets": [33],
-                       "mData": function (source, type, val) {
-                           return source.SabadoSalida;
-                            }
-                            ,"defaultContent": ""
-                   }, 
-                   {
                        "aTargets": [34],
                        "mData": function (source, type, val) {
-                           return source.Domingo;
+                           return ModuloChecada.fnDayStatus(source.SabadoEntrada, source.SabadoEntradaComedor, source.SabadoSalidaComedor, source.SabadoSalida);
                             }
                             ,"defaultContent": ""
-                   },  
+                   },                       
                    {
                        "aTargets": [35],
                        "mData": function (source, type, val) {
-                           return source.DomingoEntrada;
+                           return source.Sabado;
                             }
                             ,"defaultContent": ""
                    },    
                    {
                        "aTargets": [36],
                        "mData": function (source, type, val) {
-                           return source.DomingoEntradaComedor;
+                           return source.SabadoEntrada;
                             }
                             ,"defaultContent": ""
                    },    
                    {
                        "aTargets": [37],
                        "mData": function (source, type, val) {
-                           return source.DomingoSalidaComedor;
+                           return source.SabadoEntradaComedor;
                             }
                             ,"defaultContent": ""
                    },    
                    {
                        "aTargets": [38],
+                       "mData": function (source, type, val) {
+                           return source.SabadoSalidaComedor;
+                            }
+                            ,"defaultContent": ""
+                   },    
+                   {
+                       "aTargets": [39],
+                       "mData": function (source, type, val) {
+                           return source.SabadoSalida;
+                            }
+                            ,"defaultContent": ""
+                   }, 
+                   {
+                       "aTargets": [40],
+                       "mData": function (source, type, val) {
+                           return ModuloChecada.fnDayStatus(source.DomingoEntrada, source.DomingoEntradaComedor, source.DomingoSalidaComedor, source.DomingoSalida);
+                            }
+                            ,"defaultContent": ""
+                   },  
+                   {
+                       "aTargets": [41],
+                       "mData": function (source, type, val) {
+                           return source.Domingo
+                            }
+                            ,"defaultContent": ""
+                   },    
+                   {
+                       "aTargets": [42],
+                       "mData": function (source, type, val) {
+                           return source.DomingoEntrada;
+                            }
+                            ,"defaultContent": ""
+                   },    
+                   {
+                       "aTargets": [43],
+                       "mData": function (source, type, val) {
+                           return source.DomingoEntradaComedor;
+                            }
+                            ,"defaultContent": ""
+                   },    
+                   {
+                       "aTargets": [44],
+                       "mData": function (source, type, val) {
+                           return source.DomingoSalidaComedor;
+                            }
+                            ,"defaultContent": ""
+                   },    
+                   {
+                       "aTargets": [45],
                        "mData": function (source, type, val) {
                            return source.DomingoSalida;
                             }
@@ -429,55 +501,66 @@ ModuloChecada = {
                 //"aaData": Solicitud.datosCredito.Proyecciones,
                 //,dom: 'Bfrtip',flBip
                 ,"dom": '<"top"flBip<"clear">>rt<"bottom"flBip<"clear">>'
-                //, "dom": "<'row'<'col-sm-12'<'pull-right'><'pull-left'B>>>    <'row-fluid'<'span8'l><'span4'<'pull-right'f><'pull-left'T>r<'clearfix'>>>t<'row'<'col-sm-12'<'pull-left'i><'pull-right'p>>>"
+                ,initComplete: function () {
+                    var api = this.api();
+                    api.columns().every(function () {
+                        var column = this;
+                        var headerCell = $(column.header());
+                        var footerCell = $(column.footer());
+                        var title = $.trim(headerCell.text());
+
+                        if (headerCell.find('input').length === 0) {
+                            headerCell.html(title + '<br><input type="text" placeholder="Buscar ' + title + '" />');
+                        }
+                        $('input', column.header()).on('keyup change clear', function () {
+                            if (column.search() !== this.value) {
+                                column.search(this.value).draw();
+                            }
+                        });
+
+                        if (footerCell.length && footerCell.find('input').length === 0) {
+                            var footerTitle = $.trim(footerCell.text());
+                            footerCell.html(footerTitle + '<br><input type="text" placeholder="Buscar ' + footerTitle + '" />');
+                            $('input', column.footer()).on('keyup change clear', function () {
+                                if (column.search() !== this.value) {
+                                    column.search(this.value).draw();
+                                }
+                            });
+                        }
+                    });
+                }
                 ,buttons: [
                     $.extend( true, {}, buttonCommon, {
                         extend: 'copyHtml5',
+                        className: 'btn btn-secondary btn-sm',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]
+                            columns: [ 0, 1, 2, 3,4,  5, 6, 7 ,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
+                                22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]
                         }
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'excelHtml5',
+                        className: 'btn btn-secondary btn-sm',
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6, 7 ,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]
+                            columns: [ 0, 1, 2, 3,4,  5, 6, 7 ,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
+                                22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]
                         }
                     } ),
                     $.extend( true, {}, buttonCommon, {
                         extend: 'csvHtml5',
+                        className: 'btn btn-secondary btn-sm',
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]
+                            columns: [ 0, 1, 2, 3,4,  5, 6, 7 ,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
+                                22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]
                         }
                     } ),
                 ]
         });
         
-        table.columns().every( function () {
-            var that = this;         
-            $( 'input', this.header() ).on( 'keyup change', function () {
-                if ( that.search() !== this.value ) {
-                    that
-                        .search( this.value )
-                        .draw();
-                }
-            } );
-        } );
-        table.columns().every( function () {
-            var that = this;
-     
-            $( 'input', this.footer() ).on( 'keyup change', function () {
-                if ( that.search() !== this.value ) {
-                    that
-                        .search( this.value )
-                        .draw();
-                }
-            } );
-        } );
-        
         $("#tablaEmp").css("display", "block");
         $(".loadTable").css("display", "none");
     }
-    , fnCargarSelect(){
+    , fnCargarSelect: function(){
         var varURL = ModuloChecada.baseurl + "checadas/consultaDepartamento";
         $.ajax({
             url:  varURL,
@@ -496,15 +579,6 @@ ModuloChecada = {
         ModuloChecada.fnCargarSelect();
     }
 }
-var buttonCommon = {
-    exportOptions: {
-        format: {
-            body: function ( data, row, column, node ) {
-                return data;
-            }
-        }
-    }
-};  
     var table;
     var id_edit;
     $.extend(jQuery.fn.dataTableExt.oSort, {
@@ -536,29 +610,11 @@ var buttonCommon = {
     
     $(document).ready(function () {
         //Load
-        table = $('#example').DataTable();
         ModuloChecada.Init();
-        $("#example").dataTable().fnDestroy();
         base_url="http://127.0.0.1:8080/nomina/";
         TablaVacia = "No se encontraron resultados";
         checadasTabla=[];
-            $('#id').val(0);
-            $('#example tfoot th').each( function () {
-                var title = $(this).text();
-                if(title!="Opciones"){
-                    $(this).html( title+'<br><input type="text" placeholder="Buscar '+title+'" />' );
-                }else{
-                    $(this).html(title);
-                }
-            });
-            $('#example thead th').each( function () {
-                var title = $(this).text();
-                if(title!="Opciones"){
-                    $(this).html( title+'<br><input type="text" placeholder="Buscar '+title+'" />' );
-                }else{
-                    $(this).html(title);
-                }
-            });  
+        $('#id').val(0);
 
         $('#empresa').on('change', function() {
             var empresa=parseInt($('#empresa').val());

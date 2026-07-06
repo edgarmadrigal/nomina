@@ -5,7 +5,7 @@ Modulo = {
     validator: false,
     datosTabla: []    
     //Obtiene los datos
-    , fnObtenerDatos: function (fechaInicio,fechaFin) {
+    , fnObtenerDatos: function (fechaInicio,fechaFin,id_empresa) {
     $.blockUI({ message: '<h1><img src="assets/js/busy.gif" /> Procesando...</h1>' });
         var varURL = Modulo.baseurl + "ActualizaChecadasNomiPlusController/consulta";
         /**Ajax */
@@ -16,6 +16,7 @@ Modulo = {
             data: {
                 fechaInicio: fechaInicio,
                 fechaFin:fechaFin,
+                id_empresa:id_empresa
             },
             //contentType: 'application/json; charset=utf-8',
         }).done(function (data) {
@@ -41,32 +42,6 @@ var buttonCommon = {
 };  
     var table;
     var id_edit;
-    $.extend(jQuery.fn.dataTableExt.oSort, {
-        "date-uk-pre": function (a) {
-            var x;
-            try {
-                var dateA = a.replace(/ /g, '').split("/");
-                var day = parseInt(dateA[0], 10);
-                var month = parseInt(dateA[1], 10);
-                var year = parseInt(dateA[2], 10);
-                var date = new Date(year, month - 1, day)
-                x = date.getTime();
-            }
-            catch (err) {
-                x = new Date().getTime();
-            }
-
-            return x;
-        },
-
-        "date-uk-asc": function (a, b) {
-            return a - b;
-        },
-
-        "date-uk-desc": function (a, b) {
-            return b - a;
-        }
-    });
     
     $(document).ready(function () {
         //Load
@@ -83,7 +58,8 @@ var buttonCommon = {
         $(document).on('click', '#buscar', function (e) {
             var fechaInicio=$('#fecha1').val();
             var fechaFin=$('#fecha2').val();
-            Modulo.fnObtenerDatos(fechaInicio,fechaFin);
+            var id_empresa=$('#id_empresa').val();
+            Modulo.fnObtenerDatos(fechaInicio,fechaFin,id_empresa);
         });
         
 

@@ -1,0 +1,77 @@
+﻿Date,Device ID,Device,User Group,User,Event
+2026-07-02 08:55:16,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1(Administrator),User update succeeded
+2026-07-02 08:42:03,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1(Administrator),User update succeeded
+2026-07-02 08:36:19,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1(Administrator),User update succeeded
+2026-07-02 08:36:03,542189843,FaceStation 2 542189843 (192.168.0.200),,,Device Disconnection Detected
+2026-07-02 08:36:02,542189843,FaceStation 2 542189843 (192.168.0.200),,,BioStar connected
+2026-07-02 08:29:59,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,200006,1:N authentication succeeded (Face)
+2026-07-02 08:26:23,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1213,1:N authentication succeeded (Face)
+2026-07-02 08:22:49,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1231,1:N authentication succeeded (Face)
+2026-07-02 08:21:58,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1007,1:N authentication succeeded (Face)
+2026-07-02 08:20:46,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1034,1:N authentication succeeded (Face)
+2026-07-02 08:19:43,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1157,1:N authentication succeeded (Face)
+2026-07-02 08:19:34,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1232,1:N authentication succeeded (Face)
+2026-07-02 08:19:31,542189843,FaceStation 2 542189843 (192.168.0.200),,,Authentication failed (Timeout)
+2026-07-02 08:18:29,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1071,1:N authentication succeeded (Face)
+2026-07-02 08:14:25,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1172,1:N authentication succeeded (Face)
+2026-07-02 08:10:28,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1086,1:N authentication succeeded (Face)
+2026-07-02 08:10:23,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1241,1:N authentication succeeded (Face)
+2026-07-02 08:10:16,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1204,1:N authentication succeeded (Face)
+2026-07-02 08:08:40,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1252,1:N authentication succeeded (Face)
+2026-07-02 08:08:05,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1233,1:N authentication succeeded (Face)
+2026-07-02 08:08:00,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1182,1:N authentication succeeded (Face)
+2026-07-02 08:07:50,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1210,1:N authentication succeeded (Face)
+2026-07-02 08:07:44,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1260,1:N authentication succeeded (Face)
+2026-07-02 08:07:37,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1013,1:N authentication succeeded (Face)
+2026-07-02 08:07:34,542189843,FaceStation 2 542189843 (192.168.0.200),,,Authentication failed (Timeout)
+2026-07-02 08:07:23,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1250,1:N authentication succeeded (Face)
+2026-07-02 08:07:12,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1246,1:N authentication succeeded (Face)
+2026-07-02 08:07:07,542189843,FaceStation 2 542189843 (192.168.0.200),,,DHCP connected
+2026-07-02 08:06:59,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network connected
+2026-07-02 08:06:57,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network disconnected
+2026-07-02 08:06:54,542189843,FaceStation 2 542189843 (192.168.0.200),,,Tamper off
+2026-07-02 08:06:53,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network connected
+2026-07-02 08:06:51,542189843,FaceStation 2 542189843 (192.168.0.200),,,Device started
+2026-07-02 08:06:50,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network disconnected
+2026-07-02 08:02:55,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1251,1:N authentication succeeded (Face)
+2026-07-02 08:02:49,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1216,1:N authentication succeeded (Face)
+2026-07-02 08:02:44,542189843,FaceStation 2 542189843 (192.168.0.200),,,Authentication failed (Timeout)
+2026-07-02 08:02:34,542189843,FaceStation 2 542189843 (192.168.0.200),,,Authentication failed (Timeout)
+2026-07-02 08:02:24,542189843,FaceStation 2 542189843 (192.168.0.200),,,Authentication failed (Timeout)
+2026-07-02 08:02:07,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1201,1:N authentication succeeded (Face)
+2026-07-02 08:02:02,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1097,1:N authentication succeeded (Face)
+2026-07-02 08:01:58,542189843,FaceStation 2 542189843 (192.168.0.200),,,Authentication failed (Timeout)
+2026-07-02 08:01:04,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1137,1:N authentication succeeded (Face)
+2026-07-02 08:00:53,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1003,1:N authentication succeeded (Face)
+2026-07-02 08:00:40,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1248,1:N authentication succeeded (Face)
+2026-07-02 08:00:34,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1256,1:N authentication succeeded (Face)
+2026-07-02 08:00:25,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1167,1:N authentication succeeded (Face)
+2026-07-02 08:00:00,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1017,1:N authentication succeeded (Face)
+2026-07-02 07:59:55,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1001,1:N authentication succeeded (Face)
+2026-07-02 07:59:50,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,200398,1:N authentication succeeded (Face)
+2026-07-02 07:58:45,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1023,1:N authentication succeeded (Face)
+2026-07-02 07:58:35,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1249,1:N authentication succeeded (Face)
+2026-07-02 07:57:57,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1006,1:N authentication succeeded (Face)
+2026-07-02 07:57:34,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1207,1:N authentication succeeded (Face)
+2026-07-02 07:57:29,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1187,1:N authentication succeeded (Face)
+2026-07-02 07:57:15,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1209,1:N authentication succeeded (Face)
+2026-07-02 07:56:59,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1259,1:N authentication succeeded (Face)
+2026-07-02 07:56:10,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1029,1:N authentication succeeded (Face)
+2026-07-02 07:55:27,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1166,1:N authentication succeeded (Face)
+2026-07-02 07:53:31,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1221,1:N authentication succeeded (Face)
+2026-07-02 07:53:27,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1217,1:N authentication succeeded (Face)
+2026-07-02 07:53:19,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1186,1:N authentication succeeded (Face)
+2026-07-02 07:51:12,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1133,1:N authentication succeeded (Face)
+2026-07-02 07:50:20,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1258,1:N authentication succeeded (Face)
+2026-07-02 07:50:14,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1015,1:N authentication succeeded (Face)
+2026-07-02 07:50:09,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1046,1:N authentication succeeded (Face)
+2026-07-02 07:50:00,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1224,1:N authentication succeeded (Face)
+2026-07-02 07:48:52,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1236,1:N authentication succeeded (Face)
+2026-07-02 06:28:27,542189843,FaceStation 2 542189843 (192.168.0.200),All Users,1222,1:N authentication succeeded (Face)
+2026-07-02 05:15:08,542189843,FaceStation 2 542189843 (192.168.0.200),,,DHCP connected
+2026-07-02 05:13:20,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network connected
+2026-07-02 05:13:18,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network disconnected
+2026-07-02 05:13:14,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network connected
+2026-07-02 05:13:07,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network disconnected
+2026-07-02 05:12:53,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network connected
+2026-07-02 05:12:44,542189843,FaceStation 2 542189843 (192.168.0.200),,,Network disconnected

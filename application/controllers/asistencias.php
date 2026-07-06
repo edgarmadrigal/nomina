@@ -1,6 +1,8 @@
 <?php 
 
 defined('BASEPATH') OR exit('No direct script access allowed'); 
+// Iniciar buffer para evitar salidas accidentales desde includes externos
+if (!ob_get_level()) { ob_start(); }
 # Cargamos la librería dompdf.
 require_once 'dompdfOtro/lib/html5lib/Parser.php';
 require_once 'dompdfOtro/lib/php-font-lib/src/FontLib/Autoloader.php';
@@ -117,7 +119,11 @@ class asistencias extends CI_Controller {
       $titulo='Reporte de Asistencia';
       $fechaactual = getdate();
       $fechaactual="Fecha de Impresion: $fechaactual[mday] / $fechaactual[mon] / $fechaactual[year]";
-      $NoSemana=$data[0]['NoSemana'];
+      $FechaInicio = isset($data[0]['FechaInicio']) ? $data[0]['FechaInicio'] : '';
+      $FechaFin = isset($data[0]['FechaFin']) ? $data[0]['FechaFin'] : '';
+      if (empty($NoSemana) && isset($data[0]['NoSemana'])) {
+        $NoSemana = $data[0]['NoSemana'];
+      }
       
       $Numerodepartamento='21';
       $Nombredepartamento='PEDRISENA';
@@ -182,8 +188,14 @@ class asistencias extends CI_Controller {
         $x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle
       );
       
-      // Output the generated PDF to Browser
-      $dompdf->stream("ReporteAsistencia.pdf", array("Attachment"=>false));
+      // Output the generated PDF to Browser (clean output buffers and send headers)
+      $pdf = $dompdf->output();
+      while (ob_get_level()) { ob_end_clean(); }
+      header('Content-Type: application/pdf');
+      header('Content-Disposition: inline; filename="ReporteAsistencia.pdf"');
+      header('Content-Length: '.strlen($pdf));
+      echo $pdf;
+      exit;
        
 
     }
@@ -231,7 +243,11 @@ class asistencias extends CI_Controller {
       $titulo='Reporte de Asistencia';
       $fechaactual = getdate();
       $fechaactual="Fecha de Impresion: $fechaactual[mday] / $fechaactual[mon] / $fechaactual[year]";
-      $NoSemana=$data[0]['NoSemana'];
+      $FechaInicio = isset($data[0]['FechaInicio']) ? $data[0]['FechaInicio'] : '';
+      $FechaFin = isset($data[0]['FechaFin']) ? $data[0]['FechaFin'] : '';
+      if (empty($NoSemana) && isset($data[0]['NoSemana'])) {
+        $NoSemana = $data[0]['NoSemana'];
+      }
       
       $Numerodepartamento='21';
       $Nombredepartamento='PEDRISENA';
@@ -296,10 +312,15 @@ class asistencias extends CI_Controller {
         $x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle
       );
       
-      // Output the generated PDF to Browser
-      $dompdf->stream("ReporteAsistencia.pdf", array("Attachment"=>false));
+      // Output the generated PDF to Browser (clean output buffers and send headers)
+      $pdf = $dompdf->output();
+      while (ob_get_level()) { ob_end_clean(); }
+      header('Content-Type: application/pdf');
+      header('Content-Disposition: inline; filename="ReporteAsistencia.pdf"');
+      header('Content-Length: '.strlen($pdf));
+      echo $pdf;
+      exit;
        
 
     }
   }
-?>

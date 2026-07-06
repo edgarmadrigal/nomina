@@ -7,24 +7,22 @@ class ActualizaChecadasNomiPlusModel extends CI_Model{
 		$this->load->library('form_validation');
     }
     
-    public function consulta($fechaInicio,$fechaFin)
+    public function consulta($fechaInicio,$fechaFin,$id_empresa)
     {        
         ini_set('memory_limit','512M'); // This also needs to be increased in some cases. Can be changed to a higher value as per need)
         ini_set('sqlsrv.ClientBufferMaxKBSize','524288'); // Setting to 512M
         ini_set('pdo_sqlsrv.client_buffer_max_kb_size','524288'); // Setting to 512M - for pdo_sqlsrv
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
 
-        $sp = "ActualizaChecadasInvalidasNomiPlus ?,? ";
+        $sp = "ActualizaChecadasInvalidasNomiPlus ?,?,? ";
         $params = array(
-        'FechaInicio' => $fechaInicio,
-        'FechaFin' => $fechaFin);
+        'NoSemana' => $fechaInicio,
+        'anio' => $fechaFin,
+        'id_empresa' => $id_empresa);
         
-        $result = $this->db->query($sp,$params);
-        
-        return  $result->result_array();
-        
+        $result = $this->db->query($sp,$params);        
+        return  $result->result_array();        
     }
-
 }
 
 ?>

@@ -1,0 +1,94 @@
+﻿Date,Device ID,Device,User Group,User,Event
+2025-02-04 09:17:09,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1565,1:N authentication succeeded (Face)
+2025-02-04 08:57:49,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1582,1:N authentication succeeded (Face)
+2025-02-04 08:57:46,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1580,1:N authentication succeeded (Face)
+2025-02-04 08:57:36,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1579,1:N authentication succeeded (Face)
+2025-02-04 08:55:57,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1583,1:N authentication succeeded (Face)
+2025-02-04 08:55:37,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1583,User update succeeded
+2025-02-04 08:55:01,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1583,User enrollment succeeded
+2025-02-04 08:47:12,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1581,1:N authentication succeeded (Face)
+2025-02-04 08:25:48,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1582,User update succeeded
+2025-02-04 08:25:03,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1582,User enrollment succeeded
+2025-02-04 08:24:19,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1581,User update succeeded
+2025-02-04 08:23:45,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1581,User enrollment succeeded
+2025-02-04 08:22:45,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1580,User update succeeded
+2025-02-04 08:21:58,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1580,User enrollment succeeded
+2025-02-04 08:21:10,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1579,User update succeeded
+2025-02-04 08:20:21,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1579,User enrollment succeeded
+2025-02-04 08:12:16,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1519,1:N authentication succeeded (Face)
+2025-02-04 08:08:30,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1511,1:N authentication succeeded (Face)
+2025-02-04 08:07:42,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1503,1:N authentication succeeded (Face)
+2025-02-04 08:04:55,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1525,1:N authentication succeeded (Face)
+2025-02-04 08:04:52,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1516,1:N authentication succeeded (Face)
+2025-02-04 08:04:25,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1501,1:N authentication succeeded (Face)
+2025-02-04 08:03:48,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1555,1:N authentication succeeded (Face)
+2025-02-04 08:03:29,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1530,1:N authentication succeeded (Face)
+2025-02-04 08:03:07,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1546,1:N authentication succeeded (Face)
+2025-02-04 08:02:54,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1537,1:N authentication succeeded (Face)
+2025-02-04 08:02:51,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1564,1:N authentication succeeded (Face)
+2025-02-04 08:02:47,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1564,1:N authentication succeeded (Face)
+2025-02-04 08:02:41,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1507,1:N authentication succeeded (Face)
+2025-02-04 08:02:37,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1502,1:N authentication succeeded (Face)
+2025-02-04 08:02:32,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1528,1:N authentication succeeded (Face)
+2025-02-04 08:01:38,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1563,1:N authentication succeeded (Face)
+2025-02-04 08:01:36,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1563,1:N authentication succeeded (Face)
+2025-02-04 08:01:21,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1570,1:N authentication succeeded (Face)
+2025-02-04 08:01:09,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1551,1:N authentication succeeded (Face)
+2025-02-04 08:01:06,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1558,1:N authentication succeeded (Face)
+2025-02-04 08:00:40,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1556,1:N authentication succeeded (Face)
+2025-02-04 08:00:22,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1572,1:N authentication succeeded (Face)
+2025-02-04 07:59:57,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1504,1:N authentication succeeded (Face)
+2025-02-04 07:59:11,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1573,1:N authentication succeeded (Face)
+2025-02-04 07:58:53,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1578,1:N authentication succeeded (Face)
+2025-02-04 07:58:50,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1559,1:N authentication succeeded (Face)
+2025-02-04 07:58:45,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1533,1:N authentication succeeded (Face)
+2025-02-04 07:58:42,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1571,1:N authentication succeeded (Face)
+2025-02-04 07:58:37,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1540,1:N authentication succeeded (Face)
+2025-02-04 07:58:12,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1577,1:N authentication succeeded (Face)
+2025-02-04 07:57:58,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1513,1:N authentication succeeded (Face)
+2025-02-04 07:57:37,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1515,1:N authentication succeeded (Face)
+2025-02-04 07:56:53,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1542,1:N authentication succeeded (Face)
+2025-02-04 07:56:50,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1508,1:N authentication succeeded (Face)
+2025-02-04 07:56:45,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1539,1:N authentication succeeded (Face)
+2025-02-04 07:56:40,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1510,1:N authentication succeeded (Face)
+2025-02-04 07:56:30,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1518,1:N authentication succeeded (Face)
+2025-02-04 07:56:10,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1568,1:N authentication succeeded (Face)
+2025-02-04 07:56:06,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1567,1:N authentication succeeded (Face)
+2025-02-04 07:54:57,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1531,1:N authentication succeeded (Face)
+2025-02-04 07:53:16,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1505,1:N authentication succeeded (Face)
+2025-02-04 07:53:09,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1560,1:N authentication succeeded (Face)
+2025-02-04 07:53:06,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1521,1:N authentication succeeded (Face)
+2025-02-04 07:52:33,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1532,1:N authentication succeeded (Face)
+2025-02-04 07:52:29,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1512,1:N authentication succeeded (Face)
+2025-02-04 07:51:31,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1575,1:N authentication succeeded (Face)
+2025-02-04 07:51:27,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1509,1:N authentication succeeded (Face)
+2025-02-04 07:51:22,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1520,1:N authentication succeeded (Face)
+2025-02-04 07:51:03,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1536,1:N authentication succeeded (Face)
+2025-02-04 07:50:57,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1566,1:N authentication succeeded (Face)
+2025-02-04 07:50:41,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1535,1:N authentication succeeded (Face)
+2025-02-04 07:50:36,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1576,1:N authentication succeeded (Face)
+2025-02-04 07:50:22,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1506,1:N authentication succeeded (Face)
+2025-02-04 07:49:07,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1569,1:N authentication succeeded (Face)
+2025-02-04 07:46:38,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1526,1:N authentication succeeded (Face)
+2025-02-04 07:46:15,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1549,1:N authentication succeeded (Face)
+2025-02-04 07:44:14,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1529,1:N authentication succeeded (Face)
+2025-02-04 07:44:11,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1529,1:N authentication succeeded (Face)
+2025-02-04 07:41:11,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1523,1:N authentication succeeded (Face)
+2025-02-04 07:33:07,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1547,1:N authentication succeeded (Face)
+2025-02-04 07:30:35,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1538,1:N authentication succeeded (Face)
+2025-02-04 03:16:02,542191443,FaceStation 2 542191443 (192.168.8.220),,,BioStar connected
+2025-02-04 03:14:35,542191443,FaceStation 2 542191443 (192.168.8.220),,,BioStar disconnected
+2025-02-04 03:14:02,542191443,FaceStation 2 542191443 (192.168.8.220),,,BioStar connected
+2025-02-04 03:11:45,542191443,FaceStation 2 542191443 (192.168.8.220),,,BioStar disconnected
+2025-02-04 03:11:44,542191443,FaceStation 2 542191443 (192.168.8.220),,,Network connected
+2025-02-04 03:11:40,542191443,FaceStation 2 542191443 (192.168.8.220),,,Network disconnected
+2025-02-04 03:11:40,542191443,FaceStation 2 542191443 (192.168.8.220),,,Network connected
+2025-02-04 03:11:33,542191443,FaceStation 2 542191443 (192.168.8.220),,,Network disconnected
+2025-02-03 19:41:47,542191443,FaceStation 2 542191443 (192.168.8.220),,,Device time changed
+2025-02-03 19:41:41,542191443,FaceStation 2 542191443 (192.168.8.220),,,Device time changed
+2025-02-03 19:24:28,542191443,FaceStation 2 542191443 (192.168.8.220),,,Device time changed
+2025-02-03 19:24:22,542191443,FaceStation 2 542191443 (192.168.8.220),,,Device time changed
+2025-02-03 08:33:07,542191443,FaceStation 2 542191443 (192.168.8.220),,,Device time changed
+2025-02-03 08:33:01,542191443,FaceStation 2 542191443 (192.168.8.220),,,Device time changed
+2025-02-03 08:05:55,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1504,1:N authentication succeeded (Face)
+2025-02-03 08:04:09,542191443,FaceStation 2 542191443 (192.168.8.220),All Users,1503,1:N authentication succeeded (Face)

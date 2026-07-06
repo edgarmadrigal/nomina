@@ -194,9 +194,26 @@ $(document).on('click', '#buscarAcumulado', function (e) {
             type: 'get',
             dataType: 'json'
         }).done(function (data) {
-            alert(data);
-            //perfiles= JSON.parse(JSON.stringify());       
-        });
+                        if (data) {
+                            swal({
+                                    title: "Tus datos han sido actualizados",
+                                    text: "Se actualizo correctamente",
+                                    icon: "success",
+                                })
+                                .then((value) => {
+                                        // hide the modal
+                                });
+
+                        } else {
+                            swal({
+                                    title: "Eror!",
+                                    text: data,
+                                    icon: "warning",
+                                })
+                                .then((value) => {
+                                });
+                        }
+                    });
         
             */
             
@@ -205,7 +222,7 @@ $(document).on('click', '#buscarAcumulado', function (e) {
        // window.location.assign(varURL);
     });
 
-    /*
+    
     $('#planta').on('change', function() {
         $('#departamento').empty();   
         $('#puesto').empty();
@@ -247,87 +264,8 @@ $(document).on('click', '#buscarAcumulado', function (e) {
                 $('#puesto').append('<option value="'+value.ID+'">'+value.descripcion+'</option>');
             });
         });                
-    });*/
+    });
 
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-account_data_emailaddress_DWT115
-account_data_emailaddress_DWT116
-account_data_emailaddress_DWT117
-account_data_emailaddress_DWT118
-account_data_emailaddress_DWT119
-account_data_emailaddress_DWT120
-account_data_emailaddress_DWT121
-account_data_emailaddress_DWT122
-account_data_emailaddress_DWT123
-account_data_emailaddress_DWT124
-account_data_emailaddress_DWT125
-account_data_emailaddress_DWT126
-account_data_emailaddress_DWT127
-account_data_emailaddress_DWT128
-account_data_emailaddress_DWT129
-account_data_emailaddress_DWT130
-account_data_emailaddress_DWT131
-account_data_emailaddress_DWT132
-account_data_emailaddress_DWT133
-account_data_emailaddress_DWT134
-account_data_emailaddress_DWT135
-account_data_emailaddress_DWT136
-account_data_emailaddress_DWT137
-account_data_emailaddress_DWT138
-account_data_emailaddress_DWT139
-account_data_emailaddress_DWT140
-account_data_emailaddress_DWT141
-account_data_emailaddress_DWT142
-account_data_emailaddress_DWT143
-account_data_emailaddress_DWT144
-
-
-
-document.querySelectorAll("#account_data_emailaddress_DWT115")
-document.querySelectorAll("#account_data_emailaddress_DWT116")
-document.querySelectorAll("#account_data_emailaddress_DWT117")
-document.querySelectorAll("#account_data_emailaddress_DWT118")
-document.querySelectorAll("#account_data_emailaddress_DWT119")
-document.querySelectorAll("#account_data_emailaddress_DWT120")
-document.querySelectorAll("#account_data_emailaddress_DWT121")
-document.querySelectorAll("#account_data_emailaddress_DWT122")
-document.querySelectorAll("#account_data_emailaddress_DWT123")
-document.querySelectorAll("#account_data_emailaddress_DWT124")
-document.querySelectorAll("#account_data_emailaddress_DWT125")
-document.querySelectorAll("#account_data_emailaddress_DWT126")
-document.querySelectorAll("#account_data_emailaddress_DWT127")
-document.querySelectorAll("#account_data_emailaddress_DWT128")
-document.querySelectorAll("#account_data_emailaddress_DWT129")
-document.querySelectorAll("#account_data_emailaddress_DWT130")
-document.querySelectorAll("#account_data_emailaddress_DWT131")
-document.querySelectorAll("#account_data_emailaddress_DWT132")
-document.querySelectorAll("#account_data_emailaddress_DWT133")
-document.querySelectorAll("#account_data_emailaddress_DWT134")
-document.querySelectorAll("#account_data_emailaddress_DWT135")
-document.querySelectorAll("#account_data_emailaddress_DWT136")
-document.querySelectorAll("#account_data_emailaddress_DWT137")
-document.querySelectorAll("#account_data_emailaddress_DWT138")
-document.querySelectorAll("#account_data_emailaddress_DWT139")
-document.querySelectorAll("#account_data_emailaddress_DWT140")
-document.querySelectorAll("#account_data_emailaddress_DWT141")
-document.querySelectorAll("#account_data_emailaddress_DWT142")
-document.querySelectorAll("#account_data_emailaddress_DWT143")
-document.querySelectorAll("#account_data_emailaddress_DWT144")

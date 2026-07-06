@@ -5,7 +5,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 
-
+/*
 $db['default'] = array(
 	'dsn'	=> '',
     'hostname' => 'EDGAR-SISTEMAS',  //'192.168.128.24',//'192.168.128.24',//
@@ -27,12 +27,11 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
+);*/
 
-/*
 $db['default'] = array(
 	'dsn'	=> '',
-    'hostname' => 'AIN-MSSRV\SISTEMASAIN',  //'192.168.128.24',//'192.168.128.24',//
+    'hostname' => 'AIN-MSSRV2\SISTEMASAIN',  //'192.168.128.24',//'192.168.128.24',//
     'username' => 'sa',
     'password' => 'SisAin03',  //'TANet001',//'dbAin1',//'dbAin1',//
     'database' => 'Nominas',
@@ -52,7 +51,6 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-*/
 
 //Configuracion de la otra BD MYSQL
 $db['another_db'] = array(

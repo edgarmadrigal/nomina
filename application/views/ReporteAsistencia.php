@@ -108,8 +108,8 @@
       <th> </th>
       <th> </th>
       <th>Semana:<?php echo $NoSemana;?></th>
-      <th COLSPAN=2>del <?php echo $data[0]['FechaInicio'];?> </th>
-      <th COLSPAN=2>a <?php echo $data[0]['FechaFin'];?></th>
+      <th COLSPAN=2>del <?php echo !empty($FechaInicio) ? $FechaInicio : ''; ?> </th>
+      <th COLSPAN=2>a <?php echo !empty($FechaFin) ? $FechaFin : ''; ?></th>
     </tr>    
     <tr>
       <th>No</th>

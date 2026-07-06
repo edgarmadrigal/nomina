@@ -75,7 +75,7 @@ class incidencia extends CI_Controller {
 		 $this->email->initialize($config);
   
 	   //Ponemos la dirección de correo que enviará el email y un nombre
-		 $this->email->from('tbello@apparelinternational.com', 'Tomas Bello');
+		 $this->email->from('ocastaneda@apparelinternational.com', 'Tomas Bello');
 		  
 	   /*
 		* Ponemos el o los destinatarios para los que va el email
@@ -83,7 +83,7 @@ class incidencia extends CI_Controller {
 		* mismo
 		*/
 		//ainvig4
-		 $this->email->to('ocastaneda@apparelinternational.com');
+		 $this->email->to('emadrigal@apparelinternational.com');
 		  
 	   //Definimos el asunto del mensaje
 	   //  $this->email->subject($this->input->post("holaaa!"));
@@ -94,12 +94,11 @@ class incidencia extends CI_Controller {
 		 $this->email->message(
 				// "Email: ".$this->input->post("email").
 				// " Mensaje: ".$this->input->post("mensaje")
-				"Oscar Castañeda 
-				Felicidades en este día ".date("F j, Y, g:i a"). " le desea el Ing. Tomás Bello Garza 
+				"Oscar Castañeda te Autorizo un aumento compadre!
 				"
 				 );
 				 
-		  $this->email->attach('ReciboSindical.pdf');
+		//  $this->email->attach('ReciboSindical.pdf');
 
 		 /*
 		 $this->email->subject('¡ALERTA! He hackeado tu computadora y te he robado información.');

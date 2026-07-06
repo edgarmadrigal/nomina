@@ -40,9 +40,10 @@ class ActualizaChecadasNomiPlusController extends CI_Controller {
 		header('Access-Control-Allow-Origin: *');
 		$fechaInicio = $this->input->post('fechaInicio');
 		$fechaFin = $this->input->post('fechaFin');
+        $id_empresa = $this->input->post('id_empresa');
 		$result = array('data' => array());
         $this->load->model('ActualizaChecadasNomiPlusModel');        
-        $data=$this->ActualizaChecadasNomiPlusModel->consulta($fechaInicio,$fechaFin);
+        $data=$this->ActualizaChecadasNomiPlusModel->consulta($fechaInicio,$fechaFin,$id_empresa);
 
 		echo json_encode($data);
     }
