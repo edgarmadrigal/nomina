@@ -29,7 +29,7 @@ Modulo = {
             a.href = window.URL.createObjectURL(blob);
             a.download = file_name;
             a.click();
-            window.URL.revokeObjectURL(a.href);
+            setTimeout(function() { window.URL.revokeObjectURL(a.href); }, 100);
         }).fail(function() {
             $(".loadTable").css("display", "none");
             alert("Error al descargar el archivo");
