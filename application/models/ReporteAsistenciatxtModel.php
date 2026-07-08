@@ -24,6 +24,7 @@ class ReporteAsistenciatxtModel extends CI_Model{
         $result = $this->db->query($sp, $params);        
         return $result->result_array();        
     }
+  
 
     public function ExportarArchivo($NoSemana, $anio, $planta, $Code, $puesto, $NoEmpleado){
         ini_set('memory_limit','512M');
@@ -34,7 +35,11 @@ class ReporteAsistenciatxtModel extends CI_Model{
         if(file_exists('reporteAsistenciatxt.txt')){
             unlink('reporteAsistenciatxt.txt');
         }
-        
+        $Code = ($Code === '' || $Code === null) ? null : $Code;
+        $puesto = ($puesto === '' || $puesto === null) ? null : $puesto;
+        $NoEmpleado = ($NoEmpleado === '' || $NoEmpleado === null) ? null : $NoEmpleado;
+
+
         $sp = "ConsultaAsistenciaExportar ?,?,?,?,?,?";
         $params = array(
             'NoSemana' => $NoSemana,
@@ -46,31 +51,33 @@ class ReporteAsistenciatxtModel extends CI_Model{
         
         $result = $this->db->query($sp, $params);
         $result = $result->result_array();   
-      
+
         $file = "reporteAsistenciatxt.txt";
 
         file_put_contents($file, ""); //creamos el archivo vacio para que siempre exista
 
         // Escribir datos al archivo (los valores ya vienen con sus prefijos |1|, |1.1|, |1.2| desde el SP)
         $campos = array(
-            'PremioporAsistencia',
-            'PremioporPuntualidad',
-            'LunesFalta',
-            'MartesFalta',
-            'MiercolesFalta',
-            'JuevesFalta',
-            'ViernesFalta',
-            'SabadoFalta',
-            'DomingoFalta',
-        );
-        foreach ($result as $fila) {
-            file_put_contents($file, $fila['PrimerRenglon'] . PHP_EOL, FILE_APPEND);
-            foreach ($campos as $campo) {
-                if (isset($fila[$campo]) && $fila[$campo] !== '' && $fila[$campo] != 'NULL') {
-                    file_put_contents($file, $fila[$campo] . PHP_EOL, FILE_APPEND);
-                }
-            }
+    'PremioporAsistencia',
+    'PremioporPuntualidad',
+    'LunesFalta',
+    'MartesFalta',
+    'MiercolesFalta',
+    'JuevesFalta',
+    'ViernesFalta',
+    'SabadoFalta',
+    'DomingoFalta',
+);
+
+foreach ($result as $fila) {
+    file_put_contents($file, $fila['PrimerRenglon'] . PHP_EOL, FILE_APPEND);
+    foreach ($campos as $campo) {
+        if (isset($fila[$campo]) && $fila[$campo] !== '' && $fila[$campo] != 'NULL') {
+            file_put_contents($file, $fila[$campo] . PHP_EOL, FILE_APPEND);
         }
+    }
+}
+        
         
         if (file_exists($file)) {
             header('Content-Description: File Transfer');

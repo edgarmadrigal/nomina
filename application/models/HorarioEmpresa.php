@@ -87,7 +87,7 @@ return $query->result_array();
 
     public function ActualizarHorariosEmpresaPorEmpresa($empresa_id, $data, $fechaAsignacion) {
         // Actualiza los registros de la empresa para la fecha seleccionada.
-        $sql = "UPDATE he SET 
+       /* $sql = "UPDATE he SET 
             idhorario_lunes = ?, 
             idhorario_martes = ?, 
             idhorario_miercoles = ?, 
@@ -101,6 +101,21 @@ return $query->result_array();
             FROM horarios_empleado he 
             JOIN empleados e ON e.empleado_id = he.empleado_id 
             WHERE e.empresa_id = ? ";
+            */
+            $sql = "UPDATE he SET
+            idhorario_lunes = ?,
+            idhorario_martes = ?,
+            idhorario_miercoles = ?,
+            idhorario_jueves = ?,
+            idhorario_viernes = ?,
+            idhorario_sabado = ?,
+            idhorario_domingo = ?,
+            descripcion = ?,
+            fechaAsignacion = ?,
+            cantidad = ?
+            FROM horarios_empleado he
+            JOIN empleados e ON e.empleado_id = he.empleado_id
+            WHERE e.empresa_id = ? AND he.fechaAsignacion = ? ";
 
         $params = array(
             $data['idhorario_lunes'],

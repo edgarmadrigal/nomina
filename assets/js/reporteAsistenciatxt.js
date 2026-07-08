@@ -58,7 +58,7 @@ Modulo = {
         Modulo.fnCargarPlantas();
 
         // Eventos
-        $("#buscar").click(function () {
+        $("#descargar").click(function () {
             var NoSemana = $("#NoSemana").val();
             var anio = $("#anio").val();
             var planta = $("#planta").val();
@@ -77,6 +77,37 @@ Modulo = {
 
             Modulo.fnObtenerDatos(NoSemana, anio, planta, Code, puesto, NoEmpleado);
         });
+        
+    
+    $(document).on('click', '#actualizar', function (e) {
+        if(!$('#NoSemana').val()){
+            alert('Favor de capturar el numero de semana');
+        }
+        else if($('#planta').val()==0){
+            alert('Favor de capturar la planta');
+        }else{
+            $.blockUI({ message: '<h1><img src="assets/js/busy.gif" /> Procesando...</h1>' }); 
+
+            var NoSemana=parseInt($("#NoSemana").val());
+            var anio=$("#anio").val();
+            var planta=parseInt($("#planta").val());
+
+             var varURL = Modulo.baseurl + "asistencias/actualizar";
+             $.ajax({
+                 url:  varURL,
+                 type: 'post',
+                 dataType: 'json'
+                 ,data: {
+                    NoSemana:NoSemana,
+                    anio:anio,
+                    planta:planta,
+                },
+             }).done(function (data) { 
+                 $.unblockUI();
+                alert('Termino la actualizacion con exito');
+             });
+        }
+     });
     }
 };
 

@@ -75,7 +75,7 @@
                                                 <option value="41"> TBG								</option>	 
                                 </select>
                                 </div>
-                            </div>
+                            </div><!--
                             <div class="col-2">
                                 <div class="form-group">
                                     <label style="font-weight: bold!important;">Departamento</label>
@@ -94,12 +94,22 @@
                                     <input id="noempleado" type="text" class="form-control" placeholder="escriba NoEmpleado">
                                 </div>
                             </div>
+                            ---->
                             <div class="col-2">
                                 <div class="form-group">
                                     <label style="font-weight: bold!important;"> &nbsp; </label><br> 
-                                    <button id="buscar" class="btn btn-info">
+                                    <button id="descargar" class="btn btn-info">
                                         <i class="fa fa-download"></i> Descargar fichero
                                     </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label style="font-weight: bold!important;"> &nbsp; </label><br> 
+                                        <button id="actualizar" class="btn btn-success">
+                                            Procesar  <i class="fa fa-refresh"></i>
+                                        </button>
                                 </div>
                             </div>
                         </div> 
