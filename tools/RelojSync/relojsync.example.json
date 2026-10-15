@@ -1,0 +1,3 @@
+{
+  "conexion": "Server=AIN-MSSRV2\\SISTEMASAIN;Database=Nominas;User Id=USUARIO;Password=CONTRASENA;TrustServerCertificate=True"
+}
