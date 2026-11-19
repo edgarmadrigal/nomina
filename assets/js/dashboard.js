@@ -55,12 +55,35 @@ var Dash = {
             t.vacaciones += +d.vacaciones; t.incidencias += +d.incidencias;
         });
         $.each(r.porPlanta || [], function (i, p) { emp += +p.empleados; });
-        $('#kpiEmpleados').text(emp.toLocaleString());
-        $('#kpiAsistencias').text(t.asistencias.toLocaleString());
-        $('#kpiFaltas').text(t.faltas.toLocaleString());
-        $('#kpiRetardos').text(t.retardos.toLocaleString());
-        $('#kpiVacaciones').text(t.vacaciones.toLocaleString());
-        $('#kpiIncidencias').text(t.incidencias.toLocaleString());
+        Dash.fnContar('#kpiEmpleados', emp);
+        Dash.fnContar('#kpiAsistencias', t.asistencias);
+        Dash.fnContar('#kpiFaltas', t.faltas);
+        Dash.fnContar('#kpiRetardos', t.retardos);
+        Dash.fnContar('#kpiVacaciones', t.vacaciones);
+        Dash.fnContar('#kpiIncidencias', t.incidencias);
+    },
+
+    /** Sin animaciones si el usuario pidió reducir movimiento en su sistema. */
+    sinMovimiento: !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches),
+    DURACION: 1200,
+
+    /** El número sube de 0 (o de lo que mostraba) hasta su valor, frenando al final. */
+    fnContar: function (sel, fin) {
+        var el = $(sel), ini = 0;
+        fin = +fin || 0;
+        var previa = el.data('anim');
+        if (previa) cancelAnimationFrame(previa);
+        if (Dash.sinMovimiento || !window.requestAnimationFrame || fin === 0) { el.text(fin.toLocaleString()); return; }
+        var t0 = null;
+        var paso = function (ts) {
+            if (t0 === null) t0 = ts;
+            var p = Math.min(1, (ts - t0) / Dash.DURACION);
+            var e = 1 - Math.pow(1 - p, 3);   // easeOutCubic
+            el.text(Math.round(ini + (fin - ini) * e).toLocaleString());
+            if (p < 1) el.data('anim', requestAnimationFrame(paso)); else el.removeData('anim');
+        };
+        el.text('0');
+        el.data('anim', requestAnimationFrame(paso));
     },
 
     fnGraficaDias: function (porDia) {
@@ -70,10 +93,13 @@ var Dash = {
             cols[0].push(+d.asistencias); cols[1].push(+d.faltas); cols[2].push(+d.retardos);
             cols[3].push(+d.vacaciones); cols[4].push(+d.incidencias);
         }
-        c3.generate({
+        // Se dibuja en ceros y luego se cargan los valores: c3 hace crecer las barras.
+        var ceros = $.map(cols, function (c) { return [[c[0], 0, 0, 0, 0, 0, 0, 0]]; });
+        var g = c3.generate({
             bindto: '#graficaDias',
+            transition: { duration: Dash.sinMovimiento ? 0 : Dash.DURACION },
             data: {
-                columns: cols,
+                columns: Dash.sinMovimiento ? cols : ceros,
                 type: 'bar',
                 colors: Dash.colores,
                 onclick: function (d) {
@@ -86,6 +112,7 @@ var Dash = {
             grid: { y: { show: true } },
             tooltip: { format: { title: function (i) { return Dash.dias[i] + ' — clic para ver empleados'; } } }
         });
+        if (!Dash.sinMovimiento) setTimeout(function () { g.load({ columns: cols }); }, 60);
     },
 
     fnGraficaPlantas: function (porPlanta) {
@@ -97,10 +124,12 @@ var Dash = {
             $('#graficaPlantas').html('<div class="text-center text-muted" style="padding-top:120px;"><i class="fa fa-check-circle fa-2x text-success"></i><br>Sin faltas esta semana</div>');
             return;
         }
-        c3.generate({
+        // Igual que las barras: la dona arranca vacía y se llena.
+        var g = c3.generate({
             bindto: '#graficaPlantas',
+            transition: { duration: Dash.sinMovimiento ? 0 : Dash.DURACION },
             data: {
-                columns: cols,
+                columns: Dash.sinMovimiento ? cols : [],
                 type: 'donut',
                 onclick: function (d) {
                     Dash.fnVerDetalle('faltas', 0, ids[d.id], 'Faltas de la semana — ' + d.id);
@@ -109,6 +138,7 @@ var Dash = {
             donut: { title: 'Faltas', width: 28, label: { format: function (v) { return v; } } },
             legend: { position: 'bottom' }
         });
+        if (!Dash.sinMovimiento) setTimeout(function () { g.load({ columns: cols }); }, 60);
     },
 
     /** dia 0 = toda la semana; planta '' = la del filtro. */

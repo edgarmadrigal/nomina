@@ -1071,6 +1071,7 @@ class controllerRelojes extends CI_Controller {
     public function replicaSemanal($modo = ''){
         if (!is_cli()) { show_404(); return; }
         set_time_limit(0);
+        date_default_timezone_set('America/Mexico_City');   // php.ini trae Europe/Berlin: el log y el "domingo pasado" van en hora de aquí
         $log = FCPATH . 'tools/RelojSync/logs/replica.log';
         if (!is_dir(dirname($log))) @mkdir(dirname($log), 0777, true);
         $escribir = function ($m) use ($log) {
@@ -1123,64 +1124,67 @@ class controllerRelojes extends CI_Controller {
         if ($modo === 'prueba') { echo 'PRUEBA (no se conecta a ningún reloj): desde ' . $origen['descripcion'] . ' hacia: ' . implode(', ', $nombres) . "\n"; return; }
         $escribir('Inicia réplica desde ' . $origen['descripcion'] . ' hacia: ' . implode(', ', $nombres));
 
-        $destsFile = $dir . 'replica_destinos.json';
-        file_put_contents($destsFile, json_encode(array_values($destinos)));
         $prog = $dir . 'copia_progreso.json';
-        @unlink($prog . '.detener');
-        @unlink($prog);
+        $salidaFile = $dir . 'replica_salida.txt';
+        $w = function ($p) { return str_replace('/', chr(92), $p); };
+        $inicio = time();
+        $resultados = array();
 
-        $w = function ($p) { return str_replace('/', '\\', $p); };
-        $cmd = '"' . $w($exe) . '" copiarvarios ' . $origen['deviceId'] . ' "' . $w($destsFile) . '" "' . $w($prog) . '"';
-        $proc = proc_open($cmd, array(0 => array('pipe', 'r'), 1 => array('file', $w($log), 'a'), 2 => array('file', $w($log), 'a')),
-                          $pipes, $w(dirname($exe)), null, array('bypass_shell' => true));
-        if (!is_resource($proc)) { $escribir('ERROR: no se pudo lanzar RelojSync.'); return; }
-        fclose($pipes[0]);
+        // Un RelojSync por reloj destino: así el resultado de cada uno sale exacto (línea JSON= al terminar).
+        foreach ($destinos as $i => $dev) {
+            $nombre = $porDev[$dev]['descripcion'];
+            @unlink($prog . '.detener');
+            @unlink($salidaFile);
+            $cmd = '"' . $w($exe) . '" copiarrostros ' . $origen['deviceId'] . ' ' . $dev . ' todos "' . $w($prog) . '"';
+            $proc = proc_open($cmd, array(0 => array('pipe', 'r'), 1 => array('file', $w($salidaFile), 'w'), 2 => array('file', $w($log), 'a')),
+                              $pipes, $w(dirname($exe)), null, array('bypass_shell' => true));
+            if (!is_resource($proc)) { $resultados[$dev] = array(0, 'no se pudo lanzar RelojSync'); continue; }
+            fclose($pipes[0]);
 
-        // Vigilante: cada 30 s lee el avance; si el reloj actual no avanza en 30 min, se le detiene.
-        $inicio = time(); $ultimoCambio = time(); $firma = ''; $ultimo = array(); $saltados = array();
-        while (true) {
-            $st = proc_get_status($proc);
-            if (!$st['running']) break;
-            sleep(30);
-            $p = @json_decode((string) @file_get_contents($prog), true);
-            if (is_array($p) && !empty($p['destinoId'])) {
-                $dev = (string) $p['destinoId'];
-                $ultimo[$dev] = $p;
-                $f = $dev . '|' . $p['fase'] . '|' . (int) $p['copiados'] . '|' . (int) $p['yaTenian'] . '|' . (int) $p['errores'] . '|' . (int) $p['total'];
+            // Vigilante: si el reloj no avanza en 30 min (apagado, sin red) se le detiene y se sigue con el siguiente.
+            $ultimoCambio = time(); $firma = ''; $saltado = false; $desde = time();
+            while (true) {
+                $st = proc_get_status($proc);
+                if (!$st['running']) break;
+                sleep(5);
+                $p = @json_decode((string) @file_get_contents($prog), true);
+                $f = is_array($p) ? ($p['fase'] . '|' . (int) $p['copiados'] . '|' . (int) $p['yaTenian'] . '|' . (int) $p['errores'] . '|' . (int) $p['total']) : '';
                 if ($f !== $firma) { $firma = $f; $ultimoCambio = time(); }
-                elseif (time() - $ultimoCambio > 30 * 60 && !isset($saltados[$dev])) {
+                elseif (!$saltado && time() - $ultimoCambio > 30 * 60) {
                     file_put_contents($prog . '.detener', $dev);
-                    $saltados[$dev] = true;
-                    $ultimoCambio = time();
-                    $escribir('El reloj ' . $p['destino'] . ' no avanzó en 30 min; se salta.');
+                    $saltado = true;
+                    $escribir('El reloj ' . $nombre . ' no avanzó en 30 min; se salta.');
+                }
+                if (time() - $desde > 6 * 3600) {   // tope de seguridad por reloj
+                    $escribir('ERROR: ' . $nombre . ' pasó de 6 h; se termina RelojSync.');
+                    proc_terminate($proc);
+                    break;
                 }
             }
-            if (time() - $inicio > 16 * 3600) {   // nunca debería pasar: tope de seguridad
-                $escribir('ERROR: la réplica pasó de 16 h; se termina RelojSync.');
-                proc_terminate($proc);
-                break;
+            proc_close($proc);
+
+            $salida = (string) @file_get_contents($salidaFile);
+            if (preg_match('/^JSON=(.*)$/m', $salida, $m) && is_array($x = json_decode(trim($m[1]), true))) {
+                $n = function ($k) use ($x) { return isset($x[$k]) && is_array($x[$k]) ? count($x[$k]) : 0; };
+                $msg = $n('hechos') . ' copiados, ' . $n('yaEstaban') . ' ya estaban, ' . $n('sinRostro') . ' sin rostro en el principal, '
+                     . $n('errores') . ' con error' . ($n('reemplazados') ? ', ' . $n('reemplazados') . ' cambiaron de número' : '')
+                     . ($n('hechos') ? ' (' . implode(', ', array_slice($x['hechos'], 0, 30)) . ($n('hechos') > 30 ? '...' : '') . ')' : '');
+                $resultados[$dev] = array($n('errores') ? 0 : 1, $msg);
+            } elseif (preg_match('/^ERROR=(.*)$/m', $salida, $m)) {
+                $resultados[$dev] = array(0, ($saltado ? 'no contestó por 30 min, se saltó: ' : 'error: ') . trim($m[1]));
+            } else {
+                $resultados[$dev] = array(0, $saltado ? 'no contestó por 30 min, se saltó' : 'terminó sin resultado (revisa tools/RelojSync/logs/replica.log)');
             }
+            $escribir('(' . ($i + 1) . '/' . count($destinos) . ') ' . $nombre . ': ' . $resultados[$dev][1]);
         }
-        proc_close($proc);
-        $p = @json_decode((string) @file_get_contents($prog), true);
-        if (is_array($p) && !empty($p['destinoId'])) $ultimo[(string) $p['destinoId']] = $p;
 
         // Bitácora por reloj (la conexión a SQL pudo caerse en las horas de copia)
         $this->db->close();
         $this->db->initialize();
         foreach ($destinos as $dev) {
-            $r = $porDev[$dev];
-            if (isset($saltados[$dev])) { $ok = 0; $msg = 'no contestó por 30 min, se saltó'; }
-            elseif (!isset($ultimo[$dev])) { $ok = 0; $msg = 'no se llegó a copiar (revisa tools/RelojSync/logs/replica.log)'; }
-            else {
-                $x = $ultimo[$dev];
-                $ok = ($x['fase'] === 'terminado' || (int) $x['copiados'] + (int) $x['yaTenian'] + (int) $x['sinRostro'] >= (int) $x['total']) ? 1 : 0;
-                $msg = (int) $x['copiados'] . ' copiados, ' . (int) $x['yaTenian'] . ' ya estaban, ' . (int) $x['sinRostro'] . ' sin rostro en el principal, '
-                     . (int) $x['errores'] . ' con error' . ($ok ? '' : ' (no terminó: ' . $x['fase'] . ')');
-            }
+            list($ok, $msg) = $resultados[$dev];
             $this->db->query("INSERT INTO dbo.RelojComunicacion (idReloj, accion, usuario, autorizo, ip, exito, resultado) VALUES (?,?,?,?,?,?,?)",
-                             array($r['id'], 'replica', 'TAREA SEMANAL', null, null, $ok, 'Réplica semanal desde ' . $origen['descripcion'] . ': ' . $msg));
-            $escribir($r['descripcion'] . ': ' . $msg);
+                             array($porDev[$dev]['id'], 'replica', 'TAREA SEMANAL', null, null, $ok, 'Réplica semanal desde ' . $origen['descripcion'] . ': ' . $msg));
         }
         $escribir('Termina réplica (' . round((time() - $inicio) / 60) . ' min).');
         flock($candado, LOCK_UN);
