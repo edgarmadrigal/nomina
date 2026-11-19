@@ -1051,4 +1051,138 @@ class controllerRelojes extends CI_Controller {
         exec($cmd . ' 2>&1', $salida, $codigo);
         return array('exito' => $codigo === 0, 'salida' => implode("\n", $salida));
     }
+
+    /**
+     * Réplica semanal (tarea programada "Nominas - Replica relojes" en EDGAR, domingo 22:00):
+     * copia los empleados NUEVOS del reloj principal a los demás BioStar 2, igual que el botón
+     * "Copiar empleados nuevos" (sin reemplazar, sin borrar: a quien ya tiene rostro no se le toca).
+     *   php index.php controllerRelojes replicaSemanal
+     * Configuración en dbo.ConfigSistema (por deviceId):
+     *   relojes_replica_principal = reloj origen (206 fundacion 000005)
+     *   relojes_replica_excluir   = relojes que NO reciben la réplica (152 Dirección, 170 Desarrollo)
+     * Si un reloj pasa 30 min sin avanzar (apagado, sin red) se le "detiene" y se sigue con el siguiente,
+     * para que la tarea no se quede colgada. El resultado de cada reloj queda en dbo.RelojComunicacion.
+     *
+     * Revisión del lunes (tarea "Nominas - Replica relojes (revision lunes)", lunes 19:00):
+     *   php index.php controllerRelojes replicaSemanal pendiente
+     * solo corre si desde el domingo pasado no hay réplica registrada o algún reloj no terminó bien
+     * (EDGAR apagado el domingo, un reloj sin red...). Repetirla no hace daño: solo copia a los que faltan.
+     */
+    public function replicaSemanal($modo = ''){
+        if (!is_cli()) { show_404(); return; }
+        set_time_limit(0);
+        $log = FCPATH . 'tools/RelojSync/logs/replica.log';
+        if (!is_dir(dirname($log))) @mkdir(dirname($log), 0777, true);
+        $escribir = function ($m) use ($log) {
+            $l = date('Y-m-d H:i:s') . ' ' . $m . "\r\n";
+            @file_put_contents($log, $l, FILE_APPEND);
+            echo $l;
+        };
+
+        if ($modo === 'pendiente') {
+            $domingo = date('w') === '0' ? date('Y-m-d') : date('Y-m-d', strtotime('last sunday'));
+            $r = $this->db->query("SELECT COUNT(*) AS n, SUM(CASE WHEN exito = 1 THEN 0 ELSE 1 END) AS fallas
+                                   FROM dbo.RelojComunicacion
+                                   WHERE accion = 'replica' AND fecha >= ?", array($domingo))->row_array();
+            if ((int) $r['n'] > 0 && (int) $r['fallas'] === 0) { $escribir("Revisión: la réplica del domingo $domingo ya se hizo completa; no se repite."); return; }
+            $escribir('Revisión: ' . ((int) $r['n'] === 0 ? "no hubo réplica desde el domingo $domingo" : (int) $r['fallas'] . ' reloj(es) no terminaron') . '; se corre ahora.');
+        }
+
+        // una sola réplica a la vez
+        $dir = $this->dirCacheUsuarios();
+        $candado = fopen($dir . 'replica_semanal.lock', 'c');
+        if (!$candado || !flock($candado, LOCK_EX | LOCK_NB)) { $escribir('Ya hay una réplica corriendo; no se lanza otra.'); return; }
+
+        $cfg = function ($clave, $def) {
+            $r = $this->db->query("SELECT valor FROM dbo.ConfigSistema WHERE clave = ?", array($clave))->row_array();
+            return ($r && trim((string) $r['valor']) !== '') ? trim((string) $r['valor']) : $def;
+        };
+        $principal = preg_replace('/\D/', '', $cfg('relojes_replica_principal', '542189366'));
+        $excluir = array_filter(array_map(function ($x) { return preg_replace('/\D/', '', $x); },
+                                          explode(',', $cfg('relojes_replica_excluir', '542389460,542184408'))));
+
+        $relojes = $this->db->query("SELECT id, CONVERT(VARCHAR(20), deviceId) AS deviceId, descripcion, sdk, activo,
+                                            CASE WHEN copiaHasta > GETDATE() THEN 1 ELSE 0 END AS copiando
+                                     FROM dbo.RelojDispositivo ORDER BY id")->result_array();
+        $origen = null; $destinos = array(); $porDev = array();
+        foreach ($relojes as $r) {
+            $porDev[$r['deviceId']] = $r;
+            if ($r['sdk'] !== 'BS2' || !(int) $r['activo']) continue;
+            if ($r['deviceId'] === $principal) $origen = $r;
+            elseif (!in_array($r['deviceId'], $excluir, true)) $destinos[] = $r['deviceId'];
+        }
+        if (!$origen) { $escribir("ERROR: el reloj principal $principal no existe, no es BioStar 2 o está inactivo."); return; }
+        if (!$destinos) { $escribir('No hay relojes destino.'); return; }
+        foreach ($relojes as $r) {
+            if ((int) $r['copiando']) { $escribir('Hay una copia en curso en ' . $r['descripcion'] . ' (lanzada desde la web); no se lanza la réplica.'); return; }
+        }
+        $exe = FCPATH . 'tools/RelojSync/publish/RelojSync.exe';
+        if (!file_exists($exe)) { $escribir('ERROR: no está instalado RelojSync.exe.'); return; }
+
+        $nombres = array_map(function ($d) use ($porDev) { return $porDev[$d]['descripcion']; }, $destinos);
+        if ($modo === 'prueba') { echo 'PRUEBA (no se conecta a ningún reloj): desde ' . $origen['descripcion'] . ' hacia: ' . implode(', ', $nombres) . "\n"; return; }
+        $escribir('Inicia réplica desde ' . $origen['descripcion'] . ' hacia: ' . implode(', ', $nombres));
+
+        $destsFile = $dir . 'replica_destinos.json';
+        file_put_contents($destsFile, json_encode(array_values($destinos)));
+        $prog = $dir . 'copia_progreso.json';
+        @unlink($prog . '.detener');
+        @unlink($prog);
+
+        $w = function ($p) { return str_replace('/', '\\', $p); };
+        $cmd = '"' . $w($exe) . '" copiarvarios ' . $origen['deviceId'] . ' "' . $w($destsFile) . '" "' . $w($prog) . '"';
+        $proc = proc_open($cmd, array(0 => array('pipe', 'r'), 1 => array('file', $w($log), 'a'), 2 => array('file', $w($log), 'a')),
+                          $pipes, $w(dirname($exe)), null, array('bypass_shell' => true));
+        if (!is_resource($proc)) { $escribir('ERROR: no se pudo lanzar RelojSync.'); return; }
+        fclose($pipes[0]);
+
+        // Vigilante: cada 30 s lee el avance; si el reloj actual no avanza en 30 min, se le detiene.
+        $inicio = time(); $ultimoCambio = time(); $firma = ''; $ultimo = array(); $saltados = array();
+        while (true) {
+            $st = proc_get_status($proc);
+            if (!$st['running']) break;
+            sleep(30);
+            $p = @json_decode((string) @file_get_contents($prog), true);
+            if (is_array($p) && !empty($p['destinoId'])) {
+                $dev = (string) $p['destinoId'];
+                $ultimo[$dev] = $p;
+                $f = $dev . '|' . $p['fase'] . '|' . (int) $p['copiados'] . '|' . (int) $p['yaTenian'] . '|' . (int) $p['errores'] . '|' . (int) $p['total'];
+                if ($f !== $firma) { $firma = $f; $ultimoCambio = time(); }
+                elseif (time() - $ultimoCambio > 30 * 60 && !isset($saltados[$dev])) {
+                    file_put_contents($prog . '.detener', $dev);
+                    $saltados[$dev] = true;
+                    $ultimoCambio = time();
+                    $escribir('El reloj ' . $p['destino'] . ' no avanzó en 30 min; se salta.');
+                }
+            }
+            if (time() - $inicio > 16 * 3600) {   // nunca debería pasar: tope de seguridad
+                $escribir('ERROR: la réplica pasó de 16 h; se termina RelojSync.');
+                proc_terminate($proc);
+                break;
+            }
+        }
+        proc_close($proc);
+        $p = @json_decode((string) @file_get_contents($prog), true);
+        if (is_array($p) && !empty($p['destinoId'])) $ultimo[(string) $p['destinoId']] = $p;
+
+        // Bitácora por reloj (la conexión a SQL pudo caerse en las horas de copia)
+        $this->db->close();
+        $this->db->initialize();
+        foreach ($destinos as $dev) {
+            $r = $porDev[$dev];
+            if (isset($saltados[$dev])) { $ok = 0; $msg = 'no contestó por 30 min, se saltó'; }
+            elseif (!isset($ultimo[$dev])) { $ok = 0; $msg = 'no se llegó a copiar (revisa tools/RelojSync/logs/replica.log)'; }
+            else {
+                $x = $ultimo[$dev];
+                $ok = ($x['fase'] === 'terminado' || (int) $x['copiados'] + (int) $x['yaTenian'] + (int) $x['sinRostro'] >= (int) $x['total']) ? 1 : 0;
+                $msg = (int) $x['copiados'] . ' copiados, ' . (int) $x['yaTenian'] . ' ya estaban, ' . (int) $x['sinRostro'] . ' sin rostro en el principal, '
+                     . (int) $x['errores'] . ' con error' . ($ok ? '' : ' (no terminó: ' . $x['fase'] . ')');
+            }
+            $this->db->query("INSERT INTO dbo.RelojComunicacion (idReloj, accion, usuario, autorizo, ip, exito, resultado) VALUES (?,?,?,?,?,?,?)",
+                             array($r['id'], 'replica', 'TAREA SEMANAL', null, null, $ok, 'Réplica semanal desde ' . $origen['descripcion'] . ': ' . $msg));
+            $escribir($r['descripcion'] . ': ' . $msg);
+        }
+        $escribir('Termina réplica (' . round((time() - $inicio) / 60) . ' min).');
+        flock($candado, LOCK_UN);
+    }
 }
