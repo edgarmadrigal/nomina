@@ -39,8 +39,24 @@ var Bitacora = {
         return html;
     },
 
+    eventos: {},           // eventos de checadas por id de inicio (evento.desde)
+
     fnFila: function (m, conOrigen, nuevo) {
         var a = Bitacora.acciones[m.accion] || [m.accion, 'badge-secondary'];
+        if (m.evento) {
+            // Un renglón por evento (p. ej. una importación de miles de checadas); el detalle trae todas
+            Bitacora.eventos[m.evento.desde] = m;
+            var hasta = m.evento.fechaFin && m.evento.fechaFin !== m.fecha ? ' · hasta ' + m.evento.fechaFin.substr(11) : '';
+            var h = '<tr data-id="' + m.id + '" data-evento="' + m.evento.desde + '"' + (nuevo ? ' class="bit-nuevo"' : '') + '>' +
+                '<td>' + Bitacora.fnEsc(m.fecha) + '</td>' +
+                '<td>' + Bitacora.fnEsc(m.usuario) + '</td>' +
+                '<td><span class="badge ' + a[1] + '">' + a[0] + '</span></td>' +
+                '<td>' + Bitacora.fnEsc(m.catalogo) + '</td>' +
+                '<td>' + Bitacora.fnEsc(m.registro) + '</td>' +
+                '<td><span class="bit-mas">Un solo evento' + Bitacora.fnEsc(hasta) + '</span></td>';
+            if (conOrigen) h += '<td class="bit-origen">' + Bitacora.fnEsc(m.ip || '') + (m.pantalla ? '<br>' + Bitacora.fnEsc(m.pantalla) : '') + '</td>';
+            return h + '<td><button type="button" class="btn btn-xs btn-sm btn-outline-info bit-evento" title="Ver todas las checadas del evento"><i class="fa fa-list"></i></button></td></tr>';
+        }
         var html = '<tr data-id="' + m.id + '"' + (nuevo ? ' class="bit-nuevo"' : '') + '>' +
             '<td>' + Bitacora.fnEsc(m.fecha) + '</td>' +
             '<td>' + Bitacora.fnEsc(m.usuario) + '</td>' +
@@ -60,7 +76,11 @@ var Bitacora = {
             if (!r.exito) { $('#bitVivo').html('<tr><td colspan="7" class="text-danger">' + Bitacora.fnEsc(r.mensaje) + '</td></tr>'); return; }
             Bitacora.fnPintarHoy(r.hoy);
             var primera = Bitacora.ultimoId === 0, html = '';
-            $.each(r.movimientos, function (i, m) { html += Bitacora.fnFila(m, false, !primera); });
+            $.each(r.movimientos, function (i, m) {
+                // un evento que sigue creciendo (importación en curso) reemplaza a su renglón anterior
+                if (m.evento && !primera) $('#bitVivo tr[data-evento="' + m.evento.desde + '"]').remove();
+                html += Bitacora.fnFila(m, false, !primera);
+            });
             if (primera) $('#bitVivo').html(html || '<tr class="bit-vacio"><td colspan="7" class="text-center text-muted">Todavía no hay cambios registrados.</td></tr>');
             else if (html) { $('#bitVivo .bit-vacio').remove(); $('#bitVivo').prepend(html); $('#bitVivo tr').slice(100).remove(); }
             if (r.movimientos.length) Bitacora.ultimoId = Math.max(Bitacora.ultimoId, r.movimientos[0].id);
@@ -114,6 +134,7 @@ var Bitacora = {
     ],
 
     fnCambiosTexto: function (m) {
+        if (m.evento) return 'Un solo evento';
         if (m.masivo) return 'Cambio masivo';
         if (m.accion !== 'MODIFICACION' || !m.cambios) return '';
         return $.map(m.cambios, function (c) { return c.campo + ': ' + (c.antes || '') + '→' + (c.despues || ''); }).join(' | ');
@@ -184,7 +205,8 @@ var Bitacora = {
         var datos = Bitacora.fnFilasFiltradas(null);   // exporta lo que se ve (con filtros de columna)
         var lineas = [['Fecha y hora', 'Usuario', 'Acción', 'Catálogo', 'Registro', 'Qué cambió', 'IP', 'Pantalla']];
         $.each(datos, function (i, m) {
-            var cambios = $.map(m.cambios, function (c) { return c.campo + ': ' + c.antes + ' -> ' + c.despues; }).join(' | ');
+            var cambios = m.evento ? 'Un solo evento (detalle en la pantalla)'
+                                   : $.map(m.cambios, function (c) { return c.campo + ': ' + c.antes + ' -> ' + c.despues; }).join(' | ');
             lineas.push([m.fecha, m.usuario, (Bitacora.acciones[m.accion] || [m.accion])[0], m.catalogo, m.registro || m.llave, cambios, m.ip || '', m.pantalla || '']);
         });
         var csv = '﻿' + $.map(lineas, function (l) {
@@ -196,8 +218,52 @@ var Bitacora = {
         document.body.appendChild(a); a.click(); a.remove();
     },
 
+    // ---------------------------------------------------------------- evento de checadas
+    /** Todas las checadas del evento, de todas las personas, con buscador y descarga. */
+    fnEvento: function (desde) {
+        var m = Bitacora.eventos[desde];
+        if (!m) return;
+        var a = Bitacora.acciones[m.accion] || [m.accion, 'badge-secondary'];
+        $('#modalBitacora .modal-dialog').addClass('modal-xl');
+        $('#bitModalTitulo').text('Checadas del evento · ' + m.usuario + ' · ' + m.fecha);
+        $('#bitVerRegistro, #bitRevertir, #bitReaplicar').hide();
+        $('#bitModalCuerpo').html('<i class="fa fa-spinner fa-spin"></i> Cargando ' + Number(m.evento.n).toLocaleString() + ' checadas...');
+        $('#modalBitacora').modal('show');
+        Bitacora.fnPost('evento', { desde: m.evento.desde, hasta: m.evento.hasta, usuario: m.usuario, pantalla: m.pantalla || '', accion: m.accion }).done(function (r) {
+            if (!r.exito) { $('#bitModalCuerpo').text(r.mensaje); return; }
+            Bitacora.eventoFilas = r.checadas;
+            var hayCambio = $.grep(r.checadas, function (c) { return c.cambio; }).length > 0;
+            var filas = $.map(r.checadas, function (c) {
+                return '<tr data-id="' + c.id + '"><td>' + Bitacora.fnEsc(c.empleado) + '</td><td>' + Bitacora.fnEsc(c.nombre) + '</td><td>' + Bitacora.fnEsc(c.fecha) +
+                       '</td><td>' + Bitacora.fnEsc(c.hora) + '</td><td>' + Bitacora.fnEsc(c.reloj) + '</td>' +
+                       (hayCambio ? '<td>' + Bitacora.fnEsc(c.cambio) + '</td>' : '') +
+                       '<td><button type="button" class="btn btn-xs btn-sm btn-outline-info bit-ver-uno" title="Ver este movimiento (y revertirlo)"><i class="fa fa-eye"></i></button></td></tr>';
+            }).join('');
+            $('#bitModalCuerpo').html(
+                '<p><span class="badge ' + a[1] + '" style="color:#fff">' + a[0] + '</span> <b>' + Bitacora.fnEsc(m.registro) + '</b><br>' +
+                '<b>' + Bitacora.fnEsc(m.usuario) + '</b> del ' + Bitacora.fnEsc(m.fecha) + ' al ' + Bitacora.fnEsc(m.evento.fechaFin) +
+                (m.ip ? ' desde ' + Bitacora.fnEsc(m.ip) : '') + (m.pantalla ? ' (pantalla ' + Bitacora.fnEsc(m.pantalla) + ')' : '') + '</p>' +
+                '<div class="d-flex mb-2" style="gap:8px;"><input type="search" class="form-control form-control-sm" id="bitEvBuscar" placeholder="Buscar empleado, nombre o fecha..." style="max-width:320px;">' +
+                '<button type="button" class="btn btn-sm btn-success" id="bitEvCsv"><i class="fa fa-file-excel-o"></i> Descargar</button>' +
+                '<span class="text-muted align-self-center" id="bitEvCuenta">' + r.checadas.length.toLocaleString() + ' checadas</span></div>' +
+                '<div style="max-height:60vh;overflow:auto;"><table class="table table-sm bit-campos" id="bitEvTabla"><thead><tr><th>Empleado</th><th>Nombre</th><th>Fecha</th><th>Hora</th><th>Reloj</th>' +
+                (hayCambio ? '<th>Qué cambió</th>' : '') + '<th></th></tr></thead><tbody>' + filas + '</tbody></table></div>');
+        }).fail(function () { $('#bitModalCuerpo').text('No se pudo cargar el detalle del evento.'); });
+    },
+
+    fnEventoCsv: function () {
+        var l = [['Empleado', 'Nombre', 'Fecha', 'Hora', 'Reloj', 'Qué cambió']];
+        $.each(Bitacora.eventoFilas || [], function (i, c) { l.push([c.empleado, c.nombre, c.fecha, c.hora, c.reloj, c.cambio]); });
+        var csv = '﻿' + $.map(l, function (f) { return $.map(f, function (v) { return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; }).join(','); }).join('\r\n');
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+        a.download = 'checadas_evento.csv';
+        document.body.appendChild(a); a.click(); a.remove();
+    },
+
     // ---------------------------------------------------------------- detalle
     fnDetalle: function (id) {
+        $('#modalBitacora .modal-dialog').removeClass('modal-xl');
         $('#bitModalTitulo').text('Detalle del movimiento');
         $('#bitModalCuerpo').html('<i class="fa fa-spinner fa-spin"></i>');
         $('#bitVerRegistro').show();
@@ -314,6 +380,14 @@ var Bitacora = {
         $('#bitExcel').on('click', Bitacora.fnExcel);
         $('#bitTexto, #bitUsuario').on('keydown', function (e) { if (e.key === 'Enter') Bitacora.fnBuscar(); });
         $('#bitacora').on('click', '.bit-ver', function () { Bitacora.fnDetalle($(this).closest('tr').data('id')); });
+        $('#bitacora').on('click', '.bit-evento', function () { Bitacora.fnEvento($(this).closest('tr').data('evento')); });
+        $('#modalBitacora').on('click', '.bit-ver-uno', function () { Bitacora.fnDetalle($(this).closest('tr').data('id')); });
+        $('#modalBitacora').on('click', '#bitEvCsv', Bitacora.fnEventoCsv);
+        $('#modalBitacora').on('input', '#bitEvBuscar', function () {
+            var q = $(this).val().toLowerCase(), n = 0;
+            $('#bitEvTabla tbody tr').each(function () { var ok = $(this).text().toLowerCase().indexOf(q) !== -1; $(this).toggle(ok); if (ok) n++; });
+            $('#bitEvCuenta').text(n.toLocaleString() + ' checadas');
+        });
         $('#bitVerRegistro').on('click', Bitacora.fnHistoriaRegistro);
         $('#bitRevertir').on('click', function () { Bitacora.fnRevertir('revertir'); });
         $('#bitReaplicar').on('click', function () { Bitacora.fnRevertir('reaplicar'); });

@@ -42,17 +42,24 @@ class BitacoraModel extends CI_Model {
                             AND b.usuario NOT LIKE 'Proceso programado%'
                             AND b.usuario <> 'Sistema web (sin sesión)')";
 
-    /** Lo más nuevo: posteriores a $desdeId (para el panel en tiempo real). */
+    /**
+     * Lo más nuevo: posteriores a $desdeId (para el panel en tiempo real). Las checadas salen agrupadas por
+     * evento; un evento que sigue creciendo vuelve a salir con el mismo evento.desde (la pantalla lo reemplaza).
+     */
     public function recientes($desdeId, $limite = 40, $soloUsuarios = false)
     {
-        $where = "b.id > ?" . ($soloUsuarios ? " AND " . self::SOLO_USUARIOS : "");
+        $where = "b.id > ? AND b.tabla <> 'checadas'" . ($soloUsuarios ? " AND " . self::SOLO_USUARIOS : "");
         $filas = $this->db->query(
             "SELECT TOP (" . (int) $limite . ") " . self::COLUMNAS . " FROM dbo.Bitacora b WHERE " . $where . " ORDER BY b.id DESC",
             array((int) $desdeId))->result_array();
-        return $this->resumir($filas);
+        // eventos de checadas: se arman con lo de las últimas 24 h (para conocer su inicio real) y salen los que tienen algo nuevo
+        $wc = array("b.fecha >= DATEADD(HOUR, -24, GETDATE())");
+        if ($soloUsuarios) $wc[] = self::SOLO_USUARIOS;
+        $eventos = $this->eventosChecadas($wc, array(), (int) $desdeId, $limite);
+        return $this->mezclar($this->resumir($filas), $eventos, $limite);
     }
 
-    /** Historial con filtros. */
+    /** Historial con filtros (las checadas, agrupadas por evento). */
     public function historial($f, $limite = 500)
     {
         $w = array('b.fecha >= ?', 'b.fecha < DATEADD(DAY, 1, CAST(? AS DATE))');
@@ -65,10 +72,120 @@ class BitacoraModel extends CI_Model {
             $w[] = '(b.llave = ? OR b.antes LIKE ? OR b.despues LIKE ?)';
             $p[] = $f['texto']; $p[] = '%' . $f['texto'] . '%'; $p[] = '%' . $f['texto'] . '%';
         }
+        $filas = array();
+        if ($f['tabla'] !== 'checadas') {
+            $filas = $this->db->query(
+                "SELECT TOP (" . (int) $limite . ") " . self::COLUMNAS . " FROM dbo.Bitacora b WHERE " . implode(' AND ', $w) . " AND b.tabla <> 'checadas' ORDER BY b.id DESC",
+                $p)->result_array();
+        }
+        $eventos = ($f['tabla'] === '' || $f['tabla'] === 'checadas') ? $this->eventosChecadas($w, $p, 0, $limite) : array();
+        return $this->mezclar($this->resumir($filas), $eventos, $limite);
+    }
+
+    /** Une movimientos y eventos, del más nuevo al más viejo, hasta $limite. */
+    private function mezclar(array $movs, array $eventos, $limite)
+    {
+        $todo = array_merge($movs, $eventos);
+        usort($todo, function ($a, $b) { return $b['id'] - $a['id']; });
+        return array_slice($todo, 0, $limite);
+    }
+
+    /**
+     * Cambios a checadas agrupados por evento: mismo usuario, pantalla y acción, sin más de 60 s entre
+     * un renglón y el siguiente (una importación de miles de checadas es UN evento). id = el último
+     * renglón del evento (para el orden y el "lo nuevo"); evento.desde/hasta = rango de ids.
+     */
+    private function eventosChecadas(array $w, array $p, $nuevosDesde, $limite)
+    {
+        $sql = "WITH c AS (
+                    SELECT b.id, b.fecha, b.accion, b.usuario, ISNULL(b.pantalla, '') AS pantalla, b.ip, b.origen,
+                           JSON_VALUE(ISNULL(b.despues, b.antes), '$.usuarioid') AS emp,
+                           JSON_VALUE(ISNULL(b.despues, b.antes), '$.fecha') AS dia,
+                           CASE WHEN DATEDIFF(SECOND, LAG(b.fecha) OVER (PARTITION BY b.usuario, ISNULL(b.pantalla, ''), b.accion ORDER BY b.id), b.fecha) <= 60
+                                THEN 0 ELSE 1 END AS nuevo
+                    FROM dbo.Bitacora b
+                    WHERE b.tabla = 'checadas' AND " . implode(' AND ', $w) . "
+                ), g AS (
+                    SELECT *, SUM(nuevo) OVER (PARTITION BY usuario, pantalla, accion ORDER BY id ROWS UNBOUNDED PRECEDING) AS grupo FROM c
+                )
+                SELECT TOP (" . (int) $limite . ")
+                       MIN(id) AS desde, MAX(id) AS hasta, COUNT(*) AS n, COUNT(DISTINCT emp) AS empleados,
+                       CONVERT(VARCHAR(19), MIN(fecha), 120) AS fecha, CONVERT(VARCHAR(19), MAX(fecha), 120) AS fechaFin,
+                       MIN(dia) AS diaMin, MAX(dia) AS diaMax, accion, usuario, pantalla, MAX(ip) AS ip, MAX(origen) AS origen,
+                       MIN(emp) AS unEmp
+                FROM g
+                GROUP BY usuario, pantalla, accion, grupo
+                HAVING MAX(id) > ?
+                ORDER BY MAX(id) DESC";
+        $p[] = (int) $nuevosDesde;
+        $grupos = $this->db->query($sql, $p)->result_array();
+        $uno = array();
+        foreach ($grupos as $g) if ((int) $g['empleados'] === 1) $uno[$g['unEmp']] = true;
+        $nom = $this->nombres("SELECT empleado_id AS k, MAX(NOMBRE_COMPLETO) AS v FROM dbo.empleados WHERE empleado_id IN ? GROUP BY empleado_id", array_keys($uno));
+        $out = array();
+        foreach ($grupos as $g) {
+            $n = (int) $g['n']; $e = (int) $g['empleados'];
+            $dias = substr((string) $g['diaMin'], 0, 10) === substr((string) $g['diaMax'], 0, 10)
+                  ? ' · ' . substr((string) $g['diaMin'], 0, 10)
+                  : ' · del ' . substr((string) $g['diaMin'], 0, 10) . ' al ' . substr((string) $g['diaMax'], 0, 10);
+            $quien = $e === 1 ? 'Empleado ' . $g['unEmp'] . (isset($nom[(string) $g['unEmp']]) ? ' · ' . $nom[(string) $g['unEmp']] : '')
+                              : number_format($e) . ' empleados';
+            $out[] = array(
+                'id' => (int) $g['hasta'], 'fecha' => $g['fecha'], 'tabla' => 'checadas', 'catalogo' => self::$catalogos['checadas'],
+                'accion' => $g['accion'], 'llave' => null, 'usuario' => $g['usuario'], 'ip' => $g['ip'],
+                'pantalla' => $g['pantalla'], 'origen' => $g['origen'],
+                'registro' => number_format($n) . ' checada' . ($n === 1 ? '' : 's') . ' · ' . $quien . ($g['diaMin'] ? $dias : ''),
+                'cambios' => array(), 'masivo' => false,
+                'evento' => array('desde' => (int) $g['desde'], 'hasta' => (int) $g['hasta'], 'n' => $n, 'empleados' => $e, 'fechaFin' => $g['fechaFin']),
+            );
+        }
+        return $out;
+    }
+
+    /**
+     * Todas las checadas de un evento, una por renglón: empleado, nombre, fecha, hora, reloj y, si fue
+     * modificación, qué cambió. Se identifica por el rango de ids + usuario, pantalla y acción.
+     */
+    public function evento($desde, $hasta, $usuario, $pantalla, $accion)
+    {
         $filas = $this->db->query(
-            "SELECT TOP (" . (int) $limite . ") " . self::COLUMNAS . " FROM dbo.Bitacora b WHERE " . implode(' AND ', $w) . " ORDER BY b.id DESC",
-            $p)->result_array();
-        return $this->resumir($filas);
+            "SELECT TOP 50000 b.id, b.accion, b.antes, b.despues FROM dbo.Bitacora b
+             WHERE b.tabla = 'checadas' AND b.id BETWEEN ? AND ? AND b.usuario = ? AND ISNULL(b.pantalla, '') = ? AND b.accion = ?
+             ORDER BY b.id",
+            array((int) $desde, (int) $hasta, $usuario, $pantalla, $accion))->result_array();
+        $emps = array(); $regs = array();
+        foreach ($filas as $f) {
+            $a = $f['antes'] ? json_decode($f['antes'], true) : null;
+            $d = $f['despues'] ? json_decode($f['despues'], true) : null;
+            $r = $d ?: $a ?: array();
+            if (isset($r['usuarioid'])) $emps[(string) $r['usuarioid']] = true;
+            $regs[] = array($f, $a, $d, $r);
+        }
+        $nom = $this->nombres("SELECT empleado_id AS k, MAX(NOMBRE_COMPLETO) AS v FROM dbo.empleados WHERE empleado_id IN ? GROUP BY empleado_id", array_keys($emps));
+        $out = array();
+        foreach ($regs as $x) {
+            list($f, $a, $d, $r) = $x;
+            $cambio = '';
+            if ($a && $d) {
+                $partes = array();
+                foreach ($d as $c => $v) {
+                    if (in_array($c, $this->ignorar, true)) continue;
+                    $ant = isset($a[$c]) ? $a[$c] : null;
+                    if ($this->texto($ant) !== $this->texto($v)) $partes[] = $c . ': ' . $this->texto($ant) . ' → ' . $this->texto($v);
+                }
+                $cambio = implode(' | ', $partes);
+            }
+            $emp = isset($r['usuarioid']) ? (string) $r['usuarioid'] : '';
+            $out[] = array(
+                'id' => (int) $f['id'], 'accion' => $f['accion'], 'empleado' => $emp, 'nombre' => isset($nom[$emp]) ? $nom[$emp] : '',
+                'fecha' => isset($r['fecha']) ? substr((string) $r['fecha'], 0, 10) : '',
+                'hora' => isset($r['hora']) ? substr((string) $r['hora'], 0, 8) : (isset($r['fechahora']) ? substr((string) $r['fechahora'], 11, 8) : ''),
+                'reloj' => isset($r['reloj']) ? (string) $r['reloj'] : '',
+                'cambio' => $cambio,
+            );
+        }
+        usort($out, function ($p, $q) { return strcmp($p['empleado'] . ' ' . $p['fecha'] . ' ' . $p['hora'], $q['empleado'] . ' ' . $q['fecha'] . ' ' . $q['hora']); });
+        return $out;
     }
 
     /** Todo lo que le ha pasado a un registro. */

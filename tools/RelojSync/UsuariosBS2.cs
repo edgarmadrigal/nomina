@@ -195,7 +195,7 @@ internal static class UsuariosBS2
     /// conexión se cayó) HASTA QUE EL RELOJ REGRESE: sin tope si SinLimite, si no MAX_MINUTOS_REINTENTO.
     /// En cada reintento avisa OnReconectando para que la barra lo muestre. Esperas: 2 s, 5 s, 10 s, 30 s.
     /// </summary>
-    static int ConReintentos(Reloj r, Func<int> llamada)
+    internal static int ConReintentos(Reloj r, Func<int> llamada)
     {
         SdkU.BS2_SetDefaultResponseTimeout(r.Contexto, 30000);
         int res = 0;
@@ -246,7 +246,7 @@ internal static class UsuariosBS2
     }
 
     /// <summary>Ids de todos los usuarios del reloj (bloques de 32 bytes).</summary>
-    static List<string> Ids(Reloj r)
+    internal static List<string> Ids(Reloj r)
     {
         IntPtr objs = IntPtr.Zero;
         uint n = 0;

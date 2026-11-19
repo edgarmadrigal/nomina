@@ -1,7 +1,7 @@
 var Respaldos = {
     base: '',
-    nombres: { BASE: 'Base de datos completa', LOG: 'Log de transacciones', CHECADAS: 'Checadas (CSV en ZIP)', CODIGO: 'Código del sistema (PHP en ZIP)' },
-    iconos: { BASE: 'fa-database', LOG: 'fa-history', CHECADAS: 'fa-file-excel-o', CODIGO: 'fa-code' },
+    nombres: { BASE: 'Base de datos completa', LOG: 'Log de transacciones', CHECADAS: 'Checadas (CSV en ZIP)', CODIGO: 'Código del sistema (PHP en ZIP)', ROSTROS: 'Rostros de los relojes (semanal)' },
+    iconos: { BASE: 'fa-database', LOG: 'fa-history', CHECADAS: 'fa-file-excel-o', CODIGO: 'fa-code', ROSTROS: 'fa-user-circle' },
     estados: {
         'OK': 'badge-success', 'ERROR': 'badge-danger', 'EN PROCESO': 'badge-info', 'BORRADO': 'badge-secondary'
     },
@@ -193,7 +193,7 @@ var Respaldos = {
             if (t === 'LOG') {
                 html += '<div class="col-6 form-group"><label>Cada (minutos)</label><input type="number" min="15" max="1440" step="15" class="form-control cfgCada" data-tipo="' + t + '" value="' + (c.cadaMinutos || 60) + '"></div>';
             } else {
-                html += '<div class="col-6 form-group"><label>Diario a las</label><input type="time" class="form-control cfgHora" data-tipo="' + t + '" value="' + (c.hora || '00:00') + '"></div>';
+                html += '<div class="col-6 form-group"><label>' + (t === 'ROSTROS' ? 'Domingos a las' : 'Diario a las') + '</label><input type="time" class="form-control cfgHora" data-tipo="' + t + '" value="' + (c.hora || '00:00') + '"></div>';
             }
             html += '<div class="col-6 form-group"><label>Guardar (días)</label><input type="number" min="1" max="3650" class="form-control cfgRetencion" data-tipo="' + t + '" value="' + c.retencionDias + '"></div>';
             if (t === 'CHECADAS') {
@@ -225,14 +225,14 @@ var Respaldos = {
                         (r.mensaje && r.estado === 'ERROR' ? '<br><small class="text-danger">' + Respaldos.fnEsc(r.mensaje) + '</small>' : '') + '</td>';
                 html += '<td>' + (r.fin ? Respaldos.fnDuracion(r.segundos) : '') + '</td>';
                 html += '<td style="white-space:nowrap;">' + Respaldos.fnTamano(r.tamanoBytes) +
-                        (r.registros ? '<br><small class="text-muted">' + Number(r.registros).toLocaleString() + ' checadas</small>' : '') + '</td>';
+                        (r.registros ? '<br><small class="text-muted">' + Number(r.registros).toLocaleString() + (r.tipo === 'ROSTROS' ? ' usuarios' : (r.tipo === 'CODIGO' ? ' archivos' : ' checadas')) + '</small>' : '') + '</td>';
                 html += '<td><small title="' + Respaldos.fnEsc(r.archivo) + '">' + Respaldos.fnEsc(archivo) + '</small>' +
                         (r.archivo2 ? '<br><small class="text-success" title="' + Respaldos.fnEsc(r.archivo2.split(' | ').join('\n')) + '"><i class="fa fa-clone"></i> ' +
                             (r.archivo2.split(' | ').length === 1 ? 'con 1 copia' : 'con ' + r.archivo2.split(' | ').length + ' copias') + '</small>' : '') +
                         (r.mensaje && r.estado === 'OK' && r.mensaje.indexOf('No se') >= 0
                             ? '<br><small class="text-warning"><i class="fa fa-exclamation-triangle"></i> ' + Respaldos.fnEsc(r.mensaje.substring(r.mensaje.indexOf('No se'))) + '</small>' : '') + '</td>';
                 html += '<td><small>' + Respaldos.fnEsc(r.origen) + '</small></td>';
-                html += '<td>' + ((r.tipo === 'CHECADAS' || r.tipo === 'CODIGO') && r.estado === 'OK'
+                html += '<td>' + ((r.tipo === 'CHECADAS' || r.tipo === 'CODIGO' || r.tipo === 'ROSTROS') && r.estado === 'OK'
                         ? '<a class="btn btn-sm btn-info" href="' + Respaldos.base + 'controllerRespaldos/descargar/' + r.id + '" title="Descargar ZIP"><i class="fa fa-download"></i></a>'
                         : '') + '</td>';
                 html += '</tr>';
@@ -280,7 +280,7 @@ var Respaldos = {
             else alert(resp.mensaje);
             Respaldos.fnCargar();
             // el de checadas lo hace el job: se refresca hasta que termine
-            if (tipo === 'CHECADAS' && resp.exito) Respaldos.fnSeguirChecadas(0);
+            if ((tipo === 'CHECADAS' || tipo === 'ROSTROS') && resp.exito) Respaldos.fnSeguirChecadas(0, tipo === 'ROSTROS' ? 150 : 40);
         }).fail(function () {
             alert('No se pudo hacer el respaldo.');
         }).always(function () {
@@ -288,12 +288,13 @@ var Respaldos = {
         });
     },
 
-    fnSeguirChecadas: function (intento) {
-        if (intento > 40) return;   // ~4 minutos
+    fnSeguirChecadas: function (intento, maximo) {
+        maximo = maximo || 40;
+        if (intento > maximo) return;   // 40 = ~4 minutos (checadas); rostros tarda más
         setTimeout(function () {
             Respaldos.fnCargarHistorial();
             var enProceso = $('#cuerpoHistorial').text().indexOf('EN PROCESO') >= 0;
-            if (enProceso || intento < 2) Respaldos.fnSeguirChecadas(intento + 1);
+            if (enProceso || intento < 2) Respaldos.fnSeguirChecadas(intento + 1, maximo);
             else Respaldos.fnCargar();
         }, 6000);
     },

@@ -150,10 +150,11 @@ class RespaldoModel extends CI_Model {
         $this->db->trans_complete();
     }
 
-    /** BASE y LOG se hacen en el momento; CHECADAS se pide al job (paso PowerShell); CODIGO lo arma PHP. */
+    /** BASE y LOG se hacen en el momento; CHECADAS se pide al job (paso PowerShell); CODIGO lo arma PHP; ROSTROS en segundo plano. */
     public function respaldarAhora($tipo, $usuario){
         $origen = substr('Manual (' . $usuario . ')', 0, 60);
         if ($tipo === 'CODIGO') return $this->respaldoCodigo($origen);
+        if ($tipo === 'ROSTROS') return $this->lanzarRostros($origen);
         if ($tipo === 'CHECADAS') {
             $this->db->query("INSERT INTO dbo.RespaldoLog (tipo, estado, origen) VALUES ('CHECADAS', 'SOLICITADO', ?)", array($origen));
             $this->db->query("UPDATE dbo.RespaldoConfig SET solicitado = 1 WHERE tipo = 'CHECADAS'");
@@ -265,9 +266,19 @@ class RespaldoModel extends CI_Model {
      * Regresa false si no existe.
      */
     public function enviarArchivoCodigo($id){
+        return $this->enviarArchivo('ArchivoCodigo', $id);
+    }
+
+    public function enviarArchivoRostros($id){
+        return $this->enviarArchivo('ArchivoRostros', $id);
+    }
+
+    /** $tabla: ArchivoCodigo o ArchivoRostros (fijo, nunca viene del usuario). */
+    private function enviarArchivo($tabla, $id){
+        if (!in_array($tabla, array('ArchivoCodigo', 'ArchivoRostros'), true)) return false;
         $st = sqlsrv_query($this->db->conn_id,
             "SELECT a.nombre, DATALENGTH(a.datos) AS tamano, a.datos
-               FROM NominasRespaldos.dbo.ArchivoCodigo a
+               FROM NominasRespaldos.dbo." . $tabla . " a
                JOIN dbo.RespaldoLog l ON l.id = a.idRespaldo AND l.estado = 'OK'
               WHERE a.idRespaldo = ?", array((int) $id), array('Scrollable' => SQLSRV_CURSOR_FORWARD));
         if ($st === false || !sqlsrv_fetch($st)) return false;
@@ -282,6 +293,174 @@ class RespaldoModel extends CI_Model {
         fclose($flujo);
         sqlsrv_free_stmt($st);
         return true;
+    }
+
+    // ---------------- Rostros de los relojes (application/sql/respaldo_rostros.sql) ----------------
+
+    /** Relojes que se respaldan (deviceId => descripción), de ConfigSistema 'relojes_respaldo_rostros'. */
+    private function relojesRostros(){
+        $r = $this->db->query("SELECT valor FROM dbo.ConfigSistema WHERE clave = 'relojes_respaldo_rostros'")->row_array();
+        $ids = array_filter(array_map(function ($x) { return preg_replace('/\D/', '', $x); },
+                                      explode(',', $r && trim((string) $r['valor']) !== '' ? $r['valor'] : '542189366,542389460')));
+        $out = array();
+        foreach ($this->db->query("SELECT CONVERT(VARCHAR(20), deviceId) AS deviceId, descripcion FROM dbo.RelojDispositivo
+                                   WHERE sdk = 'BS2' AND activo = 1")->result_array() as $d) {
+            if (in_array($d['deviceId'], $ids, true)) $out[$d['deviceId']] = $d['descripcion'];
+        }
+        return $out;
+    }
+
+    private function rostrosEnProceso(){
+        $r = $this->db->query("SELECT COUNT(*) AS n FROM dbo.RespaldoLog WHERE tipo = 'ROSTROS' AND estado = 'EN PROCESO'
+                               AND inicio >= DATEADD(HOUR, -3, GETDATE())")->row();
+        return $r && (int) $r->n > 0;
+    }
+
+    /** "Respaldar ahora" desde la web: tarda varios minutos por reloj, así que corre en segundo plano. */
+    private function lanzarRostros($origen){
+        if ($this->rostrosEnProceso()) return array('exito' => false, 'mensaje' => 'Ya se está haciendo un respaldo de rostros; espera a que termine.');
+        $id = $this->nuevoLogRostros($origen);
+        $php = PHP_BINDIR . DIRECTORY_SEPARATOR . 'php.exe';
+        if (!is_file($php)) $php = 'C:\\xampp\\php\\php.exe';
+        $cmd = 'start "" /B "' . $php . '" "' . str_replace('/', '\\', FCPATH) . 'index.php" controllerRespaldos rostrosProgramado ' . $id;
+        $h = popen($cmd, 'r');
+        if ($h !== false) pclose($h);
+        return array('exito' => true, 'mensaje' => 'Se empezó el respaldo de rostros. Tarda unos minutos por reloj; aparece en el historial cuando termine.');
+    }
+
+    private function nuevoLogRostros($origen){
+        return (int) $this->db->query(
+            "DECLARE @t TABLE (id INT); SET NOCOUNT ON;
+             INSERT INTO dbo.RespaldoLog (tipo, estado, origen) OUTPUT INSERTED.id INTO @t VALUES ('ROSTROS', 'EN PROCESO', ?);
+             SELECT id FROM @t", array(substr($origen, 0, 60)))->row()->id;
+    }
+
+    /**
+     * Toca si está activo y no hay respaldo (correcto o en proceso) desde el último domingo a la hora
+     * configurada. El domingo se hace a esa hora; si se perdió (equipo apagado, reloj sin red) se repone
+     * de noche (19:00 a 05:00) para no ocupar el reloj mientras la gente checa.
+     */
+    public function tocaRostros(){
+        $c = $this->db->query("SELECT activo, hora FROM dbo.RespaldoConfig WHERE tipo = 'ROSTROS'")->row_array();
+        if (!$c || !(int) $c['activo']) return false;
+        $tz = new DateTimeZone('America/Mexico_City');   // php.ini trae Europe/Berlin
+        $ahora = new DateTime('now', $tz);
+        $hora = preg_match('/^(\d{2}):(\d{2})/', (string) $c['hora'], $m) ? array((int) $m[1], (int) $m[2]) : array(20, 0);
+        $turno = clone $ahora;
+        $turno->modify('-' . (int) $ahora->format('w') . ' days')->setTime($hora[0], $hora[1]);   // domingo de esta semana
+        if ($turno > $ahora) $turno->modify('-7 days');
+        $r = $this->db->query("SELECT COUNT(*) AS n FROM dbo.RespaldoLog WHERE tipo = 'ROSTROS' AND estado IN ('OK', 'EN PROCESO') AND inicio >= ?",
+                              array($turno->format('Y-m-d H:i:s')))->row();
+        if ($r && (int) $r->n > 0) return false;
+        $h = (int) $ahora->format('G');
+        return $ahora->format('Y-m-d') === $turno->format('Y-m-d') || $h >= 19 || $h < 5;
+    }
+
+    /** Corre RelojSync (en su carpeta, por las DLL del SDK) y regresa el JSON= o el ERROR=. */
+    private function relojSync(array $args){
+        $exe = FCPATH . 'tools/RelojSync/publish/RelojSync.exe';
+        if (!is_file($exe)) return array('error' => 'No está instalado RelojSync.exe.');
+        $cmd = '"' . str_replace('/', '\\', $exe) . '"';
+        foreach ($args as $a) $cmd .= ' "' . str_replace('"', '', (string) $a) . '"';
+        $p = proc_open($cmd, array(0 => array('pipe', 'r'), 1 => array('pipe', 'w'), 2 => array('pipe', 'w')), $pipes,
+                       str_replace('/', '\\', dirname($exe)), null, array('bypass_shell' => true));
+        if (!is_resource($p)) return array('error' => 'No se pudo lanzar RelojSync.');
+        fclose($pipes[0]);
+        $salida = stream_get_contents($pipes[1]);
+        $err = stream_get_contents($pipes[2]);
+        fclose($pipes[1]); fclose($pipes[2]);
+        proc_close($p);
+        if (preg_match('/^JSON=(.*)$/m', $salida, $m)) return array('json' => json_decode(trim($m[1]), true));
+        if (preg_match('/^ERROR=(.*)$/m', $salida, $m)) return array('error' => trim($m[1]));
+        return array('error' => trim(substr($salida . ' ' . $err, -500)) ?: 'RelojSync no respondió.');
+    }
+
+    /**
+     * Lee los rostros de cada reloj configurado, revisa una muestra contra el reloj y guarda un ZIP en
+     * NominasRespaldos.dbo.ArchivoRostros (RespaldoLog tipo ROSTROS). Si un reloj falla se sigue con los
+     * demás; el respaldo queda OK si al menos uno se pudo leer.
+     */
+    public function respaldoRostros($origen, $id = 0){
+        ini_set('max_execution_time', 0);
+        ignore_user_abort(true);
+        if (!$id) $id = $this->nuevoLogRostros($origen);
+        $sello  = (new DateTime('now', new DateTimeZone('America/Mexico_City')))->format('Ymd_Hi');
+        $nombre = 'Rostros_relojes_' . $sello . '.zip';
+        $dir = rtrim(sys_get_temp_dir(), '\\/') . DIRECTORY_SEPARATOR . 'rostros_' . $sello . '_' . $id;
+        @mkdir($dir, 0777, true);
+        $zipRuta = $dir . '.zip';
+        $partes = array(); $fallas = array(); $archivos = array(); $usuarios = 0;
+        try {
+            $relojes = $this->relojesRostros();
+            if (!$relojes) throw new Exception('No hay relojes BioStar 2 activos configurados para respaldar (ConfigSistema relojes_respaldo_rostros).');
+            foreach ($relojes as $dev => $desc) {
+                $base = preg_replace('/[^A-Za-z0-9_-]+/', '_', $desc) . '_' . $dev;
+                $bin = $dir . DIRECTORY_SEPARATOR . $base . '.bin';
+                $r = $this->relojSync(array('respaldarrostros', $dev, $bin));
+                if (isset($r['error'])) { $fallas[] = $desc . ': ' . $r['error']; continue; }
+                $x = $r['json'];
+                $v = $this->relojSync(array('verificarrostros', $dev, $bin, 20));
+                $verif = isset($v['json']) ? ' (revisados contra el reloj: ' . (int) $v['json']['iguales'] . ' de ' . (int) $v['json']['revisados'] . ' iguales)'
+                                           : ' (no se pudo revisar contra el reloj: ' . $v['error'] . ')';
+                $partes[] = $desc . ': ' . (int) $x['usuarios'] . ' usuarios, ' . (int) $x['conRostro'] . ' con rostro'
+                          . (empty($x['conFoto']) ? ' (sin la foto de pantalla: este reloj no la entrega)' : '') . $verif;
+                $usuarios += (int) $x['usuarios'];
+                $archivos[$base . '.bin'] = $bin;
+                $archivos[$base . '.bin.csv'] = $bin . '.csv';
+            }
+            if (!$archivos) throw new Exception('No se pudo leer ningún reloj. ' . implode(' | ', $fallas));
+
+            $zip = new ZipArchive();
+            if ($zip->open($zipRuta, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) throw new Exception('No se pudo crear el ZIP.');
+            foreach ($archivos as $n => $ruta) $zip->addFile($ruta, $n);
+            $zip->addFromString('LEEME.txt',
+                "Respaldo de rostros de los relojes checadores BioStar 2 (" . $sello . ").\r\n\r\n"
+              . implode("\r\n", $partes) . "\r\n\r\n"
+              . "Cada .bin trae los usuarios del reloj con su rostro, foto, nombre y vigencia; el .csv es la lista para consultarla.\r\n"
+              . "Para volver a cargarlos a un reloj (en el equipo que tiene tools\\RelojSync\\publish):\r\n"
+              . "  RelojSync.exe restaurarrostros <deviceId del reloj> <archivo.bin>                (solo a quien no tenga rostro)\r\n"
+              . "  RelojSync.exe restaurarrostros <deviceId del reloj> <archivo.bin> reemplazar     (a todos)\r\n"
+              . "  RelojSync.exe restaurarrostros <deviceId del reloj> <archivo.bin> numeros.json   (solo esos números, [\"1234\",...])\r\n"
+              . "Para revisar un respaldo sin escribir nada: RelojSync.exe verificarrostros <deviceId> <archivo.bin> [cuantos]\r\n");
+            if (!$zip->close()) throw new Exception('No se pudo cerrar el ZIP.');
+            $tamano = filesize($zipRuta);
+
+            $fh = fopen($zipRuta, 'rb');
+            $ok = sqlsrv_query($this->db->conn_id,
+                "INSERT INTO NominasRespaldos.dbo.ArchivoRostros (idRespaldo, nombre, datos) VALUES (?, ?, ?)",
+                array($id, $nombre, array($fh, SQLSRV_PARAM_IN, SQLSRV_PHPTYPE_STREAM(SQLSRV_ENC_BINARY), SQLSRV_SQLTYPE_VARBINARY('max'))));
+            fclose($fh);
+            if ($ok === false) {
+                $e = sqlsrv_errors();
+                throw new Exception('No se pudo guardar el ZIP en NominasRespaldos: ' . ($e ? $e[0]['message'] : ''));
+            }
+            $borrados = $this->limpiarRostros();
+            $mensaje = implode('. ', $partes) . '.' . ($fallas ? ' No se pudo respaldar: ' . implode(' | ', $fallas) : '')
+                     . ($borrados ? ' Se borraron ' . $borrados . ' respaldo(s) viejo(s).' : '');
+            $this->db->query("UPDATE dbo.RespaldoLog SET estado = 'OK', fin = GETDATE(), archivo = ?, tamanoBytes = ?, registros = ?, mensaje = ? WHERE id = ?",
+                array('NominasRespaldos: ' . $nombre, $tamano, $usuarios, substr($mensaje, 0, 4000), $id));
+            return array('exito' => true, 'mensaje' => 'Respaldo de rostros terminado. ' . $mensaje);
+        } catch (Exception $e) {
+            $this->db->query("UPDATE dbo.RespaldoLog SET estado = 'ERROR', fin = GETDATE(), mensaje = ? WHERE id = ?", array(substr($e->getMessage(), 0, 4000), $id));
+            return array('exito' => false, 'mensaje' => 'El respaldo de rostros falló: ' . $e->getMessage());
+        } finally {
+            foreach ((array) glob($dir . DIRECTORY_SEPARATOR . '*') as $f) @unlink($f);
+            @rmdir($dir);
+            if (is_file($zipRuta)) @unlink($zipRuta);
+        }
+    }
+
+    /** Borra los ZIP de rostros más viejos que los días a guardar. */
+    private function limpiarRostros(){
+        $r = $this->db->query(
+            "DECLARE @dias INT = (SELECT retencionDias FROM dbo.RespaldoConfig WHERE tipo = 'ROSTROS');
+             DECLARE @b TABLE (id INT); SET NOCOUNT ON;
+             DELETE a OUTPUT DELETED.idRespaldo INTO @b
+               FROM NominasRespaldos.dbo.ArchivoRostros a
+              WHERE a.fecha < DATEADD(DAY, -ISNULL(@dias, 56), GETDATE());
+             UPDATE l SET estado = 'BORRADO' FROM dbo.RespaldoLog l JOIN @b b ON b.id = l.id;
+             SELECT COUNT(*) AS n FROM @b")->row();
+        return $r ? (int) $r->n : 0;
     }
 
     public function archivoChecadas($id){

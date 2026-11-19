@@ -234,6 +234,37 @@ if (args.Length >= 2 && (args[0] == "usuarios" || args[0] == "alta" || args[0] =
     }
 }
 
+if (args.Length >= 3 && (args[0] == "respaldarrostros" || args[0] == "verificarrostros" || args[0] == "restaurarrostros"))
+{
+    // Respaldo de rostros (BioStar 2). Salida: una línea JSON=... para PHP.
+    //   RelojSync respaldarrostros <deviceId> <archivo.bin>          (además escribe <archivo.bin>.csv)
+    //   RelojSync verificarrostros <deviceId> <archivo.bin> [cuantos]  (solo lee: compara el archivo contra el reloj)
+    //   RelojSync restaurarrostros <deviceId> <archivo.bin> [ids.json] [reemplazar]
+    string? conexion = Conexion();
+    if (conexion == null) return 1;
+    var s = new Sincronizador(conexion);
+    var opciones = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+    try
+    {
+        long id = long.Parse(args[1]);
+        object r = args[0] switch
+        {
+            "respaldarrostros" => s.Rostros("respaldar", id, args[2]),
+            "verificarrostros" => s.Rostros("verificar", id, args[2], cuantos: args.Length >= 4 && int.TryParse(args[3], out var n) ? n : 50),
+            _ => s.Rostros("restaurar", id, args[2],
+                           ids: args.Skip(3).FirstOrDefault(a => a.EndsWith(".json")) is string f ? LeerIds(f) : null,
+                           reemplazar: args.Skip(3).Any(a => a == "reemplazar")),
+        };
+        Console.WriteLine("JSON=" + JsonSerializer.Serialize(r, opciones));
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"ERROR={ex.Message}");
+        return 1;
+    }
+}
+
 static List<string>? LeerIds(string archivo) =>
     JsonDocument.Parse(File.ReadAllText(archivo)).RootElement.EnumerateArray().Select(e => e.GetString()!).ToList();
 

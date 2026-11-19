@@ -126,6 +126,8 @@
 #bitacora .bit-origen { color: #8a96a3; font-size: 11px; }
 #bitacora .bit-mas { color: #8a96a3; font-size: 11px; }
 #modalBitacora .bit-campos td { font-size: 12.5px; word-break: break-word; }
+/* detalle de un evento de checadas: ventana ancha */
+@media (min-width: 992px) { #modalBitacora .modal-dialog.modal-xl { max-width: 1140px; } }
 #modalBitacora .bit-campos tr.cambio td { background: rgba(255, 178, 43, .15); font-weight: 600; }
 html.modo-nocturno #bitacora .bit-antes { color: #ef9a9a; } html.modo-nocturno #bitacora .bit-despues { color: #a5d6a7; }
 html.modo-nocturno #modalBitacora .modal-content { background: #23272e; color: #dfe3e8; }

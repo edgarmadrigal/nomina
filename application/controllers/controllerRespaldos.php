@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class controllerRespaldos extends CI_Controller {
 
-    private $tipos = array('BASE', 'LOG', 'CHECADAS', 'CODIGO');
+    private $tipos = array('BASE', 'LOG', 'CHECADAS', 'CODIGO', 'ROSTROS');
 
     function __construct() {
         parent::__construct();
@@ -197,12 +197,27 @@ class controllerRespaldos extends CI_Controller {
         echo $r['mensaje'] . "\n";
     }
 
-    /** Descarga el ZIP de checadas o del código (están en el servidor de SQL). */
+    /**
+     * Tarea programada de Windows "Nominas - Respaldo rostros" (cada hora, en EDGAR):
+     *   C:\xampp\php\php.exe C:\xampp\htdocs\nomina\index.php controllerRespaldos rostrosProgramado
+     * Respalda los rostros de los relojes si ya toca (domingo a la hora configurada; si se perdió, de noche).
+     * "ahora" lo hace en ese momento; un número es el RespaldoLog que ya creó "Respaldar ahora" en la web.
+     */
+    public function rostrosProgramado($cuando = ''){
+        if (!is_cli()) { show_404(); return; }
+        if (ctype_digit((string) $cuando)) { $r = $this->RespaldoModel->respaldoRostros('', (int) $cuando); echo $r['mensaje'] . "\n"; return; }
+        if ($cuando !== 'ahora' && !$this->RespaldoModel->tocaRostros()) { echo "No toca todavía.\n"; return; }
+        $r = $this->RespaldoModel->respaldoRostros($cuando === 'ahora' ? 'Manual (línea de comandos)' : 'Programado');
+        echo $r['mensaje'] . "\n";
+    }
+
+    /** Descarga el ZIP de checadas, del código o de los rostros (están en el servidor de SQL). */
     public function descargar($id = null){
         if (!$this->esAdmin(false)) { show_error('Solo el administrador puede descargar respaldos.', 403); return; }
         ini_set('max_execution_time', 0);
         $archivo = $this->RespaldoModel->archivoChecadas((int) $id);
         if (!$archivo && $this->RespaldoModel->enviarArchivoCodigo((int) $id)) exit;
+        if (!$archivo && $this->RespaldoModel->enviarArchivoRostros((int) $id)) exit;
         if (!$archivo) { show_error('No se encontró el archivo del respaldo.', 404); return; }
         header('Content-Type: application/zip');
         header('Content-Disposition: attachment; filename="' . $archivo['nombre'] . '"');

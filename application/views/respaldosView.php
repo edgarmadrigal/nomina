@@ -26,6 +26,7 @@
                                     <option value="LOG">Log de transacciones</option>
                                     <option value="CHECADAS">Checadas</option>
                                     <option value="CODIGO">Código del sistema</option>
+                                    <option value="ROSTROS">Rostros de los relojes</option>
                                 </select>
                             </div>
                             <div class="col-3 form-group">

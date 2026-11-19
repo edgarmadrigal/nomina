@@ -595,6 +595,35 @@ internal sealed class Sincronizador(string conexion)
         catch (Exception ex) { Console.Error.WriteLine($"No se pudo marcar la copia en curso: {ex.Message}"); }
     }
 
+    /// <summary>
+    /// Respaldo / verificación / restauración de rostros de un reloj BioStar 2 (RespaldoRostros). Mientras
+    /// trabaja marca el reloj como ocupado (copiaHasta, renovado cada minuto) para que la descarga
+    /// automática no se le cruce.
+    /// </summary>
+    public object Rostros(string accion, long deviceId, string archivo, IList<string>? ids = null, bool reemplazar = false, int cuantos = 50)
+    {
+        var d = Uno(deviceId);
+        if (d.Sdk != "BS2") throw new InvalidOperationException("El respaldo de rostros es para relojes BioStar 2.");
+        DateTime latido = DateTime.MinValue;
+        void Latir() { if ((DateTime.Now - latido).TotalSeconds >= 60) { MarcarCopia(d.DeviceId, d.DeviceId, true); latido = DateTime.Now; } }
+        Latir();
+        try
+        {
+            using var r = Conectar2(d);
+            switch (accion)
+            {
+                case "respaldar":
+                    return RespaldoRostros.Exportar(r, archivo, (h, t) => Latir());
+                case "verificar":
+                    var v = RespaldoRostros.Verificar(r, archivo, cuantos);
+                    return new { revisados = v.revisados, iguales = v.iguales, distintos = v.distintos };
+                default:
+                    return RespaldoRostros.Restaurar(r, archivo, ids, reemplazar, (h, t) => Latir());
+            }
+        }
+        finally { MarcarCopia(d.DeviceId, d.DeviceId, false); }
+    }
+
     /// <summary>Copia (todos los usuarios con rostro, y opcionalmente los que no, como alta) desde un
     /// reloj principal hacia VARIOS relojes BioStar 2, uno por uno. Escribe el progreso en el camino.
     /// Si el usuario detiene uno, se sigue con el siguiente.</summary>

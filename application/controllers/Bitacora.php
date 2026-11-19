@@ -61,6 +61,16 @@ class Bitacora extends CI_Controller {
         $this->json($d ? array('exito' => true, 'movimiento' => $d) : array('exito' => false, 'mensaje' => 'No se encontró el movimiento.'));
     }
 
+    /** Todas las checadas de un evento (un renglón agrupado de "Checadas (cambios a mano)"). */
+    public function evento(){
+        if (!$this->puedeVer()) return;
+        $accion = (string) $this->input->post('accion');
+        if (!in_array($accion, array('ALTA', 'MODIFICACION', 'ELIMINACION'), true)) { $this->json(array('exito' => false, 'mensaje' => 'Acción no válida.')); return; }
+        $filas = $this->BitacoraModel->evento((int) $this->input->post('desde'), (int) $this->input->post('hasta'),
+                                               (string) $this->input->post('usuario'), (string) $this->input->post('pantalla'), $accion);
+        $this->json(array('exito' => true, 'checadas' => $filas));
+    }
+
     /**
      * Revierte un cambio (deja el registro como estaba) o lo vuelve a aplicar.
      * Solo el administrador: regresa datos reales de los catálogos.
