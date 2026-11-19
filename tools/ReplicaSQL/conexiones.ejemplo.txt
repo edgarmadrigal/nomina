@@ -1,0 +1,61 @@
+﻿#  ============================================================================
+#   CONEXIONES DE LA REPLICA DE NOMINAS (log shipping a la VM)
+#  ============================================================================
+#   Formato:  NOMBRE = valor        (las líneas que empiezan con # se ignoran)
+#
+#   La primera vez replicar.ps1 copia este archivo como "conexiones.txt".
+#   EDITA conexiones.txt (no este ejemplo): ese no se publica ni va a git,
+#   porque trae contraseñas y es propio de cada equipo.
+#
+#   SI SE MIGRA (otro servidor, otra VM, otra instancia) solo se cambia aquí.
+#  ============================================================================
+
+
+# ---------------------------------------------------------------- PRINCIPAL (origen)
+# Servidor SQL principal (solo informativo: aparece en la bitácora y en estado.txt)
+SQL_PRINCIPAL = AIN-MSSRV2\SISTEMASAIN
+
+# Base de datos en el principal (solo informativo)
+BASE_PRINCIPAL = Nominas
+
+# Carpeta compartida del principal donde SQL deja los respaldos.
+# Adentro debe tener las subcarpetas  Base\ (FULL .bak)  y  Log\ (LOG .trn).
+CARPETA_RESPALDOS = \\AIN-MSSRV2\NominaBackups
+
+# Cuenta para entrar a esa carpeta (solo lectura). Vacío = la del usuario que corre la tarea.
+RESPALDOS_USUARIO = AIN-MSSRV2\replica
+RESPALDOS_CLAVE   =
+
+
+# ---------------------------------------------------------------- RÉPLICA (destino)
+# Servidor SQL donde vive la réplica (en la propia VM normalmente es  localhost\INSTANCIA)
+SQL_REPLICA = localhost\SISTEMASAIN
+
+# Usuario SQL de la réplica para restaurar. Vacío = autenticación de Windows
+# (la cuenta de la tarea debe ser sysadmin en ese SQL).
+SQL_REPLICA_USUARIO =
+SQL_REPLICA_CLAVE   =
+
+# Nombre de la base de datos réplica (puede ser distinto al del principal, ej. Nominas_Replica)
+BASE_REPLICA = Nominas
+
+# Carpeta de la réplica donde se copian los respaldos antes de restaurarlos
+CARPETA_REPLICA = C:\ReplicaNominas
+
+# STANDBY    = la réplica se puede consultar (solo lectura) entre restauraciones
+# NORECOVERY = la réplica no se puede abrir hasta activarla (un poco más rápido)
+MODO_REPLICA = STANDBY
+
+# Días que se guardan los respaldos copiados en CARPETA_REPLICA
+DIAS_CONSERVAR = 7
+
+
+#  ============================================================================
+#   OTRAS CONEXIONES DEL SISTEMA (referencia para migrar; NO las lee este script)
+#  ============================================================================
+#   Página -> SQL ............ application\config\database.php   (hostname, usuario, base)
+#   Botón Publicar ........... application\config\publicar.php   (\\SISAI\nomina, SISAI\publicador)
+#   Bajada de relojes ........ tools\RelojSync\publish\relojsync.json  (cadena de conexión SQL)
+#   URL pública .............. Tailscale Funnel en la VM SISAI -> https+insecure://127.0.0.1:8443
+#   Servidores Microsip ...... servidores vinculados en SQL (OPENQUERY por empresa)
+#   Nomiplus ................. servidor vinculado [TANET] en SQL

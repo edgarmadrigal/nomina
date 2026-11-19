@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 
 namespace RelojSync;
@@ -14,7 +14,7 @@ internal static class SdkU
     public const int ROSTRO_IMAGEN = 16 * 1024, ROSTRO_TEMPLATES = 30, ROSTRO_TEMPLATE = 3008;
 
     // BS2UserMaskEnum
-    public const uint MASK_DATA = 0x0001, MASK_SETTING = 0x0002, MASK_NAME = 0x0004, MASK_FACE = 0x0080, MASK_ACCESS_GROUP = 0x0100;
+    public const uint MASK_DATA = 0x0001, MASK_SETTING = 0x0002, MASK_NAME = 0x0004, MASK_PHOTO = 0x0008, MASK_PIN = 0x0010, MASK_CARD = 0x0020, MASK_FINGER = 0x0040, MASK_FACE = 0x0080, MASK_ACCESS_GROUP = 0x0100;
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct BS2User
@@ -125,11 +125,19 @@ internal sealed record UsuarioReloj(string Id, string Nombre, int Rostros, int H
 internal sealed record ErrorUsuario(string Id, string Mensaje);
 
 /// <summary>Resultado de alta / baja / copia de usuarios (se regresa a PHP como JSON).</summary>
+/// <summary>El usuario pidió detener la copia hacia ese reloj (se sigue con el siguiente).</summary>
+internal sealed class CopiaDetenida(uint deviceId) : Exception($"Copia detenida por el usuario (reloj {deviceId}).")
+{
+    public uint DeviceId { get; } = deviceId;
+}
+
 internal sealed class ResultadoUsuarios
 {
     public List<string> Hechos { get; } = new();       // dados de alta / quitados / copiados
     public List<string> YaEstaban { get; } = new();    // alta: ya existían; baja: no estaban; copia: ya tenían rostro
     public List<string> SinRostro { get; } = new();    // copia: no tienen rostro en el origen
+    public List<string> Reemplazados { get; } = new(); // copia: "viejo→nuevo", número viejo borrado del destino
+    public List<string> ConRostro { get; } = new();    // baja "solo sin rostro": tenían rostro, no se quitaron
     public List<ErrorUsuario> Errores { get; } = new();
 }
 
@@ -144,20 +152,48 @@ internal static class UsuariosBS2
     // -907/-102/-103/-104/-105 = se cayó/ocupó la conexión: hay que RECONECTAR antes de reintentar.
     static readonly int[] RECONECTAR = { -907, -102, -103, -104, -105 };
 
-    /// Se avisa al progreso (barra) que estamos reconectando: recibe el número de intento.
+    /// Se avisa al progreso (barra) que se perdió la conexión: (intento, código, desde cuándo, deviceId).
     /// Lo pone el Sincronizador para escribir fase "reconectando" y que la barra NO se oculte.
-    public static Action<int>? OnReconectando;
+    /// El último parámetro son los segundos de PAUSA (> 0 = el reloj está ocupado por otra conexión).
+    public static Action<int, int, DateTime, uint, int>? OnReconectando;
 
-    /// Minutos máximos reintentando una operación ante timeouts/caídas antes de rendirse.
+    /// Pausa cuando se detecta que otra conexión entró al reloj (cruce): no se insiste mientras tanto.
+    public const int PAUSA_CRUCE_SEG = 60;
+
+    /// El reloj rechazó la conexión porque ya atiende otra (-102 ocupado / -101 / -601 sin respuesta al conectar).
+    public static bool EsOcupado(string mensaje) =>
+        mensaje.Contains("código -102") || mensaje.Contains("código -101") || mensaje.Contains("código -601");
+
+    public static int CodigoDe(string mensaje, int defecto)
+    {
+        var m = System.Text.RegularExpressions.Regex.Match(mensaje, @"código (-?\d+)");
+        return m.Success ? int.Parse(m.Groups[1].Value) : defecto;
+    }
+    /// Se avisa que la conexión regresó: segundos que estuvo perdida (para no contarlos en el tiempo estimado).
+    public static Action<double>? OnRecuperado;
+    /// El usuario pidió detener la copia de ese reloj (deviceId): se corta con CopiaDetenida.
+    public static Func<uint, bool>? Detener;
+    /// true = no rendirse nunca (copias de rostros): se insiste hasta que el reloj regrese o se detenga.
+    public static bool SinLimite;
+
+    /// Minutos máximos reintentando una operación ante timeouts/caídas antes de rendirse (si no es SinLimite).
     /// Los relojes están por WiFi y a veces pierden señal varios minutos; se insiste mucho.
     const double MAX_MINUTOS_REINTENTO = 15;
 
+    /// <summary>Corta la operación si el usuario pidió detener la copia de este reloj.</summary>
+    public static void RevisarDetener(uint deviceId)
+    {
+        bool detener = false;
+        try { detener = Detener?.Invoke(deviceId) ?? false; } catch { }
+        if (detener) throw new CopiaDetenida(deviceId);
+    }
+
     /// <summary>
     /// Los relojes tienen miles de usuarios y a veces no contestan a tiempo (-601) o se cae la
-    /// conexión a media operación (-907/-102, típico de WiFi inestable). Se da más tiempo de
-    /// respuesta y se REINTENTA (reconectando cuando la conexión se cayó) HASTA QUE EL RELOJ REGRESE,
-    /// con un tope de MAX_MINUTOS_REINTENTO. En cada reintento avisa OnReconectando para que la barra
-    /// muestre "Reconectando…" y no se quite. Las esperas crecen: 2 s, luego 5 s, luego 10 s.
+    /// conexión a media operación (-907/-102, típico de WiFi inestable, o porque otro programa se
+    /// conectó al mismo reloj). Se da más tiempo de respuesta y se REINTENTA (reconectando cuando la
+    /// conexión se cayó) HASTA QUE EL RELOJ REGRESE: sin tope si SinLimite, si no MAX_MINUTOS_REINTENTO.
+    /// En cada reintento avisa OnReconectando para que la barra lo muestre. Esperas: 2 s, 5 s, 10 s, 30 s.
     /// </summary>
     static int ConReintentos(Reloj r, Func<int> llamada)
     {
@@ -167,18 +203,45 @@ internal static class UsuariosBS2
         int intento = 0;
         while (true)
         {
+            RevisarDetener(r.DeviceId);
             intento++;
             res = llamada();
             // Éxito o error que no vale la pena reintentar -> devolver tal cual.
-            if (res != TIMEOUT && Array.IndexOf(RECONECTAR, res) < 0) return res;
-            // Se agotó el presupuesto de reintentos (el reloj lleva mucho sin volver).
-            if ((DateTime.Now - inicio).TotalMinutes >= MAX_MINUTOS_REINTENTO) return res;
-            try { OnReconectando?.Invoke(intento); } catch { }
-            Thread.Sleep(intento <= 3 ? 2000 : (intento <= 8 ? 5000 : 10000));
-            if (Array.IndexOf(RECONECTAR, res) >= 0)
+            if (res != TIMEOUT && Array.IndexOf(RECONECTAR, res) < 0)
             {
-                try { r.Reconectar(); } catch { /* el siguiente intento volverá a fallar y se reporta el código */ }
+                if (intento > 1) try { OnRecuperado?.Invoke((DateTime.Now - inicio).TotalSeconds); } catch { }
+                return res;
             }
+            // Se agotó el presupuesto de reintentos (el reloj lleva mucho sin volver).
+            if (!SinLimite && (DateTime.Now - inicio).TotalMinutes >= MAX_MINUTOS_REINTENTO) return res;
+            if (Array.IndexOf(RECONECTAR, res) < 0)
+            {
+                // -601: no contestó a tiempo en el mismo socket; se reintenta sin reconectar
+                try { OnReconectando?.Invoke(intento, res, inicio, r.DeviceId, 0); } catch { }
+                Esperar(intento <= 3 ? 2000 : (intento <= 8 ? 5000 : 10000), r.DeviceId);
+                continue;
+            }
+            // Se cayó la conexión: se reconecta. Si el reloj contesta "ocupado" es que OTRA conexión entró
+            // (Nomiplus, otra copia, alguien en su menú): la copia se pone EN PAUSA y no lo vuelve a tocar
+            // hasta PAUSA_CRUCE_SEG después, para no pelearse con esa otra conexión.
+            Esperar(2000, r.DeviceId);
+            try { r.Reconectar(); continue; }
+            catch (Exception ex)
+            {
+                int pausa = EsOcupado(ex.Message) ? PAUSA_CRUCE_SEG : (intento <= 8 ? 5 : (intento <= 20 ? 10 : 30));
+                try { OnReconectando?.Invoke(intento, CodigoDe(ex.Message, res), inicio, r.DeviceId, EsOcupado(ex.Message) ? pausa : 0); } catch { }
+                Esperar(pausa * 1000, r.DeviceId);
+            }
+        }
+    }
+
+    /// <summary>Espera en pasos de 1 s para atender pronto un "detener".</summary>
+    public static void Esperar(int ms, uint deviceId)
+    {
+        for (int t = 0; t < ms; t += 1000)
+        {
+            RevisarDetener(deviceId);
+            Thread.Sleep(Math.Min(1000, ms - t));
         }
     }
 
@@ -286,13 +349,23 @@ internal static class UsuariosBS2
             throw new InvalidOperationException($"No se pudieron borrar todos los usuarios (código {c}).");
     }
 
-    public static ResultadoUsuarios Baja(Reloj r, IList<string> ids)
+    /// <param name="soloSinRostro">Candado para "quitar los que no tienen rostro": se revisa en el reloj,
+    /// justo antes de borrar, que de verdad no tenga rostro (la lista de la pantalla puede ser vieja).</param>
+    public static ResultadoUsuarios Baja(Reloj r, IList<string> ids, bool soloSinRostro = false)
     {
         var res = new ResultadoUsuarios();
         var existentes = new HashSet<string>(Ids(r));
+        var conRostro = new HashSet<string>();
+        if (soloSinRostro)
+        {
+            var cab = Datos(r, ids.Where(existentes.Contains).ToList(), SdkU.MASK_DATA);
+            try { foreach (var b in cab) if (b.user.numFaces > 0) conRostro.Add(SdkU.Texto(b.user.userID)); }
+            finally { Liberar(cab); }
+        }
         foreach (var id in ids)
         {
             if (!existentes.Contains(id)) { res.YaEstaban.Add(id); continue; }   // aquí: "no estaba"
+            if (conRostro.Contains(id)) { res.ConRostro.Add(id); continue; }      // ya tiene rostro: no se quita
             IntPtr uid = Marshal.AllocHGlobal(SdkU.ID);
             try
             {
@@ -347,6 +420,9 @@ internal static class UsuariosBS2
         var altaSinRostro = new List<(string id, string nombre)>();
         try
         {
+            if (!borrarDestino)
+                QuitarNumerosViejos(destino, enDestino, new HashSet<string>(enOrigen),
+                    cabOrigen.Select(b => (SdkU.Texto(b.user.userID), SdkU.Texto(b.name))).ToList(), res);
             copiar = cabOrigen.Where(b => b.user.numFaces > 0).Select(b => SdkU.Texto(b.user.userID)).ToList();
             foreach (var b in cabOrigen.Where(b => b.user.numFaces == 0))
             {
@@ -379,9 +455,11 @@ internal static class UsuariosBS2
         int total = copiar.Count;
         reportar?.Invoke(0, res.YaEstaban.Count, res.SinRostro.Count, res.Errores.Count, total, "copiando");
 
-        const uint MASK = SdkU.MASK_DATA | SdkU.MASK_SETTING | SdkU.MASK_NAME | SdkU.MASK_FACE | SdkU.MASK_ACCESS_GROUP;
+        // MASK_PHOTO: también la foto que se le asignó en el reloj principal (la que sale en pantalla al checar)
+        const uint MASK = SdkU.MASK_DATA | SdkU.MASK_SETTING | SdkU.MASK_NAME | SdkU.MASK_PHOTO | SdkU.MASK_FACE | SdkU.MASK_ACCESS_GROUP;
         for (int ini = 0; ini < copiar.Count; ini += 20)
         {
+            RevisarDetener(destino.DeviceId);
             var pagina = copiar.Skip(ini).Take(20).ToList();
             var blobs = Datos(origen, pagina, MASK);
             try
@@ -399,6 +477,104 @@ internal static class UsuariosBS2
             reportar?.Invoke(res.Hechos.Count, res.YaEstaban.Count, res.SinRostro.Count, res.Errores.Count, total, "copiando");
         }
         return res;
+    }
+
+    /// <summary>
+    /// Cambio de número: cuando a alguien le cambian el número (otra empresa) se da de alta con el
+    /// nuevo en el principal, pero en los demás relojes sigue el número VIEJO con el MISMO rostro.
+    /// Se toma como número viejo de la misma persona a un usuario del destino que ya NO existe en el
+    /// origen y que tiene el mismo nombre que uno que se va a copiar; se borra para que solo quede el
+    /// número nuevo con el rostro del principal (dos números con el mismo rostro confunden al reloj).
+    /// </summary>
+    static void QuitarNumerosViejos(Reloj destino, List<string> enDestino, HashSet<string> enOrigen,
+                                    List<(string id, string nombre)> aCopiar, ResultadoUsuarios res)
+    {
+        var porNombre = new Dictionary<string, string>();
+        foreach (var (id, nombre) in aCopiar)
+        {
+            string n = NombreClave(nombre);
+            if (n.Length >= 8) porNombre[n] = id;   // nombres muy cortos o vacíos no se comparan
+        }
+        var huerfanos = enDestino.Where(i => !enOrigen.Contains(i)).ToList();
+        if (porNombre.Count == 0 || huerfanos.Count == 0) return;
+
+        var viejos = new List<(string viejo, string nuevo)>();
+        var cab = Datos(destino, huerfanos, SdkU.MASK_DATA | SdkU.MASK_NAME);
+        try
+        {
+            foreach (var b in cab)
+                if (porNombre.TryGetValue(NombreClave(SdkU.Texto(b.name)), out var nuevo))
+                    viejos.Add((SdkU.Texto(b.user.userID), nuevo));
+        }
+        finally { Liberar(cab); }
+
+        foreach (var (viejo, nuevo) in viejos)
+        {
+            IntPtr uid = Marshal.AllocHGlobal(SdkU.ID);
+            try
+            {
+                Marshal.Copy(SdkU.Bytes(viejo, SdkU.ID), 0, uid, SdkU.ID);
+                int c = ConReintentos(destino, () => SdkU.BS2_RemoveUser(destino.Contexto, destino.DeviceId, uid, 1));
+                if (c == Sdk.BS_SDK_SUCCESS) { res.Reemplazados.Add($"{viejo}→{nuevo}"); enDestino.Remove(viejo); }
+                else res.Errores.Add(new ErrorUsuario(viejo, $"no se pudo borrar el número viejo de {nuevo} (código {c})"));
+            }
+            finally { Marshal.FreeHGlobal(uid); }
+        }
+    }
+
+    /// <summary>
+    /// Cambia el nombre de usuarios que ya están en el reloj (p. ej. para agregar la empresa) sin perder
+    /// su rostro, foto, huella, tarjeta ni PIN: se lee el usuario completo y se vuelve a guardar igual,
+    /// solo con el nombre nuevo.
+    /// </summary>
+    public static ResultadoUsuarios Renombrar(Reloj r, IList<(string id, string nombre)> lista, Action<int, int, int>? reportar = null)
+    {
+        var res = new ResultadoUsuarios();
+        var existentes = new HashSet<string>(Ids(r));
+        var nombres = new Dictionary<string, string>();
+        foreach (var (id, nombre) in lista)
+        {
+            if (existentes.Contains(id)) nombres[id] = nombre;
+            else res.YaEstaban.Add(id);   // aquí: "no está en el reloj"
+        }
+        var ids = nombres.Keys.ToList();
+        const uint MASK = SdkU.MASK_DATA | SdkU.MASK_SETTING | SdkU.MASK_NAME | SdkU.MASK_PHOTO | SdkU.MASK_PIN
+                        | SdkU.MASK_CARD | SdkU.MASK_FINGER | SdkU.MASK_FACE | SdkU.MASK_ACCESS_GROUP;
+        for (int ini = 0; ini < ids.Count; ini += 20)
+        {
+            var blobs = Datos(r, ids.Skip(ini).Take(20).ToList(), MASK);
+            try
+            {
+                foreach (var b in blobs)
+                {
+                    string id = SdkU.Texto(b.user.userID);
+                    var blob = b;
+                    blob.name = SdkU.Bytes(nombres[id], SdkU.NOMBRE);
+                    int c = ConReintentos(r, () => SdkU.BS2_EnrolUser(r.Contexto, r.DeviceId, new[] { blob }, 1, 1));
+                    if (c == Sdk.BS_SDK_SUCCESS) res.Hechos.Add(id);
+                    else res.Errores.Add(new ErrorUsuario(id, $"código {c}"));
+                }
+            }
+            finally { Liberar(blobs); }
+            reportar?.Invoke(res.Hechos.Count, res.Errores.Count, ids.Count);
+        }
+        return res;
+    }
+
+    /// <summary>Nombre para comparar: mayúsculas, sin acentos ni signos, espacios simples. Lo que va
+    /// después de "·" (la empresa) no cuenta: al cambiar de número también cambia la empresa.</summary>
+    static string NombreClave(string nombre)
+    {
+        nombre ??= "";
+        int punto = nombre.IndexOf('·');
+        if (punto >= 0) nombre = nombre[..punto];
+        var sb = new System.Text.StringBuilder();
+        foreach (char ch in nombre.Normalize(System.Text.NormalizationForm.FormD))
+        {
+            if (System.Globalization.CharUnicodeInfo.GetUnicodeCategory(ch) == System.Globalization.UnicodeCategory.NonSpacingMark) continue;
+            sb.Append(char.IsLetterOrDigit(ch) ? char.ToUpperInvariant(ch) : ' ');
+        }
+        return string.Join(" ", sb.ToString().Split(' ', StringSplitOptions.RemoveEmptyEntries));
     }
 
     /// <summary>Diagnóstico: configuración (setting y grupos de acceso) de algunos usuarios existentes.</summary>

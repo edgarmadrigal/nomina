@@ -9,6 +9,7 @@ class Planta extends CI_Model{
     public function consulta_Planta(){
         $empresas = $this->db->select('id,nombre')
         ->from('empresas')
+        ->where('estatus', '1')
         ->get()
         ->result();                 
         return $empresas;

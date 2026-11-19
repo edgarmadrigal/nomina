@@ -91,7 +91,9 @@
                     $('#entradaDesde').val(data.entrada_Desde);
                     $('#entradaHasta').val(data.entrada_Hasta); 
                     $('#salidaInicio').val(data.salida_Inicio);             
-                    $('#horasdiarias').val(data.horas_diarias);
+                    var _hCarga = parseInt(data.horas_diarias, 10) || 0;
+                    var _mCarga = parseInt(data.minutos_diarios, 10) || 0;
+                    $('#horasdiarias').val(_mCarga > 0 ? +( _hCarga + _mCarga / 60 ).toFixed(2) : _hCarga);
                     $("#comedor").attr('checked', comedor);
                     $( "#comedor" ).prop( "checked", comedor);
                     $('#tiempoComida').val(data.tiempoComida);
@@ -465,8 +467,14 @@
             var salidaHasta     =$('#salidaHasta').val();
 
             var tipoNocturno    =$('#tipoNocturno').is(':checked')==false?0:1;                      
-            var horasdiarias    =$('#horasdiarias').val();                   
-            var comedor         =$('#comedor').is(':checked')==false?0:1;   
+            var horasdiarias    =$('#horasdiarias').val();
+            // Las horas pueden venir con decimales (6.5 = 6 h 30 min). Se guardan como horas + minutos.
+            var _decHoras       = parseFloat(String(horasdiarias).replace(',', '.')) || 0;
+            var horasEnteras    = Math.floor(_decHoras);
+            var minutosdiarias  = Math.round((_decHoras - horasEnteras) * 60);
+            if (minutosdiarias >= 60) { horasEnteras += 1; minutosdiarias -= 60; }
+            horasdiarias        = horasEnteras;
+            var comedor         =$('#comedor').is(':checked')==false?0:1;
             var tiempoComida    =$('#tiempoComida').val();
 
             var tipo            =   tipoNocturno==1?1:0;
@@ -495,10 +503,11 @@
 
                             'tipo' 	        :tipo ,
                             'horasdiarias' 	:horasdiarias ,
+                            'minutosdiarias':minutosdiarias ,
                             'comedor' 	    :comedor,
                             'tiempoComida' 	:tiempoComida,
                             'fechaAsignacion':fechaAsignacion
-                            
+
                         }
                     }).done(function (data) {
                         if (data) {
@@ -544,8 +553,9 @@
                             
                             'tipo' 	        :tipo ,
                             'horasdiarias' 	:horasdiarias ,
-                            'comedor' 	    :comedor  ,        
-                            'tiempoComida' 	:tiempoComida,                    
+                            'minutosdiarias':minutosdiarias ,
+                            'comedor' 	    :comedor  ,
+                            'tiempoComida' 	:tiempoComida,
                             'fechaAsignacion':fechaAsignacion
                         }
                     }).done(function (data) {

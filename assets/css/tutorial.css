@@ -1,0 +1,18 @@
+/* Tutorial guiado (assets/js/tutorial.js) */
+#tutFondo { position: fixed; inset: 0; z-index: 20000; background: transparent; }
+#tutFondo.tut-oscuro { background: rgba(0, 0, 0, .55); }
+#tutLuz { position: fixed; z-index: 20001; border-radius: 6px; pointer-events: none;
+          box-shadow: 0 0 0 9999px rgba(0, 0, 0, .55), 0 0 0 3px #26c6da; transition: all .25s ease; }
+#tutCaja { position: fixed; z-index: 20002; width: 340px; max-width: calc(100vw - 16px); background: #fff; color: #333;
+           border-radius: 8px; box-shadow: 0 8px 30px rgba(0, 0, 0, .35); padding: 14px 16px 12px; transition: left .25s ease, top .25s ease; }
+#tutCaja .tut-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+#tutCaja .tut-titulo { font-weight: bold; font-size: 16px; color: #1e88e5; }
+#tutCaja .tut-num { font-size: 11px; opacity: .6; white-space: nowrap; }
+#tutCaja .tut-texto { font-size: 13.5px; line-height: 1.45; }
+#tutCaja .tut-pie { display: flex; align-items: center; gap: 6px; margin-top: 12px; }
+#tutCaja .tut-saltar { margin-right: auto; font-size: 12px; opacity: .75; }
+#tutCaja .tut-sig { color: #fff !important; }
+#tutCaja .tut-ant { background: transparent !important; border: 1px solid #90a4ae !important; color: inherit !important; }
+#tutCaja .tut-falta { color: #e53935; font-weight: bold; }
+html.modo-nocturno #tutCaja { background: #2a3038; color: #dfe3e8; }
+html.modo-nocturno #tutCaja .tut-titulo { color: #4fc3f7; }

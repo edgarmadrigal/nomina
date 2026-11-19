@@ -5,11 +5,10 @@ Modulo = {
     validator: false,
     datosTabla: []    
     //Obtiene los datos
-    , fnObtenerDatos: function (fechaInicio,fechaFin,em) {
+    /*, fnObtenerDatos: function (fechaInicio,fechaFin,em) {
         $("#costo137").css("display", "none");
         $(".loadTable").css("display", "block");
         var varURL = Modulo.baseurl + "controller137/exportar";
-        /**Ajax */
         $.ajax({
             url: varURL,
             type: 'post',
@@ -29,7 +28,28 @@ Modulo = {
             a.download = file_name;
             a.click();
         });
-    }
+    }*/
+   ,fnObtenerDatos: function (fechaInicio, fechaFin, em) {
+    var varURL = Modulo.baseurl + "controller137/exportar";
+    var file_name = "137_" + $('#planta option:selected').html() + fechaFin + ".txt";
+
+    // Usamos un form/iframe oculto o window.location para forzar la descarga
+    // directamente desde la respuesta del POST, en vez de un <a href> a un
+    // archivo estatico que puede pertenecer a otra exportacion concurrente.
+    var form = $('<form>', {
+        method: 'POST',
+        action: varURL
+    });
+    form.append($('<input>', {type: 'hidden', name: 'fechaInicio', value: fechaInicio}));
+    form.append($('<input>', {type: 'hidden', name: 'fechaFin', value: fechaFin}));
+    form.append($('<input>', {type: 'hidden', name: 'empresa_id', value: parseInt(em)}));
+    $('body').append(form);
+    form.submit();
+    form.remove();
+
+    $("#costo137").css("display", "inline-table");
+    $(".loadTable").css("display", "none");
+}
     //Construye la tabla 
     , fnConstruitTabla: function () {
         table=$('#costo137').DataTable({
@@ -261,6 +281,8 @@ Modulo = {
         }).done(function (data) {                
             perfiles= JSON.parse(JSON.stringify(data));
             $('#planta').append('<option value="0">Selecciona una planta</option>');
+            // Todos los grupos de pago de Torreón en un solo archivo (ver Costo137Model::$gruposTorreon)
+            $('#planta').append('<option value="-1">TORREÓN UNIFICADO</option>');
             $.each(perfiles, function( index, value ) { 
                 $('#planta').append('<option value="'+value.id+'">'+value.nombre+'</option>');
               });
@@ -342,10 +364,14 @@ var buttonCommon = {
             var empresa=parseInt($('#empresa').val());
         });
         $(document).on('click', '#buscar', function (e) {
+            
+     $("#costo137").css("display", "none");
+        $(".loadTable").css("display", "block");
             var fechaInicio=$('#fecha1').val();
             var fechaFin=$('#fecha2').val();
             var empresa=$('#planta').val();
             Modulo.fnObtenerDatos(fechaInicio,fechaFin,empresa);
+            
         });
 
         

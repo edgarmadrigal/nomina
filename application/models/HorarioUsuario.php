@@ -20,7 +20,7 @@ class HorarioUsuario extends CI_Model{
         */
 
     }
-    public function consultaEmpleado($search){
+    public function consultaEmpleado($search,$empresa_id){
 
         ini_set('memory_limit','512M'); // This also needs to be increased in some cases. Can be changed to a higher value as per need)
         ini_set('sqlsrv.ClientBufferMaxKBSize','524288'); // Setting to 512M
@@ -29,6 +29,7 @@ class HorarioUsuario extends CI_Model{
         $usuarios = $this->db->select("empleado_id as id,empleado_id+'-'+CONCAT((NOMBRES),(' '),(APELLIDO_PATERNO),(' '),(APELLIDO_MATERNO)) as text")->distinct()
         ->from('empleados')
         ->where('estatus','A')
+        ->where('empresa_id', $empresa_id)
         ->like("empleado_id+' '+CONCAT((NOMBRES),(' '),(APELLIDO_PATERNO),(' '),(APELLIDO_MATERNO))",$search)
        // ->order_by("NOMBRE_COMPLETO", "asc")
         ->get()
@@ -90,6 +91,65 @@ class HorarioUsuario extends CI_Model{
     }    
    
 
+
+    // ---------------- Copiar horario de un empleado a otros ----------------
+
+    /** Asignación vigente (activa más reciente) del empleado, con el nombre del horario de cada día. */
+    public function horarioVigente($empleado_id){
+        $dias = array('lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo');
+        $cols = array();
+        $joins = array();
+        foreach ($dias as $i => $d) {
+            $cols[]  = "h$i.nombre AS $d, CASE WHEN he.idhorario_$d = 1 THEN '' ELSE CONVERT(VARCHAR(5), h$i.entrada_Inicio, 108) + '-' + CONVERT(VARCHAR(5), h$i.salida_Inicio, 108) END AS {$d}Horas";
+            $joins[] = "LEFT JOIN dbo.horarios h$i ON h$i.id = he.idhorario_$d";
+        }
+        $sql = "SELECT TOP 1 he.id, he.empleado_id, he.empresa_id, he.descripcion, he.cantidad,
+                       CONVERT(VARCHAR(10), he.fechaAsignacion, 23) AS fechaAsignacion, " . implode(', ', $cols) . "
+                FROM dbo.horarios_empleado he " . implode(' ', $joins) . "
+                WHERE he.empleado_id = ? AND he.idEstatus = 1
+                ORDER BY he.fechaAsignacion DESC, he.id DESC";
+        return $this->db->query($sql, array($empleado_id))->row_array();
+    }
+
+    /**
+     * Asigna a cada destino el mismo horario por día que la asignación vigente
+     * del origen, con la fecha indicada (igual que "Asignar Horario": se agrega
+     * una asignación nueva y la más reciente es la que vale).
+     */
+    public function copiarHorario($origen, array $destinos, $empresa_id, $fecha){
+        $vig = $this->db->query(
+            "SELECT TOP 1 id FROM dbo.horarios_empleado WHERE empleado_id = ? AND idEstatus = 1
+             ORDER BY fechaAsignacion DESC, id DESC", array($origen))->row_array();
+        if (!$vig) return array('exito' => false, 'mensaje' => 'El empleado origen no tiene horario asignado.');
+
+        $copiados = array();
+        $omitidos = array();
+        $this->db->trans_start();
+        foreach ($destinos as $d) {
+            if ((string) $d === (string) $origen) continue;
+            // el destino debe ser empleado activo de la planta elegida
+            $ok = $this->db->query("SELECT COUNT(*) AS n FROM dbo.empleados WHERE empleado_id = ? AND empresa_id = ? AND estatus = 'A'",
+                                   array($d, $empresa_id))->row_array();
+            if (!$ok || (int) $ok['n'] === 0) { $omitidos[] = $d; continue; }
+            $this->db->query(
+                "INSERT INTO dbo.horarios_empleado
+                    (empleado_id, empresa_id, descripcion, idhorario_lunes, idhorario_martes, idhorario_miercoles,
+                     idhorario_jueves, idhorario_viernes, idhorario_sabado, idhorario_domingo,
+                     fechaAsignacion, idEstatus, rotativo, cantidad, create_dtm)
+                 SELECT ?, ?, o.descripcion, o.idhorario_lunes, o.idhorario_martes, o.idhorario_miercoles,
+                        o.idhorario_jueves, o.idhorario_viernes, o.idhorario_sabado, o.idhorario_domingo,
+                        ?, 1, o.rotativo, o.cantidad, GETDATE()
+                 FROM dbo.horarios_empleado o WHERE o.id = ?",
+                array($d, $empresa_id, $fecha, $vig['id']));
+            $copiados[] = $d;
+        }
+        $this->db->trans_complete();
+        if (!$this->db->trans_status()) return array('exito' => false, 'mensaje' => 'No se pudo copiar el horario.');
+
+        $msg = 'Horario copiado a ' . count($copiados) . ' empleado(s).';
+        if ($omitidos) $msg .= ' Se omitieron (no están activos en la planta): ' . implode(', ', $omitidos) . '.';
+        return array('exito' => count($copiados) > 0, 'mensaje' => $msg, 'copiados' => $copiados, 'omitidos' => $omitidos);
+    }
 }
 
 ?>

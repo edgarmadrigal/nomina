@@ -30,77 +30,30 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="col-2" >
                                 <div class="form-group">
                                     <label style="font-weight: bold!important;">Planta</label>
-                                     <select class="custom-select col-12" id="planta" required>
-                                                <option value="" disabled selected>Selecciona una planta</option>
-                                                <option value="1" > ACABADOS_ESPECIALES				</option>
-                                                <option value="2" > ADMINISTRATIVO_MMS				</option>
-                                                <option value="3" > CORTE							</option>
-                                                <option value="4" > DESARROLLO						</option>
-                                                <option value="5" > IBAMENSUAL						</option>
-                                                <option value="6" > LAVANDERIA						</option>
-                                                <option value="7" > PLANCHAS						</option>
-                                                <option value="8" > PROCESOS_SECOS					</option>
-                                                <option value="9" > SEGUNDAS						</option>
-                                                <option value="10"> TERMINADO						</option>
-                                                <option value="11"> NAZARENO1						</option>
-                                                <option value="12"> NAZARENO2						</option>
-                                                <option value="13"> NAZARENO3						</option>
-                                                <option value="14"> CUENCAME						</option>
-                                                <option value="15"> PILAR							</option>
-                                                <option value="16"> DTL3							</option>
-                                                <option value="17"> DTL								</option>
-                                                <option value="18"> DTLNOM2							</option>
-                                                <option value="19"> ADMINISTRATIVO_TBG				</option>
-                                                <option value="20"> CUENCAME_CROM					</option>
-                                                <option value="21"> PEDRICEÑA						</option>
-                                                <option value="22"> SYSEL_NOM						</option>
-                                                <option value="25"> EVENTUALES						</option>
-                                                <option value="26"> LEON_GUZMAN						</option>
-                                                <option value="27"> TCT								</option>
-                                                <option value="28"> LEON_GUZMAN_ALMOHADAS			</option>		
-                                                <option value="29"> DTLNOM_MENS						</option>			
-                                                <option value="30"> ARCINAS							</option>			
-                                                <option value="32"> TRANSPORTELAGOMA_NOM			</option>			
-                                                <option value="33"> DELTA2							</option>			
-                                                <option value="34"> DELTA3							</option>			
-                                                <option value="35"> DTLNOM							</option>			
-                                                <option value="36"> DTLNOM_MENS						</option>							
-                                                <option value="37"> DTLNOM2_						</option>			
-                                                <option value="38"> DTL3_							</option>			
-                                                <option value="39"> TLAHUALILO						</option>			
-                                                <option value="40"> DELTA2							</option>			
-                                                <option value="41"> TBG								</option>	 
-                                </select>
-                                </div>
-                            </div><!--
-                            <div class="col-2">
-                                <div class="form-group">
-                                    <label style="font-weight: bold!important;">Departamento</label>
-                                    <input id="departamento" type="text" class="form-control" placeholder="escriba Departamento">
+                                     <select class="custom-select col-12" id="planta" required></select>
                                 </div>
                             </div>
-                            <div class="col-2">
+                            
+                            <div class="col-2" >
                                 <div class="form-group">
-                                    <label style="font-weight: bold!important;">Puesto</label>
-                                    <input id="puesto" type="text" class="form-control" placeholder="escriba Puesto">
+                                    <br>
+                                    <label class="custom-control custom-checkbox  col-12" style="font-weight: bold!important;">
+                                        <input id="checkTiempoExtra" type="checkbox" value="single" name="styled_single_checkbox" class="custom-control-input" aria-invalid="false">
+                                    <span class="custom-control-label">Tiempo Extra</span> </label>
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <div class="form-group">
-                                    <label style="font-weight: bold!important;">No Empleado</label>
-                                    <input id="noempleado" type="text" class="form-control" placeholder="escriba NoEmpleado">
-                                </div>
-                            </div>
-                            ---->
                             <div class="col-2">
                                 <div class="form-group">
                                     <label style="font-weight: bold!important;"> &nbsp; </label><br> 
                                     <button id="descargar" class="btn btn-info">
                                         <i class="fa fa-download"></i> Descargar fichero
                                     </button>
+                                    <a href="assets/formatos/Excepciones%20Nomina%20SISAI.txt" download="Excepciones Nomina SISAI.txt" class="d-block mt-1" style="font-size:12px;"
+                                       title="Formato de importación de Microsip (Excepciones de la nómina) que corresponde a este TXT"><i class="fa fa-file-text-o"></i> Formato para Microsip</a>
                                 </div>
                             </div>
                             
@@ -113,6 +66,42 @@
                                 </div>
                             </div>
                         </div> 
+<div class="row" id="filaDiasTE" style="display:none;">
+    <div class="col-12">
+        <div class="form-group">
+            <label style="font-weight: bold!important; margin-right:10px;">Días con tiempo extra:</label>
+
+            <label class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input diaTE" id="diaTE1" checked>
+                <span class="custom-control-label">Lunes</span>
+            </label>
+            <label class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input diaTE" id="diaTE2" checked>
+                <span class="custom-control-label">Martes</span>
+            </label>
+            <label class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input diaTE" id="diaTE3" checked>
+                <span class="custom-control-label">Miércoles</span>
+            </label>
+            <label class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input diaTE" id="diaTE4" checked>
+                <span class="custom-control-label">Jueves</span>
+            </label>
+            <label class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input diaTE" id="diaTE5" checked>
+                <span class="custom-control-label">Viernes</span>
+            </label>
+            <label class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input diaTE" id="diaTE6" checked>
+                <span class="custom-control-label">Sábado</span>
+            </label>
+            <label class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input diaTE" id="diaTE7" checked>
+                <span class="custom-control-label">Domingo</span>
+            </label>
+        </div>
+    </div>
+</div>
                         <div class="row">
                             <div class="col-12" style="text-align: -webkit-center;">
                                 <center>
@@ -122,6 +111,37 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AJUSTE 2026-11-19: aviso del formato nuevo (DIAS_VACACIONES y TIPO_MOVIMIENTO) antes de descargar el TXT -->
+<div class="modal fade" id="modalFormatoTxt" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#fff3cd;">
+                <h5 class="modal-title"><i class="fa fa-exclamation-triangle" style="color:#d39e00;"></i> El TXT para Microsip cambió</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" style="font-size:14px;">
+                <p>Desde ahora el TXT trae <b>dos datos más</b> al final de cada empleado:</p>
+                <ul>
+                    <li><b>Días de vacaciones</b>: ya no se suman a los días a pagar; van en su propio campo.</li>
+                    <li><b>Tipo de movimiento</b>: el TXT <b>reemplaza</b> la excepción del empleado en Microsip.</li>
+                </ul>
+                <p class="mb-2">Antes de importar en Microsip tienes que usar el <b>formato nuevo</b>. Con el formato anterior la importación marca error.</p>
+                <a href="assets/formatos/Excepciones%20Nomina%20SISAI.txt" download="Excepciones Nomina SISAI.txt" class="btn btn-outline-primary btn-sm">
+                    <i class="fa fa-file-text-o"></i> Descargar formato nuevo para Microsip
+                </a>
+                <div class="custom-control custom-checkbox mt-3">
+                    <input type="checkbox" class="custom-control-input" id="cbFormatoNuevo">
+                    <label class="custom-control-label" for="cbFormatoNuevo">Ya tengo el formato nuevo en Microsip</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-info" id="btnDescargarTxtOk" disabled><i class="fa fa-download"></i> Descargar TXT</button>
             </div>
         </div>
     </div>

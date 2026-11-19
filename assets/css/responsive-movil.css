@@ -1,0 +1,129 @@
+/* =====================================================================
+   CELULARES - Sistema Nominas
+   Solo aplica en pantallas angostas; en computadora no cambia nada.
+   Muchas vistas usan columnas fijas (col-4, col-6...) que en celular
+   quedan lado a lado y muy angostas: aquí se apilan a todo lo ancho.
+   ===================================================================== */
+
+@media (max-width: 767px) {
+
+    /* ---------- Menú lateral: secciones a todo lo ancho (no "Catal / ogos") ---------- */
+    #sidebarnav > li,
+    #sidebarnav > li > a {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    #sidebarnav > li > a .hide-menu { white-space: nowrap !important; }
+
+    /* ---------- Contenedor ---------- */
+    .page-wrapper > .container-fluid,
+    .page-wrapper .container-fluid {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    .page-wrapper .container { padding-left: 0; padding-right: 0; max-width: 100%; }
+    .card-body { padding: 12px !important; }
+    .card-title, h4.card-title { font-size: 17px; }
+    .page-titles { padding: 8px 0 !important; margin-bottom: 8px !important; }
+    .page-titles h3 { font-size: 19px; }
+
+    /* ---------- Columnas fijas: una debajo de otra ---------- */
+    .page-wrapper .row > .col-1,  .page-wrapper .row > .col-2,  .page-wrapper .row > .col-3,
+    .page-wrapper .row > .col-4,  .page-wrapper .row > .col-5,  .page-wrapper .row > .col-6,
+    .page-wrapper .row > .col-7,  .page-wrapper .row > .col-8,  .page-wrapper .row > .col-9,
+    .page-wrapper .row > .col-10, .page-wrapper .row > .col-11,
+    .modal .row > .col-1,  .modal .row > .col-2,  .modal .row > .col-3,
+    .modal .row > .col-4,  .modal .row > .col-5,  .modal .row > .col-6,
+    .modal .row > .col-7,  .modal .row > .col-8,  .modal .row > .col-9,
+    .modal .row > .col-10, .modal .row > .col-11 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+    /* controles con clase de columna (ej. <select class="custom-select col-10">) a todo lo ancho */
+    .page-wrapper .custom-select[class*="col-"],
+    .page-wrapper .form-control[class*="col-"],
+    .modal .custom-select[class*="col-"] {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+    /* anchos fijos en estilos de línea (ej. selects de 204px en horarios) */
+    .page-wrapper select, .page-wrapper input, .page-wrapper textarea,
+    .modal select, .modal input, .modal textarea {
+        max-width: 100% !important;
+    }
+    .page-wrapper .controls { width: auto !important; }
+
+    /* textos alineados a la derecha en escritorio: a la izquierda en celular */
+    .page-wrapper .row > [class*="col-"].text-right { text-align: left !important; }
+
+    /* ---------- Formularios ---------- */
+    /* 16px evita que el iPhone haga zoom al tocar un campo */
+    .form-control, .custom-select, select, input[type="text"], input[type="date"],
+    input[type="time"], input[type="number"], input[type="password"], textarea {
+        font-size: 16px !important;
+    }
+    .form-group { margin-bottom: 10px; }
+    .form-group > label br { display: none; }   /* etiquetas "&nbsp;<br>" que solo alineaban botones */
+
+    /* ---------- Botones ---------- */
+    .btn { white-space: normal; margin-bottom: 6px; }
+    .btn-group { flex-wrap: wrap; }
+    .page-wrapper .form-group .btn:only-child { width: 100%; }
+    .dt-buttons { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; float: none !important; }
+    .dt-buttons .btn, .dt-buttons .dt-button { margin: 0 !important; }
+
+    /* ---------- Tablas: desplazamiento horizontal en lugar de salirse ---------- */
+    .card-body, .dataTables_wrapper, .table-responsive {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    .page-wrapper .table { font-size: 12px; }
+    .page-wrapper .table td, .page-wrapper .table th { padding: 6px 8px; }
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        float: none !important;
+        text-align: left !important;
+        margin-bottom: 6px;
+    }
+    .dataTables_wrapper .dataTables_filter input { width: 100% !important; margin-left: 0 !important; }
+    .dataTables_wrapper .dataTables_paginate .paginate_button { padding: 4px 8px !important; }
+
+    /* ---------- Pestañas: se desplazan en vez de amontonarse ---------- */
+    .nav-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    .nav-tabs .nav-link { white-space: nowrap; padding: 8px 10px; }
+
+    /* ---------- Ventanas (modales) a todo lo ancho ---------- */
+    .modal-dialog,
+    .modal-dialog.modal-lg,
+    .modal-dialog.modal-sm {
+        max-width: none !important;
+        width: auto !important;
+        margin: 6px !important;
+    }
+    .modal-body { padding: 12px; max-height: calc(100vh - 140px); overflow-y: auto; }
+    .modal-footer { flex-wrap: wrap; gap: 6px; }
+    .modal-footer .btn { margin: 0; }
+
+    /* ---------- Inicio (gráficas) ---------- */
+    .kpi { padding: 8px 12px; }
+    .kpi h2 { font-size: 22px; }
+    #graficaDias, #graficaPlantas { height: 280px !important; }
+
+    /* ---------- Varios ---------- */
+    .select2-container { width: 100% !important; }
+    .alert { font-size: 14px; }
+    img { max-width: 100%; height: auto; }
+}
+
+/* Celulares muy angostos */
+@media (max-width: 400px) {
+    .page-wrapper .table { font-size: 11px; }
+    .card-title, h4.card-title { font-size: 16px; }
+}

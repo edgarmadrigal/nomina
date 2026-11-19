@@ -46,52 +46,57 @@ function editar(id) {
     $('#id').val(id);
     Modulo.fnCargarSelectsModal(id);
 }
-function eliminar(id_delete,horario,dia){ 
-    var varURL = Modulo.baseurl + "horariosEmpresa/consultaHorario"; 
+// borra todas las asignaciones de la empresa (vigentes y anteriores) que tienen ese horario ese día;
+// antes muestra cuáles son y pide confirmación
+function eliminar(idHorario,horario,dia){
+    var datos = { empresa_id: parseInt($('#id_empresa').val()), dia: parseInt(dia), idHorario: parseInt(idHorario) };
     $.ajax({
-        url: varURL,
-        data: {
-            empresa_id: parseInt($('#id_empresa').val()),
-            dia:parseInt(dia)
-        },
+        url: Modulo.baseurl + 'horariosEmpresa/delete',
         type: 'post',
-    }).done(function (data) {        
-        Modulo.dtValidar=JSON.parse(data);
-        if(Modulo.dtValidar.length>1){
-            swal({
-                title: "Estas seguro?",
-                text: "Se eliminara el horario "+horario,
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    $.ajax({
-                        url:  Modulo.baseurl+'horariosEmpresa/delete',
-                        type: 'post',
-                        dataType: 'json',
-                        data: {
-                            id: id_delete
-                        }
-                    }).done(function (data) {
-                        if (data) {
-                            // update the manageMemberTable
-                            Modulo.fnObtenerDatos($('#id_empresa').val());   
-                        } else {                            
-                            // update the manageMemberTable
-                            Modulo.fnObtenerDatos($('#id_empresa').val());   
-                        }
-                    });
-                } else {
-                    // update the manageMemberTable
-                            Modulo.fnObtenerDatos($('#id_empresa').val());   
-                }
+        dataType: 'json',
+        data: $.extend({ soloContar: 1 }, datos)
+    }).done(function (r) {
+        if (!r || !r.exito) { swal('No se pudo', (r && r.mensaje) || 'Error al consultar el horario.', 'error'); return; }
+        var lista = r.asignaciones || [];
+        if (!lista.length) { swal('Sin asignaciones', 'Ya no hay asignaciones con el horario ' + horario + '.', 'info'); Modulo.fnObtenerDatos($('#id_empresa').val()); return; }
+        var esc = function (s) { return $('<div>').text(s == null ? '' : String(s)).html(); };
+        var empleados = {};
+        var filas = lista.map(function (a) {
+            empleados[a.empleado_id] = 1;
+            return '<tr><td>' + esc(a.empleado_id) + '</td><td>' + esc(a.nombre) + '</td><td>' + esc(a.fechaAsignacion) + '</td><td>' +
+                   (a.activo ? 'Activa' : 'Inactiva') + '</td></tr>';
+        }).join('');
+        var cont = document.createElement('div');
+        // colores fijos: el tema oscuro pinta tablas y párrafos claros sobre el fondo blanco de la ventana
+        filas = filas.replace(/<td>/g, '<td style="color:#333;background:#fff;border-top:1px solid #ddd;padding:4px 6px;white-space:nowrap">');
+        cont.innerHTML = '<p style="text-align:left;color:#444;font-size:14px">Se borrarán <b>' + lista.length + '</b> asignación(es) de <b>' + Object.keys(empleados).length +
+            '</b> empleado(s): la vigente y las anteriores que tienen este horario. Se borra la asignación completa (todos los días).</p>' +
+            '<div style="max-height:300px;overflow:auto;border:1px solid #ddd">' +
+            '<table style="width:100%;font-size:12px;text-align:left;background:#fff;color:#333;border-collapse:collapse"><thead><tr>' +
+            ['Empleado', 'Nombre', 'Fecha', 'Estatus'].map(function (t) {
+                return '<th style="color:#333;background:#f2f2f2;padding:4px 6px;position:sticky;top:0">' + t + '</th>';
+            }).join('') + '</tr></thead><tbody>' + filas + '</tbody></table></div>';
+        swal({
+            title: "¿Borrar el horario " + horario + "?",
+            content: cont,
+            icon: "warning",
+            buttons: ["Cancelar", "Borrar"],
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (!willDelete) return;
+            $.ajax({
+                url:  Modulo.baseurl+'horariosEmpresa/delete',
+                type: 'post',
+                dataType: 'json',
+                data: datos
+            }).done(function (r2) {
+                if (r2 && r2.exito) swal('Listo', 'Se borraron ' + r2.total + ' asignación(es).', 'success');
+                else swal('No se pudo', (r2 && r2.mensaje) || 'Error al eliminar.', 'error');
+                Modulo.fnObtenerDatos($('#id_empresa').val());
             });
-        }else{
-            alert('no puedes dejar a un empleado sin horario!');
-        }
-    }); 
+        });
+    });
 }
 
 Modulo = {
@@ -219,7 +224,7 @@ Modulo = {
         lunes=$('#lunes').DataTable({
             colReorder: false,
             responsive: true,
-            "order": [ 5, 'asc' ],     
+            "order": [ 4, 'asc' ],     
             "bDestroy": true,
             "scrollX": false,//"100%",
             "draw": true,           
@@ -279,7 +284,7 @@ Modulo = {
                 "mData": function (source, type, val) {
                     return source.fechaAsignacion;
                         }
-            },     
+            },   
             
             {
                 "aTargets": [5],
@@ -289,8 +294,8 @@ Modulo = {
                             <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acciones <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a type="button" onclick="editar(`+source.id+`)" data-toggle="modal" data-target="#ModificarDia">Editar</a></li>
-                            <li><a type="button" onclick="eliminar(`+source.id+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
+                            <li><a type="button" href="javascript:void(0)" onclick="VerHorario.fnAbrir(`+source.dia+`,`+source.idHorario+`)">Editar / ver empleados</a></li>
+                            <li><a type="button" onclick="eliminar(`+source.idHorario+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
                             </ul>
                             </div>`;
                     }
@@ -304,28 +309,28 @@ Modulo = {
                 $.extend( true, {}, buttonCommon, {
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2, 3,4 ,5]
                     }                    
                     ,title: 'HorarioLunes'  // titulo de excel
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                     ,title: 'HorarioLunes'
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                     ,title: 'HorarioLunes'
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                     ,title: 'HorarioLunes'
                 } ),
@@ -357,7 +362,7 @@ Modulo = {
         martes=$('#martes').DataTable({
             colReorder: false,
             responsive: true,
-            "order": [ 5, 'asc' ],       
+            "order": [ 4, 'asc' ],       
             "bDestroy": true,
             "scrollX": false,//"100%",
             "draw": true,           
@@ -417,7 +422,7 @@ Modulo = {
                 "mData": function (source, type, val) {
                     return source.fechaAsignacion;
                         }
-            },     
+            },   
             
             {
                 "aTargets": [5],
@@ -427,8 +432,8 @@ Modulo = {
                             <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acciones <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a type="button" onclick="editar(`+source.id+`)" data-toggle="modal" data-target="#ModificarDia">Editar</a></li>
-                            <li><a type="button" onclick="eliminar(`+source.id+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
+                            <li><a type="button" href="javascript:void(0)" onclick="VerHorario.fnAbrir(`+source.dia+`,`+source.idHorario+`)">Editar / ver empleados</a></li>
+                            <li><a type="button" onclick="eliminar(`+source.idHorario+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
                             </ul>
                             </div>`;
                     }
@@ -441,33 +446,32 @@ Modulo = {
                 $.extend( true, {}, buttonCommon, {
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
-                    }
-                    ,title: 'HorarioMartes'
+                        columns: [ 0, 1, 2, 3,4 ,5]
+                    }                    
+                    ,title: 'HorarioLunes'  // titulo de excel
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
-                    ,title: 'HorarioMartes'
+                    ,title: 'HorarioLunes'
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
-                    ,title: 'HorarioMartes'
+                    ,title: 'HorarioLunes'
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
-                    ,title: 'HorarioMartes'
+                    ,title: 'HorarioLunes'
                 } ),
-            ]
-        });
+            ]        });
         martes.columns().every( function () {
             var that = this;         
             $( 'input', this.header() ).on( 'keyup change', function () {
@@ -494,7 +498,7 @@ Modulo = {
             data: Modulo.dtMiercoles,    
             colReorder: false,
             responsive: true,
-            "order": [ 5, 'asc' ],        
+            "order": [ 4, 'asc' ],        
             "bDestroy": true,
             "scrollX": false,//"100%",
             "draw": true,           
@@ -553,8 +557,7 @@ Modulo = {
                 "mData": function (source, type, val) {
                     return source.fechaAsignacion;
                         }
-            },     
-            
+            },   
             {
                 "aTargets": [5],
                 "aName": "Opciones", 
@@ -563,8 +566,8 @@ Modulo = {
                             <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acciones <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a type="button" onclick="editar(`+source.id+`)" data-toggle="modal" data-target="#ModificarDia">Editar</a></li> 
-                            <li><a type="button" onclick="eliminar(`+source.id+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
+                            <li><a type="button" href="javascript:void(0)" onclick="VerHorario.fnAbrir(`+source.dia+`,`+source.idHorario+`)">Editar / ver empleados</a></li>
+                            <li><a type="button" onclick="eliminar(`+source.idHorario+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
                             </ul>
                             </div>`;
                     }
@@ -582,28 +585,28 @@ Modulo = {
                 $.extend( true, {}, buttonCommon, {
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2, 3,4,5 ]
                     }
                     ,title: 'HorarioMiercoles'
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                     ,title: 'HorarioMiercoles'
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                     ,title: 'HorarioMiercoles'
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                     ,title: 'HorarioMiercoles'
                 } ),
@@ -636,7 +639,7 @@ Modulo = {
             data: Modulo.dtJueves,    
             colReorder: false,
             responsive: true,
-            "order": [ 5, 'asc' ],       
+            "order": [ 4, 'asc' ],       
             "bDestroy": true,
             "scrollX": false,//"100%",
             "draw": true,           
@@ -695,8 +698,7 @@ Modulo = {
                 "mData": function (source, type, val) {
                     return source.fechaAsignacion;
                         }
-            },     
-            
+            },               
             {
                 "aTargets": [5],
                 "aName": "Opciones", 
@@ -705,8 +707,8 @@ Modulo = {
                             <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acciones <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a type="button" onclick="editar(`+source.id+`)" data-toggle="modal" data-target="#ModificarDia">Editar</a></li> 
-                            <li><a type="button" onclick="eliminar(`+source.id+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
+                            <li><a type="button" href="javascript:void(0)" onclick="VerHorario.fnAbrir(`+source.dia+`,`+source.idHorario+`)">Editar / ver empleados</a></li>
+                            <li><a type="button" onclick="eliminar(`+source.idHorario+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
                             </ul>
                             </div>`;
                     }
@@ -724,25 +726,25 @@ Modulo = {
                 $.extend( true, {}, buttonCommon, {
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
             ]
@@ -774,7 +776,7 @@ Modulo = {
             data: Modulo.dtViernes,    
             colReorder: false,
             responsive: true,
-            "order": [ 5, 'asc' ],      
+            "order": [ 4, 'asc' ],      
             "bDestroy": true,
             "scrollX": false,//"100%",
             "draw": true,           
@@ -833,7 +835,7 @@ Modulo = {
                 "mData": function (source, type, val) {
                     return source.fechaAsignacion;
                         }
-            },     
+            },   
             
             {
                 "aTargets": [5],
@@ -843,8 +845,8 @@ Modulo = {
                             <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acciones <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a type="button" onclick="editar(`+source.id+`)" data-toggle="modal" data-target="#ModificarDia">Editar</a></li>    
-                            <li><a type="button" onclick="eliminar(`+source.id+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
+                            <li><a type="button" href="javascript:void(0)" onclick="VerHorario.fnAbrir(`+source.dia+`,`+source.idHorario+`)">Editar / ver empleados</a></li>
+                            <li><a type="button" onclick="eliminar(`+source.idHorario+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
                             </ul>
                             </div>`;
                     }
@@ -862,25 +864,25 @@ Modulo = {
                 $.extend( true, {}, buttonCommon, {
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2, 3,4 ,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
             ]
@@ -912,7 +914,7 @@ Modulo = {
             data: Modulo.dtSabado,    
             colReorder: false,
             responsive: true,
-            "order": [ 5, 'asc' ],           
+            "order": [ 4, 'asc' ],           
             "bDestroy": true,
             "scrollX": false,//"100%",
             "draw": true,           
@@ -971,7 +973,7 @@ Modulo = {
                 "mData": function (source, type, val) {
                     return source.fechaAsignacion;
                         }
-            },     
+            },   
             
             {
                 "aTargets": [5],
@@ -981,8 +983,9 @@ Modulo = {
                             <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acciones <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a type="button" onclick="editar(`+source.id+`)" data-toggle="modal" data-target="#ModificarDia">Editar</a></li> 
-                            <li><a type="button" onclick="eliminar(`+source.id+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
+                            <li><a type="button" href="javascript:void(0)" onclick="VerHorario.fnAbrir(`+source.dia+`,`+source.idHorario+`)">Editar / ver empleados</a></li>
+                            <li><a type="button" onclick="eliminar(`+source.idHorario+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
+                            </ul>
                             </div>`;
                     }
                 },
@@ -999,25 +1002,25 @@ Modulo = {
                 $.extend( true, {}, buttonCommon, {
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2, 3,4,5 ]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
             ]
@@ -1049,7 +1052,7 @@ Modulo = {
             data: Modulo.dtDomingo,    
             colReorder: true,
             responsive: true,
-            "order": [ 5, 'asc' ],       
+            "order": [ 4, 'asc' ],       
             "bDestroy": true,
             "scrollX": false,//"100%",
             "draw": true,           
@@ -1118,8 +1121,8 @@ Modulo = {
                             <button type="button" class="btn btn-default dropdown-toggle" style="background-color: #20aee3;" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acciones <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a type="button" onclick="editar(`+source.id+`)" data-toggle="modal" data-target="#ModificarDia">Editar</a></li> 
-                            <li><a type="button" onclick="eliminar(`+source.id+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
+                            <li><a type="button" href="javascript:void(0)" onclick="VerHorario.fnAbrir(`+source.dia+`,`+source.idHorario+`)">Editar / ver empleados</a></li>
+                            <li><a type="button" onclick="eliminar(`+source.idHorario+`,'`+String(source.horario)+`',`+source.dia+`)">Eliminar</a></li>
                             </ul>
                             </div>`;
                     }
@@ -1137,25 +1140,25 @@ Modulo = {
                 $.extend( true, {}, buttonCommon, {
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2, 3,4 ,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
                 $.extend( true, {}, buttonCommon, {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4]
+                        columns: [ 0, 1, 2, 3,4,5]
                     }
                 } ),
             ]
@@ -1311,131 +1314,133 @@ Modulo = {
                     Modulo.editMeta.originalIdHorario = data[0]['idhorario' + (data[0].dia === 1 ? 'Lunes' : data[0].dia === 2 ? 'Martes' : data[0].dia === 3 ? 'Miercoles' : data[0].dia === 4 ? 'Jueves' : data[0].dia === 5 ? 'Viernes' : data[0].dia === 6 ? 'Sabado' : 'Domingo')];
                     if(data[0].horarioLunes=='DESCANSO'){
                         $('#horarioLunes').val(data[0].idhorarioLunes);   
-                        $("#checkLunes").attr('checked', false);
-                        $( "#checkLunes" ).prop( "checked", false );
                         $('#tipoLunes').val();
                         $('#entradaLunes').val();
                         $('#salidaLunes').val();
                         $('#horarioLunes').prop("disabled", true);
                     }else{
                         $('#horarioLunes').val(data[0].idhorarioLunes);  
-                        $("#checkLunes").attr('checked', true);
-                        $( "#checkLunes" ).prop( "checked", true ); 
                         $('#tipoLunes').val(data[0].tipoLunes);   
                         $('#entradaLunes').val(data[0].entradaLunes);   
                         $('#salidaLunes').val(data[0].salidaLunes);                 
                         $('#horarioLunes').prop("disabled", false);
+						$('#horasTrabajadasLunes').val(data[0].horasTrabajadasLunes);
+						$('#minutosTrabajadosLunes').val(data[0].minutosTrabajadosLunes);
+						$('#horasTrabajadasLunes').data('default', data[0].horasTrabajadasLunes);
+						$('#minutosTrabajadosLunes').data('default', data[0].minutosTrabajadosLunes);
                     }
                     if(data[0].horarioMartes=='DESCANSO'){
                         $('#horarioMartes').val(data[0].idhorarioMartes);  
-                        $("#checkMartes").attr('checked', false);
-                        $( "#checkMartes" ).prop( "checked", false ); 
                         $('#tipoMartes').val();
                         $('#entradaMartes').val();
                         $('#salidaMartes').val();
                         $('#horarioMartes').prop("disabled", true);
                     }else{
                         $('#horarioMartes').val(data[0].idhorarioMartes); 
-                        $("#checkMartes").attr('checked', true);
-                        $( "#checkMartes" ).prop( "checked", true );  
                         $('#tipoMartes').val(data[0].tipoMartes);   
                         $('#entradaMartes').val(data[0].entradaMartes);   
                         $('#salidaMartes').val(data[0].salidaMartes);                 
                         $('#horarioMartes').prop("disabled", false);
+						$('#minutosTrabajadosMartes').val(data[0].minutosTrabajadosMartes);
+						$('#horasTrabajadasMartes').data('default', data[0].horasTrabajadasMartes);
+						$('#minutosTrabajadosMartes').data('default', data[0].minutosTrabajadosMartes);
                     }
         
                     if(data[0].horarioMiercoles=='DESCANSO'){
                         $('#horarioMiercoles').val(data[0].idhorarioMiercoles);
-                        $("#checkMiercoles").attr('checked', false);
-                        $( "#checkMiercoles" ).prop( "checked", false );   
                         $('#tipoMiercoles').val();
                         $('#entradaMiercoles').val();
                         $('#salidaMiercoles').val();
                         $('#horarioMiercoles').prop("disabled", true);
                     }else{
                         $('#horarioMiercoles').val(data[0].idhorarioMiercoles);   
-                        $("#checkMiercoles").attr('checked', true);
-                        $( "#checkMiercoles" ).prop( "checked", true );
                         $('#tipoMiercoles').val(data[0].tipoMiercoles);   
                         $('#entradaMiercoles').val(data[0].entradaMiercoles);   
                         $('#salidaMiercoles').val(data[0].salidaMiercoles);                 
                         $('#horarioMiercoles').prop("disabled", false);
+						
+						$('#minutosTrabajadosMiercoles').val(data[0].minutosTrabajadosMiercoles);
+						$('#horasTrabajadasMiercoles').data('default', data[0].horasTrabajadasMiercoles);
+						$('#minutosTrabajadosMiercoles').data('default', data[0].minutosTrabajadosMiercoles);
                     }
         
                     if(data[0].horarioJueves=='DESCANSO'){
-                        $('#horarioJueves').val(data[0].idhorarioJueves);   
-                        $("#checkJueves").attr('checked', false);
-                        $( "#checkJueves" ).prop( "checked", false );
+                        $('#horarioJueves').val(data[0].idhorarioJueves); 
                         $('#tipoJueves').val();
                         $('#entradaJueves').val();
                         $('#salidaJueves').val();
                         $('#horarioJueves').prop("disabled", true);
                     }else{
-                        $("#checkJueves").attr('checked', true);
-                        $( "#checkJueves" ).prop( "checked", true );
                         $('#horarioJueves').val(data[0].idhorarioJueves);   
                         $('#tipoJueves').val(data[0].tipoJueves);   
                         $('#entradaJueves').val(data[0].entradaJueves);   
                         $('#salidaJueves').val(data[0].salidaJueves);                 
                         $('#horarioJueves').prop("disabled", false);
+						
+						$('#minutosTrabajadosJueves').val(data[0].minutosTrabajadosJueves);
+						$('#horasTrabajadasJueves').data('default', data[0].horasTrabajadasJueves);
+						$('#minutosTrabajadosJueves').data('default', data[0].minutosTrabajadosJueves);
                     }
         
                     if(data[0].horarioViernes=='DESCANSO'){
                         $('#horarioViernes').val(data[0].idhorarioViernes);  
-                        $("#checkViernes").attr('checked', false);
-                        $( "#checkViernes" ).prop( "checked", false ); 
                         $('#tipoViernes').val();
                         $('#entradaViernes').val();
                         $('#salidaViernes').val();
                         $('#horarioViernes').prop("disabled", true);
                     }else{
                         $('#horarioViernes').val(data[0].idhorarioViernes);   
-                        $("#checkViernes").attr('checked', true);
-                        $( "#checkViernes" ).prop( "checked", true );
                         $('#tipoViernes').val(data[0].tipoViernes);   
                         $('#entradaViernes').val(data[0].entradaViernes);   
                         $('#salidaViernes').val(data[0].salidaViernes);                 
                         $('#horarioViernes').prop("disabled", false);
+						
+						
+						$('#minutosTrabajadosViernes').val(data[0].minutosTrabajadosViernes);
+						$('#horasTrabajadasViernes').data('default', data[0].horasTrabajadasViernes);
+						$('#minutosTrabajadosViernes').data('default', data[0].minutosTrabajadosViernes);
                     }
         
                     if(data[0].horarioSabado=='DESCANSO'){
                         $('#horarioSabado').val(data[0].idhorarioSabado);   
-                        $("#checkSabado").attr('checked', false);
-                        $( "#checkSabado" ).prop( "checked", false );
                         $('#tipoSabado').val();
                         $('#entradaSabado').val();
                         $('#salidaSabado').val();
                         $('#horarioSabado').prop("disabled", true);
                     }else{
                         $('#horarioSabado').val(data[0].idhorarioSabado);   
-                        $("#checkSabado").attr('checked', true);
-                        $( "#checkSabado" ).prop( "checked", true );
                         $('#tipoSabado').val(data[0].tipoSabado);   
                         $('#entradaSabado').val(data[0].entradaSabado);   
                         $('#salidaSabado').val(data[0].salidaSabado);                 
                         $('#horarioSabado').prop("disabled", false);
+						
+						
+						$('#minutosTrabajadosSabado').val(data[0].minutosTrabajadosSabado);
+						$('#horasTrabajadasSabado').data('default', data[0].horasTrabajadasSabado);
+						$('#minutosTrabajadosSabado').data('default', data[0].minutosTrabajadosSabado);
                     }
         
                     if(data[0].horarioDomingo=='DESCANSO'){
                         $('#horarioDomingo').val(data[0].idhorarioDomingo);  
-                        $("#checkDomingo").attr('checked', false);
-                        $( "#checkDomingo" ).prop( "checked", false ); 
                         $('#tipoDomingo').val();
                         $('#entradaDomingo').val();
                         $('#salidaDomingo').val();
                         $('#horarioDomingo').prop("disabled", true);
                     }else{
                         $('#horarioDomingo').val(data[0].idhorarioDomingo); 
-                        $("#checkDomingo").attr('checked', true);
-                        $( "#checkDomingo" ).prop( "checked", true );  
                         $('#tipoDomingo').val(data[0].tipoDomingo);   
                         $('#entradaDomingo').val(data[0].entradaDomingo);   
                         $('#salidaDomingo').val(data[0].salidaDomingo);                 
                         $('#horarioDomingo').prop("disabled", false);
+						
+						
+						$('#minutosTrabajadosDomingo').val(data[0].minutosTrabajadosDomingo);
+						$('#horasTrabajadasDomingo').data('default', data[0].horasTrabajadasDomingo);
+						$('#minutosTrabajadosDomingo').data('default', data[0].minutosTrabajadosDomingo);
                     }                     
                     $('#descripcion').val(data[0].descripcion);
                     $('#fechaAsignacion').val(data[0].fechaAsignacion);
-                    $('#cantidad').val(data[0].cantidad);
+                    $('#cantidad').val(data[0].cantidad == null ? '' : Number(data[0].cantidad));
                     
                     ///Debuggear a ver como se puede acomodar en la vista
         
@@ -1445,9 +1450,24 @@ Modulo = {
             });
             }
         });
+    }       
+    //Carga los selects
+    , fnCargarSelects(){               
+        var varURL = Modulo.baseurl + "checadasBiostar/consultaPlanta";
+        $.ajax({
+            url:  varURL,
+            type: 'post',
+            dataType: 'json'
+        }).done(function (data) {                
+            perfiles= JSON.parse(JSON.stringify(data));
+            $('#id_empresa').append('<option value="">Selecciona una planta</option>');
+            $.each(perfiles, function( index, value ) { 
+                $('#id_empresa').append('<option value="'+value.id+'">'+value.nombre+'</option>');
+                });
+        });
     }    
     , Init: function () {
-       // Modulo.fnCargarSelects();
+        Modulo.fnCargarSelects();
     }
 }
 
@@ -1530,6 +1550,7 @@ $(document).ready(function () {
                     $("#horarioViernes").val(valueSelected).change();
                     $("#horarioSabado").val(valueSelected).change();
                     $("#horarioDomingo").val(valueSelected).change();
+
 
                 }
             });
@@ -1752,7 +1773,7 @@ $(document).ready(function () {
                 if (data) { 
                     $('#tipoSabado').val(data[0].tipo);
                     $('#entradaSabado').val(data[0].entrada);
-                    $('#salidaSabado').val(data[0].salida);
+                    $('#salidaSabado').val(data[0].salida);					
                 }
             });
         }else{
@@ -1796,7 +1817,7 @@ $(document).ready(function () {
                 if (data) { 
                     $('#tipoDomingo').val(data[0].tipo);
                     $('#entradaDomingo').val(data[0].entrada);
-                    $('#salidaDomingo').val(data[0].salida);
+                    $('#salidaDomingo').val(data[0].salida);				
                 }
             });
         }else{
@@ -2046,7 +2067,8 @@ $(document).ready(function () {
                             'idhorarioDomingo'      : $('#horarioDomingo').val(),
                             'descripcion'           : $('#descripcion').val(),
                             'fechaAsignacion'       : $('#fechaAsignacion').val(),
-                            'cantidad'              : $("#cantidad").val()
+                            'cantidad'              : $("#cantidad").val(),
+							// ... (los 7 días, igual que en horariosUsuario.js)
                         }
                     }).done(function (data) {
                         if (data) {
@@ -2074,50 +2096,62 @@ $(document).ready(function () {
                         }
                     });
                 }else{        
-                    ///GUARDAR NUEVO  
-                    $.ajax({
-                        url: Modulo.baseurl+'horariosEmpresa/AgregarHorariosEmpresa',
-                        type: 'post',
-                        dataType: 'json',
-                        data: {
-                            'empresa_id'           : $('#id_empresa').val().trim(),
-                            'idhorarioLunes'        : $('#horarioLunes').val(),
-                            'idhorarioMartes'       : $('#horarioMartes').val(),
-                            'idhorarioMiercoles'    : $('#horarioMiercoles').val(),
-                            'idhorarioJueves'       : $('#horarioJueves').val(),
-                            'idhorarioViernes'      : $('#horarioViernes').val(),
-                            'idhorarioSabado'       : $('#horarioSabado').val(),
-                            'idhorarioDomingo'      : $('#horarioDomingo').val(),
-                            'descripcion'           : $('#descripcion').val(),
-                            'fechaAsignacion'       : $('#fechaAsignacion').val(),
-                            'cantidad'              : $("#cantidad").val()
-                        }
-                    }).done(function (data) {
-                        if (data) {
-                            Modulo.isEditing = false;
-                            swal({
-                                    title: "Tus datos han sido agregados",
-                                    text: "Se agrego correctamente",
-                                    icon: "success",
-                                })
-                                .then((value) => {
-                                    // hide the modal
-                                    $("#ModificarDia").modal('hide');
-                                    // update the manageMemberTable
-                                    Modulo.fnObtenerDatos($('#id_empresa').val());   
-                                    Modulo.fnObtenerDatos($('#id_empresa').val());   
-                                });
-                        } else {
-                            swal({
-                                    title: "Tus datos no han sido actualizados!",
-                                    text: "No se agrego correctamente",
-                                    icon: "warning",
-                                })
-                                .then((value) => {
-                                    window.location.assign( Modulo.baseurl+'horariosEmpresa');
-                                });
-                        }
-                    });
+                    ///GUARDAR NUEVO
+                    // Antes de guardar se pregunta a quién se le asigna: a todos o solo a algunos,
+                    // con los empleados de turno nocturno separados (assets/js/horariosEmpresaAplicar.js).
+                    var empresaNueva = $('#id_empresa').val().trim();
+                    var guardarNuevo = function (empleados) {
+                        $.ajax({
+                            url: Modulo.baseurl+'horariosEmpresa/AgregarHorariosEmpresa',
+                            type: 'post',
+                            dataType: 'json',
+                            data: {
+                                'empresa_id'           : empresaNueva,
+                                'idhorarioLunes'        : $('#horarioLunes').val(),
+                                'idhorarioMartes'       : $('#horarioMartes').val(),
+                                'idhorarioMiercoles'    : $('#horarioMiercoles').val(),
+                                'idhorarioJueves'       : $('#horarioJueves').val(),
+                                'idhorarioViernes'      : $('#horarioViernes').val(),
+                                'idhorarioSabado'       : $('#horarioSabado').val(),
+                                'idhorarioDomingo'      : $('#horarioDomingo').val(),
+                                'descripcion'           : $('#descripcion').val(),
+                                'fechaAsignacion'       : $('#fechaAsignacion').val(),
+                                'cantidad'              : $("#cantidad").val(),
+                                'respetarNocturnos'     : 0,
+                                // null = a todos; arreglo = solo a esos empleados
+                                'empleados'             : empleados
+                            }
+                        }).done(function (data) {
+                            if (data && data.exito) {
+                                Modulo.isEditing = false;
+                                $('#modalAplicarA').modal('hide');
+                                var texto = 'Se asignó a ' + (data.asignados || 0) + ' empleado(s).';
+                                swal({
+                                        title: "Tus datos han sido agregados",
+                                        text: texto,
+                                        icon: "success",
+                                    })
+                                    .then((value) => {
+                                        // hide the modal
+                                        $("#ModificarDia").modal('hide');
+                                        // update the manageMemberTable
+                                        Modulo.fnObtenerDatos(empresaNueva);
+                                        Modulo.fnObtenerDatos(empresaNueva);
+                                    });
+                            } else {
+                                swal({
+                                        title: "Tus datos no han sido actualizados!",
+                                        text: "No se agrego correctamente",
+                                        icon: "warning",
+                                    })
+                                    .then((value) => {
+                                        window.location.assign( Modulo.baseurl+'horariosEmpresa');
+                                    });
+                            }
+                        });
+                    };
+
+                    AplicarA.fnAbrir(empresaNueva, $('#id_empresa option:selected').text(), guardarNuevo);
                 }    
             }else{                
                 alert('Favor de seleccionar una fecha de Asignación');

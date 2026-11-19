@@ -15,7 +15,11 @@
                                         <div class="messages"></div>
                                         <button id="nuevo" class="btn btn-info" data-toggle="modal" data-target="#myModal_agregar" >
                                             <i class="fa fa-plus-circle"></i> Agregar empleado</button>
-                                        </button>  
+                                        <a href="EmpleadosController_Eventuales/machote" class="btn btn-secondary" download>
+                                            <i class="fa fa-download"></i> Descargar machote</a>
+                                        <button id="btnMasiva" type="button" class="btn btn-success">
+                                            <i class="fa fa-upload"></i> Alta masiva</button>
+                                        <input id="archivoMasiva" type="file" accept=".xlsx,.xls,.csv" style="display:none;">
                                     </div> 
                                 </div>      
                                 <div class="row">

@@ -57,8 +57,8 @@ class asistencias extends CI_Controller {
       $anio=$this->input->post('anio');
       $planta=$this->input->post('planta');
       $this->load->model('Asistencia');
-      $data = $this->Asistencia->actualizaPlanta($NoSemana,$anio,$planta);
-      echo json_encode($data);    
+      $data =     $this->Asistencia->actualizaPlanta($NoSemana, $anio, $planta);
+    echo json_encode(array('ok' => true));  
     }
     
     public function borrar(){      
@@ -199,8 +199,6 @@ class asistencias extends CI_Controller {
        
 
     }
-
-
     public function reporteAsistenciaNominas(){
       
       header('Access-Control-Allow-Origin: *'); 

@@ -45,47 +45,7 @@
                             </div>                    
                             <div class="col-md-8">
                                     <label style="font-weight: bold!important;">Empresa</label>
-                                            <select class="custom-select col-12" id="id_empresa" required>
-                                                <option value="" disabled selected>Selecciona una planta</option>
-                                                <option value="1" > ACABADOS_ESPECIALES				</option>
-                                                <option value="2" > ADMINISTRATIVO_MMS				</option>
-                                                <option value="3" > CORTE							</option>
-                                                <option value="4" > DESARROLLO						</option>
-                                                <option value="5" > IBAMENSUAL						</option>
-                                                <option value="6" > LAVANDERIA						</option>
-                                                <option value="7" > PLANCHAS						</option>
-                                                <option value="8" > PROCESOS_SECOS					</option>
-                                                <option value="9" > SEGUNDAS						</option>
-                                                <option value="10"> TERMINADO						</option>
-                                                <option value="11"> NAZARENO1						</option>
-                                                <option value="12"> NAZARENO2						</option>
-                                                <option value="13"> NAZARENO3						</option>
-                                                <option value="14"> CUENCAME						</option>
-                                                <option value="15"> PILAR							</option>
-                                                <option value="16"> DTL3							</option>
-                                                <option value="17"> DTL								</option>
-                                                <option value="18"> DTLNOM2							</option>
-                                                <option value="19"> ADMINISTRATIVO_TBG				</option>
-                                                <option value="20"> CUENCAME_CROM					</option>
-                                                <option value="21"> PEDRICEÑA						</option>
-                                                <option value="22"> SYSEL_NOM						</option>
-                                                <option value="25"> EVENTUALES						</option>
-                                                <option value="26"> LEON_GUZMAN						</option>
-                                                <option value="27"> TCT								</option>
-                                                <option value="28"> LEON_GUZMAN_ALMOHADAS			</option>		
-                                                <option value="29"> DTLNOM_MENS						</option>			
-                                                <option value="30"> ARCINAS							</option>			
-                                                <option value="32"> TRANSPORTELAGOMA_NOM			</option>			
-                                                <option value="33"> DELTA2							</option>			
-                                                <option value="34"> DELTA3							</option>			
-                                                <option value="35"> DTLNOM							</option>			
-                                                <option value="36"> DTLNOM_MENS						</option>							
-                                                <option value="37"> DTLNOM2_						</option>			
-                                                <option value="38"> DTL3_							</option>			
-                                                <option value="39"> TLAHUALILO						</option>			
-                                                <option value="40"> DELTA2							</option>			
-                                                <option value="41"> TBG								</option>	 
-                                </select>
+                                            <select class="custom-select col-12" id="id_empresa" required></select>
                             </div>                                         
                             <div class="row">
                                 <div class="col-12">   
@@ -138,6 +98,7 @@
                                                         <th>Descripcion</th>
                                                         <th>Entrada</th>
                                                         <th>Salida</th>
+                                                        
                                                         <th>Fecha Asignacion</th>
                                                         <th>Opciones</th>
                                                     </tr>
@@ -148,6 +109,7 @@
                                                         <th>Descripcion</th>
                                                         <th>Entrada</th>
                                                         <th>Salida</th>
+                                                        
                                                         <th>Fecha Asignacion</th>
                                                         <th>Opciones</th>
                                                     </tr>
@@ -169,22 +131,24 @@
                                               <table id="martes" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
                                                   <thead>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </thead>
                                                   <tfoot>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </tfoot>
                                               </table>
@@ -203,22 +167,27 @@
                                           <div class="col-12">
                                               <table id="miercoles" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
                                                   <thead>
+                                                      
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
-                                                      </tr>
+														<th>Turno</th>
+														<th>Descripcion</th>
+														<th>Entrada</th>
+														<th>Salida</th>
+														
+														<th>Fecha Asignacion</th>
+														<th>Opciones</th>
+													</tr>
                                                   </thead>
                                                   <tfoot>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
-                                                      </tr>
+														<th>Turno</th>
+														<th>Descripcion</th>
+														<th>Entrada</th>
+														<th>Salida</th>
+														
+														<th>Fecha Asignacion</th>
+														<th>Opciones</th>
+													</tr>
                                                   </tfoot>
                                               </table>
                                           </div>
@@ -237,22 +206,24 @@
                                               <table id="jueves" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
                                                   <thead>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </thead>
                                                   <tfoot>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </tfoot>
                                               </table>
@@ -272,22 +243,24 @@
                                               <table id="viernes" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
                                                   <thead>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </thead>
                                                   <tfoot>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </tfoot>
                                               </table>
@@ -307,22 +280,23 @@
                                               <table id="sabado" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
                                                   <thead>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        <th>Fecha Asignacion</th>
+                                                        
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </thead>
                                                   <tfoot>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </tfoot>
                                               </table>
@@ -342,22 +316,24 @@
                                               <table id="domingo" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
                                                   <thead>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </thead>
                                                   <tfoot>
                                                       <tr>
-                                                          <th>Turno</th>
-                                                          <th>Descripcion</th>
-                                                          <th>Entrada</th>
-                                                          <th>Salida</th>
-                                                          <th>Fecha Asignacion</th>
-                                                          <th>Opciones</th>
+                                                        <th>Turno</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        
+                                                        <th>Fecha Asignacion</th>
+                                                        <th>Opciones</th>
                                                       </tr>
                                                   </tfoot>
                                               </table>
@@ -467,7 +443,7 @@
                                         </th>
                                         <th>Salida
                                             <input type="time" disabled="disabled" id="salidaMiercoles">
-                                        </th>
+                                        </th>											
                                         </tr>
                                         
                                         <tr>
@@ -492,7 +468,7 @@
                                         </th>
                                         <th>Salida
                                             <input type="time" disabled="disabled" id="salidaJueves">
-                                        </th>
+                                        </th>											
                                         </tr>
                                         
                                         <tr>
@@ -518,8 +494,7 @@
                                         <th>Salida
                                             <input type="time" disabled="disabled" id="salidaViernes">
                                         </th>
-                                        </tr>
-                                        
+                                        </tr>                                        
                                         <tr>
                                         <th>
                                             <label class="custom-control custom-checkbox">
@@ -581,7 +556,7 @@
                         <input type="text" id="descripcion" class="form-control valid">  
 
                         <label style="font-weight: bold!important;">Cantidad de dias por Semana:</label> 
-                        <input type="number" id="cantidad" class="form-control valid">
+                        <input type="number" id="cantidad" class="form-control valid" step="0.01" min="0" max="7" placeholder="Ej. 6 o 5.5 (admite decimales)">
 
                         <center>
                     </fieldset>
@@ -595,7 +570,111 @@
     </div>
 </div>
 
-<script src="assets/js/horariosEmpresa.js"></script>
+<!-- ¿A quién se le asigna el horario? (assets/js/horariosEmpresaAplicar.js) -->
+<div class="modal fade" id="modalAplicarA" tabindex="-1" role="dialog" style="z-index: 1060;">
+    <div class="modal-dialog modal-lg" role="document" style="max-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-users"></i> ¿A quién se le asigna este horario? <small class="text-muted" id="aplicarEmpresa"></small></h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-wrap align-items-center justify-content-between mb-2" style="gap:8px;">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn aplicar-modo" id="aplicarTodos" data-modo="todos"><i class="fa fa-users"></i> A todos</button>
+                        <button type="button" class="btn aplicar-modo" id="aplicarAlgunos" data-modo="algunos"><i class="fa fa-check-square-o"></i> Solo a algunos</button>
+                    </div>
+                    <input type="text" class="form-control form-control-sm" id="aplicarBuscar" placeholder="Buscar número, nombre, departamento u horario" style="max-width: 320px;">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="aplicar-grupo">
+                            <div class="aplicar-cab" id="aplicarTodosNormales" data-grupo="normales" title="Marcar / desmarcar todos">
+                                <i class="fa fa-square-o aplicar-caja"></i> <i class="fa fa-sun-o"></i> <b>Turno normal</b> (<span id="aplicarCuentaNormales">0</span>)
+                            </div>
+                            <div class="aplicar-lista" id="aplicarNormales"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="aplicar-grupo aplicar-grupo-noche">
+                            <div class="aplicar-cab" id="aplicarTodosNocturnos" data-grupo="nocturnos" title="Marcar / desmarcar todos">
+                                <i class="fa fa-square-o aplicar-caja"></i> <i class="fa fa-moon-o"></i> <b>Turno nocturno</b> (<span id="aplicarCuentaNocturnos">0</span>)
+                            </div>
+                            <div class="aplicar-lista" id="aplicarNocturnos"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <span id="aplicarResumen"></span>
+                <div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="aplicarGuardar" style="color:#fff !important;"><i class="fa fa-check"></i> Asignar horario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ventana "¿A quién se le asigna?" */
+.aplicar-grupo { border: 1px solid rgba(0, 0, 0, .12); border-radius: 6px; overflow: hidden; }
+.aplicar-cab { padding: 8px 12px; background: rgba(30, 136, 229, .1); cursor: pointer; user-select: none; }
+.aplicar-grupo-noche .aplicar-cab { background: rgba(116, 96, 238, .15); }
+.aplicar-lista { max-height: 380px; overflow-y: auto; padding: 4px; }
+.aplicar-fila { display: flex; gap: 8px; align-items: flex-start; padding: 5px 8px; border-radius: 4px; cursor: pointer; font-size: 13px; line-height: 1.3; user-select: none; }
+.aplicar-fila:hover { background: rgba(30, 136, 229, .08); }
+.aplicar-caja { font-size: 17px; width: 16px; margin-top: 1px; color: #8a96a3; }
+.aplicar-fila.sel .aplicar-caja, .aplicar-cab.sel .aplicar-caja { color: #1e88e5; }
+.aplicar-modo { border: 1px solid #1e88e5; color: #1e88e5; background: transparent; }
+.aplicar-modo.activo { background: #1e88e5; color: #fff !important; }
+html.modo-nocturno .aplicar-grupo { border-color: #3a4049; }
+/* botones de la pregunta de horarios nocturnos (horariosEmpresa.js) */
+.swal-button.swal-boton-verde { background-color: #26a69a; color: #fff; }
+.swal-button.swal-boton-verde:not([disabled]):hover { background-color: #1e8d83; }
+.swal-button.swal-boton-rojo { background-color: #ef5350; color: #fff; }
+.swal-button.swal-boton-rojo:not([disabled]):hover { background-color: #d84542; }
+</style>
+<script src="assets/js/horariosEmpresa.js?v=<?php echo filemtime(FCPATH.'assets/js/horariosEmpresa.js'); ?>"></script>
+<script src="assets/js/horariosEmpresaAplicar.js?v=<?php echo filemtime(FCPATH.'assets/js/horariosEmpresaAplicar.js'); ?>"></script>
+<script src="assets/js/horariosEmpresaVer.js?v=<?php echo filemtime(FCPATH.'assets/js/horariosEmpresaVer.js'); ?>"></script>
+<style>
+/* "Editar / ver empleados" (assets/js/horariosEmpresaVer.js) */
+#modalVerHorario .modal-xl { max-width: 1250px; }
+#modalVerHorario .ver-horario-barra { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+#modalVerHorario .ver-horario-barra input { max-width: 360px; }
+#modalVerHorario .ver-horario-tabla { max-height: 60vh; overflow: auto; }
+#modalVerHorario table { font-size: 12px; }
+#modalVerHorario thead th { position: sticky; top: 0; background: #f4f6f9; z-index: 1; white-space: nowrap; }
+#modalVerHorario td { vertical-align: middle; }
+#modalVerHorario td:last-child { white-space: nowrap; }
+#modalVerHorario .ver-anterior td { opacity: .75; }
+#modalVerHorario .ver-vigencia .badge, #modalVerHorario .badge-danger { color: #fff !important; font-size: 10px; }
+#modalVerHorario .ver-filtro { border: 1px solid #1e88e5; color: #1e88e5; background: transparent; }
+#modalVerHorario .ver-filtro.activo { background: #1e88e5; color: #fff !important; }
+#modalVerHorario .ver-sel { width: 30px; text-align: center; cursor: pointer; user-select: none; }
+#modalVerHorario .ver-caja { font-size: 16px; color: #8a96a3; }
+#modalVerHorario tr.sel td { background: rgba(255, 178, 43, .12); }
+#modalVerHorario tr.sel .ver-caja, #modalVerHorario thead .fa-check-square { color: #ffb22b; }
+#modalVerHorario .ver-masivo-barra { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 8px; font-size: 13px; }
+#verMasivo { margin-top: 10px; padding: 12px; border: 1px solid #ffb22b; border-radius: 6px; background: rgba(255, 178, 43, .06); }
+#verMasivo h6 { font-weight: bold; margin-bottom: 4px; }
+#verMasivo .ver-masivo-ayuda { font-size: 12px; color: #888; margin-bottom: 8px; }
+#verMasivo .ver-masivo-dias { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px 12px; }
+#verMasivo .ver-masivo-dia label, #verMasivo .ver-masivo-campos label { font-size: 12px; font-weight: bold; margin-bottom: 2px; }
+#verMasivo .ver-masivo-campos { display: grid; grid-template-columns: 190px 150px 1fr; gap: 12px; margin-top: 10px; }
+#verMasivo .ver-masivo-botones { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+@media (max-width: 767px) { #verMasivo .ver-masivo-campos { grid-template-columns: 1fr; } }
+html.modo-nocturno #verMasivo .form-control { background: #1f2329; color: #dfe3e8; border-color: #444b55; }
+html.modo-nocturno #verMasivo .ver-masivo-ayuda { color: #9aa3ad; }
+#modalVerHorario .ver-nombre { font-weight: bold; font-size: 11px; white-space: nowrap; }
+#modalVerHorario .ver-horas { white-space: nowrap; }
+#modalVerHorario .ver-descanso { color: #999; font-style: italic; }
+#modalVerHorario .ver-hoy { background: rgba(30, 136, 229, .12) !important; }
+#modalVerHorario .ver-horario-nota { font-size: 12px; color: #888; margin-top: 8px; }
+html.modo-nocturno #modalVerHorario thead th { background: #2f353d; }
+html.modo-nocturno #modalVerHorario .ver-hoy { background: rgba(79, 195, 247, .15) !important; }
+</style>
 <script src="assets/js/calendarioEsp.js"></script>
 
 <script>

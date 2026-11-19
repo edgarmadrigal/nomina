@@ -45,6 +45,13 @@ class Empleados extends CI_Controller {
         echo json_encode($this->Empleado->actualizar());
     }
 
+    /** Leyenda "se actualiza cada hora · última actualización". */
+    public function ultimaActualizacion(){
+		header('Content-Type: application/json');
+		$this->load->model('Empleado');
+		echo json_encode($this->Empleado->ultimaSinc());
+    }
+
     public function consultaEmpleado(){
 		header('Access-Control-Allow-Origin: *');
 		$empresa_id = $this->input->post('empresa_id');

@@ -30,12 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // En celular el menú ocupa toda la pantalla: siempre arranca cerrado
+    // y se abre con el botón de menú (antes arrancaba abierto y tapaba el contenido).
     if (sidebar && window.innerWidth <= 767) {
-        if (localStorage.getItem('nominaMobileMenuHidden') === 'true') {
-            setMobileHidden(true);
-        } else {
-            setMobileHidden(false);
-        }
+        setMobileHidden(true);
     }
 
     // ===== Menu Toggle para Desktop y Mobile =====

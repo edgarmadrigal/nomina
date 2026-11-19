@@ -166,8 +166,9 @@ Modulo = {
             dataType: 'json'
         }).done(function (resp) {
             if (resp.requiereClave) {
-                Modulo.autorizadoHasta = 0;
-                Modulo.fnConAutorizacion(Modulo.fnDetectar);
+                Modulo.fnConAutorizacion(Modulo.fnDetectar,
+                    '<p>Conectarse al reloj <b>' + Modulo.fnEsc(datos.ip + ':' + datos.puerto) + '</b> para leer su número de equipo.</p>' +
+                    '<p class="cc-gris">No cambia nada en el reloj.</p>', 'Detectar reloj');
                 return;
             }
             if (resp.exito) $('#relojDeviceId').val(resp.deviceId);
@@ -198,7 +199,28 @@ Modulo = {
             alert('Favor de capturar descripción e IP');
             return;
         }
+        Modulo.fnConAutorizacion(function () { Modulo.fnGuardarEnviar(datos); }, Modulo.fnHtmlCambiosReloj(datos),
+                                 datos.id ? 'Confirmar cambios al reloj' : 'Confirmar reloj nuevo');
+    },
 
+    /** Qué cambia en el catálogo del reloj (campo: antes → después). */
+    fnHtmlCambiosReloj: function (datos) {
+        var antes = $.grep(Modulo.relojes, function (r) { return String(r.id) === String(datos.id); })[0] || {};
+        var campos = [['descripcion', 'Descripción'], ['deviceId', 'ID del reloj'], ['sdk', 'Tipo'], ['ip', 'IP'], ['puerto', 'Puerto'],
+                      ['idPlanta', 'Planta de respaldo'], ['grupoPlantas', 'Plantas'], ['zonaHoraria', 'Zona horaria'],
+                      ['fechaInicio', 'Desde'], ['activo', 'Activo']];
+        var lineas = [];
+        $.each(campos, function (i, c) {
+            var a = antes[c[0]] == null ? '' : String(antes[c[0]]), d = datos[c[0]] == null ? '' : String(datos[c[0]]);
+            if (c[0] === 'activo') { a = a === '' ? '' : (a === '1' ? 'Sí' : 'No'); d = d === '1' ? 'Sí' : 'No'; }
+            if (!datos.id) { if (d !== '') lineas.push('<b>' + c[1] + ':</b> ' + Modulo.fnEsc(d)); }
+            else if (a !== d) lineas.push('<b>' + c[1] + ':</b> ' + Modulo.fnEsc(a || '(vacío)') + ' → <b>' + Modulo.fnEsc(d || '(vacío)') + '</b>');
+        });
+        return '<p>' + (datos.id ? 'Cambios al reloj <b>' + Modulo.fnEsc(antes.descripcion || '') + '</b>:' : 'Se agrega un reloj nuevo:') + '</p>' +
+               (lineas.length ? '<ul><li>' + lineas.join('</li><li>') + '</li></ul>' : '<p class="cc-gris">No cambió ningún dato.</p>');
+    },
+
+    fnGuardarEnviar: function (datos) {
         $.ajax({
             url: Modulo.baseurl + 'controllerRelojes/guardar',
             type: 'post',
@@ -209,14 +231,18 @@ Modulo = {
                 $('#modalReloj').modal('hide');
                 Modulo.fnCargarRelojes();
             } else if (resp.requiereClave) {
-                Modulo.autorizadoHasta = 0;
-                Modulo.fnConAutorizacion(Modulo.fnGuardar);
+                Modulo.fnConAutorizacion(function () { Modulo.fnGuardarEnviar(datos); }, Modulo.fnHtmlCambiosReloj(datos));
             } else {
                 alert(resp.mensaje);
             }
         }).fail(function () {
             alert('Error al guardar el reloj');
         });
+    },
+
+    fnHtmlActivo: function (id, activo) {
+        return '<p>' + (activo ? 'Se <b>activa</b>' : 'Se <b>desactiva</b>') + ' el reloj <b>' + Modulo.fnEsc(Modulo.fnNombreReloj(id)) + '</b>.</p>' +
+               (activo ? '' : '<p class="cc-aviso">Ya no se descargarán sus checadas.</p>');
     },
 
     fnCambiarActivo: function (id, activo) {
@@ -227,8 +253,7 @@ Modulo = {
             dataType: 'json'
         }).done(function (resp) {
             if (resp.requiereClave) {
-                Modulo.autorizadoHasta = 0;
-                Modulo.fnConAutorizacion(function () { Modulo.fnCambiarActivo(id, activo); });
+                Modulo.fnConAutorizacion(function () { Modulo.fnCambiarActivo(id, activo); }, Modulo.fnHtmlActivo(id, activo));
                 return;
             }
             if (!resp.exito) alert(resp.mensaje);
@@ -368,11 +393,67 @@ Modulo = {
      * Ejecuta una acción que modifica el catálogo. Si el usuario no es
      * administrador y no tiene autorización vigente, primero pide la clave.
      */
-    fnConAutorizacion: function (accion) {
-        if (RELOJES_ES_ADMIN || Modulo.autorizadoHasta > Date.now()) {
-            accion();
-            return;
-        }
+    // ---------- lista de cambios que se muestra antes de pedir la clave ----------
+    fnListaHtml: function (items, fmt, max) {
+        max = max || 40;
+        var h = '<ul>';
+        $.each(items.slice(0, max), function (i, x) { h += '<li>' + fmt(x) + '</li>'; });
+        if (items.length > max) h += '<li class="cc-gris">… y ' + (items.length - max) + ' más</li>';
+        return h + '</ul>';
+    },
+    fnNombreUsr: function (num) {
+        var f = $.grep(Modulo.usr.filas || [], function (x) { return String(x.num) === String(num); })[0];
+        return f ? (f.nombre || f.nombreReloj || '') : '';
+    },
+    fnHtmlUsuarios: function (nums) {
+        return Modulo.fnListaHtml(nums, function (n) { return '<b>' + Modulo.fnEsc(n) + '</b> ' + Modulo.fnEsc(Modulo.fnNombreUsr(n)); });
+    },
+    fnHtmlPrevia: function (r) {
+        var usr = function (x) { return '<b>' + Modulo.fnEsc(x.id) + '</b> ' + Modulo.fnEsc(x.nombre); };
+        var h = '<p class="mb-2">Desde <b>' + Modulo.fnEsc(r.origen) + '</b> <span class="cc-gris">(lectura del ' + Modulo.fnEsc(r.fechaOrigen || '?') + ')</span></p>';
+        $.each(r.relojes, function (i, d) {
+            h += '<div class="cc-reloj"><b class="cc-nombre"><i class="fa fa-clock-o"></i> ' + Modulo.fnEsc(d.reloj) + '</b>';
+            if (d.sinCache) {
+                h += '<div class="cc-aviso">No hay lectura guardada de este reloj: no se puede mostrar el detalle (da "Actualizar del reloj" en él para verlo).</div></div>';
+                return;
+            }
+            h += ' <span class="cc-gris">(lectura del ' + Modulo.fnEsc(d.fecha || '?') + ')</span>';
+            var hay = false;
+            if (d.borrarTodos) { hay = true; h += '<div class="cc-aviso"><b>Se BORRAN sus ' + d.borrarTodos + ' usuarios</b> antes de copiar.</div>'; }
+            if (d.viejos.length) {
+                hay = true;
+                h += '<div class="cc-aviso">Se borra el número viejo de quien cambió de número (' + d.viejos.length + '):</div>' +
+                     Modulo.fnListaHtml(d.viejos, function (x) { return '<b>' + Modulo.fnEsc(x.id) + '</b> ' + Modulo.fnEsc(x.nombre) + ' → queda el <b>' + Modulo.fnEsc(x.nuevo) + '</b>'; });
+            }
+            if (d.nuevos.length)     { hay = true; h += '<div>Se copian con su rostro y foto (' + d.nuevos.length + '):</div>' + Modulo.fnListaHtml(d.nuevos, usr); }
+            if (d.actualizar.length) { hay = true; h += '<div>Se actualizan con el rostro y foto del principal (' + d.actualizar.length + '):</div>' + Modulo.fnListaHtml(d.actualizar, usr); }
+            if (d.altas.length)      { hay = true; h += '<div>Se dan de alta sin rostro (' + d.altas.length + '):</div>' + Modulo.fnListaHtml(d.altas, usr); }
+            if (!hay) h += '<div class="cc-gris">Sin cambios.</div>';
+            if (d.sinCambio) h += '<div class="cc-gris">No se tocan: ' + d.sinCambio + '</div>';
+            h += '</div>';
+        });
+        h += '<p class="cc-gris mb-0">Calculado con la última lectura de cada reloj. Si alguien se registró después de esa lectura, también entra en la copia.</p>';
+        return h;
+    },
+    /** Pide al servidor la vista previa de una copia (no toca relojes) y la entrega ya en html. */
+    fnPreviaCopia: function (datos, mostrar) {
+        swal({ title: 'Revisando cambios…', text: 'Calculando qué se va a copiar en cada reloj.', buttons: false, closeOnClickOutside: false });
+        $.ajax({ url: Modulo.baseurl + 'controllerRelojes/previaCopia', type: 'post', dataType: 'json', data: datos })
+            .done(function (r) {
+                swal.close();
+                if (!r.exito) { swal('Aviso', r.mensaje || 'No se pudo calcular la vista previa.', 'warning'); return; }
+                mostrar(Modulo.fnHtmlPrevia(r), r);
+            })
+            .fail(function () { swal.close(); swal('Error', 'Sin respuesta del servidor.', 'error'); });
+    },
+
+    /**
+     * Antes de cambiar CUALQUIER cosa en los relojes: muestra qué se va a hacer (cambios = html o
+     * texto) y pide SIEMPRE usuario y clave de un administrador, aunque quien está sea administrador.
+     */
+    fnConAutorizacion: function (accion, cambios, titulo) {
+        $('#tituloClave').text(titulo || 'Confirmar cambios');
+        $('#cambiosClave').html(cambios || '<p class="cc-aviso">Se van a hacer cambios en los relojes.</p>');
         Modulo.accionPendiente = accion;
         $('#usuarioAdmin').val('');
         $('#claveAdmin').val('');
@@ -530,7 +611,12 @@ Modulo = {
             else correr();
         };
         // poner a tiempo requiere administrador (o su clave); borrar pide SIEMPRE clave + "BORRAR"
-        if (acciones.indexOf('ponerhora') >= 0) Modulo.fnConAutorizacion(siguePaso);
+        if (acciones.indexOf('ponerhora') >= 0)
+            Modulo.fnConAutorizacion(siguePaso,
+                '<p>Se pone la hora de este equipo en ' + ids.length + ' reloj(es):</p>' +
+                Modulo.fnListaHtml(ids, function (id) { return Modulo.fnEsc(Modulo.fnNombreReloj(id)); }) +
+                (acciones.indexOf('borrar') >= 0 ? '<p class="cc-aviso">Después se pedirá otra vez la clave para BORRAR las checadas.</p>' : ''),
+                'Poner los relojes a tiempo');
         else siguePaso();
     },
 
@@ -777,14 +863,14 @@ Modulo = {
     fnPintarProgresoCopia: function (r) {
         var activo = !!r.activo;
         var fase = r.fase || (activo ? 'copiando' : 'terminado');
-        var reconectando = fase === 'reconectando';
+        var reconectando = fase === 'reconectando' || fase === 'pausa';
         var total = r.total || 0, copiados = r.copiados || 0;
         // Mientras lee las listas (o aún no sabe el total) la barra va llena y animada (indeterminada).
         var indet = activo && (fase === 'leyendo' || total === 0);
         var pct = total > 0 ? Math.round(100 * copiados / total) : 0;
         $('#usrCopiaProgreso').show();
         var $barra = $('#usrCopiaBarra').css('width', (indet ? 100 : pct) + '%')
-              .text(reconectando ? 'Reconectando…' : (indet ? 'Leyendo usuarios…' : pct + '%'));
+              .text(fase === 'pausa' ? 'En pausa (reloj ocupado)…' : reconectando ? 'Reconectando…' : (indet ? 'Leyendo usuarios…' : pct + '%'));
         // En "reconectando" la barra se queda donde iba, animada y en amarillo (sigue intentando).
         $barra.toggleClass('progress-bar-animated progress-bar-striped', activo)
               .removeClass('bg-primary bg-success bg-warning')
@@ -794,13 +880,79 @@ Modulo = {
             (total ? '  — ' + copiados + ' de ' + total : '');
         $('#usrCopiaTexto').html(
             (reconectando
-                ? '<i class="fa fa-wifi"></i> <b>Reconectando con el reloj…</b> (se fue la señal; sigue intentando, no cierres esto): '
-                : ((activo ? 'Copiando rostros' : (fase === 'error' ? 'Copia interrumpida' : 'Copia terminada')) + ': ')) + desc);
+                ? '<i class="fa fa-wifi"></i> <b>Esperando al reloj…</b> (sigue intentando solo): '
+                : (r.tipo === 'nombres'
+                    ? (activo ? 'Poniendo la empresa en los nombres' : (fase === 'error' ? 'Cambio de nombres interrumpido' : 'Nombres con empresa terminados')) + ': '
+                    : (fase === 'detenido' ? 'Copia detenida' : (activo ? 'Copiando rostros' : (fase === 'error' ? 'Copia interrumpida' : 'Copia terminada'))) + ': ')) + desc);
         $('#usrCopiaNums').text(
             'Copiados: ' + copiados +
             '  · ya tenían: ' + (r.yaTenian || 0) +
             '  · sin rostro: ' + (r.sinRostro || 0) +
+            (r.reemplazados ? '  · números viejos borrados: ' + r.reemplazados : '') +
             '  · errores: ' + (r.errores || 0));
+
+        // tiempo estimado (sin contar lo que se pierde reconectando)
+        var eta = '';
+        if (activo && r.etaSeg != null && total > copiados) {
+            var min = Math.round(r.etaSeg / 60);
+            var termina = new Date(Date.now() + r.etaSeg * 1000);
+            eta = '<i class="fa fa-clock-o"></i> Faltan aprox. <b>' + (min < 1 ? 'menos de 1 min' : (min >= 60 ? Math.floor(min / 60) + ' h ' + (min % 60) + ' min' : min + ' min')) +
+                  '</b> (terminaría como a las ' + termina.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) + ')';
+        } else if (activo && fase === 'copiando') {
+            eta = '<i class="fa fa-clock-o"></i> Calculando cuánto falta…';
+        }
+        $('#usrCopiaEta').html(eta);
+        $('#btnUsrCopiaDetener').toggle(r.tipo !== 'nombres' && activo && !!r.destinoId)
+            .prop('disabled', !!r.deteniendo)
+            .html(r.deteniendo ? '<i class="fa fa-spinner fa-spin"></i> Deteniendo…' : '<i class="fa fa-stop-circle"></i> Detener copia de ' + Modulo.fnEsc(r.destino || 'este reloj'));
+
+        // avisos: se perdió la conexión (con qué reloj, desde cuándo, causa), copia sin respuesta, detenidos, error
+        var aviso = '', rojo = false;
+        var rc = r.reconexion;
+        if (r.sinRespuesta) {
+            rojo = true;
+            aviso = '<i class="fa fa-exclamation-triangle"></i> <b>La copia dejó de responder</b> (sin avance desde ' + Modulo.fnEsc(r.actualizado) +
+                    '). Puede que el proceso se haya cerrado; vuelve a lanzarla: sigue donde se quedó.';
+        } else if (activo && rc && rc.pausa) {
+            var reanuda = new Date(String(rc.reanuda).replace(' ', 'T'));
+            aviso = '<i class="fa fa-pause-circle"></i> <b>Copia en pausa: se cruzó con otra conexión en ' + Modulo.fnEsc(rc.reloj) + '</b> (código ' + rc.codigo + ').<br>' +
+                    Modulo.fnEsc(rc.causa) + '<br>Se reanuda sola a las <b>' + reanuda.toLocaleTimeString('es-MX') + '</b> y continúa donde se quedó.';
+        } else if (activo && rc) {
+            var desde = new Date(String(rc.desde).replace(' ', 'T'));
+            var mins = Math.max(0, Math.round((Date.now() - desde.getTime()) / 60000));
+            aviso = '<i class="fa fa-wifi"></i> <b>Se perdió la conexión con ' + Modulo.fnEsc(rc.reloj) + '</b> desde las ' +
+                    desde.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) + ' (' + mins + ' min' + (rc.intento > 0 ? ', intento ' + rc.intento + ', código ' + rc.codigo : ', sin respuesta') + ').<br>' +
+                    Modulo.fnEsc(rc.causa) + '<br>La copia <b>no se rinde</b>: sigue intentando sola y continúa donde se quedó en cuanto el reloj conteste. ' +
+                    'Si no quieres esperar, usa <b>Detener copia</b> (solo ese reloj).';
+        } else if (fase === 'error' && r.mensaje) {
+            rojo = true;
+            aviso = '<i class="fa fa-times-circle"></i> <b>Error:</b> ' + Modulo.fnEsc(r.mensaje);
+        } else if (r.mensaje && fase === 'detenido') {
+            aviso = '<i class="fa fa-stop-circle"></i> ' + Modulo.fnEsc(r.mensaje);
+        }
+        if (r.detenidos && r.detenidos.length && fase !== 'detenido')
+            aviso += (aviso ? '<br>' : '') + '<i class="fa fa-stop-circle"></i> Detenidos por el usuario: ' + Modulo.fnEsc(r.detenidos.join(', '));
+        $('#usrCopiaAviso').toggleClass('rojo', rojo).html(aviso).toggle(!!aviso);
+    },
+
+    // Detener la copia solo del reloj actual (si hay más en la lista sigue con el siguiente)
+    fnDetenerCopia: function () {
+        var destino = $('#btnUsrCopiaDetener').text().replace('Detener copia de', '').trim();
+        if (!confirm('¿Detener la copia de rostros hacia ' + destino + '?\n\nLo ya copiado se queda. Si hay más relojes en la lista, la copia sigue con el siguiente. Después puedes volver a lanzarla y sigue donde se quedó.')) return;
+        $.ajax({ url: Modulo.baseurl + 'controllerRelojes/copiaDetener', type: 'post', dataType: 'json' })
+        .done(function (r) {
+            if (r.requiereClave) {
+                Modulo.fnConAutorizacion(Modulo.fnDetenerCopiaSinPreguntar,
+                    '<p>Detener la copia de rostros hacia <b>' + Modulo.fnEsc(destino) + '</b>.</p>', 'Detener copia');
+                return;
+            }
+            if (!r.exito) { alert(r.mensaje); return; }
+            Modulo.fnConsultarProgresoCopia();
+        });
+    },
+    fnDetenerCopiaSinPreguntar: function () {
+        $.ajax({ url: Modulo.baseurl + 'controllerRelojes/copiaDetener', type: 'post', dataType: 'json' })
+        .done(function (r) { if (!r.exito) alert(r.mensaje); Modulo.fnConsultarProgresoCopia(); });
     },
 
     // Consulta cada 3 s si la lectura en segundo plano ya terminó; al terminar pinta las filas.
@@ -945,7 +1097,8 @@ Modulo = {
         if (!s.nums.length) { swal('Aviso', 'Selecciona empleados en "Falta en el reloj".', 'warning'); return; }
         Modulo.fnConAutorizacion(function () {
             Modulo.fnUsrCorrer('alta', s.nums, {}, s.otros);
-        });
+        }, '<p>Se dan de alta en el reloj <b>' + Modulo.fnEsc($('#usrReloj option:selected').text()) + '</b> (número y nombre, sin rostro) ' +
+           s.nums.length + ' empleado(s):</p>' + Modulo.fnHtmlUsuarios(s.nums), 'Dar de alta en el reloj');
     },
 
     fnUsrCopiar: function () {
@@ -954,8 +1107,10 @@ Modulo = {
         if (!origen) { swal('Aviso', 'Elige el reloj de origen.', 'warning'); return; }
         if (!s.nums.length) { swal('Aviso', 'Selecciona empleados en "Falta en el reloj" o "Sin rostro".', 'warning'); return; }
         var reemplazar = $('#usrReemplazar').is(':checked') ? 1 : 0;
-        Modulo.fnConAutorizacion(function () {
-            Modulo.fnUsrCorrer('copiar', s.nums, { origen: origen, reemplazar: reemplazar }, s.otros);
+        Modulo.fnPreviaCopia({ origen: origen, destinos: [Modulo.usr.id], nums: s.nums, reemplazar: reemplazar }, function (html) {
+            Modulo.fnConAutorizacion(function () {
+                Modulo.fnUsrCorrer('copiar', s.nums, { origen: origen, reemplazar: reemplazar }, s.otros);
+            }, html, 'Copiar rostro a este reloj');
         });
     },
 
@@ -966,8 +1121,10 @@ Modulo = {
         if (!origen) { swal('Aviso', 'Elige el reloj de origen.', 'warning'); return; }
         if (!s.nums.length) { swal('Aviso', 'Selecciona usuarios para copiar desde el otro reloj.', 'warning'); return; }
         var reemplazar = $('#usrReemplazar').is(':checked') ? 1 : 0;
-        Modulo.fnConAutorizacion(function () {
-            Modulo.fnUsrCorrer('copiar', s.nums, { origen: origen, incluir: 1, reemplazar: reemplazar }, s.otros);
+        Modulo.fnPreviaCopia({ origen: origen, destinos: [Modulo.usr.id], nums: s.nums, incluir: 1, reemplazar: reemplazar }, function (html) {
+            Modulo.fnConAutorizacion(function () {
+                Modulo.fnUsrCorrer('copiar', s.nums, { origen: origen, incluir: 1, reemplazar: reemplazar }, s.otros);
+            }, html, 'Copiar a este reloj (+ sin rostro)');
         });
     },
 
@@ -989,23 +1146,50 @@ Modulo = {
         $('#cvBorrar').prop('checked', false);
         $('#modalCopiarVarios').modal('show');
     },
+    // Un clic: del principal ("Reloj:") a TODOS los demás BioStar 2, solo los empleados nuevos.
+    // Es la misma copia a varios relojes sin "Reemplazar" ni "sin rostro": a quien ya tiene rostro
+    // en el destino no se le toca (y RelojSync quita el número viejo de quien cambió de número).
+    fnCopiarNuevos: function () {
+        var origen = $('#usrReloj').val();
+        if (!origen) { swal('Aviso', 'Elige primero el reloj principal arriba, en "Reloj:".', 'warning'); return; }
+        var r0 = $.grep(Modulo.relojes, function (r) { return String(r.id) === String(origen); })[0];
+        if (!r0 || r0.sdk !== 'BS2') { swal('Aviso', 'El reloj principal debe ser BioStar 2.', 'warning'); return; }
+        Modulo.fnElegirRelojes('Copiar empleados nuevos',
+            'Desde el principal <b>' + Modulo.fnEsc(r0.descripcion) + '</b> se copian los que aún no tienen rostro en cada reloj. Elige los relojes destino:',
+            origen, function (ids) { Modulo.fnCopiarNuevosA(origen, ids); });
+    },
+    fnCopiarNuevosA: function (origen, ids) {
+        var datos = { origen: origen, destinos: ids, reemplazar: 0, incluir: 0, borrar: 0 };
+        Modulo.fnPreviaCopia(datos, function (html) {
+            Modulo.fnConAutorizacion(function () {
+                $.ajax({ url: Modulo.baseurl + 'controllerRelojes/copiarVarios', type: 'post', dataType: 'json', data: datos })
+                    .done(function (r) {
+                        if (r.exito) {
+                            Modulo.fnIniciarProgresoCopia();
+                            swal('En proceso', 'Copiando empleados nuevos a ' + r.destinos + ' reloj(es). Sigue el avance en la barra de arriba.', 'success');
+                        } else {
+                            swal('Aviso', r.mensaje || 'No se pudo iniciar.', 'warning');
+                        }
+                    }).fail(function () { swal('Error', 'Sin respuesta del servidor.', 'error'); });
+            }, html, 'Copiar empleados nuevos');
+        });
+    },
     fnCopiarVariosRun: function () {
         var origen = $('#usrReloj').val();
         var destinos = $('.cvDest:checked').map(function () { return this.value; }).get();
         if (!destinos.length) { swal('Aviso', 'Marca al menos un reloj destino.', 'warning'); return; }
         var borrar = $('#cvBorrar').is(':checked') ? 1 : 0;
+        var datos = {
+            origen: origen, destinos: destinos,
+            reemplazar: $('#cvReemplazar').is(':checked') ? 1 : 0,
+            incluir: $('#cvIncluir').is(':checked') ? 1 : 0,
+            borrar: borrar
+        };
 
+        // La clave ya se validó (modal de cambios, o el de BORRAR que también autoriza el catálogo).
         var lanzar = function () {
-            Modulo.fnConAutorizacion(function () {
-                $.ajax({
-                    url: Modulo.baseurl + 'controllerRelojes/copiarVarios', type: 'post', dataType: 'json',
-                    data: {
-                        origen: origen, destinos: destinos,
-                        reemplazar: $('#cvReemplazar').is(':checked') ? 1 : 0,
-                        incluir: $('#cvIncluir').is(':checked') ? 1 : 0,
-                        borrar: borrar
-                    }
-                }).done(function (r) {
+            $.ajax({ url: Modulo.baseurl + 'controllerRelojes/copiarVarios', type: 'post', dataType: 'json', data: datos })
+                .done(function (r) {
                     if (r.exito) {
                         $('#modalCopiarVarios').modal('hide');
                         Modulo.fnIniciarProgresoCopia();
@@ -1014,25 +1198,28 @@ Modulo = {
                         swal('Aviso', r.mensaje || 'No se pudo iniciar.', 'warning');
                     }
                 }).fail(function () { swal('Error', 'Sin respuesta del servidor.', 'error'); });
-            });
         };
 
-        if (borrar) {
-            // Operación peligrosa (vacía los relojes destino): exige clave de administrador + "BORRAR".
-            Modulo.cvLanzarPendiente = lanzar;
-            $('#cbCuantos').text(destinos.length);
-            $('#cbUsuario, #cbClave, #cbConfirma').val('');
-            $('#cbMensaje').text('');
-            // Cerrar primero el modal de "copiar a varios" para no apilar modales (el fondo del de
-            // atrás puede tapar el botón). Al cerrarse, abrimos el de clave de administrador.
-            $('#modalCopiarVarios').modal('hide');
-            setTimeout(function () {
-                $('#modalCopiaBorrar').modal('show');
-                setTimeout(function () { $('#cbUsuario').focus(); }, 400);
-            }, 350);
-        } else {
-            lanzar();
-        }
+        // Cerrar primero el modal de "copiar a varios" para no apilar modales (el fondo del de
+        // atrás puede tapar el botón).
+        $('#modalCopiarVarios').modal('hide');
+        Modulo.fnPreviaCopia(datos, function (html) {
+            if (borrar) {
+                // Operación peligrosa (vacía los relojes destino): clave de administrador + "BORRAR",
+                // con la lista de cambios en el mismo modal.
+                Modulo.cvLanzarPendiente = lanzar;
+                $('#cbCuantos').text(destinos.length);
+                $('#cbCambios').html(html);
+                $('#cbUsuario, #cbClave, #cbConfirma').val('');
+                $('#cbMensaje').text('');
+                setTimeout(function () {
+                    $('#modalCopiaBorrar').modal('show');
+                    setTimeout(function () { $('#cbUsuario').focus(); }, 400);
+                }, 350);
+            } else {
+                Modulo.fnConAutorizacion(lanzar, html, 'Copiar a varios relojes');
+            }
+        });
     },
 
     /** Valida la clave del administrador antes de borrar y reemplazar; si pasa, lanza la copia. */
@@ -1059,10 +1246,149 @@ Modulo = {
         Modulo.usr.quitarPendiente = s;
         $('#quitarCuantos').text(s.nums.length);
         $('#quitarReloj').text($('#usrReloj option:selected').text());
+        $('#quitarLista').html(Modulo.fnHtmlUsuarios(s.nums));
         $('#quitarUsuario, #quitarClave, #quitarConfirma').val('');
         $('#quitarMensaje').text('');
         $('#modalQuitar').modal('show');
         setTimeout(function () { $('#quitarUsuario').focus(); }, 400);
+    },
+
+    /**
+     * Paso previo de las acciones de varios relojes: lista de relojes BioStar 2 activos (todos
+     * marcados) para que la persona desmarque los que no quiere; luego llama continuar(ids).
+     */
+    fnElegirRelojes: function (titulo, texto, excluirId, continuar) {
+        var html = '';
+        $.each(Modulo.relojes, function (i, r) {
+            if (r.sdk === 'BS2' && String(r.activo) === '1' && String(r.id) !== String(excluirId || ''))
+                html += '<label class="d-block mb-1" style="font-size:13px; cursor:pointer;"><input type="checkbox" class="erReloj" value="' + r.id + '" checked> ' +
+                        Modulo.fnEsc(r.descripcion) + ' <span class="text-muted">(' + Modulo.fnEsc(r.ip) + ')</span></label>';
+        });
+        if (!html) { swal('Aviso', 'No hay relojes BioStar 2 activos para elegir.', 'warning'); return; }
+        $('#erTitulo').text(titulo);
+        $('#erTexto').html(texto);
+        $('#erLista').html(html);
+        $('#erTodos').prop('checked', true).prop('indeterminate', false);
+        Modulo.erContinuar = continuar;
+        $('#modalElegirRelojes').modal('show');
+    },
+    fnElegirRelojesOk: function () {
+        var ids = $('.erReloj:checked').map(function () { return this.value; }).get();
+        if (!ids.length) { swal('Aviso', 'Marca al menos un reloj.', 'warning'); return; }
+        var f = Modulo.erContinuar;
+        Modulo.erContinuar = null;
+        $('#modalElegirRelojes').modal('hide');
+        if (typeof f === 'function') setTimeout(function () { f(ids); }, 350);   // espera a que cierre el modal
+    },
+
+    /** En los BioStar 2 que se elijan: quitar a los que no tienen rostro y están de baja o no existen. */
+    fnLimpiarSinRostro: function () {
+        Modulo.fnElegirRelojes('Quitar bajas sin rostro',
+            'Se quitan los que <b>no tienen rostro</b> y están <b>dados de baja o no existen</b> en el sistema. Elige los relojes:',
+            null, Modulo.fnLimpiarSinRostroEn);
+    },
+    fnLimpiarSinRostroEn: function (ids) {
+        swal({ title: 'Revisando relojes…', text: 'Buscando bajas sin rostro en cada reloj.', buttons: false, closeOnClickOutside: false });
+        $.ajax({ url: Modulo.baseurl + 'controllerRelojes/previaLimpieza', type: 'post', dataType: 'json', data: { relojes: ids } })
+            .done(function (r) {
+                swal.close();
+                var total = 0, multi = [], h = '';
+                $.each(r.relojes || [], function (i, d) {
+                    h += '<div class="cc-reloj"><b class="cc-nombre"><i class="fa fa-clock-o"></i> ' + Modulo.fnEsc(d.reloj) + '</b>';
+                    if (d.sinCache) { h += '<div class="cc-aviso">No hay lectura guardada: no se revisa este reloj (da "Actualizar del reloj" en él).</div></div>'; return; }
+                    h += ' <span class="cc-gris">(lectura del ' + Modulo.fnEsc(d.fecha || '?') + ')</span>';
+                    if (!d.usuarios.length) { h += '<div class="cc-gris">Nada que quitar.</div></div>'; return; }
+                    total += d.usuarios.length;
+                    multi.push({ id: d.id, reloj: d.reloj, nums: $.map(d.usuarios, function (u) { return u.id; }) });
+                    h += '<div>Se quitan ' + d.usuarios.length + ':</div>' + Modulo.fnListaHtml(d.usuarios, function (u) {
+                        return '<b>' + Modulo.fnEsc(u.id) + '</b> ' + Modulo.fnEsc(u.nombre) +
+                               ' <span class="cc-gris">(' + (u.estado === 'baja' ? 'dado de baja' : 'no existe en el sistema') + ')</span>';
+                    }) + '</div>';
+                });
+                if (!total) { swal('Listo', 'No hay bajas sin rostro que quitar (según la última lectura de cada reloj).', 'info'); return; }
+                h += '<p class="cc-gris mb-0">Justo antes de quitar a cada uno se revisa en el reloj que no tenga rostro; si ya se lo registraron, no se quita.</p>';
+                Modulo.usr.quitarPendiente = { multi: multi };
+                $('#quitarCuantos').text(total);
+                $('#quitarReloj').text(multi.length + ' reloj(es) elegido(s)');
+                $('#quitarLista').html(h);
+                $('#quitarUsuario, #quitarClave, #quitarConfirma').val('');
+                $('#quitarMensaje').text('');
+                $('#modalQuitar').modal('show');
+                setTimeout(function () { $('#quitarUsuario').focus(); }, 400);
+            })
+            .fail(function () { swal.close(); swal('Error', 'Sin respuesta del servidor.', 'error'); });
+    },
+
+    /** Quita por bloques en varios relojes, uno tras otro, y al final resume. */
+    fnQuitarVarios: function (multi) {
+        var res = { hechos: 0, conRostro: 0, protegidos: 0, errores: [] }, i = 0, j = 0, bloque = 200;
+        var siguiente = function () {
+            if (i >= multi.length) {
+                $('#usrAvance').text('');
+                swal(res.errores.length ? 'Terminado con avisos' : 'Listo',
+                     'Quitados: ' + res.hechos +
+                     (res.conRostro ? '\nNo se quitaron porque ya tienen rostro: ' + res.conRostro : '') +
+                     (res.protegidos ? '\nActivos protegidos (no se quitaron): ' + res.protegidos : '') +
+                     (res.errores.length ? '\nCon error: ' + res.errores.length + ' (' + res.errores.slice(0, 5).join('; ') + ')' : ''),
+                     res.errores.length ? 'warning' : 'success');
+                if (Modulo.usr.id) Modulo.fnLeerUsuarios();
+                return;
+            }
+            var d = multi[i], parte = d.nums.slice(j, j + bloque);
+            $('#usrAvance').html('<i class="fa fa-spinner fa-spin"></i> Quitando en ' + Modulo.fnEsc(d.reloj) + ' (' + Math.min(j + bloque, d.nums.length) + ' de ' + d.nums.length + ')…');
+            $.ajax({ url: Modulo.baseurl + 'controllerRelojes/bajaUsuarios', type: 'post', dataType: 'json',
+                     data: { id: d.id, nums: parte, soloSinRostro: 1 } })
+                .done(function (r) {
+                    if (!r.exito) res.errores.push(d.reloj + ': ' + r.mensaje);
+                    else {
+                        res.hechos += r.datos.hechos.length;
+                        res.conRostro += (r.datos.conRostro || []).length;
+                        res.protegidos += (r.activosProtegidos || []).length;
+                        $.each(r.datos.errores || [], function (k, e) { res.errores.push(d.reloj + ' ' + e.id + ': ' + e.mensaje); });
+                    }
+                })
+                .fail(function () { res.errores.push(d.reloj + ': sin respuesta del servidor'); })
+                .always(function () {
+                    j += bloque;
+                    if (j >= d.nums.length) { i++; j = 0; }
+                    siguiente();
+                });
+        };
+        siguiente();
+    },
+
+    /** En TODOS los BioStar 2: poner la empresa al final del nombre ("NOMBRE · SPM"). */
+    fnNombresEmpresa: function () {
+        swal({ title: 'Revisando relojes…', text: 'Calculando qué nombres cambian.', buttons: false, closeOnClickOutside: false });
+        $.ajax({ url: Modulo.baseurl + 'controllerRelojes/previaNombres', type: 'post', dataType: 'json' })
+            .done(function (r) {
+                swal.close();
+                var total = 0, h = '';
+                $.each(r.relojes || [], function (i, d) {
+                    h += '<div class="cc-reloj"><b class="cc-nombre"><i class="fa fa-clock-o"></i> ' + Modulo.fnEsc(d.reloj) + '</b>';
+                    if (d.sinCache) { h += '<div class="cc-aviso">No hay lectura guardada: no se cambia este reloj (da "Actualizar del reloj" en él).</div></div>'; return; }
+                    h += ' <span class="cc-gris">(lectura del ' + Modulo.fnEsc(d.fecha || '?') + ')</span>';
+                    total += d.cambios.length;
+                    h += (d.cambios.length
+                        ? '<div>Cambian ' + d.cambios.length + ' nombre(s):</div>' + Modulo.fnListaHtml(d.cambios, function (c) {
+                              return '<b>' + Modulo.fnEsc(c.id) + '</b> ' + Modulo.fnEsc(c.antes || '(sin nombre)') + ' → <b>' + Modulo.fnEsc(c.despues) + '</b>';
+                          }, 15)
+                        : '<div class="cc-gris">Todos ya traen su empresa.</div>') + '</div>';
+                });
+                if (!total) { swal('Listo', 'Todos los nombres ya traen su empresa (según la última lectura de cada reloj).', 'info'); return; }
+                h = '<p>Se pone la empresa al final del nombre de <b>' + total + '</b> empleado(s). Su rostro, foto y tarjeta no se tocan. ' +
+                    'Corre en segundo plano (puede tardar: cada reloj por separado).</p>' + h;
+                Modulo.fnConAutorizacion(function () {
+                    $.ajax({ url: Modulo.baseurl + 'controllerRelojes/renombrarVarios', type: 'post', dataType: 'json' })
+                        .done(function (x) {
+                            if (x.exito) {
+                                Modulo.fnIniciarProgresoCopia();
+                                swal('En proceso', 'Poniendo la empresa a ' + x.usuarios + ' nombre(s) en ' + x.relojes + ' reloj(es). Sigue el avance en la barra de arriba.', 'success');
+                            } else swal('Aviso', x.mensaje || 'No se pudo iniciar.', 'warning');
+                        }).fail(function () { swal('Error', 'Sin respuesta del servidor.', 'error'); });
+                }, h, 'Empresa en los nombres');
+            })
+            .fail(function () { swal.close(); swal('Error', 'Sin respuesta del servidor.', 'error'); });
     },
 
     fnConfirmarQuitar: function () {
@@ -1075,7 +1401,8 @@ Modulo = {
                 if (!resp.exito) { $('#quitarMensaje').text(resp.mensaje); $('#quitarClave').val('').focus(); return; }
                 $('#modalQuitar').modal('hide');
                 var s = Modulo.usr.quitarPendiente;
-                setTimeout(function () { Modulo.fnUsrCorrer('baja', s.nums, {}, s.otros); }, 400);
+                if (s.multi) setTimeout(function () { Modulo.fnQuitarVarios(s.multi); }, 400);
+                else setTimeout(function () { Modulo.fnUsrCorrer('baja', s.nums, {}, s.otros); }, 400);
             })
             .fail(function () { $('#quitarMensaje').text('Error al validar la clave.'); })
             .always(function () { $btn.prop('disabled', false); });
@@ -1086,7 +1413,7 @@ Modulo = {
         if (Modulo.usr.corriendo) return;
         var urls = { alta: 'altaUsuarios', baja: 'bajaUsuarios', copiar: 'copiarRostros' };
         var bloque = accion === 'copiar' ? 100 : 200;
-        var total = { hechos: 0, yaEstaban: 0, sinRostro: 0, errores: [], protegidos: 0 };
+        var total = { hechos: 0, yaEstaban: 0, sinRostro: 0, errores: [], protegidos: 0, reemplazados: [] };
         var i = 0;
         Modulo.usr.corriendo = true;
         $('#btnUsrAlta, #btnUsrCopiar, #btnUsrQuitar, #btnUsrLeer').prop('disabled', true);
@@ -1099,6 +1426,7 @@ Modulo = {
             var txt = verbo + ': ' + total.hechos +
                       (total.yaEstaban ? '\nSin cambio (' + (accion === 'alta' ? 'ya estaban' : accion === 'baja' ? 'no estaban' : 'ya tenían rostro') + '): ' + total.yaEstaban : '') +
                       (total.sinRostro ? '\nSin rostro en el reloj de origen: ' + total.sinRostro : '') +
+                      (total.reemplazados.length ? '\nNúmero viejo borrado (cambio de número): ' + total.reemplazados.length + ' (' + total.reemplazados.slice(0, 5).join(', ') + (total.reemplazados.length > 5 ? '…' : '') + ')' : '') +
                       (total.protegidos ? '\nActivos protegidos (no se quitaron): ' + total.protegidos : '') +
                       (ignorados ? '\nSeleccionados que no aplican para esta acción: ' + ignorados : '') +
                       (total.errores.length ? '\nCon error: ' + total.errores.length + ' (' + $.map(total.errores.slice(0, 5), function (e) { return e.id + ': ' + e.mensaje; }).join('; ') + ')' : '') +
@@ -1120,6 +1448,7 @@ Modulo = {
                 total.hechos += r.datos.hechos.length;
                 total.yaEstaban += r.datos.yaEstaban.length;
                 total.sinRostro += r.datos.sinRostro.length;
+                total.reemplazados = total.reemplazados.concat(r.datos.reemplazados || []);
                 total.errores = total.errores.concat(r.datos.errores);
                 total.protegidos += (r.activosProtegidos || []).length;
                 i += bloque;
@@ -1159,6 +1488,15 @@ Modulo = {
         $('#btnUsrCopiar').on('click', Modulo.fnUsrCopiar);
         $('#btnUsrCopiarTodo').on('click', Modulo.fnUsrCopiarTodo);
         $('#btnUsrCopiarVarios').on('click', Modulo.fnAbrirCopiarVarios);
+        $('#btnUsrCopiarNuevos').on('click', Modulo.fnCopiarNuevos);
+        $('#btnUsrLimpiar').on('click', Modulo.fnLimpiarSinRostro);
+        $('#btnErContinuar').on('click', Modulo.fnElegirRelojesOk);
+        $(document).on('change', '#erTodos', function () { $('.erReloj').prop('checked', this.checked); });
+        $(document).on('change', '.erReloj', function () {
+            var n = $('.erReloj:checked').length, t = $('.erReloj').length;
+            $('#erTodos').prop('checked', n === t).prop('indeterminate', n > 0 && n < t);
+        });
+        $('#btnUsrNombres').on('click', Modulo.fnNombresEmpresa);
         $('#btnCvCopiar').on('click', Modulo.fnCopiarVariosRun);
         $('#btnConfirmarCopiaBorrar').on('click', Modulo.fnConfirmarCopiaBorrar);
         $('#cbConfirma').on('keydown', function (e) { if (e.which === 13) Modulo.fnConfirmarCopiaBorrar(); });
@@ -1192,10 +1530,10 @@ Modulo = {
         // Al cerrar el modal de usuarios se detiene el sondeo de la actualización en segundo plano
         $('#modalUsuarios').on('hidden.bs.modal', function () { Modulo.fnDetenerPoll(); Modulo.fnDetenerProgresoCopia(); });
 
-        $('#btnNuevo').on('click', function () {
-            Modulo.fnConAutorizacion(Modulo.fnAbrirModalNuevo);
-        });
+        // Abrir el formulario no cambia nada: la clave se pide al Guardar, con la lista de cambios.
+        $('#btnNuevo').on('click', Modulo.fnAbrirModalNuevo);
         $('#btnAutorizar').on('click', Modulo.fnAutorizar);
+        $('#btnUsrCopiaDetener').on('click', Modulo.fnDetenerCopia);
         $('#claveAdmin').on('keypress', function (e) {
             if (e.which === 13) Modulo.fnAutorizar();
         });
@@ -1230,8 +1568,7 @@ Modulo = {
         });
 
         $(document).on('click', '.btnEditar', function () {
-            var id = $(this).data('id');
-            Modulo.fnConAutorizacion(function () { Modulo.fnAbrirModalEditar(id); });
+            Modulo.fnAbrirModalEditar($(this).data('id'));
         });
         $(document).on('click', '.btnDescargar', function () {
             Modulo.fnDescargar($(this).data('id'));
@@ -1239,10 +1576,8 @@ Modulo = {
         $(document).on('click', '.btnActivo', function () {
             var activar = String($(this).data('activo')) !== '1';
             var id = $(this).data('id');
-            Modulo.fnConAutorizacion(function () {
-                if (!activar && !confirm('¿Desactivar este reloj? Ya no se descargarán sus checadas.')) return;
-                Modulo.fnCambiarActivo(id, activar);
-            });
+            Modulo.fnConAutorizacion(function () { Modulo.fnCambiarActivo(id, activar); },
+                                     Modulo.fnHtmlActivo(id, activar), activar ? 'Activar reloj' : 'Desactivar reloj');
         });
     }
 };

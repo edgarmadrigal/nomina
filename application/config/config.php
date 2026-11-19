@@ -24,6 +24,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://192.168.128.248:8080/nomina/';
+// También se puede entrar por el nombre del equipo (YouTube no deja tocar música en páginas
+// abiertas por IP). Solo se aceptan direcciones conocidas, nunca un Host arbitrario.
+$hostsNomina = array('192.168.128.248:8080', 'sisai:8080', 'desktop-q35afm8:8080', 'localhost:8080');
+if (isset($_SERVER['HTTP_HOST']) && in_array(strtolower($_SERVER['HTTP_HOST']), $hostsNomina, true)) {
+    $config['base_url'] = 'http://' . strtolower($_SERVER['HTTP_HOST']) . '/nomina/';
+}
+// Acceso publico por internet via Tailscale Funnel (HTTPS real, sin instalar nada ni cert).
+// Tailscale termina el TLS y reenvia a localhost:8080 marcando X-Forwarded-Proto=https;
+// con eso servimos los links con la URL publica HTTPS (evita mixed-content).
+$fwdProto = isset($_SERVER['HTTP_X_FORWARDED_PROTO']) ? strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) : '';
+$hostPublicoFunnel = 'sisai.tail70d6b2.ts.net';
+if ($fwdProto === 'https' || (isset($_SERVER['HTTP_HOST']) && strtolower($_SERVER['HTTP_HOST']) === $hostPublicoFunnel)) {
+    $config['base_url'] = 'https://' . $hostPublicoFunnel . '/nomina/';
+}
+
+// Entorno: en los equipos de desarrollo se muestra la barra "MODO DESARROLLO" con el botón
+// Publicar (controllers/Publicar.php), que copia los cambios a producción (la VM SISAI).
+// Se decide por el nombre del equipo, así este mismo archivo sirve en los dos lados.
+$config['equipos_desarrollo'] = array('EDGAR');
+$config['es_desarrollo'] = in_array(strtoupper((string) gethostname()), $config['equipos_desarrollo'], true);
 
 /*
 |--------------------------------------------------------------------------
@@ -100,7 +120,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -406,7 +426,7 @@ $config['cookie_prefix']	= '';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
-$config['cookie_httponly'] 	= FALSE;
+$config['cookie_httponly'] 	= TRUE;
 
 /*
 |--------------------------------------------------------------------------

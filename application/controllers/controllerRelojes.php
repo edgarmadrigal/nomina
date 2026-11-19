@@ -8,7 +8,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class controllerRelojes extends CI_Controller {
 
     // Minutos que dura la autorización con clave de administrador
-    const MINUTOS_AUTORIZACION = 10;
+    // La pantalla pide la clave en CADA acción; esta ventana solo cubre lo que dura esa acción
+    // (una copia grande se manda en varios bloques y puede tardar).
+    const MINUTOS_AUTORIZACION = 30;
 
     // Tipos de reloj que entiende RelojSync.exe y su puerto por defecto
     private $tipos = array('BS2' => 51211, 'BS1' => 1470, 'HV' => 9922);
@@ -53,7 +55,8 @@ class controllerRelojes extends CI_Controller {
     public function plantas(){
         header('Access-Control-Allow-Origin: *');
         if (!$this->sesionValida()) return;
-        echo json_encode($this->RelojDispositivoModel->plantas());
+        $this->load->model('PermisoModel');
+        echo json_encode($this->PermisoModel->quitarOcultas($this->RelojDispositivoModel->plantas()));
     }
 
     public function guardar(){
@@ -407,6 +410,89 @@ class controllerRelojes extends CI_Controller {
         echo json_encode(['exito' => true, 'listo' => false, 'idle' => true]);
     }
 
+    /** Usuarios de la última lectura guardada de un reloj (id => [nombre, rostros]) y su fecha; null si no hay. */
+    private function cacheUsuarios($deviceId){
+        $f = $this->dirCacheUsuarios() . 'cache_' . $deviceId . '.json';
+        if (!file_exists($f)) return null;
+        $c = json_decode(file_get_contents($f), true);
+        if (!is_array($c) || !isset($c['usuarios'])) return null;
+        $u = array();
+        foreach ((array) $c['usuarios'] as $x) $u[(string) $x['id']] = array('nombre' => (string) $x['nombre'], 'rostros' => (int) $x['rostros']);
+        return array('fecha' => isset($c['fecha']) ? $c['fecha'] : null, 'usuarios' => $u);
+    }
+
+    /** Igual que NombreClave de RelojSync: mayúsculas, sin acentos ni signos, espacios simples. */
+    private function nombreClave($n){
+        $n = explode('·', (string) $n)[0];   // la empresa (después de "·") no cuenta: cambia con el número
+        $n = @iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $n);
+        $n = strtoupper(preg_replace('/[^A-Za-z0-9]+/', ' ', (string) $n));
+        return trim(preg_replace('/\s+/', ' ', $n));
+    }
+
+    /**
+     * Vista previa de una copia de usuarios (NO toca los relojes): con la última lectura guardada
+     * de cada reloj calcula qué se copiaría, actualizaría, daría de alta o borraría, para que la
+     * persona lo vea y confirme con su clave antes de hacerlo. Misma lógica que CopiarRostros.
+     */
+    public function previaCopia(){
+        header('Access-Control-Allow-Origin: *');
+        if (!$this->sesionValida()) return;
+        $this->liberarSesion();
+        $origen = $this->RelojDispositivoModel->obtenerCompleto((int) $this->input->post('origen'));
+        if (!$origen) { echo json_encode(['exito' => false, 'mensaje' => 'No existe el reloj de origen.']); return; }
+        $co = $this->cacheUsuarios($origen['deviceId']);
+        if (!$co) { echo json_encode(['exito' => false, 'mensaje' => 'No hay lectura guardada del reloj ' . $origen['descripcion'] . '. Elígelo arriba y da "Actualizar del reloj" primero.']); return; }
+
+        $reemplazar = (bool) $this->input->post('reemplazar');
+        $incluir    = (bool) $this->input->post('incluir');
+        $borrar     = (bool) $this->input->post('borrar');
+        $nums       = $this->numerosPost();
+        $pedidos    = $nums ? array_values(array_filter($nums, function ($n) use ($co) { return isset($co['usuarios'][$n]); }))
+                            : array_map('strval', array_keys($co['usuarios']));
+
+        // nombres de los que se copian, para detectar el número viejo de quien cambió de número
+        $porNombre = array();
+        foreach ($pedidos as $id) {
+            $k = $this->nombreClave($co['usuarios'][$id]['nombre']);
+            if (strlen($k) >= 8) $porNombre[$k] = $id;
+        }
+
+        $relojes = array();
+        foreach ((array) $this->input->post('destinos') as $did) {
+            $d = $this->RelojDispositivoModel->obtenerCompleto((int) $did);
+            if (!$d) continue;
+            $r = array('reloj' => $d['descripcion'], 'fecha' => null, 'sinCache' => false, 'borrarTodos' => 0,
+                       'nuevos' => array(), 'actualizar' => array(), 'altas' => array(), 'viejos' => array(), 'sinCambio' => 0);
+            $cd = $this->cacheUsuarios($d['deviceId']);
+            if (!$cd) { $r['sinCache'] = true; $relojes[] = $r; continue; }
+            $r['fecha'] = $cd['fecha'];
+            $dest = $borrar ? array() : $cd['usuarios'];
+            if ($borrar) $r['borrarTodos'] = count($cd['usuarios']);
+
+            foreach ($pedidos as $id) {
+                $u = $co['usuarios'][$id];
+                $item = array('id' => $id, 'nombre' => $u['nombre']);
+                if ($u['rostros'] > 0) {
+                    if (!isset($dest[$id]) || $dest[$id]['rostros'] == 0) $r['nuevos'][] = $item;
+                    elseif ($reemplazar) $r['actualizar'][] = $item;
+                    else $r['sinCambio']++;
+                } elseif ($incluir && !isset($dest[$id])) {
+                    $r['altas'][] = $item;
+                } else {
+                    $r['sinCambio']++;
+                }
+            }
+            foreach ($dest as $id => $u) {
+                $id = (string) $id;
+                if (isset($co['usuarios'][$id])) continue;
+                $k = $this->nombreClave($u['nombre']);
+                if (isset($porNombre[$k])) $r['viejos'][] = array('id' => $id, 'nombre' => $u['nombre'], 'nuevo' => $porNombre[$k]);
+            }
+            $relojes[] = $r;
+        }
+        echo json_encode(['exito' => true, 'origen' => $origen['descripcion'], 'fechaOrigen' => $co['fecha'], 'relojes' => $relojes]);
+    }
+
     /** Da de alta en el reloj (número y nombre, sin rostro) a empleados activos. */
     public function altaUsuarios(){
         header('Access-Control-Allow-Origin: *');
@@ -420,7 +506,7 @@ class controllerRelojes extends CI_Controller {
         $lista = array();
         $noActivos = array();
         foreach ($nums as $n) {
-            if (isset($estado[$n]) && (int) $estado[$n]['activo']) $lista[] = array('id' => $n, 'nombre' => $this->nombreReloj($estado[$n]['nombre']));
+            if (isset($estado[$n]) && (int) $estado[$n]['activo']) $lista[] = array('id' => $n, 'nombre' => $this->nombreReloj($estado[$n]['nombre'], $estado[$n]['code']));
             else $noActivos[] = $n;
         }
         if (!$lista) { echo json_encode(['exito' => false, 'mensaje' => 'Ninguno de los seleccionados es un empleado activo.']); return; }
@@ -457,7 +543,8 @@ class controllerRelojes extends CI_Controller {
         }
         if (!$quitar) { echo json_encode(['exito' => false, 'mensaje' => 'Los seleccionados son empleados activos; no se quitan del reloj.']); return; }
 
-        $r = $this->ejecutarJson(array('baja', $reloj['deviceId']), $quitar);
+        // soloSinRostro: limpieza de los que no tienen rostro; RelojSync revisa en el reloj que no lo tengan
+        $r = $this->ejecutarJson(array('baja', $reloj['deviceId']), $quitar, $this->input->post('soloSinRostro') ? array('sinrostro') : array());
         $this->registrarUsuarios($reloj['id'], 'baja', $r, $this->session->userdata('relojesQuitarAutorizo'));
         if ($r['exito']) $r['activosProtegidos'] = $activos;
         echo json_encode($r);
@@ -524,6 +611,7 @@ class controllerRelojes extends CI_Controller {
         $destsFile = $dir . 'copiavarios_destinos.json';
         file_put_contents($destsFile, json_encode($destDevs));
         $prog = $dir . 'copia_progreso.json';
+        @unlink($prog . '.detener');   // un "detener" viejo no debe cortar la copia nueva
 
         $flags = '';
         if ($this->input->post('reemplazar')) $flags .= ' reemplazar';
@@ -564,12 +652,137 @@ class controllerRelojes extends CI_Controller {
         return $g !== '' ? array_map('intval', explode(',', $g)) : array((int) $reloj['idPlanta']);
     }
 
-    /** "LARA/BECERRA,ESTEFANY NALLELY" -> "ESTEFANY NALLELY LARA BECERRA" (máximo 48 caracteres, como en el reloj). */
-    private function nombreReloj($completo){
+    /**
+     * "LARA/BECERRA,ESTEFANY NALLELY" + "SPM" -> "ESTEFANY NALLELY LARA BECERRA · SPM" (máximo 48
+     * caracteres, como en el reloj). La empresa va al final para tenerlos identificados; si no cabe,
+     * se recorta el nombre, nunca la empresa.
+     */
+    private function nombreReloj($completo, $empresa = ''){
         $p = explode(',', (string) $completo, 2);
         $nombre = count($p) === 2 ? trim($p[1]) . ' ' . str_replace('/', ' ', $p[0]) : str_replace('/', ' ', $p[0]);
         $nombre = trim(preg_replace('/\s+/', ' ', $nombre));
-        return function_exists('mb_substr') ? mb_substr($nombre, 0, 48, 'UTF-8') : substr($nombre, 0, 48);
+        $sufijo = trim((string) $empresa) !== '' ? ' · ' . trim($empresa) : '';
+        $max = 48 - mb_strlen($sufijo, 'UTF-8');
+        return rtrim(mb_substr($nombre, 0, $max, 'UTF-8')) . $sufijo;
+    }
+
+    /** Relojes BioStar 2 activos (los únicos que admiten altas, quitar y renombrar desde aquí). */
+    private function relojesBS2(){
+        $lista = array();
+        foreach ($this->RelojDispositivoModel->listar() as $r) {
+            if ($r['sdk'] === 'BS2' && (int) $r['activo']) {
+                $c = $this->RelojDispositivoModel->obtenerCompleto((int) $r['id']);
+                if ($c) $lista[] = $c;
+            }
+        }
+        return $lista;
+    }
+
+    /**
+     * Con la última lectura guardada de cada reloj BioStar 2: quiénes NO tienen rostro y están dados
+     * de baja o no existen en el sistema (los activos sin rostro no se tocan: esperan su registro).
+     */
+    private function calcularLimpieza(array $soloIds = array()){
+        $res = array();
+        foreach ($this->relojesBS2() as $reloj) {
+            if ($soloIds && !in_array((int) $reloj['id'], $soloIds, true)) continue;   // solo los relojes elegidos
+            $f = $this->dirCacheUsuarios() . 'cache_' . $reloj['deviceId'] . '.json';
+            $item = array('id' => (int) $reloj['id'], 'reloj' => $reloj['descripcion'], 'fecha' => null, 'sinCache' => true, 'usuarios' => array());
+            if (file_exists($f) && ($c = json_decode(file_get_contents($f), true))) {
+                $item['sinCache'] = false;
+                $item['fecha'] = isset($c['fecha']) ? $c['fecha'] : null;
+                foreach ($this->construirFilasUsuarios($reloj, isset($c['usuarios']) ? $c['usuarios'] : array()) as $fila) {
+                    if ($fila['rostros'] == 0 && ($fila['estado'] === 'baja' || $fila['estado'] === 'desconocido'))
+                        $item['usuarios'][] = array('id' => $fila['num'], 'nombre' => $fila['nombre'] !== '' ? $fila['nombre'] : $fila['nombreReloj'],
+                                                    'estado' => $fila['estado']);
+                }
+            }
+            $res[] = $item;
+        }
+        return $res;
+    }
+
+    /** Vista previa: sin rostro y de baja / desconocidos en cada reloj BioStar 2 (no toca los relojes). */
+    public function previaLimpieza(){
+        header('Access-Control-Allow-Origin: *');
+        if (!$this->sesionValida()) return;
+        $this->liberarSesion();
+        $ids = array_map('intval', (array) $this->input->post('relojes'));
+        echo json_encode(['exito' => true, 'relojes' => $this->calcularLimpieza(array_values(array_filter($ids)))]);
+    }
+
+    /**
+     * Con la última lectura guardada de cada reloj BioStar 2: a quién hay que cambiarle el nombre para
+     * que traiga su empresa ("NOMBRE · CÓDIGO"). Solo empleados que existen en el sistema.
+     */
+    private function calcularNombres(){
+        $res = array();
+        foreach ($this->relojesBS2() as $reloj) {
+            $f = $this->dirCacheUsuarios() . 'cache_' . $reloj['deviceId'] . '.json';
+            $item = array('id' => (int) $reloj['id'], 'deviceId' => (string) $reloj['deviceId'], 'reloj' => $reloj['descripcion'],
+                          'fecha' => null, 'sinCache' => true, 'cambios' => array());
+            if (file_exists($f) && ($c = json_decode(file_get_contents($f), true))) {
+                $item['sinCache'] = false;
+                $item['fecha'] = isset($c['fecha']) ? $c['fecha'] : null;
+                $estado = array();
+                foreach ($this->RelojDispositivoModel->estadoEmpleados($this->plantasDe($reloj)) as $e) $estado[$e['num']] = $e;
+                foreach ((array) $c['usuarios'] as $u) {
+                    $id  = (string) $u['id'];
+                    $num = ltrim($id, '0') === '' ? $id : ltrim($id, '0');
+                    if (!isset($estado[$num])) continue;
+                    $nuevo = $this->nombreReloj($estado[$num]['nombre'], $estado[$num]['code']);
+                    if ($nuevo !== (string) $u['nombre'])
+                        $item['cambios'][] = array('id' => $id, 'antes' => (string) $u['nombre'], 'despues' => $nuevo);
+                }
+            }
+            $res[] = $item;
+        }
+        return $res;
+    }
+
+    /** Vista previa de los nombres con empresa (no toca los relojes). */
+    public function previaNombres(){
+        header('Access-Control-Allow-Origin: *');
+        if (!$this->sesionValida()) return;
+        $this->liberarSesion();
+        echo json_encode(['exito' => true, 'relojes' => $this->calcularNombres()]);
+    }
+
+    /** Pone la empresa en los nombres de todos los relojes BioStar 2, en segundo plano (misma barra que la copia). */
+    public function renombrarVarios(){
+        header('Access-Control-Allow-Origin: *');
+        if (!$this->esAdmin()) return;
+        $trabajos = array();
+        $porReloj = array();
+        $total = 0;
+        foreach ($this->calcularNombres() as $r) {
+            if (!$r['cambios']) continue;
+            $trabajos[$r['deviceId']] = array_map(function ($c) { return array('id' => $c['id'], 'nombre' => $c['despues']); }, $r['cambios']);
+            $porReloj[$r['id']] = count($r['cambios']);
+            $total += count($r['cambios']);
+        }
+        if (!$trabajos) { echo json_encode(['exito' => false, 'mensaje' => 'No hay nombres que cambiar (según la última lectura de cada reloj).']); return; }
+
+        $exe = FCPATH . 'tools/RelojSync/publish/RelojSync.exe';
+        if (!file_exists($exe)) { echo json_encode(['exito' => false, 'mensaje' => 'No está instalado RelojSync.exe.']); return; }
+        $dir  = $this->dirCacheUsuarios();
+        $json = $dir . 'renombrar_trabajos.json';
+        file_put_contents($json, json_encode($trabajos, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT));
+        $prog = $dir . 'copia_progreso.json';
+        $cmd  = $dir . 'renombrar.cmd';
+        file_put_contents($cmd,
+            "@echo off\r\n"
+          . 'cd /d "' . str_replace('/', '\\', dirname($exe)) . '"' . "\r\n"
+          . '"' . str_replace('/', '\\', $exe) . '" renombrar "' . str_replace('/', '\\', $json) . '" "' . str_replace('/', '\\', $prog) . '" >nul 2>&1' . "\r\n");
+        $h = popen('start "" /B cmd /c "' . $cmd . '"', 'r');
+        if ($h !== false) pclose($h);
+
+        $u = $this->session->userdata['login']['user'];
+        foreach ($porReloj as $idReloj => $n)
+            $this->db->query("INSERT INTO dbo.RelojComunicacion (idReloj, accion, usuario, autorizo, ip, exito, resultado) VALUES (?,?,?,?,?,?,?)",
+                             array($idReloj, 'nombres', isset($u->usuario) ? $u->usuario : null, $this->session->userdata('relojesAutorizadoPor'),
+                                   $this->input->ip_address(), 1, 'Empresa en el nombre: ' . $n . ' usuario(s) (en segundo plano)'));
+        echo json_encode(['exito' => true, 'relojes' => count($trabajos), 'usuarios' => $total]);
     }
 
     /**
@@ -713,8 +926,8 @@ class controllerRelojes extends CI_Controller {
      */
     private function esAdmin(){
         if (!$this->sesionValida()) return false;
-        $u = $this->session->userdata['login']['user'];
-        if (isset($u->idPerfil) && $u->idPerfil == 1) return true;
+        // Todo lo que cambia algo en los relojes pide la clave de un administrador en el momento,
+        // también al administrador en sesión (la pantalla muestra antes qué se va a cambiar).
         $hasta = $this->session->userdata('relojesAutorizadoHasta');
         if ($hasta && $hasta > time()) return true;
         echo json_encode(['exito' => false, 'requiereClave' => true, 'mensaje' => 'Se requiere la clave del administrador.']);
@@ -761,7 +974,33 @@ class controllerRelojes extends CI_Controller {
         }
         $p['exito'] = true;
         $p['hay']   = true;
+        // La copia escribe al menos cada ~30 s (aun reconectando); si lleva más de 3 min callada, el proceso murió.
+        // (se usa la fecha del archivo: la hora escrita adentro es local y PHP puede tener otra zona horaria)
+        $p['sinRespuesta'] = !empty($p['activo']) && (time() - filemtime($f)) > 180;
+        $p['deteniendo']   = file_exists($f . '.detener');
         echo json_encode($p);
+    }
+
+    /**
+     * Detiene la copia de rostros SOLO hacia el reloj que se está copiando ahora (la copia sigue con
+     * el siguiente reloj de la lista). Deja "copia_progreso.json.detener" con su deviceId; RelojSync lo
+     * revisa entre cada usuario y en cada reintento de conexión.
+     */
+    public function copiaDetener(){
+        header('Access-Control-Allow-Origin: *');
+        if (!$this->esAdmin()) return;
+        $f = $this->dirCacheUsuarios() . 'copia_progreso.json';
+        $p = file_exists($f) ? json_decode(file_get_contents($f), true) : null;
+        $dev = is_array($p) ? preg_replace('/\D/', '', (string) (isset($p['destinoId']) ? $p['destinoId'] : '')) : '';
+        if (!$dev || empty($p['activo'])) { echo json_encode(['exito' => false, 'mensaje' => 'No hay una copia en curso que detener.']); return; }
+        file_put_contents($f . '.detener', $dev);
+        $u = $this->session->userdata['login']['user'];
+        $reloj = $this->db->query("SELECT id FROM dbo.RelojDispositivo WHERE deviceId = ?", array($dev))->row_array();
+        if ($reloj)
+            $this->db->query("INSERT INTO dbo.RelojComunicacion (idReloj, accion, usuario, autorizo, ip, exito, resultado) VALUES (?,?,?,?,?,?,?)",
+                             array($reloj['id'], 'copiar', isset($u->usuario) ? $u->usuario : null, null, $this->input->ip_address(), 1,
+                                   'Detuvo la copia de rostros hacia ' . $p['destino'] . ' (' . (int) $p['copiados'] . ' de ' . (int) $p['total'] . ' copiados)'));
+        echo json_encode(['exito' => true, 'destino' => $p['destino']]);
     }
 
     private function usuarioEsTorreon(){

@@ -38,6 +38,7 @@ class contrato extends CI_Controller {
       }
     }
     
+    /*
     
     public function ReporteContrato(){
       header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -75,7 +76,6 @@ class contrato extends CI_Controller {
        }
        $this->load->model('ContratoRH');
 
-       ///////***COMPROBAR SI EL; EMPLEADO EXISTE */
        try{
        $existe=$this->ContratoRH->ConsultaEmpleadoIDCount($idempleado);
        $existe= $existe[0]['empleado_id'] ;
@@ -88,7 +88,8 @@ class contrato extends CI_Controller {
        }else
        {        
         try {
-            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida,$idNacionalidad,$idrazon); 
+            $data =$this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida,$idNacionalidad,$idrazon);     
+
             $dompdf = new Dompdf(array('isPhpEnabled' => true));   
             $ExisteEmpleado='';       
           try{
@@ -101,7 +102,7 @@ class contrato extends CI_Controller {
             if ($ExisteEmpleado!='' && $data[0]['BENEFICIARIO']=='' ) {
               echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita mas información ejemplo: "EDOCIVIL","DIRECCION","IMSS","RFC","CURP","BENEFICIARIO" ';
             }
-            else  if($ExisteEmpleado!=''){
+            else{ //if($ExisteEmpleado!=''){
               $REPRESENTANTE=$data[0]['REPRESENTANTE'];
               $EMPRESA=$data[0]['EMPRESA'];
               $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
@@ -124,8 +125,7 @@ class contrato extends CI_Controller {
               $COMIDA=$data[0]['COMIDA'];              
               $FECHA_INGRESO=$data[0]['FECHA_INGRESO'];   
               $NACIONALIDAD=$data[0]['NACIONALIDAD'];            
-              $EDAD=$data[0]['EDAD'];   
-              $IDHORARIO=$idhorario;             
+              $EDAD=$data[0]['EDAD'];                
                         
               $fechaactual = getdate();
               $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
@@ -152,14 +152,149 @@ class contrato extends CI_Controller {
               $dompdf->getCanvas()->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);      
               // Output the generated PDF to Browser
               $dompdf->stream("ReporteContrato.pdf", array("Attachment"=>false));   
-          }else{
-            echo 'El empleado no existe ó Revisa la dirección de el empleado la ciudad y el estado';
+          }
+          else{
+            echo 'El empleado no existe';
           }
         } catch (Exception $e) {
           echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
-       }
+       }    
     }
+    */
+
+public function ReporteContrato(){
+  error_reporting(0);
+  ini_set('display_errors', 0);
+  
+
+  header("Access-Control-Allow-Origin: *");
+  header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+
+  $idsalario=$this->input->get('idsalario');
+  $idrepresentante=$this->input->get('idrepresentante');
+  $idhorario=$this->input->get('idhorario');
+  $idempleado=$this->input->get('idempleado');
+  $idempresa=$this->input->get('idempresa');
+  $iddescanso=$this->input->get('iddescanso');   
+  $idComida=$this->input->get('idComida');       
+  $idNacionalidad=$this->input->get('idNacionalidad');  
+  $idrazon=$this->input->get('idrazon');         
+
+  if (empty($idsalario)){
+    $idsalario=null;
+   }if (empty($idrepresentante)){
+    $idrepresentante=null;
+   }if (empty($idhorario)){
+    $idhorario=null;
+   }if (empty($idempleado)){
+    $idempleado=null;
+   }if (empty($idempresa)){
+    $idempresa=null;
+   }if (empty($iddescanso)){
+    $iddescanso=null;
+   }if (empty($idComida)){
+    $idComida=null;
+   }if (empty($idrazon)){
+    $idrazon=null;
+   }if (empty($idNacionalidad)){
+    $idNacionalidad=null;
+   }
+   $this->load->model('ContratoRH');
+
+   ///////***COMPROBAR SI EL EMPLEADO EXISTE */
+   $existe = 0;
+   try{
+     $existeArr = $this->ContratoRH->ConsultaEmpleadoIDCount($idempleado);
+     $existe = isset($existeArr[0]['empleado_id']) ? (int)$existeArr[0]['empleado_id'] : 0;
+   } catch (Exception $e) {
+     echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+     return;
+   }
+
+   if($existe === 0){
+     echo 'El empleado no existe o es de otra planta, favor de revisar correctamente la informacion';
+   }else
+   {        
+    try {
+        $data = $this->ContratoRH->consulta($idsalario,$idrepresentante,$idhorario,$idempleado,$idempresa,$iddescanso,$idComida,$idNacionalidad,$idrazon);     
+
+        if (empty($data)) {
+          echo 'No se encontró información con la combinación de datos proporcionada (revisa salario, representante, horario, empresa, etc.)';
+          return;
+        }
+
+        $dompdf = new Dompdf(array('isPhpEnabled' => true));   
+        $ExisteEmpleado='';       
+        try{
+          $ExisteEmpleado=$data[0]['NOMBRE'];
+        }
+        catch (Exception $e) {
+          echo 'El empleado no existe ó Revisa la dirección de el empleado la ciudad y el estado'.$e->getMessage();
+          return;
+        }
+
+        if ($ExisteEmpleado!='' && $data[0]['BENEFICIARIO']=='' ) {
+          echo 'El empleado '.$data[0]['NOMBRE'].' si existe pero necesita mas información ejemplo: "EDOCIVIL","DIRECCION","IMSS","RFC","CURP","BENEFICIARIO" ';
+        }
+        else if($ExisteEmpleado!=''){
+          $REPRESENTANTE=$data[0]['REPRESENTANTE'];
+          $EMPRESA=$data[0]['EMPRESA'];
+          $RAZONSOCIAL=$data[0]['RAZONSOCIAL'];
+          $EDOCIVIL=$data[0]['EDOCIVIL'];
+          $NOTARIO=$data[0]['NOTARIO'];
+          $NOMBRE=$data[0]['NOMBRE'];
+          $DIRECCION=$data[0]['DIRECCION'];
+          $IMSS=$data[0]['IMSS'];
+          $RFC=$data[0]['RFC'];
+          $CURP=$data[0]['CURP'];
+          $PUESTO=$data[0]['PUESTO'];
+          $DIRECCIONEMPRESA=$data[0]['DIRECCIONEMPRESA'];
+          $HORARIOCONTRATO=$data[0]['HORARIOCONTRATO'];
+          $SALARIO=$data[0]['SALARIO'];
+          $DESCRIPCIONSALARIO=$data[0]['DESCRIPCIONSALARIO'];
+          $DESCANSO=$data[0]['DESCANSO'];
+          $FECHAANTIGUEDAD=$data[0]['FECHAANTIGUEDAD'];
+          $FECHAIMPRESION=$data[0]['FECHAIMPRESION'];            
+          $BENEFICIARIO=$data[0]['BENEFICIARIO'];
+          $COMIDA=$data[0]['COMIDA'];              
+          $FECHA_INGRESO=$data[0]['FECHA_INGRESO'];   
+          $NACIONALIDAD=$data[0]['NACIONALIDAD'];            
+          $EDAD=$data[0]['EDAD'];                
+                    
+          $fechaactual = getdate();
+          $FECHAHOY=" $fechaactual[year]-$fechaactual[mon]-$fechaactual[mday] ";            
+
+          ob_start();      
+          require (dirname(__DIR__, 1)."/views/ReporteContrato.php");
+          $html = ob_get_contents();
+          ob_end_clean();
+
+          $dompdf->loadHtml($html);
+          $dompdf->setPaper('Letter', 'portrait');
+          $dompdf->render();      
+
+          $x          = 505; 
+          $y          = 790;
+          $text       = "Página {PAGE_NUM} de {PAGE_COUNT}";     
+          $font       = $dompdf->getFontMetrics()->get_font('Helvetica', 'normal');   
+          $size       = 10;    
+          $color      = array(0,0,0);
+          $word_space = 0.0;
+          $char_space = 0.0;
+          $angle      = 0.0;
+
+          $dompdf->getCanvas()->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);      
+
+          $dompdf->stream("ReporteContrato.pdf", array("Attachment"=>false));   
+        }else{
+          echo 'El empleado no existe';
+        }
+    } catch (Exception $e) {
+      echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+    }
+   }    
+}
 
     public function consultaSalario(){
           header('Access-Control-Allow-Origin: *');

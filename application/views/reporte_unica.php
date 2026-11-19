@@ -61,7 +61,7 @@
 
 <script>
 function descargarCSV() {
-    fetch('http://192.168.128.248:8080/nomina/reporte/descargar_csv')
+    fetch('reporte/descargar_csv')
         .then(resp => resp.blob())
         .then(blob => {
             const url = window.URL.createObjectURL(blob);

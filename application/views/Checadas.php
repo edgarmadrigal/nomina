@@ -5,7 +5,7 @@
     <div class="container-fluid">           
         <div class="row">
             <div class="col-12">
-                <h4 class="card-title">Checadas</h4> 
+                <h4 class="card-title">Reporte Checadas Nomiplus</h4> 
                 <div class="card">
                     <div class="card-body">     
                         <div class="table-responsive">    
@@ -256,6 +256,73 @@
 </div>  
 <script src="assets/js/checada.js"></script>
 <style>
+	/* Contenedor con scroll */
+.table-responsive {
+    overflow-x: auto;
+    position: relative;
+}
+
+/* Anchos fijos para poder calcular el "left" de la 2da columna */
+#example th:nth-child(1),
+#example td:nth-child(1) {
+    width: 70px;
+    min-width: 70px;
+    max-width: 70px;
+}
+#example th:nth-child(2),
+#example td:nth-child(2) {
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Columna 1 fija: Numero */
+#example thead th:nth-child(1),
+#example thead td:nth-child(1),
+#example tbody td:nth-child(1),
+#example tfoot th:nth-child(1),
+#example tfoot td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background-color: #fff;
+}
+
+/* Columna 2 fija: NombreCompleto (left = ancho de la columna 1) */
+#example thead th:nth-child(2),
+#example thead td:nth-child(2),
+#example tbody td:nth-child(2),
+#example tfoot th:nth-child(2),
+#example tfoot td:nth-child(2) {
+    position: sticky;
+    left: 70px;
+    z-index: 2;
+    background-color: #fff;
+}
+
+/* El thead siempre por encima de las columnas fijas */
+#example thead th {
+    z-index: 3;
+}
+
+/* Respetar el rayado de table-striped en las celdas fijas */
+#example.table-striped tbody tr:nth-of-type(odd) td:nth-child(1),
+#example.table-striped tbody tr:nth-of-type(odd) td:nth-child(2) {
+    background-color: rgba(0,0,0,.05);
+}
+
+/* Sombra sutil para marcar visualmente el borde de las columnas fijas */
+#example td:nth-child(2),
+#example th:nth-child(2) {
+    box-shadow: 2px 0 3px -1px rgba(0,0,0,.15);
+}
+#example.table-striped tbody tr:nth-of-type(odd) td:nth-child(1), #example.table-striped tbody tr:nth-of-type(odd) td:nth-child(2) {
+    background-color: #fff;
+}
+
 @media only screen and (min-width: 1000px) {
     .table-responsive {
         overflow-x: visible;

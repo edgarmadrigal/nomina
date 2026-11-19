@@ -244,16 +244,18 @@
 
 <!-- Modal Clave de administrador -->
 <div class="modal fade" id="modalClave" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fa fa-lock"></i> Clave de administrador</h5>
+                <h5 class="modal-title"><i class="fa fa-lock"></i> <span id="tituloClave">Confirmar cambios</span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p class="text-muted" style="font-size:13px;">Para modificar la configuración de los relojes se requiere un administrador.</p>
+                <!-- Lo que se va a cambiar en los relojes (lo arma relojes.js antes de pedir la clave) -->
+                <div id="cambiosClave"></div>
+                <p class="text-muted" style="font-size:13px;">Revisa los cambios. Para hacerlos captura usuario y clave de un administrador.</p>
                 <div class="form-group">
                     <label style="font-weight: bold!important;">Usuario</label>
                     <input type="text" class="form-control" id="usuarioAdmin" autocomplete="off">
@@ -266,7 +268,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btnAutorizar">Autorizar</button>
+                <button type="button" class="btn btn-primary" id="btnAutorizar"><i class="fa fa-check"></i> Confirmar y hacer los cambios</button>
             </div>
         </div>
     </div>
@@ -390,6 +392,13 @@
                     <div class="progress mt-1" style="height:18px;">
                         <div id="usrCopiaBarra" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width:0%;">0%</div>
                     </div>
+                    <div class="d-flex justify-content-between align-items-center flex-wrap mt-1" style="font-size:12.5px; gap:8px;">
+                        <span id="usrCopiaEta"></span>
+                        <button type="button" class="btn btn-outline-danger btn-sm" id="btnUsrCopiaDetener" style="display:none; padding:1px 8px;"
+                                title="Detiene solo la copia hacia este reloj; si hay más relojes en la lista, sigue con el siguiente">
+                            <i class="fa fa-stop-circle"></i> Detener copia de este reloj</button>
+                    </div>
+                    <div id="usrCopiaAviso" class="mt-1" style="display:none;"></div>
                 </div>
                 <div class="usr-tabla mt-2">
                     <table class="table table-sm table-hover mb-0">
@@ -414,11 +423,14 @@
                         <select class="custom-select custom-select-sm" id="usrOrigen" style="width:auto;"></select>
                         <button type="button" class="btn btn-outline-primary btn-sm" id="btnUsrCopiarTodo" title="Igual que Copiar rostro, pero ADEMÁS crea en este reloj a los que no tienen rostro (solo número y nombre), tomándolos del reloj elegido"><i class="fa fa-clone"></i> + sin rostro</button>
                         <label class="mb-0 text-nowrap" style="font-size:12px;" title="Si el usuario YA existe en este reloj, lo ACTUALIZA con el rostro y nombre del reloj origen (para corregir altas equivocadas de RH). Si no se marca, a los que ya tienen rostro no se les toca."><input type="checkbox" id="usrReemplazar"> Reemplazar si ya existe</label>
+                        <button type="button" class="btn btn-success btn-sm" id="btnUsrCopiarNuevos" title="Copia del reloj de arriba ('Reloj:', el principal) a los relojes BioStar 2 que elijas, solo a los empleados NUEVOS (los que aún no tienen rostro allá), con su rostro y foto. No toca a los que ya están; los números viejos de quien cambió de número se quitan."><i class="fa fa-user-plus"></i> Copiar nuevos a relojes…</button>
                         <button type="button" class="btn btn-outline-secondary btn-sm" id="btnUsrCopiarVarios" title="Copia TODOS los usuarios de ESTE reloj (el de arriba, 'Reloj:') hacia varios relojes a la vez, en segundo plano"><i class="fa fa-sitemap"></i> a varios relojes…</button>
                     </span>
                     <span id="usrAvance" style="font-size:13px;"></span>
                     <!-- Quitar (destructivo) se separa a la orilla derecha para no confundirlo con Copiar -->
-                    <button type="button" class="btn btn-danger btn-sm" id="btnUsrQuitar" style="margin-left:auto;" title="Solo empleados dados de baja o que no existen; los activos nunca se quitan"><i class="fa fa-user-times"></i> Quitar del reloj</button>
+                    <button type="button" class="btn btn-outline-info btn-sm" id="btnUsrNombres" title="Pone la empresa al final del nombre de cada empleado en TODOS los relojes BioStar 2 (ej. 'EDGAR MADRIGAL · SPM'), sin tocar su rostro"><i class="fa fa-building"></i> Empresa en los nombres</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="btnUsrLimpiar" style="margin-left:auto;" title="En los relojes BioStar 2 que elijas quita a los que NO tienen rostro y están dados de baja o no existen en el sistema. Los activos sin rostro no se tocan."><i class="fa fa-eraser"></i> Quitar bajas sin rostro…</button>
+                    <button type="button" class="btn btn-danger btn-sm" id="btnUsrQuitar" title="Solo empleados dados de baja o que no existen; los activos nunca se quitan"><i class="fa fa-user-times"></i> Quitar del reloj</button>
                 </div>
                 <div class="text-muted mt-2" style="font-size:12px;">
                     <i class="fa fa-info-circle"></i> <b>Dar de alta</b> crea al empleado sin rostro: después en el reloj solo se le registra el rostro.
@@ -427,6 +439,27 @@
                 </div>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: elegir en qué relojes se hace una acción (Quitar bajas sin rostro, Copiar nuevos) -->
+<div class="modal fade" id="modalElegirRelojes" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-check-square-o"></i> <span id="erTitulo">Elegir relojes</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-1" id="erTexto"></p>
+                <label class="mb-1 d-block" style="font-size:13px; font-weight:bold;"><input type="checkbox" id="erTodos" checked> Todos</label>
+                <div id="erLista" style="max-height:260px; overflow:auto; border:1px solid #cfd6de; border-radius:4px; padding:8px;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnErContinuar"><i class="fa fa-arrow-right"></i> Ver cambios</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
         </div>
     </div>
 </div>
@@ -469,6 +502,7 @@
             </div>
             <div class="modal-body">
                 <p>Se van a <b>quitar <span id="quitarCuantos"></span> usuario(s)</b> del reloj <b id="quitarReloj"></b>, con su rostro.</p>
+                <div id="quitarLista" class="cc-lista" style="max-height:30vh; overflow:auto; font-size:13px; margin-bottom:8px;"></div>
                 <p style="font-size:13px;">Solo se quitan empleados dados de baja o que no existen en el sistema; si alguno está activo, el sistema lo protege y no lo quita. Si después regresa, habrá que darlo de alta y registrar su rostro otra vez (o copiarlo de otro reloj).</p>
                 <div class="form-row">
                     <div class="form-group col-6">
@@ -505,6 +539,7 @@
             <div class="modal-body">
                 <p>Vas a <b>BORRAR TODOS los usuarios</b> de <b><span id="cbCuantos"></span> reloj(es) destino</b> y volver a darlos de alta desde el principal. <b>Esto no se puede deshacer.</b></p>
                 <p style="font-size:13px;">El reloj <b>principal</b> (origen) <u>no se toca</u>; solo se vacían los relojes destino que marcaste. Aun así, por ser una operación peligrosa, se necesita la clave de un <b>administrador</b>.</p>
+                <div id="cbCambios" style="max-height:30vh; overflow:auto; font-size:13px; margin-bottom:8px;"></div>
                 <div class="form-row">
                     <div class="form-group col-6">
                         <label style="font-weight:bold!important;">Usuario administrador</label>
@@ -550,11 +585,19 @@
 
 <style>
 /* El tema oculta los checkbox sueltos (left:-9999px); en estas listas se usan los nativos */
-#modalComunicacion input[type="checkbox"], #modalUsuarios input[type="checkbox"], #modalCopiarVarios input[type="checkbox"] {
+#modalComunicacion input[type="checkbox"], #modalUsuarios input[type="checkbox"], #modalCopiarVarios input[type="checkbox"], #modalElegirRelojes input[type="checkbox"] {
     position: static !important; left: auto !important; opacity: 1 !important; visibility: visible !important;
     width: 16px; height: 16px; margin: 0 6px 0 0; vertical-align: middle; cursor: pointer; accent-color: #1e88e5;
 }
 #modalCopiarVarios #cvDestinos label { display: block; margin: 0 0 4px 0; cursor: pointer; }
+#cambiosClave { max-height: 50vh; overflow: auto; margin-bottom: 10px; font-size: 13px; }
+#cambiosClave .cc-reloj { border: 1px solid #cfd6de; border-radius: 4px; padding: 6px 10px; margin-bottom: 8px; }
+#cambiosClave .cc-reloj b.cc-nombre { font-size: 14px; }
+#cambiosClave ul { margin: 2px 0 6px 18px; padding: 0; }
+#cambiosClave .cc-aviso { color: #c62828; }
+#cambiosClave .cc-gris { color: #78909c; }
+#cambiosClave details summary { cursor: pointer; }
+html.modo-nocturno #cambiosClave .cc-reloj { border-color: #5b6673; }
 #modalComunicacion .com-accion, #modalComunicacion .com-lista tbody tr { cursor: pointer; }
 #modalComunicacion .com-titulo { display: block; width: 100%; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
 #modalComunicacion .modal-dialog { max-width: 1100px; width: 94vw; }
@@ -595,6 +638,9 @@ html.modo-nocturno #modalUsuarios .usr-tabla { border-color: #3a4150; }
 html.modo-nocturno #btnUsrCopiarTodo { color: #8ab4f8 !important; border-color: #4a6fa5 !important; }
 html.modo-nocturno #btnUsrCopiarVarios { color: #cbd2da !important; border-color: #5b6673 !important; }
 #usrCopiaProgreso { border: 1px solid #cfd6de; border-radius: 4px; background: #f4f8fc; }
+#usrCopiaAviso { border-radius: 4px; padding: 6px 10px; font-size: 12.5px; background: #fff3cd; border: 1px solid #f0c36d; color: #5c4400 !important; }
+#usrCopiaAviso.rojo { background: #fdecea; border-color: #f5a3a3; color: #7a1010 !important; }
+#usrCopiaAviso b { color: inherit !important; }
 #usrCopiaProgreso, #usrCopiaProgreso b, #usrCopiaTexto { color: #1a2733; }
 html.modo-nocturno #usrCopiaProgreso { background: #222935; border-color: #3a4150; }
 html.modo-nocturno #usrCopiaProgreso, html.modo-nocturno #usrCopiaProgreso b,

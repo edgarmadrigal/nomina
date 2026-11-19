@@ -1,0 +1,11 @@
+Objeto=Excepciones de la nómina
+Delimitador=,
+CalificadorTexto="
+FormatoFechas=dd/mm/aaaa
+SeparadorLineas=|
+ExportarTipoReg=N
+PermitirImportar=S
+Campos_1=CLAVE_EMPLEADO(20),DIAS_HRS_PAGAR(6),FALTAS(5),HORAS_EXTRAS(4),DIAS_EXTRAS(2)
+Campos_1=HORAS_ESPECIALES(4),DIAS_ESPECIALES(2),DIAS_VACACIONES(6),TIPO_MOVIMIENTO(1)
+Campos_1.1=CLAVE_CONCEPTO(5),MONTO(16)
+Campos_1.2=FECHA_FALTA(10)

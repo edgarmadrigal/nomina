@@ -8,7 +8,12 @@ class Incidencias extends CI_Model{
     }
 
     
-    public function consultaIncidencias($id){
+    /**
+     * $empresa limita las incidencias a esa empresa (los números de empleado se repiten entre
+     * empresas; sin este filtro, las vacaciones de Microsip de un homónimo en otra empresa
+     * aparecían en la persona equivocada). Se incluyen las de empresa NULL (capturas antiguas).
+     */
+    public function consultaIncidencias($id, $empresa = null){
         $this->db->select('i.id
         ,i.empleado_id
         ,i.concepto_id
@@ -16,11 +21,15 @@ class Incidencias extends CI_Model{
         ,i.fechaFin
         ,i.estatus
         ,i.usuarioBaja_id
-        ,i.fechaBaja,c.descripcion,c.descripcionCorta');
+        ,i.fechaBaja,c.descripcion,c.descripcionCorta,i.origenClave
+        ,i.cubreEntrada,i.cubreEntradaComedor,i.cubreSalidaComedor,i.cubreSalida');
         $this->db->from('incidencias i');
         $this->db->join('conceptos c', 'i.concepto_id = c.id')
         ->where('i.empleado_id',$id);
         $this->db->where('i.estatus','1');
+        if ($empresa !== null && $empresa !== '' && (int)$empresa > 0) {
+            $this->db->where('(i.empresa_id = ' . (int)$empresa . ' OR i.empresa_id IS NULL)');
+        }
         $aResult = $this->db->get();
 
         if(!$aResult->num_rows() == 1)
@@ -60,13 +69,14 @@ class Incidencias extends CI_Model{
 
     }
 
-    public function consultaEmpleado($id){
-        $empleado = $this->db->select('REG_IMSS')
+    public function consultaEmpleado($id, $empresa = null){
+        $this->db->select('REG_IMSS, FECHA_INGRESO, empresa_id, NOMBRE_COMPLETO')
         ->from('empleados')
-        ->where('empleado_id',$id)
-        ->get()
-        ->result();                 
-        return $empleado;
+        ->where('empleado_id',$id);
+        if ($empresa !== null && $empresa !== '' && (int)$empresa > 0) {
+            $this->db->where('empresa_id', (int)$empresa);
+        }
+        return $this->db->get()->result();
     }
 
     function ActualizarHorariosEmpleado($id,$data){

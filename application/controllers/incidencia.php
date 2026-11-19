@@ -149,6 +149,30 @@ class incidencia extends CI_Controller {
 		 }
   }
 
+    /** Última sincronización con Microsip (job cada hora o botón "Traer de Microsip"). */
+    public function microsipEstado(){
+        header('Content-Type: application/json');
+        $f = $this->db->query(
+            "SELECT TOP 1 CONVERT(VARCHAR(16), MAX(l.fin), 120) AS fecha, MAX(l.origen) AS origen,
+                    SUM(ISNULL(l.nuevas, 0)) AS nuevas, SUM(ISNULL(l.actualizadas, 0)) AS actualizadas,
+                    SUM(ISNULL(l.borradas, 0)) AS borradas, SUM(CASE WHEN l.error IS NOT NULL THEN 1 ELSE 0 END) AS errores
+             FROM dbo.MicrosipSincLog l
+             WHERE l.corrida = (SELECT TOP 1 corrida FROM dbo.MicrosipSincLog ORDER BY id DESC)")->row_array();
+        echo json_encode($f ? $f : new stdClass());
+    }
+
+    /** Trae ya de Microsip las vacaciones e incapacidades (de la empresa elegida o de todas). */
+    public function traerMicrosip(){
+        header('Content-Type: application/json');
+        if (!isset($this->session->userdata['login']['user'])) { echo json_encode(['exito' => false, 'mensaje' => 'La sesión terminó.']); return; }
+        ini_set('max_execution_time', 0);
+        $u = $this->session->userdata['login']['user'];
+        $empresa = (int) $this->input->post('empresa_id');
+        $filas = $this->db->query("EXEC dbo.SincronizaIncidenciasMicrosip @empresa_id = ?, @origen = ?",
+            array($empresa > 0 ? $empresa : null, substr('Manual (' . (isset($u->usuario) ? $u->usuario : '') . ')', 0, 60)))->result_array();
+        echo json_encode(['exito' => true, 'empresas' => $filas]);
+    }
+
     public function concepto(){
         header('Access-Control-Allow-Origin: *');
           $this->load->model('Incidencias');
@@ -160,8 +184,9 @@ class incidencia extends CI_Controller {
 		header('Access-Control-Allow-Origin: *');
 		$result = array('data' => array());
 		$id = $this->input->post('id',true);
+		$empresa = $this->input->post('empresa_id',true);
 		$this->load->model('Incidencias');
-		$data = $this->Incidencias->consultaIncidencias($id);
+		$data = $this->Incidencias->consultaIncidencias($id, $empresa);
 		echo json_encode($data);
 	}
 
@@ -170,8 +195,9 @@ class incidencia extends CI_Controller {
 		header('Access-Control-Allow-Origin: *');
 		$result = array('data' => array());
 		$id = $this->input->post('id',true);
+		$empresa = $this->input->post('empresa_id',true);
 		$this->load->model('Incidencias');
-		$data = $this->Incidencias->consultaEmpleado($id);
+		$data = $this->Incidencias->consultaEmpleado($id, $empresa);
 		echo json_encode($data);
 	}
       
@@ -188,11 +214,18 @@ class incidencia extends CI_Controller {
 	public function ActualizarIncidencia(){
 		header('Access-Control-Allow-Origin: *');
 				$id= $this->input->post('id',true);
+				
+		$fechaInicio = new DateTime($this->input->post('fechaInicio',true));
+		$fechaFin = new DateTime($this->input->post('fechaFin',true));
+		$interval = $fechaInicio->diff($fechaFin);
+		$cantidadDias = $interval->days+1;
+		//DIE();
 				$data = array(
 				'concepto_id' 	=> $this->input->post('concepto_id',true),
+				'cantidadDias' 	=> $cantidadDias,
 				'fechaInicio' 	=> $this->input->post('fechaInicio',true),
 				'fechaFin'		=> $this->input->post('fechaFin',true)
-			);
+			) + $this->cubre();
 				$this->load->model('Incidencias');
 				//print_r($params);die();
 				echo  $this->Incidencias->ActualizarIncidencia($id,$data);
@@ -200,13 +233,22 @@ class incidencia extends CI_Controller {
 	public function GuardarIncidencia(){
 		header('Access-Control-Allow-Origin: *');
 		$this->load->model('Incidencias');
+
+		//calcular dias de INCIDENCIA
+		$fechaInicio = new DateTime($this->input->post('fechaInicio',true));
+		$fechaFin = new DateTime($this->input->post('fechaFin',true));
+		$interval = $fechaInicio->diff($fechaFin);
+		$cantidadDias = $interval->days+1;
+		//ECHO $interval->days;
+		//DIE();
 		$data =  array(
 			'empleado_id' 	=> $this->input->post('empleado_id',true),
 			'concepto_id' 	=> $this->input->post('concepto_id',true),
-			'fechaInicio' 	=> $this->input->post('fechaInicio',true),
+			'fechaInicio' 	=> $this->input->post('fechaInicio',true),			
+			'cantidadDias' 	=> $cantidadDias,
 			'fechaFin'		=> $this->input->post('fechaFin',true),
 			'estatus'		=> $this->input->post('estatus',true)
-		);
+		) + $this->cubre();
 
 		$dt['exito'] = $this->Incidencias->GuardarIncidencia($data);
 		echo $dt['exito'];
@@ -273,6 +315,105 @@ class incidencia extends CI_Controller {
 	}
 		
 	
+    /** Empleados activos de las empresas elegidas para la ventana "Varios empleados". */
+    public function empleadosEmpresa(){
+		header('Content-Type: application/json');
+		$empresas = $this->empresasPermitidas(array_merge((array) $this->input->post('empresas'), array($this->input->post('empresa_id', true))));
+		if (!$empresas) { echo '[]'; return; }
+		echo json_encode($this->db->query(
+			"SELECT e.empresa_id, em.nombre AS empresa, e.empleado_id AS numero, e.NOMBRE_COMPLETO AS nombre,
+			        e.NOMBRE_PUESTO AS puesto, e.NOMBRE_DEPARTAMENTO AS departamento
+			 FROM dbo.empleados e JOIN dbo.empresas em ON em.id = e.empresa_id
+			 WHERE e.empresa_id IN (" . implode(',', $empresas) . ") AND e.ESTATUS = 'A'
+			 ORDER BY e.NOMBRE_COMPLETO, em.nombre")->result_array());
+    }
+
+    /**
+     * "Varios empleados": la misma incidencia (concepto, días y checadas que cubre) a cada empleado elegido,
+     * de una o varias empresas. Cada empleado llega como "empresa|numero" (o solo el número con empresa_id,
+     * pantallas viejas). Una fila por empleado con su empresa_id; se salta a quien ya tiene ese mismo
+     * concepto en esas fechas para no duplicarlo.
+     */
+    public function GuardarVarios(){
+		header('Content-Type: application/json');
+		$empresaDef = (int) $this->input->post('empresa_id', true);
+		$concepto = (int) $this->input->post('concepto_id', true);
+		$fi = trim((string) $this->input->post('fechaInicio', true));
+		$ff = trim((string) $this->input->post('fechaFin', true));
+		$porEmpresa = array();   // empresa => [numeros]
+		foreach ((array) $this->input->post('empleados') as $v) {
+			$p = explode('|', (string) $v);
+			$emp = count($p) > 1 ? (int) $p[0] : $empresaDef;
+			$num = preg_replace('/\D/', '', (string) end($p));
+			if ($emp && $num !== '') $porEmpresa[$emp][$num] = true;
+		}
+		$fecha = function ($v) { $d = DateTime::createFromFormat('Y-m-d', $v); return $d && $d->format('Y-m-d') === $v; };
+		if (!$concepto) { echo json_encode(array('exito' => false, 'mensaje' => 'Elige la incidencia.')); return; }
+		if (!$fecha($fi) || !$fecha($ff)) { echo json_encode(array('exito' => false, 'mensaje' => 'Las fechas no son válidas.')); return; }
+		if ($fi > $ff) { $t = $fi; $fi = $ff; $ff = $t; }
+		if (!$porEmpresa) { echo json_encode(array('exito' => false, 'mensaje' => 'Marca al menos un empleado.')); return; }
+		$permitidas = array_flip($this->empresasPermitidas(array_keys($porEmpresa)));
+
+		$dias = (new DateTime($fi))->diff(new DateTime($ff))->days + 1;
+		$cubre = $this->cubre();
+		$guardados = $yaTenian = $noValidos = 0;
+		$this->db->trans_start();
+		foreach ($porEmpresa as $empresa => $nums) {
+			$nums = array_keys($nums);
+			if (!isset($permitidas[$empresa])) { $noValidos += count($nums); continue; }
+			// solo empleados activos de esa empresa
+			$lista = "'" . implode("','", $nums) . "'";
+			$validos = array_column($this->db->query(
+				"SELECT empleado_id FROM dbo.empleados WHERE empresa_id = ? AND ESTATUS = 'A' AND empleado_id IN ($lista)", array($empresa))->result_array(), 'empleado_id');
+			// quienes ya tienen ese concepto en esas fechas
+			$ya = array_column($this->db->query(
+				"SELECT DISTINCT empleado_id FROM dbo.incidencias
+				 WHERE concepto_id = ? AND estatus = 1 AND (empresa_id = ? OR empresa_id IS NULL)
+				   AND fechaInicio <= ? AND fechaFin >= ? AND empleado_id IN ($lista)", array($concepto, $empresa, $ff, $fi))->result_array(), 'empleado_id');
+			$noValidos += count($nums) - count($validos);
+			foreach ($validos as $num) {
+				if (in_array($num, $ya)) { $yaTenian++; continue; }
+				$this->db->insert('incidencias', array(
+					'empleado_id' => $num, 'empresa_id' => $empresa, 'concepto_id' => $concepto,
+					'fechaInicio' => $fi, 'fechaFin' => $ff, 'cantidadDias' => $dias, 'estatus' => 1,
+				) + $cubre);
+				$guardados++;
+			}
+		}
+		$this->db->trans_complete();
+		if (!$this->db->trans_status()) { echo json_encode(array('exito' => false, 'mensaje' => 'No se pudo guardar.')); return; }
+		echo json_encode(array('exito' => true, 'guardados' => $guardados, 'yaTenian' => $yaTenian, 'noValidos' => $noValidos));
+    }
+
+    /** De las empresas pedidas, las que el usuario en sesión puede usar (Catálogos > Usuarios > Permisos). */
+    private function empresasPermitidas(array $ids){
+		$ids = array_values(array_unique(array_filter(array_map('intval', $ids))));
+		if (!$ids || !isset($this->session->userdata['login']['user']->id)) return array();
+		$this->load->model('PermisoModel');
+		$idUsuario = $this->session->userdata['login']['user']->id;
+		$permisos = $this->PermisoModel->permisosUsuario($idUsuario);
+		if ($permisos['empresas']) return array_values(array_intersect($ids, $permisos['empresas']));
+		$ocultas = $this->PermisoModel->empresasOcultas($idUsuario);
+		$eventuales = PermisoModel::EMPRESA_EVENTUALES;
+		return array_values(array_filter($ids, function ($id) use ($ocultas, $eventuales, $idUsuario) {
+			return !in_array($id, $ocultas, true) && ($id !== $eventuales || $this->PermisoModel->tieneEventuales($idUsuario));
+		}));
+    }
+
+    /**
+     * Qué checadas cubre la incidencia (application/sql/incidencias_cubre.sql). Si no llega
+     * nada (pantallas viejas) o no marcaron ninguna, cubre todo el día como siempre.
+     */
+    private function cubre(){
+		$r = array();
+		foreach (array('cubreEntrada', 'cubreEntradaComedor', 'cubreSalidaComedor', 'cubreSalida') as $c) {
+			$v = $this->input->post($c, true);
+			$r[$c] = ($v === null || $v === '') ? 1 : ((int) $v === 1 ? 1 : 0);
+		}
+		if (array_sum($r) === 0) $r = array_fill_keys(array_keys($r), 1);
+		return $r;
+    }
+
     function delete() {
 		header('Access-Control-Allow-Origin: *');
 
@@ -289,4 +430,4 @@ class incidencia extends CI_Controller {
 		$this->load->model('Incidencias');
 		echo $this->Incidencias->ActualizarIncidencia($id, $data);
 	}
-}
+}

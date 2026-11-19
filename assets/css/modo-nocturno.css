@@ -1,0 +1,480 @@
+/* =====================================================================
+   MODO NOCTURNO - Sistema Nominas
+   Se activa cuando <html> tiene la clase "modo-nocturno".
+   Guardar en: assets/css/modo-nocturno.css
+   ===================================================================== */
+
+html.modo-nocturno {
+    color-scheme: dark; /* scrollbars, date pickers y controles nativos en oscuro */
+
+    --mn-bg:          #1e2126;
+    --mn-surface:     #262a31;
+    --mn-surface-2:   #2f343c;
+    --mn-input:       #1b1e23;
+    --mn-border:      #3b414b;
+    --mn-hover:       #353b44;
+    --mn-text:        #e3e6ea;
+    --mn-text-muted:  #a3aab4;
+    --mn-accent:      #4ea8de;
+}
+
+/* ---------- Base ---------- */
+html.modo-nocturno body,
+html.modo-nocturno #main-wrapper,
+html.modo-nocturno .page-wrapper,
+html.modo-nocturno .container-fluid {
+    background-color: var(--mn-bg) !important;
+    color: var(--mn-text) !important;
+}
+
+html.modo-nocturno h1, html.modo-nocturno h2, html.modo-nocturno h3,
+html.modo-nocturno h4, html.modo-nocturno h5, html.modo-nocturno h6,
+html.modo-nocturno .card-title,
+html.modo-nocturno label,
+html.modo-nocturno p,
+html.modo-nocturno span,
+html.modo-nocturno td,
+html.modo-nocturno th {
+    color: var(--mn-text);
+}
+
+html.modo-nocturno .text-muted,
+html.modo-nocturno small {
+    color: var(--mn-text-muted) !important;
+}
+
+html.modo-nocturno a { color: var(--mn-accent); }
+html.modo-nocturno .btn,
+html.modo-nocturno .btn span,
+html.modo-nocturno .btn i { color: inherit; }
+
+html.modo-nocturno hr { border-color: var(--mn-border); }
+
+/* ---------- Barra superior y menu lateral ---------- */
+html.modo-nocturno .topbar,
+html.modo-nocturno .topbar .top-navbar,
+html.modo-nocturno .navbar,
+html.modo-nocturno .navbar-header,
+html.modo-nocturno header {
+    background: var(--mn-surface) !important;
+    border-color: var(--mn-border) !important;
+}
+
+html.modo-nocturno .left-sidebar,
+html.modo-nocturno .scroll-sidebar,
+html.modo-nocturno .sidebar-nav,
+html.modo-nocturno .sidebar-nav ul,
+html.modo-nocturno .sidebar-nav ul li ul {
+    background: var(--mn-surface) !important;
+}
+
+html.modo-nocturno .sidebar-nav ul li a,
+html.modo-nocturno .topbar .nav-link,
+html.modo-nocturno .topbar .navbar-nav > li > a {
+    color: var(--mn-text-muted) !important;
+}
+
+html.modo-nocturno .sidebar-nav ul li a:hover,
+html.modo-nocturno .sidebar-nav ul li a.active,
+html.modo-nocturno .sidebar-nav > ul > li.active > a,
+html.modo-nocturno .topbar .nav-link:hover {
+    color: var(--mn-accent) !important;
+    background: var(--mn-hover) !important;
+}
+
+html.modo-nocturno .footer {
+    background: var(--mn-surface) !important;
+    color: var(--mn-text-muted) !important;
+    border-color: var(--mn-border) !important;
+}
+
+/* ---------- Tarjetas ---------- */
+html.modo-nocturno .card,
+html.modo-nocturno .card-body,
+html.modo-nocturno .card-header,
+html.modo-nocturno .card-footer,
+html.modo-nocturno .page-titles {
+    background-color: var(--mn-surface) !important;
+    border-color: var(--mn-border) !important;
+    color: var(--mn-text) !important;
+}
+
+/* ---------- Formularios ---------- */
+html.modo-nocturno .form-control,
+html.modo-nocturno .custom-select,
+html.modo-nocturno select,
+html.modo-nocturno input[type="text"],
+html.modo-nocturno input[type="number"],
+html.modo-nocturno input[type="date"],
+html.modo-nocturno input[type="search"],
+html.modo-nocturno input[type="password"],
+html.modo-nocturno input[type="email"],
+html.modo-nocturno textarea {
+    background-color: var(--mn-input) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+
+html.modo-nocturno .form-control:focus,
+html.modo-nocturno .custom-select:focus,
+html.modo-nocturno select:focus,
+html.modo-nocturno input:focus,
+html.modo-nocturno textarea:focus {
+    border-color: var(--mn-accent) !important;
+    box-shadow: 0 0 0 0.15rem rgba(78, 168, 222, 0.25) !important;
+}
+
+html.modo-nocturno .form-control::placeholder,
+html.modo-nocturno input::placeholder,
+html.modo-nocturno textarea::placeholder {
+    color: var(--mn-text-muted) !important;
+}
+
+html.modo-nocturno .form-control:disabled,
+html.modo-nocturno .form-control[readonly],
+html.modo-nocturno select:disabled {
+    background-color: var(--mn-surface-2) !important;
+    color: var(--mn-text-muted) !important;
+}
+
+html.modo-nocturno option { background: var(--mn-input); color: var(--mn-text); }
+
+/* Checkbox / radio personalizados del tema */
+html.modo-nocturno .custom-control-label { color: var(--mn-text) !important; }
+html.modo-nocturno .custom-control-label::before {
+    background-color: var(--mn-input) !important;
+    border-color: var(--mn-border) !important;
+}
+html.modo-nocturno .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: var(--mn-accent) !important;
+    border-color: var(--mn-accent) !important;
+}
+
+html.modo-nocturno input[type="file"] { color: var(--mn-text); }
+
+/* ---------- Tablas y DataTables ---------- */
+html.modo-nocturno .table,
+html.modo-nocturno table.dataTable,
+html.modo-nocturno table.dataTable thead th,
+html.modo-nocturno table.dataTable tfoot th,
+html.modo-nocturno table.dataTable tbody td,
+html.modo-nocturno .table th,
+html.modo-nocturno .table td {
+    background-color: var(--mn-surface) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+
+html.modo-nocturno table.dataTable.stripe tbody tr.odd td,
+html.modo-nocturno table.dataTable.display tbody tr.odd td,
+html.modo-nocturno .table-striped tbody tr:nth-of-type(odd) td {
+    background-color: var(--mn-surface-2) !important;
+}
+
+html.modo-nocturno table.dataTable tbody tr:hover td,
+html.modo-nocturno .table-hover tbody tr:hover td {
+    background-color: var(--mn-hover) !important;
+}
+
+/* Columnas fijas (FixedColumns / FixedHeader) */
+html.modo-nocturno .DTFC_LeftBodyLiner,
+html.modo-nocturno .DTFC_LeftHeadWrapper,
+html.modo-nocturno .DTFC_LeftFootWrapper,
+html.modo-nocturno .DTFC_LeftBodyWrapper,
+html.modo-nocturno .dataTables_scrollHead,
+html.modo-nocturno .dataTables_scrollBody,
+html.modo-nocturno .dataTables_scrollFoot,
+html.modo-nocturno table.dataTable thead .dtfc-fixed-left,
+html.modo-nocturno table.dataTable tbody .dtfc-fixed-left {
+    background-color: var(--mn-surface) !important;
+}
+
+html.modo-nocturno .dataTables_wrapper .dataTables_length,
+html.modo-nocturno .dataTables_wrapper .dataTables_filter,
+html.modo-nocturno .dataTables_wrapper .dataTables_info,
+html.modo-nocturno .dataTables_wrapper .dataTables_processing,
+html.modo-nocturno .dataTables_wrapper .dataTables_paginate {
+    color: var(--mn-text-muted) !important;
+}
+
+html.modo-nocturno .dataTables_wrapper .dataTables_paginate .paginate_button,
+html.modo-nocturno .page-link {
+    background: var(--mn-surface-2) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+
+html.modo-nocturno .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+html.modo-nocturno .page-item.active .page-link {
+    background: var(--mn-accent) !important;
+    color: #fff !important;
+    border-color: var(--mn-accent) !important;
+}
+
+html.modo-nocturno .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    color: var(--mn-text-muted) !important;
+    opacity: 0.6;
+}
+
+/* ---------- Modales, menus, alertas ---------- */
+html.modo-nocturno .modal-content,
+html.modo-nocturno .modal-header,
+html.modo-nocturno .modal-body,
+html.modo-nocturno .modal-footer,
+html.modo-nocturno .dropdown-menu,
+html.modo-nocturno .popover,
+html.modo-nocturno .list-group-item {
+    background-color: var(--mn-surface) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+
+html.modo-nocturno .dropdown-item { color: var(--mn-text) !important; }
+html.modo-nocturno .dropdown-item:hover,
+html.modo-nocturno .dropdown-item:focus {
+    background-color: var(--mn-hover) !important;
+}
+
+html.modo-nocturno .close { color: var(--mn-text); text-shadow: none; opacity: 0.8; }
+
+html.modo-nocturno .nav-tabs { border-color: var(--mn-border); }
+html.modo-nocturno .nav-tabs .nav-link { color: var(--mn-text-muted); }
+html.modo-nocturno .nav-tabs .nav-link.active {
+    background-color: var(--mn-surface) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) var(--mn-border) var(--mn-surface) !important;
+}
+
+/* Mensaje "Procesando..." de blockUI (trae estilos en linea) */
+html.modo-nocturno .blockUI.blockMsg {
+    background-color: var(--mn-surface) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+html.modo-nocturno .blockUI.blockOverlay { background-color: #000 !important; }
+
+/* Spinner .loadTable */
+html.modo-nocturno .loadTable {
+    border-color: var(--mn-surface-2) !important;
+    border-top-color: var(--mn-accent) !important;
+}
+
+/* Resultado del importador de checadas */
+html.modo-nocturno #resultadoImport,
+html.modo-nocturno pre,
+html.modo-nocturno code {
+    background-color: var(--mn-input) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+
+/* bootstrap-datepicker */
+html.modo-nocturno .datepicker,
+html.modo-nocturno .datepicker table,
+html.modo-nocturno .datepicker-dropdown {
+    background-color: var(--mn-surface) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+html.modo-nocturno .datepicker table tr td.day:hover,
+html.modo-nocturno .datepicker table tr td span:hover,
+html.modo-nocturno .datepicker .datepicker-switch:hover,
+html.modo-nocturno .datepicker .prev:hover,
+html.modo-nocturno .datepicker .next:hover {
+    background-color: var(--mn-hover) !important;
+}
+html.modo-nocturno .datepicker table tr td.old,
+html.modo-nocturno .datepicker table tr td.new {
+    color: var(--mn-text-muted) !important;
+}
+
+/* bootstrap-datepicker: día seleccionado / hoy */
+html.modo-nocturno .datepicker table tr td.active,
+html.modo-nocturno .datepicker table tr td.active:hover,
+html.modo-nocturno .datepicker table tr td span.active {
+    background: var(--mn-accent) !important;
+    color: #fff !important;
+}
+html.modo-nocturno .datepicker table tr td.today {
+    background: var(--mn-surface-2) !important;
+    color: var(--mn-accent) !important;
+    font-weight: bold;
+}
+html.modo-nocturno .datepicker-dropdown:after,
+html.modo-nocturno .datepicker-dropdown:before {
+    border-bottom-color: var(--mn-surface) !important;
+}
+
+/* Cuadro del ícono junto al campo de fecha (input-group-addon / input-group-text) */
+html.modo-nocturno .input-group-addon,
+html.modo-nocturno .input-group-text,
+html.modo-nocturno .input-group-append .btn,
+html.modo-nocturno .input-group-prepend .btn {
+    background-color: var(--mn-surface-2) !important;
+    border-color: var(--mn-border) !important;
+    color: var(--mn-text) !important;
+}
+html.modo-nocturno .input-group-addon .icon,
+html.modo-nocturno .input-group-addon svg,
+html.modo-nocturno .input-group-text svg {
+    fill: var(--mn-text) !important;
+    color: var(--mn-text) !important;
+}
+html.modo-nocturno .input-group.date .form-control[readonly] {
+    background-color: var(--mn-input) !important;
+    color: var(--mn-text) !important;
+    opacity: 1;
+}
+
+/* Gijgo datepicker: botón del ícono y calendario desplegable */
+html.modo-nocturno .gj-datepicker-bootstrap [role=right-icon],
+html.modo-nocturno .gj-datepicker-bootstrap [role=right-icon] button {
+    background-color: var(--mn-surface-2) !important;
+    border-color: var(--mn-border) !important;
+    color: var(--mn-text) !important;
+}
+html.modo-nocturno .gj-datepicker [role=right-icon] .gj-icon,
+html.modo-nocturno .gj-datepicker [role=right-icon] .material-icons {
+    color: var(--mn-text) !important;
+}
+html.modo-nocturno .gj-picker,
+html.modo-nocturno .gj-picker table,
+html.modo-nocturno .gj-picker div[role=navigator],
+html.modo-nocturno .gj-picker div[role=calendar] {
+    background-color: var(--mn-surface) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+html.modo-nocturno .gj-picker [role=header] {
+    background: var(--mn-surface-2) !important;
+    color: var(--mn-text) !important;
+}
+html.modo-nocturno .gj-picker table tr td div,
+html.modo-nocturno .gj-picker table tr th div,
+html.modo-nocturno .gj-picker div[role=navigator] .gj-icon {
+    color: var(--mn-text) !important;
+}
+html.modo-nocturno .gj-picker table tr td.other-month div,
+html.modo-nocturno .gj-picker table tr td.disabled div,
+html.modo-nocturno .gj-picker table tr th div {
+    color: var(--mn-text-muted) !important;
+}
+html.modo-nocturno .gj-picker table tr td div:hover {
+    background: var(--mn-hover) !important;
+}
+html.modo-nocturno .gj-picker table tr td.selected.gj-cursor-pointer div,
+html.modo-nocturno .gj-picker table tr td.selected div {
+    background: var(--mn-accent) !important;
+    color: #fff !important;
+}
+html.modo-nocturno .gj-picker table tr td.today div {
+    color: var(--mn-accent) !important;
+    font-weight: bold;
+}
+
+/* Calendario nativo de <input type="date">: color-scheme dark ya lo pinta claro
+   (antes además se invertía con filter y quedaba oscuro sobre oscuro) */
+html.modo-nocturno input[type="date"],
+html.modo-nocturno input[type="time"],
+html.modo-nocturno input[type="datetime-local"],
+html.modo-nocturno input[type="month"] {
+    color-scheme: dark;
+}
+html.modo-nocturno input[type="date"]::-webkit-calendar-picker-indicator,
+html.modo-nocturno input[type="time"]::-webkit-calendar-picker-indicator,
+html.modo-nocturno input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+html.modo-nocturno input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: none;
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* Select2 (si se usa en alguna pantalla) */
+html.modo-nocturno .select2-container--default .select2-selection--single,
+html.modo-nocturno .select2-container--default .select2-selection--multiple,
+html.modo-nocturno .select2-dropdown,
+html.modo-nocturno .select2-search__field {
+    background-color: var(--mn-input) !important;
+    color: var(--mn-text) !important;
+    border-color: var(--mn-border) !important;
+}
+html.modo-nocturno .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: var(--mn-text) !important;
+}
+html.modo-nocturno .select2-results__option--highlighted {
+    background-color: var(--mn-accent) !important;
+}
+
+/* ---------- Boton del interruptor ---------- */
+#toggleNocturno {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Botones grises (Cancelar, Cerrar...) que en modo nocturno quedaban blancos con letra clara */
+html.modo-nocturno .btn-secondary,
+html.modo-nocturno .btn-light,
+html.modo-nocturno .btn-default {
+    background-color: #4a515c !important;
+    border-color: #5a626e !important;
+    color: #f1f3f5 !important;
+}
+html.modo-nocturno .btn-secondary:hover,
+html.modo-nocturno .btn-light:hover,
+html.modo-nocturno .btn-default:hover {
+    background-color: #5a626e !important;
+    color: #fff !important;
+}
+
+/* select2 de selección múltiple (ej. "Empleados destino" en Copiar horario): chips legibles */
+html.modo-nocturno .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #1e88e5 !important;
+    border-color: #1565c0 !important;
+    color: #fff !important;
+}
+html.modo-nocturno .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #e3f2fd !important;
+}
+html.modo-nocturno .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    color: #fff !important;
+}
+
+/* select2: opción ya seleccionada en la lista (salía gris claro con letra clara) */
+html.modo-nocturno .select2-container--default .select2-results__option[aria-selected="true"] {
+    background-color: #3a4352 !important;
+    color: #ffffff !important;
+}
+html.modo-nocturno .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #1e88e5 !important;
+    color: #ffffff !important;
+}
+html.modo-nocturno .select2-container--default .select2-results__option {
+    color: #e3e6ea;
+}
+
+/* DataTables: botón Copy (sin clase btn-*) y aviso "Copy to clipboard" */
+html.modo-nocturno .dt-button:not([class*="btn-"]),
+html.modo-nocturno a.dt-button:not([class*="btn-"]) {
+    background: #3a4250 !important;
+    background-image: none !important;
+    border-color: #555d68 !important;
+    color: #f1f3f5 !important;
+}
+html.modo-nocturno .dt-button:not([class*="btn-"]):hover {
+    background: #4a5363 !important;
+    color: #fff !important;
+}
+html.modo-nocturno div.dt-button-info {
+    background: #272c33 !important;
+    border-color: #555d68 !important;
+    color: #dfe3e8 !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .5);
+}
+html.modo-nocturno div.dt-button-info h2 {
+    background: #1f2329 !important;
+    border-bottom-color: #3a4049 !important;
+    color: #fff !important;
+}
+html.modo-nocturno div.dt-button-info > div {
+    color: #dfe3e8 !important;
+}

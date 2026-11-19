@@ -5,34 +5,41 @@ Modulo = {
     validator: false,
     datosTabla: []    
     //Obtiene los datos
-    , fnObtenerDatos: function (fechaInicio,fechaFin) {
-        $("#costo").css("display", "none");
-        $(".loadTable").css("display", "block");
-        var varURL = Modulo.baseurl + "costoController/exportar";
-        /**Ajax */
-        $.ajax({
-            url: varURL,
-            type: 'post',
-            data: {
-                fechaInicio: fechaInicio,
-                fechaFin:fechaFin,
-            },
-        }).done(function (data) {
-            $("#costo").css("display", "inline-table");
-            $(".loadTable").css("display", "none");
-            //Modulo.datosTabla=data;
+, fnObtenerDatos: function (fechaInicio, fechaFin) {
+    $("#costo").css("display", "none");
+    $(".loadTable").css("display", "block");
+    var varURL = Modulo.baseurl + "costoController/exportar";
 
-            var a = document.createElement('a');
-            
-            var file_name = "CT_"+fechaFin;
-            a.href =  window.location.origin +"/nomina/costo.txt";
-            a.download = file_name;
-            a.click();
-        });
-        
+    $.ajax({
+        url: varURL,
+        type: 'post',
+        data: {
+            fechaInicio: fechaInicio,
+            fechaFin: fechaFin
+        },
+        xhrFields: {
+            responseType: 'blob'   // recibimos el archivo tal cual, sin que jQuery lo toque
+        }
+    }).done(function (blob) {
+        $("#costo").css("display", "inline-table");
+        $(".loadTable").css("display", "none");
 
+        // "2026/09/27" -> "2026-09-27" (las diagonales no son validas en nombre de archivo)
+        var file_name = "CT_" + fechaFin.replace(/\//g, '-') + ".txt";
 
-    }
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = file_name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }).fail(function () {
+        $(".loadTable").css("display", "none");
+        alert("Error al generar el archivo.");
+    });
+}
     //Construye la tabla 
     , fnConstruitTabla: function () {
         table=$('#costo').DataTable({

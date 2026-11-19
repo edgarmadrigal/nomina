@@ -81,6 +81,15 @@ DECLARE @ConceptoTransporte VARCHAR(4) = 'tran';
 -- AJUSTE 2026-09-30: plantas de Torreon (empresas.esTorreon = 1).
 DECLARE @ConceptoVacaciones VARCHAR(10) = 'VAC';
 DECLARE @esTorreon BIT = ISNULL((SELECT TOP 1 esTorreon FROM dbo.empresas WHERE id = @planta), 0);
+-- AJUSTE 2026-11-19: Microsip 2026 acepta en "Excepciones de la nomina" los campos DIAS_VACACIONES y
+-- TIPO_MOVIMIENTO (al final del renglon |1|; ver assets/formatos/Excepciones Nomina SISAI.txt).
+-- El TXT manda los dias a pagar SIN las vacaciones y las vacaciones en su campo, igual que la
+-- excepcion que Microsip arma solo (111809 sem 46: 1 a pagar + 5 de vacaciones). Con el tipo de
+-- movimiento "reemplazar" el TXT sustituye la excepcion que Microsip ya hubiera creado por las
+-- vacaciones (sin el, la importacion solo agrega e IGNORA a los que ya tienen excepcion).
+-- Valores (Microsip 2026): A=Agregar la excepcion (default); R=Reemplazar/Agregar la excepcion;
+-- C=Agregar y acumular conceptos de la excepcion.
+DECLARE @TipoMovimientoTxt VARCHAR(1) = 'R';
 
 IF OBJECT_ID('tempdb..#tablaExportar')    IS NOT NULL DROP TABLE #tablaExportar;
 IF OBJECT_ID('tempdb..#Semanas')          IS NOT NULL DROP TABLE #Semanas;
@@ -235,7 +244,7 @@ CREATE TABLE #Incapacidades (
                   AND inc.fechaFin    <= s.FechaDomingo
                  THEN inc.cantidadDias ELSE 0 END)
     FROM #Semanas s
-    JOIN incidencias inc ON inc.empleado_id = s.empleado_id
+    JOIN incidencias inc ON inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL)
     JOIN conceptos   c   ON c.id = inc.concepto_id
 -- Condicion de TRASLAPE (no "que cubra la semana completa").
 WHERE inc.fechaInicio <= s.FechaDomingo
@@ -270,7 +279,7 @@ SELECT
     MAX(CASE WHEN s.FechaSabado    BETWEEN inc.fechaInicio AND inc.fechaFin THEN 1 ELSE 0 END),
     MAX(CASE WHEN s.FechaDomingo   BETWEEN inc.fechaInicio AND inc.fechaFin THEN 1 ELSE 0 END)
 FROM #Semanas s
-JOIN incidencias inc ON inc.empleado_id = s.empleado_id
+JOIN incidencias inc ON inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL)
 JOIN conceptos   c   ON c.id = inc.concepto_id
 WHERE inc.fechaInicio <= s.FechaDomingo
   AND inc.fechaFin    >= s.FechaLunes
@@ -337,6 +346,7 @@ CREATE TABLE #tablaExportar (
       ,EsVacViernes         BIT
       ,EsVacSabado          BIT
       ,EsVacDomingo         BIT
+      ,DiasVacTxt           DECIMAL(5,2)   -- AJUSTE 2026-11-19: DIAS_VACACIONES del TXT (VAC en dia laboral)
 )
 SET NOCOUNT ON;
 -- =========================================================================
@@ -414,7 +424,14 @@ SELECT distinct
       -- AJUSTE 2026-10-15: Torreon ya NO descuenta vacaciones del TXT. El dia de vacacion
       -- va pagado dentro de los dias del horario (6); Microsip no suma vacaciones aparte.
       -- (Antes: dias del horario MENOS dias de vacaciones laborales -> 1 VAC daba DIAS 5.)
-      ,ISNULL(h.cantidad, 6) as diasLaborales
+      -- AJUSTE 2026-11-17 (SOLO FORANEAS, esTorreon = 0): se restan los dias de vacaciones que caen
+      -- en dia laboral; Microsip paga las vacaciones aparte y con 6 + VAC marcaba "Los dias a pagar
+      -- exceden a los dias del periodo de pago" (PILAR sem 46: 18783, 20016, 30905...).
+      -- AJUSTE 2026-11-19: TODAS las plantas (Torreon incluido) restan las vacaciones; ahora van
+      -- aparte en DIAS_VACACIONES (revierte el ajuste 2026-10-15 de Torreon).
+      ,CASE WHEN ISNULL(h.cantidad, 6) - vacdias.DiasVacLaborables < 0 THEN 0
+            ELSE ISNULL(h.cantidad, 6) - vacdias.DiasVacLaborables
+       END as diasLaborales
       ,ISNULL(i.EsIncapLunes, 0)
       ,ISNULL(i.EsIncapMartes, 0)
       ,ISNULL(i.EsIncapMiercoles, 0)
@@ -430,6 +447,7 @@ SELECT distinct
       ,ISNULL(i.EsVacViernes,0)
       ,ISNULL(i.EsVacSabado,0)
       ,ISNULL(i.EsVacDomingo,0)
+      ,vacdias.DiasVacLaborables   -- AJUSTE 2026-11-19: DIAS_VACACIONES
 FROM #AsistenciaDedup a
 JOIN #Semanas s
     ON s.Numero = a.Numero COLLATE DATABASE_DEFAULT
@@ -540,37 +558,37 @@ OUTER APPLY (
 CROSS APPLY (
     SELECT DiasVacLaborables =
           (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
-                             WHERE inc.empleado_id = s.empleado_id AND c.descripcionCorta = @ConceptoVacaciones
+                             WHERE inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL) AND c.descripcionCorta = @ConceptoVacaciones
                                AND s.FechaLunes BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Lunes), 0) > 0
+                 AND (a.idhorario_Lunes IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Lunes), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
-                             WHERE inc.empleado_id = s.empleado_id AND c.descripcionCorta = @ConceptoVacaciones
+                             WHERE inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL) AND c.descripcionCorta = @ConceptoVacaciones
                                AND s.FechaMartes BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Martes), 0) > 0
+                 AND (a.idhorario_Martes IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Martes), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
-                             WHERE inc.empleado_id = s.empleado_id AND c.descripcionCorta = @ConceptoVacaciones
+                             WHERE inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL) AND c.descripcionCorta = @ConceptoVacaciones
                                AND s.FechaMiercoles BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Miercoles), 0) > 0
+                 AND (a.idhorario_Miercoles IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Miercoles), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
-                             WHERE inc.empleado_id = s.empleado_id AND c.descripcionCorta = @ConceptoVacaciones
+                             WHERE inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL) AND c.descripcionCorta = @ConceptoVacaciones
                                AND s.FechaJueves BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Jueves), 0) > 0
+                 AND (a.idhorario_Jueves IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Jueves), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
-                             WHERE inc.empleado_id = s.empleado_id AND c.descripcionCorta = @ConceptoVacaciones
+                             WHERE inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL) AND c.descripcionCorta = @ConceptoVacaciones
                                AND s.FechaViernes BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Viernes), 0) > 0
+                 AND (a.idhorario_Viernes IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Viernes), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
-                             WHERE inc.empleado_id = s.empleado_id AND c.descripcionCorta = @ConceptoVacaciones
+                             WHERE inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL) AND c.descripcionCorta = @ConceptoVacaciones
                                AND s.FechaSabado BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Sabado), 0) > 0
+                 AND (a.idhorario_Sabado IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Sabado), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
-                             WHERE inc.empleado_id = s.empleado_id AND c.descripcionCorta = @ConceptoVacaciones
+                             WHERE inc.empleado_id = s.empleado_id AND (inc.empresa_id = TRY_CAST(@planta AS INT) OR inc.empresa_id IS NULL OR @planta IS NULL) AND c.descripcionCorta = @ConceptoVacaciones
                                AND s.FechaDomingo BETWEEN inc.fechaInicio AND inc.fechaFin)
                  AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = a.idhorario_Domingo), 0) > 0
                 THEN 1 ELSE 0 END)
@@ -909,9 +927,11 @@ SELECT DISTINCT
 ,NULL as FechaFaltaDomingo
 -- AJUSTE 2026-10-15: Torreon ya NO descuenta vacaciones del TXT (ver nota arriba).
 -- El dia de vacacion va dentro de los dias del horario (6); Microsip no suma vacaciones aparte.
-,CASE WHEN @esTorreon = 1
-      THEN ISNULL(he2.cantidad, 6)
-      ELSE 6
+-- AJUSTE 2026-11-19: todas las plantas restan las vacaciones (van aparte en DIAS_VACACIONES)
+,CASE WHEN @esTorreon = 1 AND ISNULL(he2.cantidad, 6) - vacdias2.DiasVacLaborables < 0 THEN 0
+      WHEN @esTorreon = 1 THEN ISNULL(he2.cantidad, 6) - vacdias2.DiasVacLaborables
+      WHEN 6 - vacdias2.DiasVacLaborables < 0 THEN 0
+      ELSE 6 - vacdias2.DiasVacLaborables
  END as diasLaborales
       ,CASE WHEN EXISTS (
           SELECT 1 FROM incidencias inc
@@ -1028,6 +1048,7 @@ SELECT DISTINCT
           AND (inc.cubreEntrada = 1 AND inc.cubreEntradaComedor = 1 AND inc.cubreSalidaComedor = 1 AND inc.cubreSalida = 1)
           AND f.FechaDomingo BETWEEN inc.fechaInicio AND inc.fechaFin
       ) THEN 1 ELSE 0 END
+,vacdias2.DiasVacLaborables   -- AJUSTE 2026-11-19: DIAS_VACACIONES
 FROM empleados as e
 CROSS APPLY (
     SELECT
@@ -1096,37 +1117,38 @@ OUTER APPLY (
     ORDER BY he.fechaAsignacion DESC, he.id DESC
 ) he2
 -- AJUSTE 2026-09-30: dias de vacaciones (VAC) en dias laborales del horario
+-- AJUSTE 2026-11-17: sin horario asignado (p.ej. PILAR) lunes a sabado cuentan como laborables
 CROSS APPLY (
     SELECT DiasVacLaborables =
           (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
                              WHERE inc.empleado_id = CAST(e.empleado_id AS INT) AND c.descripcionCorta = @ConceptoVacaciones
                                AND f.FechaLunes BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_lunes), 0) > 0
+                 AND (he2.idhorario_lunes IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_lunes), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
                              WHERE inc.empleado_id = CAST(e.empleado_id AS INT) AND c.descripcionCorta = @ConceptoVacaciones
                                AND f.FechaMartes BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_martes), 0) > 0
+                 AND (he2.idhorario_martes IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_martes), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
                              WHERE inc.empleado_id = CAST(e.empleado_id AS INT) AND c.descripcionCorta = @ConceptoVacaciones
                                AND f.FechaMiercoles BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_miercoles), 0) > 0
+                 AND (he2.idhorario_miercoles IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_miercoles), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
                              WHERE inc.empleado_id = CAST(e.empleado_id AS INT) AND c.descripcionCorta = @ConceptoVacaciones
                                AND f.FechaJueves BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_jueves), 0) > 0
+                 AND (he2.idhorario_jueves IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_jueves), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
                              WHERE inc.empleado_id = CAST(e.empleado_id AS INT) AND c.descripcionCorta = @ConceptoVacaciones
                                AND f.FechaViernes BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_viernes), 0) > 0
+                 AND (he2.idhorario_viernes IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_viernes), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
                              WHERE inc.empleado_id = CAST(e.empleado_id AS INT) AND c.descripcionCorta = @ConceptoVacaciones
                                AND f.FechaSabado BETWEEN inc.fechaInicio AND inc.fechaFin)
-                 AND ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_sabado), 0) > 0
+                 AND (he2.idhorario_sabado IS NULL OR ISNULL((SELECT TOP 1 hh.horas_diarias FROM horarios hh WHERE hh.id = he2.idhorario_sabado), 0) > 0)
                 THEN 1 ELSE 0 END)
         + (CASE WHEN EXISTS (SELECT 1 FROM incidencias inc JOIN conceptos c ON c.id = inc.concepto_id
                              WHERE inc.empleado_id = CAST(e.empleado_id AS INT) AND c.descripcionCorta = @ConceptoVacaciones
@@ -1229,8 +1251,10 @@ begin
         + case when  RIGHT('00' + try_cast((s.LunesTiempoExtra+s.MartesTiempoExtra+s.MiercolesTiempoExtra+s.JuevesTiempoExtra+s.ViernesTiempoExtra) AS VARCHAR), 2) ='00' then  '0000' else  s.TotalhorasExtra+s.TotalminutosExtra  end + ',' +
         -- Sabado y Domingo excluidos del conteo de dias con TE (van por 078)
         RIGHT('00' + try_cast((s.LunesTiempoExtra+s.MartesTiempoExtra+s.MiercolesTiempoExtra+s.JuevesTiempoExtra+s.ViernesTiempoExtra) AS VARCHAR), 2)
-        + ',0000,00' as varchar(max))
-        ,'|1|'+ CAST(s.Numero AS VARCHAR) +',06,00000,0000,00,0000,00' )
+        + ',0000,00'
+        -- AJUSTE 2026-11-19: DIAS_VACACIONES y TIPO_MOVIMIENTO
+        + ',' + FORMAT(ISNULL(s.DiasVacTxt, 0), '0.##', 'en-US') + ',' + @TipoMovimientoTxt as varchar(max))
+        ,'|1|'+ CAST(s.Numero AS VARCHAR) +',06,00000,0000,00,0000,00,0,' + @TipoMovimientoTxt )
         as PrimerRenglon,
         s.PremioporAsistencia,   -- en Torreon sale como 009 (ver ajuste 11 abajo)
         s.PremioporPuntualidad,
@@ -1254,8 +1278,10 @@ SELECT
      isnull(try_cast('|1|' + CAST(s.Numero AS VARCHAR) + ',' + isnull(FORMAT(CASE WHEN @esTorreon = 1 THEN ROUND(s.diasLaborales, 0) ELSE s.diasLaborales END, '0.##', 'en-US'),'06') + ',' +
     ISNULL((SELECT ft.Texto FROM #FaltasTorreon ft WHERE ft.Numero = s.Numero),
            RIGHT('00' + CAST(s.FaltasTotales AS VARCHAR), 2) + '000') + ','   -- AJUSTE 13
-    + '0000,00' + ',0000,00' as varchar(max))
-    ,'|1|'+ CAST(s.Numero AS VARCHAR) +',06,00000,0000,00,0000,00' )
+    + '0000,00' + ',0000,00'
+    -- AJUSTE 2026-11-19: DIAS_VACACIONES y TIPO_MOVIMIENTO
+    + ',' + FORMAT(ISNULL(s.DiasVacTxt, 0), '0.##', 'en-US') + ',' + @TipoMovimientoTxt as varchar(max))
+    ,'|1|'+ CAST(s.Numero AS VARCHAR) +',06,00000,0000,00,0000,00,0,' + @TipoMovimientoTxt )
     as PrimerRenglon,
     s.PremioporAsistencia,   -- en Torreon sale como 009 (ver ajuste 11 abajo)
     s.PremioporPuntualidad,
@@ -1311,4 +1337,3 @@ SELECT DISTINCT Numero, PrimerRenglon, PremioporAsistencia, PremioporPuntualidad
        @NoSemana, @planta
 FROM @ASISTENCIAEXPORTARLISTO ORDER BY Numero;
 END
-GO

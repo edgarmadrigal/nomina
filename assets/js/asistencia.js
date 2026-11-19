@@ -50,12 +50,10 @@ $(document).ready(function () {
             alert('Favor de capturar la planta');
         }else{
             $.blockUI({ message: '<h1><img src="assets/js/busy.gif" /> Procesando...</h1>' }); 
-
             var NoSemana=parseInt($("#NoSemana").val());
             var anio=$("#anio").val();
             var planta=parseInt($("#planta").val());
-
-             var varURL = Modulo.baseurl + "asistencias/actualizar";
+            var varURL = Modulo.baseurl + "asistencias/actualizar";
              $.ajax({
                  url:  varURL,
                  type: 'post',
@@ -65,10 +63,13 @@ $(document).ready(function () {
                     anio:anio,
                     planta:planta,
                 },
-             }).done(function (data) { 
-                 $.unblockUI();
+                       }).done(function (data) {
                 alert('Termino la actualizacion con exito');
-             });
+            }).fail(function (xhr) {
+                alert('Error al procesar:\n' + (xhr.responseText || xhr.statusText).substring(0, 500));
+            }).always(function () {
+                $.unblockUI();
+            });
         }
      });
 

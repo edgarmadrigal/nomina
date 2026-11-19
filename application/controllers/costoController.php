@@ -8,16 +8,14 @@ require_once 'dompdfOtro/lib/php-svg-lib/src/autoload.php';
 require_once 'dompdfOtro/src/Autoloader.php';
 require_once 'dompdfOtro/src/FontMetrics.php';
 Dompdf\Autoloader::register();
-use Dompdf\Dompdf;
-  
-// reference the Dompdf namespace    
-    
+use Dompdf\Dompdf;  
+// reference the Dompdf namespace  
+
 class costoController extends CI_Controller {
 	function __construct() {
         parent::__construct();
         $this->load->database();
   }
-
     public function index(){
       header('Access-Control-Allow-Origin: *');
       $data = [];
@@ -45,7 +43,6 @@ class costoController extends CI_Controller {
       $this->load->model('costoModel');
       $data=$this->costoModel->ExportarArchivo($fechaInicio,$fechaFin);        
        //echo json_encode($data);
-
       // scandir($data);
      // echo json_encode($data);
     }
@@ -56,10 +53,7 @@ class costoController extends CI_Controller {
         $fechaFin = $this->input->post('fechaFin');
         $result = array('data' => array());
         $this->load->model('costoModel');
-        
-        
-        
-          $data=$this->costoModel->consulta($fechaInicio,$fechaFin);
+        $data=$this->costoModel->consulta($fechaInicio,$fechaFin);
 
 		     echo json_encode($data);
     }

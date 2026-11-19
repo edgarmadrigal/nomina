@@ -43,6 +43,7 @@ class Horario extends CI_Model{
                                     ,salida_Inicio
                                     ,salida_Hasta
                                     ,horas_diarias
+                                    ,minutos_diarios
                                     ,comedor
                                     ,tiempoComida
                                     ,tipo
@@ -104,6 +105,7 @@ class Horario extends CI_Model{
                                     ,salida_Inicio
                                     ,salida_Hasta
                                     ,horas_diarias
+                                    ,minutos_diarios
                                     ,comedor
                                     ,tiempoComida
                                     ,tipo
@@ -136,6 +138,7 @@ class Horario extends CI_Model{
         'entrada_Hasta' 	=> $data['entrada_Hasta'   ] ,	
         'salida_Inicio' 	=> $data['salida_Inicio'   ] ,	
         'horas_diarias' 	=> $data['horas_diarias'   ] ,
+        'minutos_diarios'	=> isset($data['minutos_diarios']) ? $data['minutos_diarios'] : 0 ,
         'comedor'			=> $data['comedor'         ] ,
         'tiempoComida'      => $data['tiempoComida'    ] ,
         'tipo' 				=> $data['tipo'            ] ,

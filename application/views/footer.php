@@ -40,6 +40,12 @@
      <script src="assets/node_modules/peity/jquery.peity.init.js"></script>
      <script src="assets/js/login.js"></script>     
     <script src="assets/js/sweetalert.min.js"></script>
+    <script src="assets/js/modo-nocturno.js"></script>
+    <!-- Tutorial guiado de novedades (sale al entrar hasta que lo terminan) -->
+    <link href="assets/css/tutorial.css?v=<?php echo filemtime(FCPATH.'assets/css/tutorial.css'); ?>" rel="stylesheet" type="text/css" />
+    <script src="assets/js/tutorial.js?v=<?php echo filemtime(FCPATH.'assets/js/tutorial.js'); ?>"></script>
+    <!-- Semana actual por defecto y selección de semanas pasadas en los reportes -->
+    <script src="assets/js/semanaActual.js?v=<?php echo filemtime(FCPATH.'assets/js/semanaActual.js'); ?>"></script>
 
 </body>
 </html>

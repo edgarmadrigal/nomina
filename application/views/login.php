@@ -1,50 +1,69 @@
 <!DOCTYPE html>
-<?php header('Access-Control-Allow-Origin: *');  ?>
-
 <html lang="es-mx">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Sube a HTTPS solo si el equipo confía en el certificado (debe ir antes que nada) -->
+    <script src="assets/js/httpsUpgrade.js?v=<?php echo filemtime(FCPATH.'assets/js/httpsUpgrade.js'); ?>"></script>
     <title>Login</title>
     <link rel="stylesheet" href="assets/css/estilo.css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-    <script src="assets/js/login.js" type="text/javascript"></script>
-
-<head>
-  <link rel="stylesheet" media="screen" href="assets/particules/css/style.css">
-<script src="assets/js/login.js" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="assets/particules/css/style.css">
+    <script src="assets/js/jquery-3.3.1.js"></script>
+    <script src="assets/js/login.js?v=<?php echo filemtime(FCPATH.'assets/js/login.js'); ?>" type="text/javascript"></script>
+    <style>
+        /* Trampa para robots: una persona no ve este campo y no lo llena */
+        .campo-extra { position: absolute; left: -5000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        #bloqueCaptcha .captcha-fila { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        #bloqueCaptcha img { border: 1px solid #ccc; border-radius: 4px; width: 170px; height: 56px; }
+        #bloqueCaptcha small { color: #777; display: block; margin-bottom: 6px; }
+        #error { display: none; color: #c62828; font-weight: bold; text-align: center; }
+    </style>
 </head>
 <body>
+<?php $CIlog =& get_instance(); if ($CIlog->config->item('es_desarrollo')): // ver config.php ?>
+<div style="position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:100000;white-space:nowrap;
+    background:repeating-linear-gradient(45deg,#ffc107,#ffc107 12px,#ffb300 12px,#ffb300 24px);color:#212121;
+    border:2px solid #212121;border-radius:20px;padding:5px 16px;font-weight:800;font-size:13px;letter-spacing:.5px;
+    box-shadow:0 2px 10px rgba(0,0,0,.35);font-family:Arial,sans-serif;">
+    &#128295; MODO DESARROLLO &middot; <?php echo htmlspecialchars(gethostname(), ENT_QUOTES); ?>
+</div>
+<?php endif; ?>
 <div id="particles-js"  >
 <div class="container" style="position: absolute;float: left;    width: 100%;" >
     <div class="row vertical-offset-100">
     	<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Iniciar Session</h3>
+			    	<h3 class="panel-title">Iniciar Sesión</h3>
 			 	</div>
 			  	<div  class="panel-body">
-			    	<form id="edgar" rol="form">
+			    	<form id="edgar" role="form" autocomplete="off">
                     <fieldset>
 			    	  	<div class="form-group">
-			    		    <input class="form-control" placeholder="usuario" name="usuario" id="usuario" type="text">
+			    		    <input class="form-control" placeholder="usuario" name="usuario" id="usuario" type="text" maxlength="50" autocomplete="username" autofocus>
 			    		</div>
 			    		<div class="form-group">
-			    			<input class="form-control" placeholder="Password" name="password" id="password" type="password" value="">
+			    			<input class="form-control" placeholder="Contraseña" name="password" id="password" type="password" value="" autocomplete="current-password">
+                        </div>
+                        <div class="campo-extra" aria-hidden="true">
+                            <label for="sitio">Sitio web (no llenar)</label>
+                            <input type="text" name="sitio" id="sitio" tabindex="-1" autocomplete="off" value="">
+                        </div>
+                        <div class="form-group" id="bloqueCaptcha" style="<?php echo empty($captcha) ? 'display:none' : ''; ?>">
+                            <small>Para confirmar que eres una persona, escribe las letras de la imagen:</small>
+                            <div class="captcha-fila">
+                                <img id="imgCaptcha" alt="Letras de verificación" src="<?php echo empty($captcha) ? '' : 'home/captcha?t=' . time(); ?>">
+                                <a href="#" id="otraCaptcha" title="Otra imagen">&#8635; otra</a>
+                            </div>
+                            <input class="form-control" placeholder="letras de la imagen" name="captcha" id="captcha" type="text" maxlength="8" autocomplete="off" autocapitalize="characters" spellcheck="false">
                         </div>
 			    		<div class="form-group">
-                            <span id="error" class="error invalid-feedback text-center"></span>
+                            <span id="error" class="error"></span>
                         </div>
-			    		<input class="btn btn-lg btn-success btn-block g-recaptcha" 
-						 type="submit" 
-						data-sitekey="6LfK63YrAAAAAOkaDGY-EDLDATU3jDKuFFBv7GbT" 
-						data-callback='onSubmit' 
-						data-action='submit' value="Entrar" id="admin_login">
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Entrar" id="admin_login">
 			    	</fieldset>
 			      	</form>
 			    </div>
@@ -53,13 +72,6 @@
 	</div>
 </div>
 </div>
-
-
-<script>
-  function onSubmit(token) {
-    document.getElementById("edgar").submit();
-  }
-</script>
 
 <script src="assets/particules/particles.js"></script>
 <script src="assets/particules/js/app.js"></script>

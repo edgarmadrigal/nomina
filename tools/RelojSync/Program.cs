@@ -153,6 +153,29 @@ if (args.Length >= 2 && (args[0] == "hora" || args[0] == "ponerhora" || args[0] 
     }
 }
 
+if (args.Length >= 2 && args[0] == "renombrar")
+{
+    // renombrar <trabajos.json {"deviceId":[{"id":"..","nombre":".."}],...}> [archivo_progreso.json]
+    // Cambia nombres (p. ej. agregar la empresa) en varios relojes BioStar 2, en segundo plano.
+    string? conexion = Conexion();
+    if (conexion == null) return 1;
+    try
+    {
+        var trabajos = JsonDocument.Parse(File.ReadAllText(args[1])).RootElement.EnumerateObject()
+            .Select(p => (long.Parse(p.Name), p.Value.EnumerateArray()
+                .Select(e => (e.GetProperty("id").GetString()!, e.GetProperty("nombre").GetString() ?? "")).ToList()))
+            .ToList();
+        new Sincronizador(conexion).RenombrarVarios(trabajos, args.Skip(2).FirstOrDefault(a => a.EndsWith(".json")));
+        Console.WriteLine("JSON={\"ok\":true}");
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"ERROR={ex.Message}");
+        return 1;
+    }
+}
+
 if (args.Length >= 2 && (args[0] == "usuarios" || args[0] == "alta" || args[0] == "baja" || args[0] == "copiarrostros" || args[0] == "copiarvarios"))
 {
     // Usuarios del reloj. Salida: una línea JSON=... para PHP.
@@ -179,7 +202,8 @@ if (args.Length >= 2 && (args[0] == "usuarios" || args[0] == "alta" || args[0] =
                 r = s.Alta(id, altas);
                 break;
             case "baja":
-                r = s.Baja(id, LeerIds(args[2])!);
+                // baja <deviceId> <ids.json> [sinrostro]  (sinrostro: no quita a quien tenga rostro en el reloj)
+                r = s.Baja(id, LeerIds(args[2])!, args.Skip(3).Any(a => a == "sinrostro"));
                 break;
             case "copiarvarios":
                 // copiarvarios <origen> <destinos.json [deviceId,...]> [reemplazar] [consinrostro] [archivo_progreso.json]

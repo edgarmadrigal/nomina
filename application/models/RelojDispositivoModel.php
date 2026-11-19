@@ -25,7 +25,8 @@ class RelojDispositivoModel extends CI_Model {
                        CONVERT(VARCHAR(19), d.ultimaDescarga, 120) AS ultimaDescarga,
                        d.ultimoError, d.activo, d.ultimasChecadas,
                        (SELECT CONVERT(VARCHAR(19), MAX(r.fechahora), 120) FROM dbo.RelojEvento r
-                         WHERE r.deviceId = d.deviceId AND r.esChecada = 1) AS ultimaChecada,
+                         WHERE r.deviceId = d.deviceId AND r.esChecada = 1
+                           AND r.fechahora <= DATEADD(MINUTE, 10, GETDATE())) AS ultimaChecada,
                        (SELECT COUNT(*) FROM dbo.RelojEvento r
                          WHERE r.deviceId = d.deviceId AND r.esChecada = 1
                            AND r.fechahora >= CONVERT(DATE, GETDATE())) AS checadasHoy
@@ -169,6 +170,7 @@ class RelojDispositivoModel extends CI_Model {
                     WHERE TRY_CONVERT(BIGINT, em.empleado_id) IS NOT NULL
                 )
                 SELECT e.num, LTRIM(RTRIM(e.NOMBRE_COMPLETO)) AS nombre, e.empresa_id, ISNULL(p.nombre, '') AS planta,
+                       ISNULL(NULLIF(LTRIM(RTRIM(p.code)), ''), ISNULL(p.nombre, '')) AS code,
                        e.activo, e.activoAqui
                 FROM e LEFT JOIN dbo.empresas p ON p.id = e.empresa_id
                 WHERE e.rn = 1";

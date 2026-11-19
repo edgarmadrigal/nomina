@@ -200,7 +200,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label style="font-weight: bold!important;">Horas:</label> 
-                                                <input required type="text" class="form-control" value="" id="horasdiarias" maxlength="2" onkeypress='return validaNumericos(event)' >
+                                                <input required type="text" class="form-control" value="" id="horasdiarias" maxlength="5" placeholder="ej. 6.5" onkeypress='return validaDecimal(event, this)' >
+                                                <small class="text-muted">Puedes usar medias horas, por ejemplo 6.5 = 6 horas y media.</small>
                                     </div>
                                 </div>
                             </div>  
@@ -412,5 +413,11 @@ function validaNumericos(event) {
       return true;
      }
      return false;
+}
+// Igual que validaNumericos pero permite un punto decimal (para medias horas: 6.5)
+function validaDecimal(event, input) {
+    if (event.charCode >= 48 && event.charCode <= 57) return true;
+    if ((event.charCode === 46 || event.charCode === 44) && input.value.indexOf('.') === -1) return true;
+    return false;
 }
 </script>

@@ -25,8 +25,7 @@ class ContratoRH extends CI_Model{
         );        
         $result = $this->db->query($sp,$params);
 
-        //print_r($result->result_array());
-        //die();
+      
         return  $result->result_array();
     }
     

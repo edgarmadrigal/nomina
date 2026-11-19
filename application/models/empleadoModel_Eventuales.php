@@ -25,10 +25,6 @@ class empleadoModel_Eventuales extends CI_Model{
         $this->db->from('empleados');
         $this->db->where('empresa_id',25);
         $aResult = $this->db->get();
-        if(!$aResult->num_rows() == 1)
-        {
-            return false;
-        }
         return $aResult->result_array();
     }
     function get_empleado($id){
@@ -40,6 +36,23 @@ class empleadoModel_Eventuales extends CI_Model{
         return $empleado;
     }
     
+    /**
+     * Todo el que está en el catálogo es eventual. Las checadas toman la planta al bajarse del reloj:
+     * las que hizo antes de darse de alta quedaron en la planta del reloj. Se pasan a eventuales las de
+     * los últimos 60 días, salvo las de una planta donde ese número es empleado activo (otra persona).
+     */
+    public function traerChecadas($numero){
+        $donde = "FROM dbo.checadas ch
+              WHERE ch.usuarioid_norm = ? AND ch.fecha >= ? AND ch.idPlanta <> 25
+                AND NOT EXISTS (SELECT 1 FROM dbo.empleados e
+                                 WHERE e.empleado_id = ? AND e.empresa_id = ch.idPlanta AND e.ESTATUS = 'A')";
+        $p = array($numero, date('Y-m-d', strtotime('-60 days')), $numero);
+        $r = $this->db->query("SELECT COUNT(*) AS n " . $donde, $p)->row_array();
+        $n = $r ? (int) $r['n'] : 0;
+        if ($n) $this->db->query("UPDATE ch SET idPlanta = 25 " . $donde, $p);
+        return $n;
+    }
+
     function delete_empleado($id){
         $this->db->where('id', $id)
         ->update('empleados', $data);

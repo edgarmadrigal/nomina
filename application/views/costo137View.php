@@ -44,14 +44,6 @@
                                                         </button>
                                             </div>
                                     </div>
-                                    <div class="col-2">
-                                        <div class="form-group">
-                                                        <label style="font-weight: bold!important;"> &nbsp; </label><br> 
-                                                        <a id="descargar" class="btn btn-info"  href="http://177.244.42.94:8087/nomina/costo137.txt" download>
-                                                            <i class="fa fa-download"></i> Descargar fichero
-                                                        </a>
-                                            </div>
-                                    </div>
                                 </div> 
                                 <div class="row">
                                     <div class="col-12" style="text-align: -webkit-center;">
@@ -60,64 +52,6 @@
                                         </center>
                                     </div>
                                 </div>
-                                <!--
-                                
-                                <div class="row" id="tablaLunes">
-                                    <div class="col-12">
-                                        <table id="costo137" class="display nowrap table table-hover table-striped table-bordered dataTable" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                <th>CENTRO_costo137  </th>       
-                                                <th>DEPARTAMENTO  </th>
-                                                <th>PLANILLA	  </th>
-                                                <th>PERCEP		  </th>
-                                                <th>HOREXT		  </th>
-                                                <th>GRATIF		  </th>
-                                                <th>INCENT		  </th>
-                                                <th>PPYADE		  </th>
-                                                <th>CROM		  </th>
-                                                <th>TOTPER		  </th>
-                                                <th>SUBEMP		  </th>
-                                                <th>ISPT		  </th>
-                                                <th>IMSS		  </th>
-                                                <th>CAJAAHO		  </th>
-                                                <th>INFONAVIT	  </th>
-                                                <th>PREAHO		  </th>
-                                                <th>PREEMP		  </th>
-                                                <th>INTERGAS	  </th>
-                                                <th>OTRASRET	  </th>
-                                                <th>TOTAL		  </th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr><th>CENTRO_costo137 </th>       
-                                                <th>DEPARTAMENTO  </th>
-                                                <th>PLANILLA	  </th>
-                                                <th>PERCEP		  </th>
-                                                <th>HOREXT		  </th>
-                                                <th>GRATIF		  </th>
-                                                <th>INCENT		  </th>
-                                                <th>PPYADE		  </th>
-                                                <th>CROM		  </th>
-                                                <th>TOTPER		  </th>
-                                                <th>SUBEMP		  </th>
-                                                <th>ISPT		  </th>
-                                                <th>IMSS		  </th>
-                                                <th>CAJAAHO		  </th>
-                                                <th>INFONAVIT	  </th>
-                                                <th>PREAHO		  </th>
-                                                <th>PREEMP		  </th>
-                                                <th>INTERGAS	  </th>
-                                                <th>OTRASRET	  </th>
-                                                <th>TOTAL		  </th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
--->
-                           <!-- </div>
-                        </div>-->
                     </div>
                 </div>
             </div>

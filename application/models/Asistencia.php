@@ -44,7 +44,9 @@ class Asistencia extends CI_Model{
         'planta' => '1',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,        
+        'tiempoExtra' => $tiempoExtra,
+        );
         
         $result = $this->db->query($sp,$params);
 
@@ -56,7 +58,9 @@ class Asistencia extends CI_Model{
         'planta' => '2',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
@@ -67,7 +71,9 @@ class Asistencia extends CI_Model{
         'planta' => '3',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
@@ -78,7 +84,9 @@ class Asistencia extends CI_Model{
         'planta' => '4',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
@@ -89,7 +97,9 @@ class Asistencia extends CI_Model{
         'planta' => '5',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
@@ -100,7 +110,9 @@ class Asistencia extends CI_Model{
         'planta' => '6',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
@@ -111,7 +123,9 @@ class Asistencia extends CI_Model{
         'planta' => '7',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
@@ -122,7 +136,9 @@ class Asistencia extends CI_Model{
         'planta' => '8',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         
@@ -134,7 +150,9 @@ class Asistencia extends CI_Model{
         'planta' => '9',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         
@@ -146,7 +164,9 @@ class Asistencia extends CI_Model{
         'planta' => '10',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         
@@ -158,7 +178,9 @@ class Asistencia extends CI_Model{
         'planta' => '11',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         
@@ -170,7 +192,9 @@ class Asistencia extends CI_Model{
         'planta' => '12',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         
@@ -182,7 +206,9 @@ class Asistencia extends CI_Model{
         'planta' => '13',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         
@@ -194,7 +220,9 @@ class Asistencia extends CI_Model{
         'planta' => '14',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         
@@ -206,7 +234,9 @@ class Asistencia extends CI_Model{
         'planta' => '15',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
         
@@ -218,31 +248,30 @@ class Asistencia extends CI_Model{
         'planta' => '16',
         'Code' => null,
         'puesto' => null,
-        'NoEmpleado' => null);
+        'NoEmpleado' => null,
+        'tiempoExtra' => $tiempoExtra
+        );
         
         $result = $this->db->query($sp,$params);
 
         return  $result->result_array();
     }
-    public function actualizaPlanta($NoSemana,$anio,$planta){
-        ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
-        $sp = "ActualizaChecadasBiostar ?,?,?,?,?,? "; 
+
+        public function actualizaPlanta($NoSemana, $anio, $planta){
+        ini_set('max_execution_time', 0); // para que no limite a 30 segundos la consulta
+        $sp = "ActualizaChecadasBiostar ?,?,?,?,?,?";
         $params = array(
-        'NoSemana' => intval($NoSemana),
-        'anio' => $anio,
-        'planta' => intval($planta),
-        'Code' => null,
-        'puesto' => null,
-        'NoEmpleado' => null);
-        
-        $result = $this->db->query($sp,$params);
+            'NoSemana'   => intval($NoSemana),
+            'anio'       => $anio,
+            'planta'     => intval($planta),
+            'Code'       => null,
+            'puesto'     => null,
+            'NoEmpleado' => null,
+        );
+        return $this->db->query($sp, $params);
     }
 
 }
-
-?>
-
-
 
 
 

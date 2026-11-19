@@ -1,4 +1,4 @@
-using System.Data;
+﻿using System.Data;
 using Microsoft.Data.SqlClient;
 
 namespace RelojSync;
@@ -17,14 +17,23 @@ internal sealed class Sincronizador(string conexion)
     public int Ejecutar(long? soloDeviceId, bool procesar = true)
     {
         int errores = 0;
+        var copiando = RelojesCopiando();
         foreach (var d in Dispositivos(soloDeviceId))
         {
+            // El reloj acepta UNA conexión: si se están copiando rostros con él, no se cruza la descarga
+            // (antes eso tiraba la copia). Sus checadas se bajan en la siguiente vuelta.
+            if (copiando.Contains(d.DeviceId))
+            {
+                Log($"{d.Descripcion} ({d.Ip}): se saltó, se están copiando rostros con este reloj; se descarga en la siguiente vuelta.");
+                continue;
+            }
             try
             {
                 DateTime inicio = HoraServidor();
                 int n = DescargarConReintentos(d);
                 int checadas = ActualizarEstado(d.DeviceId, null, inicio);
                 Log($"{d.Descripcion} ({d.Ip}): {n} eventos nuevos, {checadas} checadas.");
+                AjustarHora(d, inicio);
             }
             catch (Exception ex)
             {
@@ -39,6 +48,36 @@ internal sealed class Sincronizador(string conexion)
         var r = Procesar(soloDeviceId);
         Log($"Checadas insertadas: {r.insertadas}, ya existían: {r.yaExistian}, repetidas en 2 empresas: {r.repetidos}.");
         return errores == 0 ? 0 : 2;
+    }
+
+    // Diferencia (segundos) a partir de la cual se corrige la hora del reloj al descargar
+    const int TOLERANCIA_HORA = 60;
+    // Si esta PC y el servidor SQL difieren más que esto, la hora de la PC no es confiable y no se toca ningún reloj
+    const int MAX_DIF_PC_SERVIDOR = 120;
+
+    /// <summary>
+    /// Después de cada descarga: si el reloj está desfasado más de TOLERANCIA_HORA lo pone a la hora
+    /// de esta PC. Nunca hace fallar la descarga (solo deja aviso en el log).
+    /// </summary>
+    void AjustarHora(Dispositivo d, DateTime horaServidor)
+    {
+        try
+        {
+            double difPc = Math.Abs((DateTime.Now - horaServidor).TotalSeconds);
+            if (difPc > MAX_DIF_PC_SERVIDOR)
+            {
+                Log($"{d.Descripcion} ({d.Ip}): NO se ajustó la hora: esta PC difiere {difPc:0} s del servidor SQL (revisa la hora de la PC).");
+                return;
+            }
+            var (_, dif) = Hora(d.DeviceId);
+            if (Math.Abs(dif) <= TOLERANCIA_HORA) return;
+            var antes = PonerHora(d.DeviceId);
+            Log($"{d.Descripcion} ({d.Ip}): hora corregida (traía {antes:yyyy-MM-dd HH:mm:ss}, {dif} s de diferencia).");
+        }
+        catch (Exception ex)
+        {
+            Log($"{d.Descripcion} ({d.Ip}): no se pudo revisar/ajustar la hora ({ex.Message}).");
+        }
     }
 
     const int INTENTOS = 3;
@@ -79,6 +118,21 @@ internal sealed class Sincronizador(string conexion)
         else if (msg.Contains("SQL") || msg.Contains("database") || msg.Contains("servidor"))
             causa = "No se pudo guardar en la base de datos.";
         return causa == null ? msg : $"{causa} [Detalle: {msg}]";
+    }
+
+    /// <summary>Relojes con una copia de rostros en curso (latido copiaHasta vigente).</summary>
+    HashSet<long> RelojesCopiando()
+    {
+        var ids = new HashSet<long>();
+        try
+        {
+            using var cn = Abrir();
+            using var cmd = new SqlCommand("SELECT deviceId FROM dbo.RelojDispositivo WHERE copiaHasta > GETDATE()", cn);
+            using var rd = cmd.ExecuteReader();
+            while (rd.Read()) ids.Add(rd.GetInt64(0));
+        }
+        catch (Exception ex) { Log($"No se pudo revisar si hay copias de rostros en curso: {ex.Message}"); }
+        return ids;
     }
 
     List<Dispositivo> Dispositivos(long? soloDeviceId, bool soloActivos = true)
@@ -270,18 +324,66 @@ internal sealed class Sincronizador(string conexion)
         }
     }
 
-    public ResultadoUsuarios Baja(long deviceId, IList<string> ids)
+    public ResultadoUsuarios Baja(long deviceId, IList<string> ids, bool soloSinRostro = false)
     {
         var d = Uno(deviceId);
+        if (soloSinRostro && d.Sdk != "BS2")
+            throw new InvalidOperationException("Quitar solo a los que no tienen rostro es para relojes BioStar 2.");
         switch (d.Sdk)
         {
             case "HV": return RelojHanvon.Baja(d.Ip, d.Puerto, ids);
             case "BS1":
                 using (var r = Conectar1(d)) return r.Baja(ids);
             default:
-                using (var r = Conectar2(d)) return UsuariosBS2.Baja(r, ids);
+                using (var r = Conectar2(d)) return UsuariosBS2.Baja(r, ids, soloSinRostro);
         }
     }
+
+    /// <summary>
+    /// Cambia nombres en VARIOS relojes BioStar 2, uno por uno (p. ej. agregar la empresa). Escribe el
+    /// avance en el mismo formato que la copia para que la web lo muestre en la misma barra.
+    /// </summary>
+    public void RenombrarVarios(IList<(long deviceId, List<(string id, string nombre)> lista)> trabajos, string? progresoPath)
+    {
+        int n = trabajos.Count, cambiados = 0, errores = 0;
+        void Escribir(bool activo, string destino, int hechos, int err, int total, string fase)
+        {
+            if (progresoPath == null) return;
+            string Esc(string s) => s.Replace("\\", "\\\\").Replace("\"", "\\\"");
+            int pct = total > 0 ? (int)Math.Round(100.0 * hechos / total) : 0;
+            string fin = activo ? "null" : $"\"{DateTime.Now:yyyy-MM-dd HH:mm:ss}\"";
+            string json = "{" +
+                $"\"activo\":{(activo ? "true" : "false")},\"tipo\":\"nombres\",\"origen\":\"Nombres con empresa\",\"destino\":\"{Esc(destino)}\"," +
+                $"\"lote\":null,\"total\":{total},\"copiados\":{hechos},\"yaTenian\":0,\"sinRostro\":0,\"errores\":{err},\"reemplazados\":0," +
+                $"\"pct\":{pct},\"fase\":\"{fase}\",\"actualizado\":\"{DateTime.Now:yyyy-MM-dd HH:mm:ss}\",\"fin\":{fin}" + "}";
+            try { File.WriteAllText(progresoPath, json); } catch { /* el progreso es informativo */ }
+        }
+        string ultimo = "";
+        for (int i = 0; i < n; i++)
+        {
+            var d = Uno(trabajos[i].deviceId);
+            ultimo = $"{d.Descripcion}  [Reloj {i + 1} de {n}]";
+            string destino = ultimo;
+            Escribir(true, destino, 0, 0, trabajos[i].lista.Count, "leyendo");
+            try
+            {
+                using var r = Conectar2(d);
+                var res = UsuariosBS2.Renombrar(r, trabajos[i].lista,
+                    (hechos, err, total) => Escribir(true, destino, hechos, err, total, "copiando"));
+                cambiados += res.Hechos.Count;
+                errores += res.Errores.Count;
+            }
+            catch (Exception ex)
+            {
+                errores += trabajos[i].lista.Count;
+                Console.Error.WriteLine($"ERROR en {d.Descripcion}: {ex.Message}");   // seguimos con los demás relojes
+            }
+        }
+        Escribir(false, ultimo, cambiados, errores, cambiados + errores, errores > 0 && cambiados == 0 ? "error" : "terminado");
+    }
+
+    /// <summary>Números viejos borrados por cambio de número en la copia (se suman en un lote de varios relojes).</summary>
+    int reemplazadosLote;
 
     /// <summary>Copia usuarios con rostro entre dos relojes BioStar 2 (mismo formato de rostro).</summary>
     /// <param name="progresoPath">Si se indica, se va escribiendo el avance (JSON) en ese archivo para que
@@ -295,63 +397,211 @@ internal sealed class Sincronizador(string conexion)
             throw new InvalidOperationException("Los rostros solo se pueden copiar entre relojes BioStar 2 (cada marca guarda el rostro en otro formato).");
         if (o.DeviceId == d.DeviceId) throw new InvalidOperationException("El origen y el destino son el mismo reloj.");
 
-        void Escribir(bool activo, int hechos, int yaTenian, int sinRostro, int errores, int total, string fase)
+        // Estado que se va escribiendo en el progreso
+        int lastH = 0, lastY = 0, lastS = 0, lastE = 0, lastT = 0;
+        string? recon = null;              // JSON de la reconexión en curso (null = conectado)
+        DateTime? inicioCopia = null;      // cuándo empezó a copiar (para el tiempo estimado)
+        int hechosAlIniciar = 0;
+        double segundosPerdidos = 0;       // tiempo reconectando (no cuenta para el estimado)
+        DateTime ultimoLatido = DateTime.MinValue;
+        DateTime ultimoAvance = DateTime.Now;   // última vez que hubo avance real (no del vigilante)
+        DateTime? silencioDesde = null;         // el vigilante detectó que el reloj no contesta
+        string relojEsperando = o.Descripcion;  // con qué reloj se está hablando ahora
+        string faseActual = "leyendo";
+        var candado = new object();
+        string Esc(string s) => s.Replace("\\", "\\\\").Replace("\"", "\\\"");
+
+        void Escribir(bool activo, string fase, string? mensaje = null)
         {
+            lock (candado) EscribirSinCandado(activo, fase, mensaje);
+        }
+
+        void EscribirSinCandado(bool activo, string fase, string? mensaje)
+        {
+            // latido: avisa a la descarga automática que estos dos relojes están ocupados copiando
+            if (activo && (DateTime.Now - ultimoLatido).TotalSeconds >= 60) { MarcarCopia(o.DeviceId, d.DeviceId, true); ultimoLatido = DateTime.Now; }
             if (progresoPath == null) return;
-            int pct = total > 0 ? (int)Math.Round(100.0 * hechos / total) : 0;
-            string Esc(string s) => s.Replace("\\", "\\\\").Replace("\"", "\\\"");
+            int pct = lastT > 0 ? (int)Math.Round(100.0 * lastH / lastT) : 0;
+            // tiempo estimado: ritmo de esta corrida sin contar el tiempo perdido reconectando
+            string eta = "null";
+            if (activo && inicioCopia != null && lastT > 0)
+            {
+                int hechos = lastH - hechosAlIniciar;
+                double seg = (DateTime.Now - inicioCopia.Value).TotalSeconds - segundosPerdidos;
+                if (hechos >= 20 && seg > 0) eta = ((int)((lastT - lastH) * seg / hechos)).ToString();
+            }
             string fin = activo ? "null" : $"\"{DateTime.Now:yyyy-MM-dd HH:mm:ss}\"";
-            string loteJson = lote == null ? "null" : $"\"{Esc(lote)}\"";
             string json = "{" +
                 $"\"activo\":{(activo ? "true" : "false")}," +
-                $"\"origen\":\"{Esc(o.Descripcion)}\",\"destino\":\"{Esc(d.Descripcion)}\",\"lote\":{loteJson}," +
-                $"\"total\":{total},\"copiados\":{hechos},\"yaTenian\":{yaTenian},\"sinRostro\":{sinRostro},\"errores\":{errores}," +
-                $"\"pct\":{pct},\"fase\":\"{fase}\",\"actualizado\":\"{DateTime.Now:yyyy-MM-dd HH:mm:ss}\",\"fin\":{fin}" +
+                $"\"origen\":\"{Esc(o.Descripcion)}\",\"destino\":\"{Esc(d.Descripcion)}\",\"destinoId\":\"{d.DeviceId}\"," +
+                $"\"lote\":{(lote == null ? "null" : $"\"{Esc(lote)}\"")}," +
+                $"\"total\":{lastT},\"copiados\":{lastH},\"yaTenian\":{lastY},\"sinRostro\":{lastS},\"errores\":{lastE}," +
+                $"\"reemplazados\":{reemplazadosLote},\"pct\":{pct},\"fase\":\"{fase}\",\"etaSeg\":{eta}," +
+                $"\"reconexion\":{recon ?? "null"},\"mensaje\":{(mensaje == null ? "null" : $"\"{Esc(mensaje)}\"")}," +
+                $"\"detenidos\":[{string.Join(",", detenidosLote.Select(x => $"\"{Esc(x)}\""))}]," +
+                $"\"actualizado\":\"{DateTime.Now:yyyy-MM-dd HH:mm:ss}\",\"fin\":{fin}" +
                 "}";
             try { File.WriteAllText(progresoPath, json); } catch { /* el progreso es informativo */ }
         }
 
-        Escribir(true, 0, 0, 0, 0, 0, "leyendo");
-        // Últimos conteos reportados: cuando se cae la señal (reconectando) se re-escriben con
-        // la fase "reconectando" para que la barra no se quite y muestre que sigue intentando.
-        int lastH = 0, lastY = 0, lastS = 0, lastE = 0, lastT = 0;
-        UsuariosBS2.OnReconectando = _ => Escribir(true, lastH, lastY, lastS, lastE, lastT, "reconectando");
+        // Se perdió la conexión: se avisa con qué reloj, desde cuándo, en qué intento y la causa probable.
+        void Reconectando(int intento, int codigo, DateTime desde, uint dev, int pausaSeg)
+        {
+            string reloj = dev == (uint)o.DeviceId ? o.Descripcion : d.Descripcion;
+            string causa = pausaSeg > 0
+                ? "Se cruzó con otra conexión: el reloj está ocupado (Nomiplus, otra copia o alguien en su menú). La copia se pone EN PAUSA para no pelearse con ella y se reanuda sola."
+                : (codigo == -102 || codigo == -601 || codigo == -101
+                    ? "El reloj no acepta la conexión: puede estar ocupado con otra conexión o sin señal."
+                    : "Se cayó la conexión con el reloj (señal WiFi inestable o el reloj se reinició).");
+            string pausa = pausaSeg > 0 ? $",\"pausa\":true,\"reanuda\":\"{DateTime.Now.AddSeconds(pausaSeg):yyyy-MM-dd HH:mm:ss}\"" : "";
+            relojEsperando = reloj;
+            recon = "{" + $"\"reloj\":\"{Esc(reloj)}\",\"intento\":{intento},\"codigo\":{codigo}," +
+                    $"\"desde\":\"{desde:yyyy-MM-dd HH:mm:ss}\",\"causa\":\"{Esc(causa)}\"{pausa}" + "}";
+            Escribir(true, pausaSeg > 0 ? "pausa" : "reconectando");
+        }
+
+        // Hubo avance real: si el vigilante había marcado "no contesta", ese tiempo no cuenta para el estimado.
+        void Avance()
+        {
+            lock (candado)
+            {
+                if (silencioDesde != null) { segundosPerdidos += (DateTime.Now - silencioDesde.Value).TotalSeconds; silencioDesde = null; recon = null; }
+                ultimoAvance = DateTime.Now;
+            }
+        }
+
+        // Vigilante: una llamada al reloj puede quedarse esperando (p. ej. otra conexión lo tiene ocupado) sin
+        // devolver error; si pasan 25 s sin avance se avisa en la barra que se sigue esperando.
+        using var vigilante = new Timer(_ =>
+        {
+            lock (candado)
+            {
+                if (recon != null && silencioDesde == null) return;          // ya hay un aviso de reconexión
+                if ((DateTime.Now - ultimoAvance).TotalSeconds < 25) return;
+                silencioDesde ??= ultimoAvance;
+                recon = "{" + $"\"reloj\":\"{Esc(relojEsperando)}\",\"intento\":0,\"codigo\":0," +
+                        $"\"desde\":\"{silencioDesde:yyyy-MM-dd HH:mm:ss}\"," +
+                        "\"causa\":\"El reloj no contesta: puede estar ocupado con otra conexión (Nomiplus, otra copia o alguien en su menú) o sin señal. Se sigue esperando su respuesta.\"}";
+                EscribirSinCandado(true, faseActual == "leyendo" ? "leyendo" : "reconectando", null);
+            }
+        }, null, 15000, 15000);
+
+        UsuariosBS2.SinLimite = true;
+        UsuariosBS2.Detener = dev => dev == (uint)d.DeviceId && DetenerPedido(progresoPath, d.DeviceId);
+        UsuariosBS2.OnReconectando = Reconectando;
+        UsuariosBS2.OnRecuperado = seg => { lock (candado) { segundosPerdidos += seg; recon = null; silencioDesde = null; ultimoAvance = DateTime.Now; } };
+        Escribir(true, "leyendo");
         try
         {
-            using var ro = Conectar2(o);
-            using var rd = Conectar2(d);
+            relojEsperando = o.Descripcion;
+            using var ro = ConectarInsistiendo(o, Reconectando, d.DeviceId);
+            Avance();
+            relojEsperando = d.Descripcion;
+            using var rd = ConectarInsistiendo(d, Reconectando, d.DeviceId);
+            Avance();
+            recon = null;
             var res = UsuariosBS2.CopiarRostros(ro, rd, ids, reemplazar,
                 (hechos, ya, sin, err, total, fase) =>
                 {
+                    Avance();
                     lastH = hechos; lastY = ya; lastS = sin; lastE = err; lastT = total;
-                    Escribir(true, hechos, ya, sin, err, total, fase);
+                    if (fase == "copiando" && inicioCopia == null) { inicioCopia = DateTime.Now; hechosAlIniciar = hechos; }
+                    faseActual = fase;
+                    Escribir(true, fase);
                 },
                 incluirSinRostro, borrarDestino);
+            reemplazadosLote += res.Reemplazados.Count;
+            lastH = res.Hechos.Count; lastY = res.YaEstaban.Count; lastS = res.SinRostro.Count; lastE = res.Errores.Count;
+            lastT = res.Hechos.Count + res.Errores.Count;
             // En un lote de varios relojes, solo el último marca "terminado"; los demás quedan "activo"
             // para que la barra no parpadee como si ya hubiera acabado todo.
-            if (marcarFin)
-                Escribir(false, res.Hechos.Count, res.YaEstaban.Count, res.SinRostro.Count, res.Errores.Count,
-                         res.Hechos.Count + res.Errores.Count, "terminado");
-            else
-                Escribir(true, res.Hechos.Count, res.YaEstaban.Count, res.SinRostro.Count, res.Errores.Count,
-                         res.Hechos.Count + res.Errores.Count, "copiando");
+            Escribir(!marcarFin, marcarFin ? "terminado" : "copiando");
             return res;
         }
-        catch
+        catch (CopiaDetenida)
         {
-            if (marcarFin) Escribir(false, 0, 0, 0, 0, 0, "error");
+            detenidosLote.Add(d.Descripcion);
+            try { if (progresoPath != null) File.Delete(progresoPath + ".detener"); } catch { }
+            recon = null;
+            Escribir(!marcarFin, "detenido", $"Se detuvo la copia hacia {d.Descripcion} a petición del usuario ({lastH} de {lastT} copiados).");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            recon = null;
+            Escribir(!marcarFin, "error", $"{d.Descripcion}: {ex.Message}");
             throw;
         }
         finally
         {
+            MarcarCopia(o.DeviceId, d.DeviceId, false);
             UsuariosBS2.OnReconectando = null;
+            UsuariosBS2.OnRecuperado = null;
+            UsuariosBS2.Detener = null;
+            UsuariosBS2.SinLimite = false;
         }
     }
 
+    /// <summary>Relojes cuya copia detuvo el usuario en este lote (se muestran en la barra).</summary>
+    readonly List<string> detenidosLote = new();
+
+    /// <summary>La web deja "progreso.json.detener" con el deviceId del reloj cuya copia hay que detener.</summary>
+    static bool DetenerPedido(string? progresoPath, long deviceId)
+    {
+        if (progresoPath == null) return false;
+        string f = progresoPath + ".detener";
+        try { return File.Exists(f) && File.ReadAllText(f).Trim() == deviceId.ToString(); } catch { return false; }
+    }
+
+    /// <summary>
+    /// Conecta sin rendirse (copias): si el reloj no acepta la conexión se avisa y se reintenta
+    /// cada vez con más espera hasta que conteste o el usuario detenga la copia de ese reloj.
+    /// </summary>
+    static Reloj ConectarInsistiendo(Dispositivo d, Action<int, int, DateTime, uint, int> avisar, long destinoId)
+    {
+        var desde = DateTime.Now;
+        for (int intento = 1; ; intento++)
+        {
+            UsuariosBS2.RevisarDetener((uint)destinoId);
+            try { return Conectar2(d); }
+            catch (InvalidOperationException ex) when (!ex.Message.Contains("se esperaba"))
+            {
+                // ocupado por otra conexión = cruce: pausa larga sin tocar el reloj; si no, reintento normal
+                int pausa = UsuariosBS2.EsOcupado(ex.Message) ? UsuariosBS2.PAUSA_CRUCE_SEG : (intento <= 3 ? 5 : (intento <= 10 ? 15 : 30));
+                avisar(intento, UsuariosBS2.CodigoDe(ex.Message, -1), desde, (uint)d.DeviceId, UsuariosBS2.EsOcupado(ex.Message) ? pausa : 0);
+                UsuariosBS2.Esperar(pausa * 1000, (uint)destinoId);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Marca (o desmarca) los dos relojes como "copiando" en dbo.RelojDispositivo.copiaHasta para que la
+    /// descarga automática no se conecte a ellos mientras tanto (el reloj acepta una sola conexión).
+    /// Es un latido de 10 min: si la copia muere sin desmarcar, el reloj se libera solo.
+    /// </summary>
+    void MarcarCopia(long origen, long destino, bool copiando)
+    {
+        try
+        {
+            using var cn = Abrir();
+            using var cmd = new SqlCommand(
+                "UPDATE dbo.RelojDispositivo SET copiaHasta = CASE WHEN @si = 1 THEN DATEADD(MINUTE, 10, GETDATE()) ELSE NULL END " +
+                "WHERE deviceId IN (@o, @d)", cn);
+            cmd.Parameters.Add("@si", SqlDbType.Bit).Value = copiando;
+            cmd.Parameters.Add("@o", SqlDbType.BigInt).Value = origen;
+            cmd.Parameters.Add("@d", SqlDbType.BigInt).Value = destino;
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex) { Console.Error.WriteLine($"No se pudo marcar la copia en curso: {ex.Message}"); }
+    }
+
     /// <summary>Copia (todos los usuarios con rostro, y opcionalmente los que no, como alta) desde un
-    /// reloj principal hacia VARIOS relojes BioStar 2, uno por uno. Escribe el progreso en el camino.</summary>
+    /// reloj principal hacia VARIOS relojes BioStar 2, uno por uno. Escribe el progreso en el camino.
+    /// Si el usuario detiene uno, se sigue con el siguiente.</summary>
     public void CopiarVarios(long origenId, IList<long> destinos, bool reemplazar, bool incluirSinRostro, string? progresoPath, bool borrarDestino = false)
     {
+        reemplazadosLote = 0;
+        detenidosLote.Clear();
         int n = destinos.Count;
         for (int i = 0; i < n; i++)
         {
@@ -421,13 +671,19 @@ internal sealed class Sincronizador(string conexion)
     int GuardarLoteBS2(Dispositivo d, List<Sdk.BS2Event> lote, TimeZoneInfo tz)
     {
         var tabla = NuevaTabla();
+        var limite = LimiteFuturo();
+        int futuros = 0;
         foreach (var e in lote)
         {
             var utc = Sdk.Fecha(e);
-            tabla.Rows.Add(d.DeviceId, d.EventoIdBase + e.id, utc,
-                TimeZoneInfo.ConvertTimeFromUtc(DateTime.SpecifyKind(utc, DateTimeKind.Utc), tz),
+            var local = TimeZoneInfo.ConvertTimeFromUtc(DateTime.SpecifyKind(utc, DateTimeKind.Utc), tz);
+            if (local > limite) { futuros++; continue; }
+            tabla.Rows.Add(d.DeviceId, d.EventoIdBase + e.id, utc, local,
                 Sdk.UserId(e), (int)e.code, Sdk.EsChecadaValida(e.code));
         }
+        if (futuros > 0)
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss} AVISO {d.Descripcion}: se ignoraron {futuros} evento(s) con fecha futura (revisa la hora del reloj).");
+        // el cursor avanza al último id del lote aunque se hayan ignorado eventos
         return Guardar(tabla, d.DeviceId, lote[^1].id);
     }
 
@@ -440,6 +696,8 @@ internal sealed class Sincronizador(string conexion)
         using var reloj = Conectar1(d);
 
         uint desde = Evento1.FechaDeId(d.UltimoEventoId);
+        // Si el cursor quedó en el futuro (el reloj tuvo mal la fecha) se relee todo el log
+        if (DateTime.UnixEpoch.AddSeconds(desde) > LimiteFuturo()) desde = 0;
         return GuardarLocales(d, reloj.LeerEventos().Where(e => e.Fecha >= desde).ToList());
     }
 
@@ -447,7 +705,7 @@ internal sealed class Sincronizador(string conexion)
     int DescargarHV(Dispositivo d)
     {
         var desde = DateTime.UnixEpoch.AddSeconds(Evento1.FechaDeId(d.UltimoEventoId));
-        if (d.UltimoEventoId == 0) desde = new DateTime(2000, 1, 1);
+        if (d.UltimoEventoId == 0 || desde > LimiteFuturo()) desde = new DateTime(2000, 1, 1);
         var (devId, eventos) = RelojHanvon.LeerEventos(d.Ip, d.Puerto, desde);
         if (devId != "" && devId != d.DeviceId.ToString())
             throw new InvalidOperationException($"En {d.Ip} respondió el reloj {devId}, se esperaba {d.DeviceId}.");
@@ -457,6 +715,12 @@ internal sealed class Sincronizador(string conexion)
     /// <summary>Guarda eventos cuya fecha ya viene en hora local (BioStar 1 y Hanvon).</summary>
     int GuardarLocales(Dispositivo d, List<Evento1> nuevos)
     {
+        // Eventos con fecha futura (el reloj tuvo mal la hora) no se guardan: el cursor se arma
+        // con la fecha y uno en el futuro dejaría de bajar todo lo demás.
+        var limite = LimiteFuturo();
+        int futuros = nuevos.RemoveAll(e => e.FechaLocal > limite);
+        if (futuros > 0)
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss} AVISO {d.Descripcion}: se ignoraron {futuros} evento(s) con fecha futura (revisa la hora del reloj).");
         if (nuevos.Count == 0) return 0;
         var tz = TimeZoneInfo.FindSystemTimeZoneById(d.ZonaHoraria);
 
@@ -469,6 +733,9 @@ internal sealed class Sincronizador(string conexion)
         }
         return Guardar(tabla, d.DeviceId, nuevos.Max(e => e.Id));
     }
+
+    /// <summary>Ninguna checada puede ser posterior a ahora (10 min de margen por diferencia de relojes).</summary>
+    static DateTime LimiteFuturo() => DateTime.Now.AddMinutes(10);
 
     static DataTable NuevaTabla()
     {

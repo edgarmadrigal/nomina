@@ -1,4 +1,19 @@
 $(document).ready(function () {
+
+       
+        var varURL = "checadasBiostar/consultaPlanta";
+        $.ajax({
+            url:  varURL,
+            type: 'post',
+            dataType: 'json'
+        }).done(function (data) {                
+            perfiles= JSON.parse(JSON.stringify(data));
+            $('#planta').append('<option value="">Selecciona una planta</option>');
+            $.each(perfiles, function( index, value ) { 
+                $('#planta').append('<option value="'+value.id+'">'+value.nombre+'</option>');
+                });
+        });
+
     $(document).on('click', '#subir', function (e) {
 
         if($('#planta').val()=='' || $('#planta').val()==null){
@@ -29,7 +44,7 @@ $(document).ready(function () {
                     type: 'POST', // For jQuery < 1.9
                     success: 
                     function(data){
-                            alert(data);
+                            $('#resultadoImport').text(data).show();
                             $.unblockUI();
                             $("#tablaEmp").css("display", "block");
                             $(".loadTable").css("display", "none");                

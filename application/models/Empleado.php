@@ -41,7 +41,25 @@ class Empleado extends CI_Model{
        $sp = "ActualizaEmpleadosMicrosip ";       
        
        $result = $this->db->query($sp);
-       return  $result->result_array();
+       $filas = $result->result_array();
+       // para la leyenda "última actualización" de la pantalla (las del job salen del historial del Agente)
+       $u = $this->session->userdata('login');
+       $this->db->query("INSERT INTO dbo.EmpleadosMicrosipSinc (origen, usuario, total) VALUES ('boton', ?, ?)",
+                        array(isset($u['user']->usuario) ? $u['user']->usuario : null, isset($filas[0]['TOTAL']) ? (int) $filas[0]['TOTAL'] : null));
+       return $filas;
+   }
+
+   /** Última actualización del catálogo desde Microsip: la más reciente entre el job de cada hora y el botón. */
+   public function ultimaSinc(){
+       return $this->db->query(
+           "SELECT TOP 1 CONVERT(VARCHAR(19), fecha, 120) AS fecha, origen, DATEDIFF(MINUTE, fecha, GETDATE()) AS minutos
+            FROM (
+                SELECT msdb.dbo.agent_datetime(h.run_date, h.run_time) AS fecha, 'job' AS origen
+                FROM msdb.dbo.sysjobhistory h JOIN msdb.dbo.sysjobs j ON j.job_id = h.job_id
+                WHERE j.name = N'Nominas - Empleados Microsip' AND h.step_id = 0 AND h.run_status = 1
+                UNION ALL
+                SELECT fecha, origen FROM dbo.EmpleadosMicrosipSinc
+            ) x ORDER BY fecha DESC")->row_array();
    }
 
 }

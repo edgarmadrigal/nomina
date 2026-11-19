@@ -1,0 +1,114 @@
+/* Radio de la página (assets/js/radio.js) */
+#radioIcono { position: relative; }
+#radioIcono .fa-music { font-size: 17px; opacity: .75; }
+#radioIcono.radio-sonando .fa-music { color: #26c6da; opacity: 1; animation: radioLatido 1.2s ease-in-out infinite; }
+#radioIcono.radio-espera .fa-music { color: #ffb22b; opacity: 1; }
+@keyframes radioLatido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+
+#radioPanel {
+    position: fixed; top: 64px; right: 16px; z-index: 1060;
+    width: 340px; max-width: calc(100vw - 16px); max-height: calc(100vh - 80px); overflow-y: auto;
+    background: #fff; color: #333; border-radius: 6px; padding: 10px 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .25); font-size: 13px;
+}
+#radioPanel .radio-cab { font-weight: bold; font-size: 15px; margin-bottom: 8px; }
+#radioPanel .radio-cerrar { float: right; font-size: 20px; line-height: 18px; color: inherit; text-decoration: none; }
+#radioPanel .radio-ayuda { margin-bottom: 6px; }
+#radioPanel .radio-msg { color: #888; padding: 6px 0; }
+#radioClaveMsg { color: #e74c3c !important; }
+#radioPanel .radio-buscar { display: flex; gap: 4px; }
+#radioPanel .radio-buscar .form-control { flex: 1; }
+#radioPanel .radio-chips { margin: 8px 0; display: flex; flex-wrap: wrap; gap: 4px; }
+#radioPanel .radio-chip {
+    border: 1px solid #ccd; background: transparent; color: inherit; border-radius: 12px;
+    padding: 1px 9px; font-size: 12px; cursor: pointer;
+}
+#radioPanel .radio-chip:hover { background: #26c6da; color: #fff; border-color: #26c6da; }
+#radioPanel .radio-ahora { font-weight: bold; min-height: 18px; color: #1e88e5; }
+#radioPanel .radio-controles { display: flex; align-items: center; gap: 6px; margin: 6px 0; }
+#radioPanel .radio-controles button {
+    border: 1px solid #ccd; background: transparent; color: inherit; border-radius: 50%;
+    width: 32px; height: 32px; cursor: pointer;
+}
+#radioPanel .radio-controles input[type=range] { flex: 1; min-width: 60px; }
+#radioPanel .radio-lista { max-height: 220px; overflow-y: auto; border-top: 1px solid #eee; }
+#radioPanel .radio-estacion { padding: 5px 4px; border-bottom: 1px solid #eee; cursor: pointer; line-height: 1.3; }
+#radioPanel .radio-estacion small { color: #888; }
+#radioPanel .radio-estacion:hover { background: rgba(38, 198, 218, .12); }
+#radioPanel .radio-estacion.activa { background: rgba(38, 198, 218, .22); }
+#radioPanel .radio-pie { display: flex; justify-content: space-between; margin-top: 8px; }
+#radioPanel .radio-tabs { display: flex; gap: 4px; margin-bottom: 8px; }
+#radioPanel .radio-tabs button {
+    flex: 1; border: 1px solid #ccd; background: transparent; color: inherit; border-radius: 4px;
+    padding: 3px 6px; cursor: pointer; font-size: 13px;
+}
+#radioPanel .radio-tabs button.activo { background: #1e88e5; border-color: #1e88e5; color: #fff; }
+#radioPanel .radio-tabs button[data-tab="youtube"].activo { background: #e62117; border-color: #e62117; }
+#radioPanel #radioTabYoutube .radio-ahora { margin-top: 6px; }
+#radioPanel .yt-aviso {
+    background: rgba(255, 178, 43, .15); border: 1px solid #ffb22b; border-radius: 4px;
+    padding: 6px 8px; margin-bottom: 8px; line-height: 1.35;
+}
+#radioPanel .yt-aviso .fa { color: #ffb22b; }
+#radioPanel .yt-cancion { display: flex; gap: 8px; align-items: center; }
+#radioPanel .yt-cancion img { width: 48px; height: 36px; object-fit: cover; border-radius: 3px; flex: none; }
+#radioPanel .yt-gasto {
+    background: rgba(230, 33, 23, .08); border-left: 3px solid #e62117; border-radius: 4px;
+    padding: 6px 8px; margin-bottom: 8px; font-size: 12px; line-height: 1.35;
+}
+#radioPanel .yt-gasto .fa { color: #e62117; }
+#radioPanel .radio-consumo {
+    margin-top: 8px; padding: 6px 8px; border-radius: 4px; background: rgba(30, 136, 229, .07); font-size: 12px; line-height: 1.4;
+}
+#radioPanel .radio-consumo .rc-titulo { font-weight: bold; margin-bottom: 2px; }
+#radioPanel .radio-consumo .rc-titulo small { font-weight: normal; color: #888; }
+#radioPanel .radio-consumo .rc-alto { color: #e62117; }
+
+/* Mini reproductor de YouTube: siempre visible (mínimo 200x200, reglas de YouTube) */
+/* Marco (radio.js): con música sonando, la pantalla va en un iframe y esta página solo guarda el audio */
+body.marco-activo { overflow: hidden; }
+body.marco-activo > *:not(#marcoPagina):not(#radioPanel):not(#ytMini) { display: none !important; }
+#marcoPagina { position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: 0; z-index: 1; display: block; }
+
+#ytMini {
+    position: fixed; right: 16px; bottom: 16px; z-index: 1055; width: 200px;
+    background: #111; border-radius: 6px; overflow: hidden; box-shadow: 0 6px 24px rgba(0, 0, 0, .35);
+}
+#ytMini .yt-barra {
+    display: flex; align-items: center; gap: 2px; padding: 3px 4px; background: #212121; color: #eee;
+    font-size: 12px; cursor: move; user-select: none; touch-action: none;
+}
+#ytMini .yt-barra .fa-youtube-play { color: #e62117; margin-right: 3px; }
+#ytMini .yt-titulo { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#ytMini .yt-barra button {
+    border: none; background: transparent; color: #eee; cursor: pointer; padding: 0 4px; font-size: 12px; line-height: 20px;
+}
+#ytMini .yt-barra .yt-cerrar { font-size: 17px; }
+#ytMini .yt-barra button:hover { color: #26c6da; }
+#ytMini iframe, #ytMini #ytPlayer { display: block; width: 200px; height: 200px; border: 0; }
+/* agrandado un momento para que YouTube muestre su engrane de calidad */
+#ytMini .yt-ayuda { background: #fff8e1; color: #5d4037; font-size: 12px; line-height: 1.35; padding: 6px 8px; max-width: 480px; }
+#ytMini .yt-ayuda .fa { color: #f9a825; }
+#ytMini.yt-moviendo iframe { pointer-events: none; }
+
+/* Modo nocturno */
+html.modo-nocturno #radioPanel { background: #272c33; color: #dfe3e8; }
+html.modo-nocturno #radioPanel .form-control { background: #1f2329; color: #dfe3e8; border-color: #444b55; }
+html.modo-nocturno #radioPanel .radio-chip,
+html.modo-nocturno #radioPanel .radio-controles button { border-color: #555d68; }
+html.modo-nocturno #radioPanel .radio-lista,
+html.modo-nocturno #radioPanel .radio-estacion { border-color: #3a4049; }
+html.modo-nocturno #radioPanel .radio-estacion small,
+html.modo-nocturno #radioPanel .radio-msg { color: #9aa3ad; }
+html.modo-nocturno #radioPanel .radio-ahora { color: #4fc3f7; }
+html.modo-nocturno #radioPanel a { color: #4fc3f7; }
+html.modo-nocturno #radioPanel .radio-tabs button { border-color: #555d68; }
+html.modo-nocturno #radioPanel .yt-gasto { background: rgba(230, 33, 23, .15); }
+html.modo-nocturno #radioPanel .radio-consumo { background: rgba(79, 195, 247, .1); }
+html.modo-nocturno #radioPanel .radio-consumo .rc-alto { color: #ff6b61; }
+
+@media (max-width: 767px) {
+    #radioPanel { top: 60px; right: 8px; left: 8px; width: auto; }
+    #radioPanel .form-control { font-size: 16px !important; }
+    #ytMini { right: 8px; bottom: 8px; }
+}

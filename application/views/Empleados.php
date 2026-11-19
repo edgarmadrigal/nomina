@@ -17,6 +17,8 @@
                                         <button id="actualizar" class="btn btn-warning" >
                                             <i class="fa fa-refresh"></i> Actualizar Empleados Microsip</button><!-- fa-spin -->
                                        <!-- </button>  -->
+                                        <div class="emp-sinc"><i class="fa fa-clock-o"></i> Se actualiza automáticamente <b>cada hora</b> desde Microsip.
+                                            Última actualización: <b class="emp-sinc-ultima">—</b></div>
                                     </div> 
                                 </div>      
                                 <div class="row" >
@@ -105,3 +107,4 @@
     }
 }
 </style>
+<script src="assets/js/empleadosSinc.js?v=<?php echo filemtime(FCPATH.'assets/js/empleadosSinc.js'); ?>"></script>

@@ -357,7 +357,32 @@ $(document).on('click', '#nuevo', function (e) {
     $('#APELLIDO_MATERNO').val(''); 
     $('#NOMBRE_PUESTO').val(''); 
     $('#NOMBRE_DEPARTAMENTO').val('');
-    $('#id').val(0);         
+    $('#id').val(0);
+});
+
+/* ALTA MASIVA: machote NUMERO | NOMBRE COMPLETO | DEPARTAMENTO */
+$(document).on('click', '#btnMasiva', function () {
+    $('#archivoMasiva').val('').click();
+});
+$(document).on('change', '#archivoMasiva', function () {
+    if (!this.files.length) return;
+    var fd = new FormData();
+    fd.append('archivo', this.files[0]);
+    var $btn = $('#btnMasiva').prop('disabled', true);
+    $.ajax({
+        url: base_url + 'EmpleadosController_Eventuales/importar',
+        type: 'post', data: fd, processData: false, contentType: false, dataType: 'json'
+    }).done(function (r) {
+        if (!r.exito) { swal('No se importó', r.mensaje, 'warning'); return; }
+        var texto = 'Altas: ' + r.altas + '\nActualizados: ' + r.actualizados;
+        if (r.errores.length) texto += '\n\nNo se cargaron ' + r.errores.length + ':\n' + r.errores.join('\n');
+        swal({ title: 'Alta masiva', text: texto, icon: r.errores.length ? 'warning' : 'success' });
+        table.ajax.reload(null, false);
+    }).fail(function () {
+        swal('Error', 'No se pudo subir el archivo.', 'error');
+    }).always(function () {
+        $btn.prop('disabled', false);
+    });
 });
 
 

@@ -29,3 +29,17 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 /tests/tests/
 /tests/results/
+
+# RelojSync
+tools/RelojSync/bin/
+tools/RelojSync/obj/
+tools/RelojSync/relojsync.json
+tools/RelojSync/publish/
+
+# Licencia (llave secreta y cuenta de correo)
+application/config/licencia.php
+
+# Botón Publicar (destino y clave de la VM de producción)
+application/config/publicar.php
+tools/RelojSync/logs/
+tools/ReplicaSQL/conexiones.txt
