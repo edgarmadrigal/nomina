@@ -48,6 +48,15 @@ var Tutorial = {
           texto: 'Los conceptos de nómina de cada empresa en Microsip, actualizados cada hora.<br>Aquí eliges la <b>clave</b> que lleva cada renglón del TXT; si una clave no existe en Microsip sale en <span class="tut-falta">rojo</span>.' },
         { selector: '#sidebarnav a[href="controllerReporteAsistenciatxt"]', titulo: 'Reporte Asistencia TXT',
           texto: 'Primero <b>Procesar</b> y luego <b>Descargar fichero</b>; así el TXT siempre lleva lo último.<br>• En Torreón cada falta va como 1.2 días (en Microsip: <b>01:1:36</b>).<br>• Abajo del botón está el <b>Formato para Microsip</b>.' },
+        { selector: '#sidebarnav a[href="checadasBiostar"]', titulo: 'Días festivos: ya corregido', desde: '2026-11-23', icono: 'fa-calendar-check-o',
+          texto: 'Los días del catálogo de <b>Días Festivos</b> ya <b>no salen como falta</b> (el lunes 16 de noviembre sí salía).<br>' +
+                 '• Solo cuenta como falta si ese día tiene una incidencia de día completo <b>sin goce</b> (p. ej. incapacidad).<br>' +
+                 '• Ya no hace falta capturar un permiso a todos para el festivo.<br>' +
+                 '• La <b>semana 47</b> ya se recalculó. Si ya habías sacado el <b>TXT</b> o la <b>prenómina</b> de esa semana, vuelve a sacarlos.' },
+        { selector: '#sidebarnav a[href="controllerReporteAsistenciatxt"]', titulo: 'TXT: formato nuevo de Microsip', desde: '2026-11-23', icono: 'fa-exclamation-triangle',
+          texto: 'El TXT cambió: ahora trae los <b>días de vacaciones</b> y el <b>tipo de movimiento</b>.<br>' +
+                 '• En la pantalla descarga el <b>Formato para Microsip</b> y úsalo al importar en Microsip (con el anterior marca error).<br>' +
+                 '• Al entrar a la pantalla viene un <b>GIF</b> con los pasos.' },
         { selector: '#sidebarnav a[href="salarios"]', titulo: 'Salarios',
           texto: 'El catálogo de salarios por año con su importe con letra, que usa Reporte Contrato.' },
         { selector: '#sidebarnav a[href="usuarios"]', titulo: 'Usuarios',

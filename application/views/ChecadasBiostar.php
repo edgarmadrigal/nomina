@@ -8,6 +8,17 @@
     <div class="container-fluid">           
         <div class="row">
             <div class="col-12">
+                <?php if (date('Y-m-d') <= '2026-12-07') { ?>
+                <!-- AJUSTE 2026-11-23: aviso de la corrección de días festivos (se quita solo después del 7-dic) -->
+                <div class="alert alert-success alert-dismissible" id="avisoFestivos" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar"
+                            onclick="try{localStorage.setItem('aviso.festivos.20261123','1')}catch(e){}"><span aria-hidden="true">&times;</span></button>
+                    <i class="fa fa-calendar-check-o"></i> <b>Días festivos corregidos:</b> los días del catálogo de Días Festivos ya <b>no salen como FALTA</b>; ahora se ven como
+                    <span class="chk-festivo">FESTIVO</span>. Solo es falta si ese día tiene una incidencia de día completo sin goce (p. ej. incapacidad).
+                    La <b>semana 47</b> ya se recalculó; si ya habías sacado el TXT o la prenómina de esa semana, vuelve a sacarlos.
+                </div>
+                <script>try{ if (localStorage.getItem('aviso.festivos.20261123') !== '1') document.getElementById('avisoFestivos').style.display = ''; }catch(e){ document.getElementById('avisoFestivos').style.display = ''; }</script>
+                <?php } ?>
                 <h4 class="card-title"><?php echo isset($soloEmpresa) ? 'Checadas ' . htmlspecialchars($soloEmpresa['nombre']) . ' (directo de checadores)' : 'Checadas Directo de Checadores y Biostar'; ?></h4> 
                 <div class="card">
                     <div class="card-body">     
@@ -362,7 +373,17 @@
     </div>
 </div>
 
-<script>var SOLO_EMPRESA = <?php echo isset($soloEmpresa) ? json_encode($soloEmpresa) : 'null'; ?>;   // reporte fijo de una empresa (Checadas IBF)</script>
+<?php
+// AJUSTE 2026-11-23: fechas del catálogo de Días Festivos (Y-m-d); un festivo sin checadas no es FALTA.
+$festivosChk = array();
+try {
+    $CIchk =& get_instance();
+    $CIchk->load->model('DiasFestivosModel');
+    foreach ($CIchk->DiasFestivosModel->listar() as $f) $festivosChk[$f['fecha']] = $f['descripcion'];
+} catch (Exception $e) { $festivosChk = array(); }
+?>
+<script>var DIAS_FESTIVOS = <?php echo json_encode((object) $festivosChk, JSON_UNESCAPED_UNICODE); ?>;</script>
+<script>var SOLO_EMPRESA =<?php echo isset($soloEmpresa) ? json_encode($soloEmpresa) : 'null'; ?>;   // reporte fijo de una empresa (Checadas IBF)</script>
 <style>
 .cb-columnas .cb-col { font-weight: normal; cursor: pointer; margin: 0; }
 /* El tema oculta los checkbox sueltos (left:-9999px); aquí se usan los nativos */
@@ -374,6 +395,7 @@
 <script src="assets/js/jquery.blockUI.js"></script>
 <script src="assets/js/checadaBiostar.js?v=<?php echo filemtime(FCPATH.'assets/js/checadaBiostar.js'); ?>"></script>
 <style>
+.chk-festivo { display: inline-block; background: #43a047; color: #fff !important; font-weight: bold; padding: 1px 7px; border-radius: 3px; font-size: 11px; }
 .chk-falta { display: inline-block; background: #e53935; color: #fff !important; font-weight: bold; padding: 1px 7px; border-radius: 3px; font-size: 11px; }
 .chk-vac-chk { display: inline-block; background: #fb8c00; color: #fff !important; font-weight: bold; padding: 1px 7px; border-radius: 3px; font-size: 11px; white-space: nowrap; cursor: pointer; text-decoration: none !important; }
 a.chk-vac-chk:hover { background: #ef6c00; color: #fff !important; }

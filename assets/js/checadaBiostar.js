@@ -37,6 +37,10 @@ ModuloChecada = {
 		if (ModuloChecada.fnEsFalta(source, dia)) {
 			return '<span class="chk-falta" title="Día laboral sin ninguna checada real">FALTA</span>';
 		}
+		// Día festivo sin checadas ni incidencia: se marca FESTIVO (no es falta).
+		if (ModuloChecada.fnEsFestivoLibre(source, dia)) {
+			return '<span class="chk-festivo" title="' + ModuloChecada.fnFestivo(source, dia) + '">FESTIVO</span>';
+		}
 		var entrada = source[campoEntrada], valor = source[campo];
 		var vacio = function (v) { return v == null || $.trim(v) === ''; };
 		// Si "Entrada" no es una hora válida es un concepto (VAC/INC/PER/etc.) y se repite en las
@@ -74,6 +78,28 @@ ModuloChecada = {
 	 * cubre la entrada) NO evita la falta: si no hay checadas reales, es falta. Una de día completo
 	 * (VAC, Cubre='1111') sí justifica y no es falta.
 	 */
+	/** Descripción del festivo si la fecha de ese día de la fila está en el catálogo; '' si no. */
+	, fnFestivo: function (source, dia) {
+		if (typeof DIAS_FESTIVOS !== 'object' || !DIAS_FESTIVOS) return '';
+		var dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+		var l = String(source.FechaInicio || '').substr(0, 10).split('-');
+		if (l.length !== 3) return '';
+		var f = new Date(+l[0], +l[1] - 1, +l[2] + dias.indexOf(dia));
+		var clave = f.getFullYear() + '-' + ('0' + (f.getMonth() + 1)).slice(-2) + '-' + ('0' + f.getDate()).slice(-2);
+		return DIAS_FESTIVOS[clave] || '';
+	}
+	/** Festivo en que no checó y no tiene incidencia (se muestra FESTIVO en vez de vacío). */
+	, fnEsFestivoLibre: function (source, dia) {
+		if (!ModuloChecada.fnFestivo(source, dia)) return false;
+		var esHora = ModuloChecada.fnEsHora, vacio = function (v) { return v == null || $.trim(v) === ''; };
+		var cols = ['Entrada', 'EntradaComedor', 'SalidaComedor', 'Salida'];
+		for (var i = 0; i < cols.length; i++) {
+			var v = source[dia + cols[i]];
+			if (esHora(v) || !vacio(v)) return false;   // checó o trae concepto de incidencia
+		}
+		var horario = source['idhorario_' + dia.toLowerCase()];
+		return !(horario == null || String(horario) === '1');
+	}
 	, fnEsFalta: function (source, dia) {
 		var esHora = ModuloChecada.fnEsHora;
 		// ¿Hay al menos una checada real (una hora) ese día?
@@ -86,6 +112,9 @@ ModuloChecada = {
 		if (hayConcepto && String(cubre) === '1111') return false;
 		var horario = source['idhorario_' + dia.toLowerCase()];
 		if (horario == null || String(horario) === '1') return false;   // 1 = DESCANSO
+		// AJUSTE 2026-11-23: día del catálogo de Días Festivos -> no es falta (igual que el SP).
+		// Solo una incidencia de día completo sin goce lo haría falta, y esa ya sale con su concepto.
+		if (ModuloChecada.fnFestivo(source, dia)) return false;
 		var dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 		var lunes = String(source.FechaInicio || '').substr(0, 10).split('-');
 		if (lunes.length !== 3) return true;
@@ -283,6 +312,7 @@ ModuloChecada = {
     /** Incidencia del día de una fila: 'FALTA', el concepto (VAC/INC/PER/...) en mayúsculas, o '' si trabajó/descansó. */
     , fnIncidenciaDia: function (source, dia) {
         if (ModuloChecada.fnEsFalta(source, dia)) return 'FALTA';
+        if (ModuloChecada.fnEsFestivoLibre(source, dia)) return 'FESTIVO';
         var e = source[dia + 'Entrada'];
         if (e != null && $.trim(e) !== '' && !ModuloChecada.fnEsHora(e)) return $.trim(e).toUpperCase();
         return '';

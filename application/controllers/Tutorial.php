@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Tutorial extends CI_Controller {
 
     const NOMBRE  = 'novedades';
-    const VERSION = '2026-10-23';
+    const VERSION = '2026-11-23';
 
     /** ¿Se le muestra al usuario? */
     public function estado(){
