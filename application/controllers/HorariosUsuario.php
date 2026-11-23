@@ -102,7 +102,7 @@ function AgregarHorariosEmpleado()
 			$idDia = $this->input->post('dia',true);
 			$result = array('data' => array());
 			$this->load->model('HorarioUsuario');
-			$data = $this->HorarioUsuario->consultaHorario($empleado_id,$idDia);
+			$data = $this->HorarioUsuario->consultaHorario($empleado_id,$idDia,$this->input->post('empresa_id',true));
 			//DESDE JS se hacen los botones de editar y eliminar horariosUsuario.js
 			echo json_encode($data);
 		}
@@ -160,7 +160,7 @@ function AgregarHorariosEmpleado()
     public function horarioVigente(){
         header('Access-Control-Allow-Origin: *');
         $this->load->model('HorarioUsuario');
-        $h = $this->HorarioUsuario->horarioVigente($this->input->post('empleado_id', true));
+        $h = $this->HorarioUsuario->horarioVigente($this->input->post('empleado_id', true), $this->input->post('empresa_id', true));
         echo json_encode($h ? array('exito' => true, 'horario' => $h)
                             : array('exito' => false, 'mensaje' => 'Ese empleado no tiene horario asignado.'));
     }
@@ -181,6 +181,6 @@ function AgregarHorariosEmpleado()
             return;
         }
         $this->load->model('HorarioUsuario');
-        echo json_encode($this->HorarioUsuario->copiarHorario($origen, $destinos, $empresa_id, $fecha));
+        echo json_encode($this->HorarioUsuario->copiarHorario($origen, $destinos, $empresa_id, $fecha, $this->input->post('empresa_origen', true)));
     }
 }

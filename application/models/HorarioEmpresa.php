@@ -107,7 +107,7 @@ public function ActualizarHorariosEmpresaPorEmpresa($empresa_id, $data, $fechaAs
         fechaAsignacion = ?,
         cantidad = ?
         FROM horarios_empleado he
-        JOIN empleados e ON e.empleado_id = he.empleado_id
+        JOIN empleados e ON e.empleado_id = he.empleado_id AND (he.empresa_id = e.empresa_id OR he.empresa_id IS NULL)  -- 2026-11-23: mismo numero en otra empresa
         WHERE e.empresa_id = ? AND he.fechaAsignacion = ? ";
 
     $params = array(
@@ -139,7 +139,7 @@ public function ActualizarHorariosEmpresaPorEmpresa($empresa_id, $data, $fechaAs
     $sql = "UPDATE he
             SET $columna = ?, descripcion = ?, fechaAsignacion = ?
             FROM horarios_empleado he
-            JOIN empleados e ON e.empleado_id = he.empleado_id
+            JOIN empleados e ON e.empleado_id = he.empleado_id AND (he.empresa_id = e.empresa_id OR he.empresa_id IS NULL)  -- 2026-11-23: mismo numero en otra empresa
             WHERE e.empresa_id = ? AND he.$columna = ?";
     
     $params = array($nuevoHorario, $descripcion, $fechaAsignacion, $empresa_id, $horarioAnterior);
@@ -151,7 +151,7 @@ public function EliminarHorariosPorHorario($empresa_id, $columna, $horarioAElimi
     $sql = "UPDATE he
             SET $columna = NULL
             FROM horarios_empleado he
-            JOIN empleados e ON e.empleado_id = he.empleado_id
+            JOIN empleados e ON e.empleado_id = he.empleado_id AND (he.empresa_id = e.empresa_id OR he.empresa_id IS NULL)  -- 2026-11-23: mismo numero en otra empresa
             WHERE e.empresa_id = ? AND he.$columna = ?";
     
     $params = array($empresa_id, $horarioAEliminar);

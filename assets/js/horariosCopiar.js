@@ -67,7 +67,7 @@ var CopiaHorario = {
         $.ajax({
             url: CopiaHorario.base + 'horariosusuario/horarioVigente',
             type: 'post',
-            data: { empleado_id: id },
+            data: { empleado_id: id, empresa_id: $('#copiaPlantaOrigen').val() },
             dataType: 'json'
         }).done(function (r) {
             if (!r.exito) {
@@ -88,6 +88,7 @@ var CopiaHorario = {
     fnCopiar: function () {
         var datos = {
             origen: $('#copiaOrigen').val(),
+            empresa_origen: $('#copiaPlantaOrigen').val(),
             destinos: $('#copiaDestinos').val() || [],
             empresa_id: $('#copiaPlantaDestino').val(),
             fechaAsignacion: $('#copiaFecha').val()

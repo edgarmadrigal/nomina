@@ -53,7 +53,7 @@ BEGIN
 
     DECLARE @lista TABLE (empleado_id VARCHAR(20) PRIMARY KEY, nocturno BIT);   -- empleados.empleado_id es texto
     INSERT INTO @lista (empleado_id, nocturno)
-    SELECT DISTINCT e.empleado_id, dbo.EmpleadoTieneNocturno(e.empleado_id)
+    SELECT DISTINCT e.empleado_id, dbo.EmpleadoTieneNocturnoEmpresa(e.empleado_id, @empresa_id)   -- AJUSTE 2026-11-23: horario de ESTA empresa
     FROM empleados e
     WHERE e.empresa_id = @empresa_id
       AND e.estatus = 'A'

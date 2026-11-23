@@ -664,6 +664,7 @@ OUTER APPLY (
  INNER JOIN [Nominas].[dbo].[conceptos] AS c ON c.id = inc.concepto_id
  WHERE inc.estatus = 1
    AND inc.empleado_id = TRY_CAST(a.Numero AS INT)
+   AND (inc.empresa_id = @planta OR inc.empresa_id IS NULL)   -- AJUSTE 2026-11-23: mismo numero en otra empresa
    AND CAST(a.FechaInicio AS date) >= inc.FechaInicio
    AND CAST(a.FechaInicio AS date) <= inc.fechaFin
  ORDER BY inc.FechaInicio DESC
@@ -677,6 +678,7 @@ OUTER APPLY (
  INNER JOIN [Nominas].[dbo].[conceptos] AS c ON c.id = inc.concepto_id
  WHERE inc.estatus = 1
    AND inc.empleado_id = TRY_CAST(a.Numero AS INT)
+   AND (inc.empresa_id = @planta OR inc.empresa_id IS NULL)   -- AJUSTE 2026-11-23: mismo numero en otra empresa
    AND Convert(date,DATEADD(DD, +1, a.FechaInicio)) >= inc.FechaInicio
    AND Convert(date,DATEADD(DD, +1, a.FechaInicio)) <= inc.fechaFin
  ORDER BY inc.FechaInicio DESC
@@ -690,6 +692,7 @@ OUTER APPLY (
  INNER JOIN [Nominas].[dbo].[conceptos] AS c ON c.id = inc.concepto_id
  WHERE inc.estatus = 1
    AND inc.empleado_id = TRY_CAST(a.Numero AS INT)
+   AND (inc.empresa_id = @planta OR inc.empresa_id IS NULL)   -- AJUSTE 2026-11-23: mismo numero en otra empresa
    AND Convert(date,DATEADD(DD, +2, a.FechaInicio)) >= inc.FechaInicio
    AND Convert(date,DATEADD(DD, +2, a.FechaInicio)) <= inc.fechaFin
  ORDER BY inc.FechaInicio DESC
@@ -703,6 +706,7 @@ OUTER APPLY (
  INNER JOIN [Nominas].[dbo].[conceptos] AS c ON c.id = inc.concepto_id
  WHERE inc.estatus = 1
    AND inc.empleado_id = TRY_CAST(a.Numero AS INT)
+   AND (inc.empresa_id = @planta OR inc.empresa_id IS NULL)   -- AJUSTE 2026-11-23: mismo numero en otra empresa
    AND Convert(date,DATEADD(DD, +3, a.FechaInicio)) >= inc.FechaInicio
    AND Convert(date,DATEADD(DD, +3, a.FechaInicio)) <= inc.fechaFin
  ORDER BY inc.FechaInicio DESC
@@ -716,6 +720,7 @@ OUTER APPLY (
  INNER JOIN [Nominas].[dbo].[conceptos] AS c ON c.id = inc.concepto_id
  WHERE inc.estatus = 1
    AND inc.empleado_id = TRY_CAST(a.Numero AS INT)
+   AND (inc.empresa_id = @planta OR inc.empresa_id IS NULL)   -- AJUSTE 2026-11-23: mismo numero en otra empresa
    AND Convert(date,DATEADD(DD, +4, a.FechaInicio)) >= inc.FechaInicio
    AND Convert(date,DATEADD(DD, +4, a.FechaInicio)) <= inc.fechaFin
  ORDER BY inc.FechaInicio DESC
@@ -729,6 +734,7 @@ OUTER APPLY (
  INNER JOIN [Nominas].[dbo].[conceptos] AS c ON c.id = inc.concepto_id
  WHERE inc.estatus = 1
    AND inc.empleado_id = TRY_CAST(a.Numero AS INT)
+   AND (inc.empresa_id = @planta OR inc.empresa_id IS NULL)   -- AJUSTE 2026-11-23: mismo numero en otra empresa
    AND Convert(date,DATEADD(DD, +5, a.FechaInicio)) >= inc.FechaInicio
    AND Convert(date,DATEADD(DD, +5, a.FechaInicio)) <= inc.fechaFin
  ORDER BY inc.FechaInicio DESC
@@ -742,6 +748,7 @@ OUTER APPLY (
  INNER JOIN [Nominas].[dbo].[conceptos] AS c ON c.id = inc.concepto_id
  WHERE inc.estatus = 1
    AND inc.empleado_id = TRY_CAST(a.Numero AS INT)
+   AND (inc.empresa_id = @planta OR inc.empresa_id IS NULL)   -- AJUSTE 2026-11-23: mismo numero en otra empresa
    AND CAST(a.FechaFin AS date) >= inc.FechaInicio
    AND CAST(a.FechaFin AS date) <= inc.fechaFin
  ORDER BY inc.FechaInicio DESC
@@ -868,7 +875,10 @@ order by Numero
   WHERE e.empleado_id = a.Numero COLLATE DATABASE_DEFAULT
     AND e.idEstatus = 1
     AND e.fechaAsignacion <= @FechaFin
-  ORDER BY e.fechaAsignacion DESC, e.id DESC
+  -- AJUSTE 2026-11-23: primero la asignacion de ESTA empresa (el mismo numero puede
+  -- existir en otra empresa), luego sin empresa, al final cualquier otra.
+  ORDER BY CASE WHEN e.empresa_id = @planta THEN 0 WHEN e.empresa_id IS NULL THEN 1 ELSE 2 END,
+           e.fechaAsignacion DESC, e.id DESC
  ) he
 
 

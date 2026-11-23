@@ -49,7 +49,7 @@ function eliminar(id_delete,horario,dia){
     $.ajax({
         url: varURL,
         data: {
-            empleado_id: parseInt($('#selEmpleado').val()),
+            empleado_id: parseInt($('#selEmpleado').val()), empresa_id: $('#empresa_id').val(),
             dia:parseInt(dia)
         },
         type: 'post',
@@ -135,7 +135,7 @@ Modulo = {
         $.ajax({
             url: varURL,
             data: {
-                empleado_id: parseInt(em),
+                empleado_id: parseInt(em), empresa_id: $('#empresa_id').val(),
                 dia:parseInt(1)
             },
             type: 'post',
@@ -145,7 +145,7 @@ Modulo = {
                 $.ajax({
                     url: varURL,
                     data: {
-                        empleado_id: parseInt(em),
+                        empleado_id: parseInt(em), empresa_id: $('#empresa_id').val(),
                         dia:parseInt(2)
                     },
                     type: 'post',
@@ -154,7 +154,7 @@ Modulo = {
                         $.ajax({
                             url: varURL,
                             data: {
-                                empleado_id: parseInt(em),
+                                empleado_id: parseInt(em), empresa_id: $('#empresa_id').val(),
                                 dia:parseInt(3)
                             },
                             type: 'post',
@@ -164,7 +164,7 @@ Modulo = {
                                 $.ajax({
                                     url: varURL,
                                     data: {
-                                        empleado_id: parseInt(em),
+                                        empleado_id: parseInt(em), empresa_id: $('#empresa_id').val(),
                                         dia:parseInt(4)
                                     },
                                     type: 'post',
@@ -174,7 +174,7 @@ Modulo = {
                                         $.ajax({
                                             url: varURL,
                                             data: {
-                                                empleado_id: parseInt(em),
+                                                empleado_id: parseInt(em), empresa_id: $('#empresa_id').val(),
                                                 dia:parseInt(5)
                                             },
                                             type: 'post',
@@ -184,7 +184,7 @@ Modulo = {
                                                 $.ajax({
                                                     url: varURL,
                                                     data: {
-                                                        empleado_id: parseInt(em),
+                                                        empleado_id: parseInt(em), empresa_id: $('#empresa_id').val(),
                                                         dia:parseInt(6)
                                                     },
                                                     type: 'post',
@@ -194,7 +194,7 @@ Modulo = {
                                                     $.ajax({
                                                         url: varURL,
                                                         data: {
-                                                            empleado_id: parseInt(em),
+                                                            empleado_id: parseInt(em), empresa_id: $('#empresa_id').val(),
                                                             dia:parseInt(7)
                                                         },
                                                         type: 'post',

@@ -37,19 +37,26 @@ class HorarioUsuario extends CI_Model{
         return $usuarios;
     }    
     
-    public function consultaHorario($empleado_id,$idDia)
+    public function consultaHorario($empleado_id,$idDia,$empresa_id = null)
     {
         ini_set('max_execution_time', 0); //para que no limite a 30 segundos la consulta
-        $sp = "ConsultaHorariosEmpleado ?,? " ; 
+        // 2026-11-23: con la empresa, porque el mismo número puede existir en otra empresa
+        $sp = "ConsultaHorariosEmpleado ?,?,? " ;
         $params = array(
             'empleado_id' => $empleado_id,
-            'dia' => $idDia);
+            'dia' => $idDia,
+            'empresa_id' => ((int) $empresa_id > 0) ? (int) $empresa_id : null);
         $result = $this->db->query($sp,$params);
         return  $result->result_array();
     }
 
     function ActualizarHorariosEmpleado($id,$data){
-
+        // 2026-11-23: editar no mueve la asignación a otra empresa (antes, con el mismo número
+        // en dos empresas, cada una se la "robaba" a la otra). Solo se completa si no tenía empresa.
+        if (array_key_exists('empresa_id', $data)) {
+            $actual = $this->db->query("SELECT empresa_id FROM dbo.horarios_empleado WHERE id = ?", array($id))->row_array();
+            if (!$actual || $actual['empresa_id'] !== null || empty($data['empresa_id'])) unset($data['empresa_id']);
+        }
         $this->db->where('id', $id)
               ->update('horarios_empleado', $data);
             return true;              
@@ -95,7 +102,7 @@ class HorarioUsuario extends CI_Model{
     // ---------------- Copiar horario de un empleado a otros ----------------
 
     /** Asignación vigente (activa más reciente) del empleado, con el nombre del horario de cada día. */
-    public function horarioVigente($empleado_id){
+    public function horarioVigente($empleado_id, $empresa_id = null){
         $dias = array('lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo');
         $cols = array();
         $joins = array();
@@ -107,8 +114,8 @@ class HorarioUsuario extends CI_Model{
                        CONVERT(VARCHAR(10), he.fechaAsignacion, 23) AS fechaAsignacion, " . implode(', ', $cols) . "
                 FROM dbo.horarios_empleado he " . implode(' ', $joins) . "
                 WHERE he.empleado_id = ? AND he.idEstatus = 1
-                ORDER BY he.fechaAsignacion DESC, he.id DESC";
-        return $this->db->query($sql, array($empleado_id))->row_array();
+                ORDER BY CASE WHEN he.empresa_id = ? THEN 0 WHEN he.empresa_id IS NULL THEN 1 ELSE 2 END, he.fechaAsignacion DESC, he.id DESC";
+        return $this->db->query($sql, array($empleado_id, (int) $empresa_id))->row_array();
     }
 
     /**
@@ -116,10 +123,10 @@ class HorarioUsuario extends CI_Model{
      * del origen, con la fecha indicada (igual que "Asignar Horario": se agrega
      * una asignación nueva y la más reciente es la que vale).
      */
-    public function copiarHorario($origen, array $destinos, $empresa_id, $fecha){
+    public function copiarHorario($origen, array $destinos, $empresa_id, $fecha, $empresa_origen = null){
         $vig = $this->db->query(
             "SELECT TOP 1 id FROM dbo.horarios_empleado WHERE empleado_id = ? AND idEstatus = 1
-             ORDER BY fechaAsignacion DESC, id DESC", array($origen))->row_array();
+             ORDER BY CASE WHEN empresa_id = ? THEN 0 WHEN empresa_id IS NULL THEN 1 ELSE 2 END, fechaAsignacion DESC, id DESC", array($origen, (int) $empresa_origen))->row_array();
         if (!$vig) return array('exito' => false, 'mensaje' => 'El empleado origen no tiene horario asignado.');
 
         $copiados = array();

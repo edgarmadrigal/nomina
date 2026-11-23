@@ -180,7 +180,7 @@ public function ActualizarHorariosEmpresa() {
         $filas = $this->db->query(
             "SELECT e.empleado_id, e.NOMBRE_COMPLETO AS nombre
              FROM dbo.empleados e
-             WHERE e.empresa_id = ? AND e.estatus = 'A' AND dbo.EmpleadoTieneNocturno(e.empleado_id) = 1
+             WHERE e.empresa_id = ? AND e.estatus = 'A' AND dbo.EmpleadoTieneNocturnoEmpresa(e.empleado_id, e.empresa_id) = 1
              ORDER BY e.NOMBRE_COMPLETO", array($empresa_id))->result_array();
         echo json_encode(array('total' => count($filas), 'empleados' => array_slice($filas, 0, 30)));
     }
@@ -194,12 +194,13 @@ public function ActualizarHorariosEmpresa() {
         $empresa_id = (int) $this->input->post('empresa_id', true);
         $filas = $this->db->query(
             "SELECT e.empleado_id, e.NOMBRE_COMPLETO AS nombre, e.NOMBRE_DEPARTAMENTO AS departamento,
-                    dbo.EmpleadoTieneNocturno(e.empleado_id) AS nocturno,
+                    dbo.EmpleadoTieneNocturnoEmpresa(e.empleado_id, e.empresa_id) AS nocturno,
                     v.horario
              FROM dbo.empleados e
              OUTER APPLY (SELECT TOP 1 he.* FROM dbo.horarios_empleado he
                           WHERE he.empleado_id = e.empleado_id AND he.idEstatus = 1
-                          ORDER BY he.fechaAsignacion DESC, he.id DESC) he
+                          ORDER BY CASE WHEN he.empresa_id = e.empresa_id THEN 0 WHEN he.empresa_id IS NULL THEN 1 ELSE 2 END,
+                                   he.fechaAsignacion DESC, he.id DESC) he
              OUTER APPLY (SELECT STUFF((SELECT DISTINCT ', ' + h.nombre FROM dbo.horarios h
                                         WHERE h.id IN (he.idhorario_lunes, he.idhorario_martes, he.idhorario_miercoles, he.idhorario_jueves,
                                                        he.idhorario_viernes, he.idhorario_sabado, he.idhorario_domingo) AND h.id <> 1
