@@ -964,5 +964,51 @@ SET
     AND a.empresa_id = @planta
     AND a.Numero = m.Numero COLLATE DATABASE_DEFAULT
 
+ -- ============================================================
+ -- AJUSTE 2026-11-23: DIA FESTIVO (catalogo dbo.DiasFestivos).
+ -- Un festivo sin checadas NO es falta (antes solo la exportacion lo
+ -- descontaba, pero la pantalla de asistencia, la prenomina y el TXT
+ -- leen FaltaX de asistenciaBioStar y lo tomaban como falta).
+ -- Solo sigue siendo falta si ese dia hay una incidencia de DIA COMPLETO
+ -- SIN goce de sueldo (p. ej. incapacidad); un permiso/vacacion o una
+ -- incidencia parcial no la vuelven falta.
+ -- ============================================================
+ DECLARE @fLun BIT = CASE WHEN EXISTS (SELECT 1 FROM dbo.DiasFestivos WHERE fecha = CAST(@FechaInicio AS DATE))                   THEN 1 ELSE 0 END
+        ,@fMar BIT = CASE WHEN EXISTS (SELECT 1 FROM dbo.DiasFestivos WHERE fecha = CAST(DATEADD(DAY,1,@FechaInicio) AS DATE)) THEN 1 ELSE 0 END
+        ,@fMie BIT = CASE WHEN EXISTS (SELECT 1 FROM dbo.DiasFestivos WHERE fecha = CAST(DATEADD(DAY,2,@FechaInicio) AS DATE)) THEN 1 ELSE 0 END
+        ,@fJue BIT = CASE WHEN EXISTS (SELECT 1 FROM dbo.DiasFestivos WHERE fecha = CAST(DATEADD(DAY,3,@FechaInicio) AS DATE)) THEN 1 ELSE 0 END
+        ,@fVie BIT = CASE WHEN EXISTS (SELECT 1 FROM dbo.DiasFestivos WHERE fecha = CAST(DATEADD(DAY,4,@FechaInicio) AS DATE)) THEN 1 ELSE 0 END
+        ,@fSab BIT = CASE WHEN EXISTS (SELECT 1 FROM dbo.DiasFestivos WHERE fecha = CAST(DATEADD(DAY,5,@FechaInicio) AS DATE)) THEN 1 ELSE 0 END
+        ,@fDom BIT = CASE WHEN EXISTS (SELECT 1 FROM dbo.DiasFestivos WHERE fecha = CAST(DATEADD(DAY,6,@FechaInicio) AS DATE)) THEN 1 ELSE 0 END;
+
+ IF (@fLun | @fMar | @fMie | @fJue | @fVie | @fSab | @fDom) = 1
+ BEGIN
+  -- empleado/dia festivo con incidencia de dia completo sin goce (esos si quedan como falta)
+  IF OBJECT_ID('tempdb..#FestSinGoce') IS NOT NULL DROP TABLE #FestSinGoce;
+  SELECT DISTINCT inc.empleado_id, d.dia
+  INTO #FestSinGoce
+  FROM (VALUES (0,@fLun),(1,@fMar),(2,@fMie),(3,@fJue),(4,@fVie),(5,@fSab),(6,@fDom)) AS d(dia, esFestivo)
+  INNER JOIN [Nominas].[dbo].[incidencias] AS inc
+     ON CAST(DATEADD(DAY, d.dia, @FechaInicio) AS DATE) BETWEEN inc.FechaInicio AND inc.fechaFin
+  INNER JOIN [Nominas].[dbo].[conceptos] AS c ON c.id = inc.concepto_id
+  WHERE d.esFestivo = 1
+    AND inc.estatus = 1
+    AND (inc.empresa_id = @planta OR inc.empresa_id IS NULL)
+    AND ISNULL(c.goceSueldo, 0) = 0
+    AND inc.cubreEntrada = 1 AND inc.cubreEntradaComedor = 1 AND inc.cubreSalidaComedor = 1 AND inc.cubreSalida = 1;
+
+  UPDATE a SET
+    a.FaltaLunes     = CASE WHEN @fLun=1 AND NOT EXISTS (SELECT 1 FROM #FestSinGoce f WHERE f.empleado_id = TRY_CAST(a.Numero AS INT) AND f.dia=0) THEN 0 ELSE a.FaltaLunes     END
+   ,a.FaltaMartes    = CASE WHEN @fMar=1 AND NOT EXISTS (SELECT 1 FROM #FestSinGoce f WHERE f.empleado_id = TRY_CAST(a.Numero AS INT) AND f.dia=1) THEN 0 ELSE a.FaltaMartes    END
+   ,a.FaltaMiercoles = CASE WHEN @fMie=1 AND NOT EXISTS (SELECT 1 FROM #FestSinGoce f WHERE f.empleado_id = TRY_CAST(a.Numero AS INT) AND f.dia=2) THEN 0 ELSE a.FaltaMiercoles END
+   ,a.FaltaJueves    = CASE WHEN @fJue=1 AND NOT EXISTS (SELECT 1 FROM #FestSinGoce f WHERE f.empleado_id = TRY_CAST(a.Numero AS INT) AND f.dia=3) THEN 0 ELSE a.FaltaJueves    END
+   ,a.FaltaViernes   = CASE WHEN @fVie=1 AND NOT EXISTS (SELECT 1 FROM #FestSinGoce f WHERE f.empleado_id = TRY_CAST(a.Numero AS INT) AND f.dia=4) THEN 0 ELSE a.FaltaViernes   END
+   ,a.FaltaSabado    = CASE WHEN @fSab=1 AND NOT EXISTS (SELECT 1 FROM #FestSinGoce f WHERE f.empleado_id = TRY_CAST(a.Numero AS INT) AND f.dia=5) THEN 0 ELSE a.FaltaSabado    END
+   ,a.FaltaDomingo   = CASE WHEN @fDom=1 AND NOT EXISTS (SELECT 1 FROM #FestSinGoce f WHERE f.empleado_id = TRY_CAST(a.Numero AS INT) AND f.dia=6) THEN 0 ELSE a.FaltaDomingo   END
+  FROM [Nominas].[dbo].[asistenciaBioStar] as a
+  WHERE a.anio = @anio AND a.NoSemana = @NoSemana AND a.empresa_id = @planta
+    AND ( @NoEmpleado IS NULL OR TRY_CAST(a.Numero AS INT) = TRY_CAST(@NoEmpleado AS INT) );
+ END
+
 END
 GO

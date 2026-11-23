@@ -66,16 +66,33 @@ Modulo = {
     }
     // Versión del formato de Microsip (assets/formatos/Excepciones Nomina SISAI.txt). Si el formato
     // vuelve a cambiar, se sube este número y el aviso sale otra vez a todos.
-    , claveFormato: "txt.formatoMicrosip.v2"
+    // v3 (2026-11-23): el aviso también sale al ENTRAR a la pantalla, y se pide otra vez a todos.
+    , claveFormato: "txt.formatoMicrosip.v3"
     , fnFormatoConfirmado: function () {
         try { return window.localStorage.getItem(Modulo.claveFormato) === "1"; } catch (e) { return false; }
     }
     , fnFormatoConfirmar: function () {
         try { window.localStorage.setItem(Modulo.claveFormato, "1"); } catch (e) { }
     }
+    // Muestra el aviso del formato nuevo. Con "despues" (descargar) el botón descarga al confirmar;
+    // sin él (al entrar a la pantalla) solo es recordatorio y el botón dice "Entendido".
+    , fnAvisoFormato: function (despues) {
+        $("#cbFormatoNuevo").prop("checked", false);
+        $("#btnDescargarTxtOk")
+            .html(despues ? '<i class="fa fa-download"></i> Descargar TXT' : '<i class="fa fa-check"></i> Entendido')
+            .prop("disabled", true).off("click").on("click", function () {
+                Modulo.fnFormatoConfirmar();
+                $("#modalFormatoTxt").modal("hide");
+                if (despues) despues();
+            });
+        $("#modalFormatoTxt").modal("show");
+    }
     , fnInicializar: function () {
         // Cargar plantas
         Modulo.fnCargarPlantas();
+
+        // AJUSTE 2026-11-23: recordatorio al entrar, hasta que confirme que ya usa el formato nuevo.
+        if (!Modulo.fnFormatoConfirmado()) Modulo.fnAvisoFormato(null);
                 // Mostrar/ocultar los dias segun el checkbox general
         $("#checkTiempoExtra").on("change", function () {
             $("#filaDiasTE").toggle($(this).is(":checked"));
@@ -109,13 +126,7 @@ Modulo = {
                 descargar();
                 return;
             }
-            $("#cbFormatoNuevo").prop("checked", false);
-            $("#btnDescargarTxtOk").prop("disabled", true).off("click").on("click", function () {
-                Modulo.fnFormatoConfirmar();
-                $("#modalFormatoTxt").modal("hide");
-                descargar();
-            });
-            $("#modalFormatoTxt").modal("show");
+            Modulo.fnAvisoFormato(descargar);
         });
 
         $("#cbFormatoNuevo").on("change", function () {

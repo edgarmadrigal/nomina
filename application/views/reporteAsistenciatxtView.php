@@ -118,7 +118,7 @@
 
 <!-- AJUSTE 2026-11-19: aviso del formato nuevo (DIAS_VACACIONES y TIPO_MOVIMIENTO) antes de descargar el TXT -->
 <div class="modal fade" id="modalFormatoTxt" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background:#fff3cd;">
                 <h5 class="modal-title"><i class="fa fa-exclamation-triangle" style="color:#d39e00;"></i> El TXT para Microsip cambió</h5>
@@ -131,6 +131,11 @@
                     <li><b>Tipo de movimiento</b>: el TXT <b>reemplaza</b> la excepción del empleado en Microsip.</li>
                 </ul>
                 <p class="mb-2">Antes de importar en Microsip tienes que usar el <b>formato nuevo</b>. Con el formato anterior la importación marca error.</p>
+                <!-- AJUSTE 2026-11-23: GIF con los pasos (Microsip Nómina > Excepciones > Archivo > Importar, Formato = el nuevo) -->
+                <p class="mb-1"><b>Así se hace:</b></p>
+                <img src="assets/images/ayuda/formato_microsip.gif" alt="Pasos: descargar el formato nuevo, descargar el TXT, en Microsip Nómina abrir Excepciones, Archivo > Importar, escoger el TXT y el formato nuevo, Importar"
+                     class="img-fluid border rounded mb-3" style="max-width:100%;">
+                <br>
                 <a href="assets/formatos/Excepciones%20Nomina%20SISAI.txt" download="Excepciones Nomina SISAI.txt" class="btn btn-outline-primary btn-sm">
                     <i class="fa fa-file-text-o"></i> Descargar formato nuevo para Microsip
                 </a>
