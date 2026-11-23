@@ -187,11 +187,20 @@ $(function () {
     }
     $(document).on('click', '#verTutorial', function (e) { e.preventDefault(); Tutorial.fnIniciar(null); });
 
-    // Solo sale solo en Inicio (la pantalla a la que llegan al entrar)
+    // AJUSTE 2026-11-23: las NOVEDADES salen en cualquier pantalla y aunque no hayan cerrado sesión
+    // (se revisa al cargar cada pantalla y cada 5 minutos). El recorrido completo (quien nunca lo vio)
+    // sigue saliendo solo en Inicio.
     var ruta = window.location.pathname.replace(/\/+$/, '').split('/').pop().toLowerCase();
-    if (ruta !== 'home' && ruta !== 'nomina' && ruta !== 'index.php') return;
-    $.post('tutorial/estado', {}, null, 'json').done(function (r) {
-        // a quien ya vio una versión anterior: solo lo nuevo; a quien nunca lo vio: el recorrido completo
-        if (r && r.mostrar) setTimeout(function () { Tutorial.fnIniciar(r.vista || null); }, 900);   // después del preloader
-    });
+    var enInicio = (ruta === 'home' || ruta === 'nomina' || ruta === 'index.php');
+    var revisar = function (espera) {
+        if ($('body').hasClass('tut-activo') || $('.modal.show').length) return;   // no encima de otra ventana
+        $.post('tutorial/estado', {}, null, 'json').done(function (r) {
+            if (!r || !r.mostrar || $('body').hasClass('tut-activo')) return;
+            // a quien ya vio una versión anterior: solo lo nuevo; a quien nunca lo vio: el recorrido completo
+            if (r.vista) setTimeout(function () { Tutorial.fnIniciar(r.vista); }, espera);
+            else if (enInicio) setTimeout(function () { Tutorial.fnIniciar(null); }, espera);
+        });
+    };
+    revisar(900);   // después del preloader
+    setInterval(function () { revisar(0); }, 5 * 60 * 1000);
 });
