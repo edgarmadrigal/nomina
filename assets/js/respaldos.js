@@ -35,6 +35,7 @@ var Respaldos = {
                 return;
             }
             Respaldos.fnPintarEstado(resp.estado);
+            Respaldos.fnPintarCopiaLocal(resp.copiaLocal);
             Respaldos.fnPintarTarjetas(resp.config);
         }).fail(function () {
             $('#estadoRespaldos').html('<div class="text-danger">Error al cargar los respaldos.</div>');
@@ -79,6 +80,21 @@ var Respaldos = {
                 '<div class="mt-2"><button class="btn btn-sm btn-primary" id="btnUbicacion" style="color:#fff !important;"><i class="fa fa-folder"></i> Cambiar ubicación</button> ' +
                 '<button class="btn btn-sm btn-info" id="btnNube" style="color:#fff !important;"><i class="fa fa-cloud"></i> Agregar copia en la nube</button></div></div>';
         $('#estadoRespaldos').html(html);
+    },
+
+    /** Copia que baja una computadora (EDGAR) a su carpeta de MEGA; la aplicación de MEGA la sube a la nube. */
+    fnPintarCopiaLocal: function (c) {
+        if (!c || !c.carpeta) return;
+        var u = c.ultima || {}, d = c.dias || {};
+        var estado = !u.fecha ? '<span class="text-muted">todavía no corre</span>'
+            : (u.error ? '<span class="text-danger"><i class="fa fa-times"></i> ' + Respaldos.fnEsc(u.error) + '</span> (' + Respaldos.fnEsc(u.fecha) + ')'
+                       : '<span class="text-success"><i class="fa fa-check"></i> ' + Respaldos.fnEsc(u.fecha) + '</span>' +
+                         (u.copiados ? ' · bajó ' + u.copiados + ' archivo(s), ' + u.mb + ' MB' : ' · ya estaba al día'));
+        $('#estadoRespaldos').append(
+            '<div style="font-size:13px;" class="mt-2"><i class="fa fa-cloud-download"></i> <b>Copia en la computadora ' + Respaldos.fnEsc(u.equipo || 'EDGAR') + ':</b> ' +
+            Respaldos.fnEsc(c.carpeta) + '\\Respaldos Nominas · última revisión: ' + estado +
+            '<br><small class="text-muted">La computadora baja cada hora lo nuevo (base ' + d.BASE + ' días, checadas ' + d.CHECADAS + ', código ' + d.CODIGO +
+            ', rostros ' + d.ROSTROS + ') y la aplicación de MEGA lo sube a la nube.</small></div>');
     },
 
     servicios: {

@@ -295,6 +295,90 @@ class RespaldoModel extends CI_Model {
         return true;
     }
 
+    // ---------------- Copia en una computadora (p. ej. la carpeta de MEGA de EDGAR) ----------------
+
+    /** Días que se guardan en la copia de la computadora, por tipo (la nube gratuita tiene poco espacio). */
+    private $diasCopiaLocal = array('BASE' => 7, 'CHECADAS' => 30, 'CODIGO' => 7, 'ROSTROS' => 28);
+    private $carpetasCopiaLocal = array('BASE' => 'Base', 'CHECADAS' => 'Checadas', 'CODIGO' => 'Codigo', 'ROSTROS' => 'Rostros');
+
+    /** Configuración y resultado de la última copia (ConfigSistema respaldo_copia_local / _ultima). */
+    public function copiaLocalEstado(){
+        $c = array();
+        foreach ($this->db->query("SELECT clave, valor FROM dbo.ConfigSistema WHERE clave IN ('respaldo_copia_local', 'respaldo_copia_local_ultima')")->result_array() as $r) $c[$r['clave']] = $r['valor'];
+        return array('carpeta' => isset($c['respaldo_copia_local']) ? $c['respaldo_copia_local'] : '',
+                     'ultima' => isset($c['respaldo_copia_local_ultima']) ? json_decode($c['respaldo_copia_local_ultima'], true) : null,
+                     'dias' => $this->diasCopiaLocal);
+    }
+
+    /**
+     * Baja a una carpeta de ESTA computadora los respaldos que aún no tiene: la base completa (.bak, se lee
+     * del disco del servidor de SQL con OPENROWSET BULK) y los ZIP de checadas, código y rostros (de
+     * NominasRespaldos). Si la carpeta es la de MEGA/Drive/OneDrive, su aplicación los sube a la nube.
+     * Borra de esa carpeta lo más viejo que $diasCopiaLocal. Lo corre la tarea "Nominas - Copia respaldos MEGA".
+     */
+    public function copiaLocal(){
+        ini_set('max_execution_time', 0);
+        $cfg = $this->copiaLocalEstado();
+        $base = rtrim(str_replace('/', '\\', (string) $cfg['carpeta']), '\\');
+        $res = array('fecha' => (new DateTime('now', new DateTimeZone('America/Mexico_City')))->format('Y-m-d H:i:s'),
+                     'equipo' => gethostname(), 'copiados' => 0, 'mb' => 0, 'borrados' => 0, 'error' => null);
+        try {
+            if ($base === '') throw new Exception('No hay carpeta configurada (ConfigSistema respaldo_copia_local).');
+            if (!is_dir($base)) throw new Exception('No existe la carpeta ' . $base . ' en ' . gethostname() . '.');
+            $raiz = $base . '\\Respaldos Nominas';
+            foreach ($this->carpetasCopiaLocal as $sub) if (!is_dir($raiz . '\\' . $sub)) @mkdir($raiz . '\\' . $sub, 0777, true);
+
+            $filas = $this->db->query(
+                "SELECT l.id, l.tipo, l.archivo, CONVERT(VARCHAR(19), l.fin, 120) AS fin FROM dbo.RespaldoLog l
+                 WHERE l.estado = 'OK' AND l.tipo IN ('BASE', 'CHECADAS', 'CODIGO', 'ROSTROS')
+                   AND l.fin >= DATEADD(DAY, -CASE l.tipo WHEN 'BASE' THEN ? WHEN 'CHECADAS' THEN ? WHEN 'CODIGO' THEN ? ELSE ? END, GETDATE())
+                 ORDER BY l.id",
+                array($this->diasCopiaLocal['BASE'], $this->diasCopiaLocal['CHECADAS'], $this->diasCopiaLocal['CODIGO'], $this->diasCopiaLocal['ROSTROS']))->result_array();
+            foreach ($filas as $f) {
+                $nombre = basename(str_replace('NominasRespaldos: ', '', str_replace('\\', '/', (string) $f['archivo'])));
+                if ($nombre === '' || !preg_match('/^[A-Za-z0-9_.-]+$/', $nombre)) continue;
+                $destino = $raiz . '\\' . $this->carpetasCopiaLocal[$f['tipo']] . '\\' . $nombre;
+                // el archivo lleva la fecha del respaldo (con eso se borra al cumplir sus días)
+                $fecha = DateTime::createFromFormat('Y-m-d H:i:s', (string) $f['fin'], new DateTimeZone('America/Mexico_City'));
+                $mtime = $fecha ? $fecha->getTimestamp() : time();
+                if (is_file($destino)) { if (abs(filemtime($destino) - $mtime) > 60) @touch($destino, $mtime); continue; }
+                if ($f['tipo'] === 'BASE') {
+                    if (!preg_match('/^[A-Za-z]:\\\\[^\'"<>|*?]+\.bak$/i', (string) $f['archivo'])) continue;
+                    $sql = "SELECT BulkColumn FROM OPENROWSET(BULK N'" . str_replace("'", "''", $f['archivo']) . "', SINGLE_BLOB) x";
+                    $par = array();
+                } else {
+                    $tabla = array('CHECADAS' => 'ArchivoChecadas', 'CODIGO' => 'ArchivoCodigo', 'ROSTROS' => 'ArchivoRostros');
+                    $sql = "SELECT datos FROM NominasRespaldos.dbo." . $tabla[$f['tipo']] . " WHERE idRespaldo = ?";
+                    $par = array((int) $f['id']);
+                }
+                $st = sqlsrv_query($this->db->conn_id, $sql, $par, array('Scrollable' => SQLSRV_CURSOR_FORWARD));
+                if ($st === false || !sqlsrv_fetch($st)) continue;   // ya no existe en el servidor (se borró por antigüedad)
+                $flujo = sqlsrv_get_field($st, 0, SQLSRV_PHPTYPE_STREAM(SQLSRV_ENC_BINARY));
+                $out = fopen($destino . '.part', 'wb');
+                $n = 0;
+                while (!feof($flujo)) $n += fwrite($out, fread($flujo, 1048576));
+                fclose($out); fclose($flujo); sqlsrv_free_stmt($st);
+                if ($n <= 0) { @unlink($destino . '.part'); continue; }
+                rename($destino . '.part', $destino);
+                @touch($destino, $mtime);
+                $res['copiados']++; $res['mb'] += round($n / 1048576, 1);
+            }
+            // lo viejo se borra de la carpeta (y la aplicación de la nube lo borra allá)
+            foreach ($this->carpetasCopiaLocal as $tipo => $sub) {
+                foreach ((array) glob($raiz . '\\' . $sub . '\\*') as $a) {
+                    if (is_file($a) && filemtime($a) < time() - ($this->diasCopiaLocal[$tipo] + 1) * 86400) { @unlink($a); $res['borrados']++; }
+                }
+            }
+        } catch (Exception $e) {
+            $res['error'] = $e->getMessage();
+        }
+        $this->db->query("IF EXISTS (SELECT 1 FROM dbo.ConfigSistema WHERE clave = 'respaldo_copia_local_ultima')
+                              UPDATE dbo.ConfigSistema SET valor = ?, fechaModifico = GETDATE(), usuarioModifico = 'automatico' WHERE clave = 'respaldo_copia_local_ultima'
+                          ELSE INSERT INTO dbo.ConfigSistema (clave, valor, fechaModifico, usuarioModifico) VALUES ('respaldo_copia_local_ultima', ?, GETDATE(), 'automatico')",
+                         array(json_encode($res), json_encode($res)));
+        return $res;
+    }
+
     // ---------------- Rostros de los relojes (application/sql/respaldo_rostros.sql) ----------------
 
     /** Relojes que se respaldan (deviceId => descripción), de ConfigSistema 'relojes_respaldo_rostros'. */

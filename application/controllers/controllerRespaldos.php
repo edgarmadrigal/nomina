@@ -40,6 +40,7 @@ class controllerRespaldos extends CI_Controller {
             'exito'  => true,
             'config' => $this->RespaldoModel->config(),
             'estado' => $this->RespaldoModel->estado(),
+            'copiaLocal' => $this->RespaldoModel->copiaLocalEstado(),
         ));
     }
 
@@ -209,6 +210,18 @@ class controllerRespaldos extends CI_Controller {
         if ($cuando !== 'ahora' && !$this->RespaldoModel->tocaRostros()) { echo "No toca todavía.\n"; return; }
         $r = $this->RespaldoModel->respaldoRostros($cuando === 'ahora' ? 'Manual (línea de comandos)' : 'Programado');
         echo $r['mensaje'] . "\n";
+    }
+
+    /**
+     * Tarea programada de Windows "Nominas - Copia respaldos MEGA" (en EDGAR, cada hora):
+     *   C:\xampp\php\php.exe C:\xampp\htdocs\nomina\index.php controllerRespaldos copiaLocal
+     * Baja a la carpeta de esta computadora (ConfigSistema respaldo_copia_local, p. ej. la de MEGA)
+     * los respaldos que aún no tiene; la aplicación de la nube los sube.
+     */
+    public function copiaLocal(){
+        if (!is_cli()) { show_404(); return; }
+        $r = $this->RespaldoModel->copiaLocal();
+        echo $r['error'] ? 'ERROR: ' . $r['error'] . "\n" : 'Copiados ' . $r['copiados'] . ' (' . $r['mb'] . ' MB), borrados ' . $r['borrados'] . ".\n";
     }
 
     /** Descarga el ZIP de checadas, del código o de los rostros (están en el servidor de SQL). */
