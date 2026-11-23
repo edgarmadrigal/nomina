@@ -8,6 +8,8 @@
  */
 var Tutorial = {
     i: 0,
+    // AJUSTE 2026-11-23: las novedades (soloDesde) no se pueden saltar y cada aviso se lee unos segundos
+    obligatorio: false,
     pasos: [],
     // selector: elemento a resaltar (null = al centro)
     todos: [
@@ -48,11 +50,12 @@ var Tutorial = {
           texto: 'Los conceptos de nómina de cada empresa en Microsip, actualizados cada hora.<br>Aquí eliges la <b>clave</b> que lleva cada renglón del TXT; si una clave no existe en Microsip sale en <span class="tut-falta">rojo</span>.' },
         { selector: '#sidebarnav a[href="controllerReporteAsistenciatxt"]', titulo: 'Reporte Asistencia TXT',
           texto: 'Primero <b>Procesar</b> y luego <b>Descargar fichero</b>; así el TXT siempre lleva lo último.<br>• En Torreón cada falta va como 1.2 días (en Microsip: <b>01:1:36</b>).<br>• Abajo del botón está el <b>Formato para Microsip</b>.' },
-        { selector: '#sidebarnav a[href="checadasBiostar"]', titulo: 'Días festivos: ya corregido', desde: '2026-11-23', icono: 'fa-calendar-check-o',
-          texto: 'Los días del catálogo de <b>Días Festivos</b> ya <b>no salen como falta</b> (el lunes 16 de noviembre sí salía).<br>' +
-                 '• Solo cuenta como falta si ese día tiene una incidencia de día completo <b>sin goce</b> (p. ej. incapacidad).<br>' +
-                 '• Ya no hace falta capturar un permiso a todos para el festivo.<br>' +
-                 '• La <b>semana 47</b> ya se recalculó. Si ya habías sacado el <b>TXT</b> o la <b>prenómina</b> de esa semana, vuelve a sacarlos.' },
+        { selector: '#sidebarnav a[href="checadasBiostar"]', titulo: 'Corregido: el día festivo salía como falta', desde: '2026-11-23', icono: 'fa-calendar-check-o',
+          texto: '<b>El lunes 16 de noviembre</b> (festivo) salía como <span class="tut-falta">FALTA</span>. <b>Ya está corregido:</b><br>' +
+                 '• En <b>Checadas</b> ahora sale <b>FESTIVO</b> en verde.<br>' +
+                 '• El <b>TXT</b> y la <b>prenómina</b> ya no lo cuentan como falta.<br>' +
+                 '• La <b>semana 47</b> ya se recalculó: si ya la habías sacado, vuelve a sacarla.<br>' +
+                 '<small>Solo es falta si ese día hay incapacidad u otra incidencia de día completo sin goce.</small>' },
         { selector: '#sidebarnav a[href="controllerReporteAsistenciatxt"]', titulo: 'TXT: formato nuevo de Microsip', desde: '2026-11-23', icono: 'fa-exclamation-triangle',
           texto: 'El TXT cambió: ahora trae los <b>días de vacaciones</b> y el <b>tipo de movimiento</b>.<br>' +
                  '• En la pantalla descarga el <b>Formato para Microsip</b> y úsalo al importar en Microsip (con el anterior marca error).<br>' +
@@ -84,14 +87,14 @@ var Tutorial = {
         if (soloDesde) {
             var nuevos = $.grep(Tutorial.todos, function (p) { return p.desde && p.desde > soloDesde && hay(p); });
             if (!nuevos.length) { $.post('tutorial/terminar', { resultado: 'terminado' }); return; }
-            Tutorial.pasos = [{ titulo: '¡Hay novedades!', icono: 'fa-bullhorn',
-                                texto: 'Desde la última vez se agregaron cosas nuevas. Te las enseñamos en un momento.<br><small>Usa <b>Siguiente</b> o las flechas del teclado.</small>' }]
-                .concat(nuevos)
+            // AJUSTE 2026-11-23: directo a lo nuevo, sin paso de introducción
+            Tutorial.pasos = nuevos
                 .concat([{ titulo: '¡Listo!', icono: 'fa-check-circle',
                            texto: 'Eso es todo lo nuevo. El tutorial completo está en tu nombre &gt; <b>Ver tutorial</b>.' }]);
         } else {
             Tutorial.pasos = $.grep(Tutorial.todos, hay);
         }
+        Tutorial.obligatorio = !!soloDesde;
         Tutorial.i = 0;
         if (!$('#tutFondo').length) {
             $('body').append('<div id="tutFondo"></div><div id="tutLuz"></div>' +
@@ -112,7 +115,13 @@ var Tutorial = {
         $('#tutCaja .tut-num').text((Tutorial.i + 1) + ' de ' + Tutorial.pasos.length);
         $('#tutCaja .tut-texto').html(p.texto);
         $('#tutCaja .tut-ant').toggle(Tutorial.i > 0);
-        $('#tutCaja .tut-saltar').toggle(!ultimo);
+        $('#tutCaja .tut-saltar').toggle(!ultimo && !Tutorial.obligatorio);
+        if (Tutorial.obligatorio) {   // Siguiente se habilita a los 4 s para que alcancen a leerlo
+            var $sig = $('#tutCaja .tut-sig').prop('disabled', true), paso = Tutorial.i;
+            setTimeout(function () { if (Tutorial.i === paso) $sig.prop('disabled', false); }, 4000);
+        } else {
+            $('#tutCaja .tut-sig').prop('disabled', false);
+        }
         $('#tutCaja .tut-sig').html(ultimo ? 'Terminar <i class="fa fa-check"></i>' : 'Siguiente <i class="fa fa-chevron-right"></i>');
 
         var $el = p.selector ? $(p.selector).first() : $();
@@ -154,12 +163,13 @@ $(document).on('click', '#tutCaja .tut-sig', function () {
 $(document).on('click', '#tutCaja .tut-ant', function () { if (Tutorial.i > 0) { Tutorial.i--; Tutorial.fnMostrar(); } });
 $(document).on('click', '#tutCaja .tut-saltar', function (e) {
     e.preventDefault();
+    if (Tutorial.obligatorio) return;
     Tutorial.fnCerrar('omitido');
     if (typeof swal === 'function') swal('Tutorial', 'Ya no te saldrá al entrar. Puedes verlo cuando quieras desde tu nombre > Ver tutorial.', 'info');
 });
 $(document).on('keydown', function (e) {
     if (!$('body').hasClass('tut-activo')) return;
-    if (e.key === 'ArrowRight' || e.key === 'Enter') { e.preventDefault(); $('#tutCaja .tut-sig').trigger('click'); }
+    if (e.key === 'ArrowRight' || e.key === 'Enter') { e.preventDefault(); $('#tutCaja .tut-sig:enabled').trigger('click'); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); $('#tutCaja .tut-ant:visible').trigger('click'); }
     else if (e.key === 'Escape') { $('#tutCaja .tut-saltar').trigger('click'); }
 });
