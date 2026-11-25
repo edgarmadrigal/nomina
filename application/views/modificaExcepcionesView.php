@@ -7,6 +7,18 @@
                 <p class="text-muted mx-ayuda">Pone en las excepciones de una nómina de Microsip las cuotas que vienen en un Excel (sustituye a "Modifica Excepciones" de SOTI).
                     El Excel lleva en la <b>columna A el número de empleado</b> y en la <b>fila 1 el nombre o la clave del concepto</b> de Microsip (puede traer una columna "NOMBRE", se ignora).
                     Solo se tocan los empleados que <b>ya tienen excepción</b> en esa nómina; las celdas vacías o en 0 no se tocan. Primero sale una vista previa y nada se guarda hasta que das <b>Aplicar en Microsip</b>.</p>
+                <?php
+                // Excel de ejemplo (assets/formatos/ejemplos): se listan solos, basta con copiar ahí el archivo
+                $ejemplos = glob(FCPATH . 'assets/formatos/ejemplos/*.xlsx') ?: array();
+                natcasesort($ejemplos);
+                if ($ejemplos): ?>
+                <div class="mx-ejemplos mb-3">
+                    <i class="fa fa-download"></i> <b>Ejemplos:</b>
+                    <?php foreach ($ejemplos as $ej): $nom = basename($ej); ?>
+                        <a href="assets/formatos/ejemplos/<?= rawurlencode($nom) ?>" download="<?= htmlspecialchars($nom) ?>" class="badge badge-light border"><i class="fa fa-file-excel-o text-success"></i> <?= htmlspecialchars(pathinfo($nom, PATHINFO_FILENAME)) ?></a>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
 
                 <div class="card">
                     <div class="card-body">
@@ -38,6 +50,7 @@
 
 <style>
 #mexc .mx-fila { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+#mexc .mx-ejemplos a { font-size: 12px; font-weight: normal; padding: 5px 8px; margin: 2px 3px; }
 #mexc .mx-ayuda { font-size: 13px; }
 #mxHoja { background: #fff; color: #222; overflow: auto; max-height: 72vh; }
 #mxHoja .mx-res { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; margin-bottom: 8px; }
