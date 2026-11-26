@@ -171,6 +171,7 @@
         <span><i class="fa fa-wrench"></i> MODO DESARROLLO · <?php echo htmlspecialchars(gethostname(), ENT_QUOTES); ?></span>
         <?php if ($esAdminDev): ?>
         <button type="button" id="btnPublicar" title="Copiar los cambios de este equipo a producción (SISAI)"><i class="fa fa-cloud-upload"></i> Publicar</button>
+        <button type="button" id="btnIpPublica" title="Cambiar la IP pública a la que apuntan los enlaces de descarga (aplica también en producción)"><i class="fa fa-globe"></i> IP pública</button>
         <?php endif; ?>
     </div>
     <?php if ($esAdminDev): ?>

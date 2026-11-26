@@ -1,7 +1,7 @@
 /* "IP pública" del menú de usuario del administrador (controllers/IpPublica.php).
    Cambia la IP pública a la que apuntan los enlaces de descarga, cuando el admin lo decida. */
 $(function () {
-    $(document).on('click', '#menuIpPublica', function (e) {
+    $(document).on('click', '#menuIpPublica, #btnIpPublica', function (e) {
         e.preventDefault();
         $.post('ipPublica/estado', {}, null, 'json').done(function (r) {
             if (!r || !r.exito) { alert(r && r.mensaje ? r.mensaje : 'No se pudo consultar.'); return; }
