@@ -405,6 +405,9 @@
                                         </div>
                                     </li>
                                     <li><a href="licencia"><i class="fa fa-key"> </i> Licencia</a></li>
+                                    <?php if (isset($user->idPerfil) && $user->idPerfil == 1): ?>
+                                    <li><a href="#" id="menuIpPublica"><i class="fa fa-globe"> </i> IP pública</a></li>
+                                    <?php endif; ?>
                                     <li>
                                     <a href="#" id="logout_admin"><i class="fa fa-power-off"> </i> Cerrar Sesión</a>
                                     </li>

@@ -44,6 +44,7 @@
     <!-- Tutorial guiado de novedades (sale al entrar hasta que lo terminan) -->
     <link href="assets/css/tutorial.css?v=<?php echo filemtime(FCPATH.'assets/css/tutorial.css'); ?>" rel="stylesheet" type="text/css" />
     <script src="assets/js/tutorial.js?v=<?php echo filemtime(FCPATH.'assets/js/tutorial.js'); ?>"></script>
+    <script src="assets/js/ipPublica.js?v=<?php echo filemtime(FCPATH.'assets/js/ipPublica.js'); ?>"></script>
     <!-- Semana actual por defecto y selección de semanas pasadas en los reportes -->
     <script src="assets/js/semanaActual.js?v=<?php echo filemtime(FCPATH.'assets/js/semanaActual.js'); ?>"></script>
 

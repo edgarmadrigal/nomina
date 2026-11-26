@@ -39,7 +39,7 @@
                                     <div class="col-2">
                                         <div class="form-group">
                                                         <label style="font-weight: bold!important;"> &nbsp; </label><br> 
-                                                        <a id="descargar" class="btn btn-info"  href="http://177.244.42.94:8087/nomina/costo.txt" download>
+                                                        <a id="descargar" class="btn btn-info"  href="http://<?= ip_publica() ?>:8087/nomina/costo.txt" download>
                                                             <i class="fa fa-download"></i> Descargar fichero
                                                         </a>
                                             </div>

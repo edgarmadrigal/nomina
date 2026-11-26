@@ -40,7 +40,7 @@
                     <div class="card-body">     
                         <form>
                             FORMATO ESPERADO:
-                            <a id="descargar" class="btn btn-info"  href="http://177.244.42.94:8087/nomina/reportX_1.csv" download>
+                            <a id="descargar" class="btn btn-info"  href="http://<?= ip_publica() ?>:8087/nomina/reportX_1.csv" download>
                                 <i class="fa fa-download"></i> Descargar
                             </a>
                             <div class="col-3">
